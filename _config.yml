@@ -1,0 +1,6 @@
+sass:
+    style: compressed
+    load_paths:
+        - css/
+        - ../styles/ # This is for convenience during dev
+        - styles/
