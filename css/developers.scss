@@ -1,8 +1,17 @@
-// Note: eventually some of this will be moved into styles repo
+---
+# Compiled by jekyll
+---
+
+@import "base";
+
+$index-hero-bg: lighten($linode-green, 18);
 
 .marketing-container {
-    padding: 4rem 0;
-    background: lighten($linode-green, 18);
+    margin-top: -5.4rem;
+    padding: 5.4rem + 4rem 0 4rem 0;
+
+    background: $index-hero-bg;
+    background: url(https://sr.ht/wIZK.png);
 
     h1 {
         margin-top: 2rem;
@@ -18,11 +27,6 @@
         font-size: 1.5rem;
         line-height: 2;
     }
-}
-
-nav {
-    @extend .elevated-2;
-    line-height: 2.5;
 }
 
 .cards-container {
