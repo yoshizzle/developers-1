@@ -4,3 +4,8 @@ sass:
         - css/
         - ../styles/ # This is for convenience during dev
         - styles/
+
+collections:
+    guides:
+        output: true
+        permalink: /guides/:path/

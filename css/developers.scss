@@ -4,6 +4,17 @@
 
 @import "base";
 
+.header {
+    background: url(https://sr.ht/O0b7.png);
+
+    h1 {
+        margin: 0;
+        margin-top: 2rem;
+        padding: 1rem;
+        @extend .card;
+    }
+}
+
 .marketing-container {
     @extend .header;
     margin-bottom: 0;
@@ -28,4 +39,8 @@
 
 .cards-container {
     margin-top: 2rem;
+}
+
+.guide-card {
+    padding: 1rem;
 }
