@@ -21,6 +21,9 @@ layout: base
                 <li class="nav-item">
                     <a class="nav-link" href="#authentication">Authentication</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#errors">Errors</a>
+                </li>
                 <!-- Object links -->
                 <li class="nav-item">
                     <a class="nav-link" href="#objects">Objects</a>
@@ -59,6 +62,8 @@ layout: base
                 <div class="col-md-6 right">
                 </div>
             </div>
+            
+            {% include reference/errors.html %}
 
             {% include reference/objects-intro.html %}
 
@@ -67,25 +72,6 @@ layout: base
             {% assign value = schema[1] %}
             {% include object.html schema=value name=key %}
             {% endfor %}
-
-            <div class="row reference">
-                <div class="col-md-6 text-justify left">
-            <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in odio ut lorem mattis porta. In viverra ornare metus quis elementum. Ut cursus vestibulum faucibus. Praesent nisl mauris, sollicitudin non eros ac, dignissim finibus turpis. Integer vitae metus erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas magna nulla, blandit a lorem eget, sagittis mattis sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In euismod viverra libero et eleifend. Ut a viverra erat.
-
-            <p>
-Aenean vel magna sit amet augue blandit dictum ut quis felis. Mauris auctor ligula varius mattis molestie. Donec vehicula, augue eu hendrerit consequat, massa turpis pharetra metus, in consectetur sapien sapien sed sem. Sed consectetur eleifend erat, ac dictum orci porttitor in. Vivamus imperdiet diam ac risus lacinia maximus. Maecenas imperdiet arcu nec venenatis fermentum. Pellentesque id ex sit amet libero vehicula egestas. Quisque cursus placerat justo sed ultricies. Aliquam a libero quis odio tempus ultrices a id elit. Maecenas semper porttitor ornare. Pellentesque cursus nibh lacus, vitae viverra turpis tincidunt id. Integer vulputate finibus lorem ac lobortis. Etiam pharetra, quam vel bibendum posuere, nunc ex rhoncus turpis, nec varius quam lectus vitae dui. Sed euismod mauris quis nisi varius, sit amet luctus libero consectetur.
-
-            <p>
-Nullam dapibus ac nunc sed condimentum. Suspendisse potenti. Vivamus lorem nulla, dignissim a dapibus ac, vestibulum in dolor. Maecenas sed mi erat. Sed mi nunc, ullamcorper vitae massa sed, rhoncus commodo libero. Integer et dolor id lorem luctus ultricies vel ut dui. Cras ornare libero ornare molestie ullamcorper. Pellentesque euismod ante dolor, in sagittis justo scelerisque sit amet.
-
-            <p>
-Aenean feugiat id tellus quis fringilla. Curabitur molestie lectus nec tincidunt pharetra. Ut dapibus justo est, eget volutpat nisl ultrices ut. Mauris sollicitudin laoreet mi id lacinia. Integer vel massa aliquam, commodo dui blandit, cursus turpis. Ut blandit augue sem, quis rutrum felis scelerisque ut. Pellentesque a tempor dolor, et dignissim metus. Fusce ipsum nisl, laoreet nec venenatis non, molestie a dolor. Morbi posuere efficitur tellus, vel egestas turpis bibendum vel. Mauris eleifend mauris ac est varius maximus. Phasellus odio nisl, suscipit et auctor molestie, pulvinar et dui. Integer sagittis ullamcorper dui, at ultrices odio rutrum vitae. Nunc et arcu sollicitudin, aliquet orci quis, pulvinar arcu. In porta luctus leo pulvinar lacinia.
-
-            <p>
-Vestibulum ullamcorper lacinia felis. Proin in odio sit amet tellus tempor interdum. Nullam aliquet sapien non venenatis finibus. In at pretium purus, nec pellentesque nibh. Vivamus dictum risus erat, sit amet congue nibh ullamcorper non. Donec consectetur, odio vitae venenatis condimentum, massa magna bibendum elit, in laoreet ipsum enim a mauris. Proin sodales arcu ipsum, sit amet vulputate ipsum commodo sit amet. Donec ac posuere nibh. Aliquam vel consequat erat, convallis feugiat tortor. Integer leo ante, efficitur et enim nec, gravida sagittis ipsum. Duis in porttitor dui, cursus consectetur lectus. 
-                </div>
-            </div>
         </div>
     </div>
 </div>
