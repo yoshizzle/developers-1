@@ -1,0 +1,82 @@
+<div class="prop">
+    <span class="prop-name">
+        <span class="name">
+            {{ include.name }}
+        </span>
+    </span>
+    {% if include.info._type %}
+        {% case include.info._type %}
+        {% when "integer" or "boolean" or "string" or "array" %}
+            <span class="description">
+                {{ include.info._description }}
+            </span>
+        {% when "datetime" %}
+            <span class="description">
+                {% if include.info._description %}
+                {{ include.info._description }}
+                {% else %}
+                ISO 8601 datetime
+                {% endif %}
+            </span>
+        {% when "enum" %}
+            <span class="description">
+                {{ include.info._description }}
+            </span>
+        {% else %}
+            <!-- linked type -->
+            <span class="description">
+                {% if include.info._description %}
+                {{ include.info._description }}
+                {% else %}
+                {{ include.info._type }}
+                {% endif %}
+            </span>
+            <div class="prop">
+                Consult the
+                <a href="#object-{{ include.info._type }}">
+                    {{ include.info._type }} object
+                </a>
+                documentation.
+            </div>
+            {% assign first = false %}
+            {% for prop in info %}
+            {% assign name = prop[0] %}
+            {% assign info = prop[1] %}
+            {% assign prefix = name | slice: 0,1 %}
+            {% if prefix != '_' %}
+                {% if first %}
+                    {% assign first = false %}
+                {% else %}
+                    <div class="prop">
+                    &nbsp;
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+        {% endcase %}
+    {% else %}
+        <!-- dict --> &nbsp;
+        <span class="description">
+            {% if include.info._description %}
+            {{ include.info._description }}
+            {% else %}
+            {{ include.info._type }}
+            {% endif %}
+        </span>
+        {% for prop in info %}
+        {% assign name = prop[0] %}
+        {% assign info = prop[1] %}
+        {% assign prefix = name | slice: 0,1 %}
+        {% if prefix != '_' %}
+            {% include render-prop-right.html name=name info=info %}
+        {% endif %}
+        {% endfor %}
+        &nbsp;
+    {% endif %}
+    {% if include.info._editable %}
+        <span class="text-muted pull-right">
+            <i class="fa fa-pencil"></i>
+            Editable
+        </span>
+    {% endif %}
+</div>

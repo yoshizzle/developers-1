@@ -1,0 +1,72 @@
+@import "objects";
+
+.reference-container {
+    position: relative;
+    min-height: calc(100% - 10.5rem);
+    padding: 0;
+    margin: 0;
+
+    .spacing {
+        height: 2rem;
+    }
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+
+    .nav {
+        padding-left: 1rem;
+    }
+}
+
+.reference-bg {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin-right: 0;
+
+    .row {
+        margin-right: 0;
+    }
+
+    .right {
+        background: #373A3C;
+        height: 100%;
+    }
+}
+
+.reference-nav {
+    position: absolute;
+    top: 0;
+}
+
+.reference {
+    position: relative;
+    z-index: 1;
+
+    & > div {
+        padding: 0 2rem;
+    }
+
+    .right {
+        color: white;
+
+        h3 {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.left {
+    h1, h2, h3, h4 {
+        margin-top: 1rem;
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid grey;
+    }
+}

@@ -1,0 +1,67 @@
+<!--Renders a property for the object reference-->
+<div class="prop">
+    <span class="prop-name">
+        "<span class="name">{{ include.name }}</span>":
+    </span>
+    {% if include.info._type %}
+        {% case include.info._type %}
+        {% when "integer" or "boolean" %}
+            <span class="value">{{ include.info._value }}</span>
+        {% when "string" or "datetime" %}
+            "<span class="value">{{ include.info._value }}</span>"
+        {% when "enum" %}
+            "<span class="value">{{ include.info._value }}</span>"
+            <span class="pull-right">
+                <i class="fa fa-arrow-right"></i>
+                {{ include.info._subtype }} enum
+            </span>
+        {% when "array" %}
+            <span class="array">
+            [
+            {% for val in include.info._value %}
+                {% case include.info._subtype %}
+                {% when "integer" or "boolean %}
+                    <span class="value">{{val}}</span>
+                {% when "string" or "datetime" %}
+                    "<span class="value">{{val}}</span>"
+                {% else %}
+                    # complex type
+                {% endcase %}
+                {% if forloop.last %}
+                {% else %}
+                    ,
+                {% endif %}
+            {% endfor %}
+            ]
+            </span>
+        {% else %}
+            <!-- linked type --> {
+            <span class="pull-right">
+                <i class="fa fa-arrow-right"></i>
+                <a href="#object-{{ include.info._type }}">
+                    {{ include.info._type }} object
+                </a>
+            </span>
+            {% for prop in info %}
+            {% assign name = prop[0] %}
+            {% assign info = prop[1] %}
+            {% assign prefix = name | slice: 0,1 %}
+            {% if prefix != '_' %}
+                {% include render-prop.html name=name info=info %}
+            {% endif %}
+            {% endfor %}
+            }
+        {% endcase %}
+    {% else %}
+        <!-- dict --> {
+        {% for prop in info %}
+        {% assign name = prop[0] %}
+        {% assign info = prop[1] %}
+        {% assign prefix = name | slice: 0,1 %}
+        {% if prefix != '_' %}
+            {% include render-prop.html name=name info=info %}
+        {% endif %}
+        {% endfor %}
+        }
+    {% endif %}
+</div>

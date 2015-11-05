@@ -1,0 +1,31 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Distribution
+description: >
+  Distribution objects describe a Linux distribution supported by Linode.
+schema:
+  created:
+    _type: datetime
+    _value: 2014-12-24T18:00:09
+  experimental:
+    _type: boolean
+    _value: false
+    _description: "True if this distribution is a beta or preview release"
+  id:
+    _type: string
+    _value: dist_132
+  label:
+    _type: string
+    _value: Arch Linux 2014.10
+    _description: The user-friendly name of this distribution
+  recommended:
+    _type: boolean
+    _value: true
+    _description: "True if this distribution is recommended by Linode"
+  vendor:
+    _type: string
+    _value: Arch
+    _description: The upstream distribution vendor. Consistent between releases of a distro.
+  x64:
+    _type: boolean
+    _value: true
+    _description: "True if this is a 64-bit distribution"
