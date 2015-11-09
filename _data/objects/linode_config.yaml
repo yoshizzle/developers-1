@@ -1,0 +1,118 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Linode Config
+prefix: conf
+description: >
+  Describes a configuration for booting up a Linode. This includes the disk
+  mapping, kernel, and so on for booting a Linode. Note that <code>sd*</code>
+  will be replaced by <code>xvd*</code> for Xen Linodes.
+schema:
+  comments:
+    _editable: true
+    _type: string
+    _value: Example Linode configuration
+    _description: User-supplied comments about this config
+  created:
+    _type: datetime
+    _value: 2015-09-29T11:21:38
+  disks:
+    sda:
+      _type: disk
+      _description: The disk mapped to /dev/sda
+      id:
+        _type: string
+        _value: disk_1234
+      label:
+        _type: string
+        _value: openSUSE 13.2 Disk
+      size:
+        _type: integer
+        _value: 4000
+      type:
+        _type: string
+        _value: ext4
+    sdb:
+      _type: disk
+      _value: "null"
+      _description: The disk mapped to /dev/sdb
+    sdc:
+      _type: disk
+      _value: "null"
+      _description: The disk mapped to /dev/sdc
+    sdd:
+      _type: disk
+      _value: "null"
+      _description: The disk mapped to /dev/sdd
+    sde:
+      _type: disk
+      _value: "null"
+      _description: The disk mapped to /dev/sde
+    sdf:
+      _type: disk
+      _value: "null"
+      _description: The disk mapped to /dev/sdf
+    sdg:
+      _type: disk
+      _value: "null"
+      _description: The disk mapped to /dev/sdg
+    sdh:
+      _type: disk
+      _value: "null"
+      _description: The disk mapped to /dev/sdh
+  helpers:
+    disable_updatedb:
+      _editable: true
+      _type: boolean
+      _value: true
+      _description: Disables updatedb cron job to avoid disk thrashing
+    enable_distro_helper:
+      _editable: true
+      _type: boolean
+      _value: true
+      _description: Helps maintain correct inittab/upstart console device
+    enable_modules_dep_helper:
+      _editable: true
+      _type: boolean
+      _value: true
+      _description: Creates a modules dependency file for the kernel you run
+    enable_network_helper:
+      _editable: true
+      _type: boolean
+      _value: true
+      _description: >
+        Automatically configure static networking
+        <a href="https://www.linode.com/docs/platform/network-helper">
+          (more info)
+        </a>
+  id:
+    _type: string
+    _value: conf_1234
+  kernel:
+    _editable: true
+    _type: kernel
+    created:
+      _type: datetime
+      _value: 2011-09-01T21:08:55
+    id:
+      _type: string
+      _value: krnl_123
+    label:
+      _type: string
+      _value: "Latest 64 bit (4.1.0-x86_64-linode59)"
+  kernel_params:
+    _editable: true
+    _type: string
+    _value: "ro devtmpfs.mount=1"
+    _description: Kernel command line
+  label:
+    _editable: true
+    _type: string
+    _value: "My openSUSE 13.2 Profile"
+    _description: Human-friendly label for this config
+  root_device:
+    _editable: true
+    _type: string
+    _value: "/dev/sda"
+    _description: Root device to boot. Corresponding disk must be attached.
+  updated:
+    _type: datetime
+    _value: 2015-09-29T11:21:38

@@ -35,6 +35,9 @@
             ]
             </span>
         {% else %}
+            {% if include.info._value == "null" %}
+                <span class="value">null</span>
+            {% else %}
             <!-- linked type --> {
             <span class="pull-right">
                 <i class="fa fa-arrow-right"></i>
@@ -51,6 +54,7 @@
             {% endif %}
             {% endfor %}
             }
+            {% endif %}
         {% endcase %}
     {% else %}
         <!-- dict --> {
