@@ -1,0 +1,13 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Datacenter
+prefix: dctr
+description: >
+  Datacenter objects describe the datacenters available for Linode services.
+schema:
+  id:
+    _type: string
+    _value: dctr_7
+  label:
+    _type: string
+    _value: London, UK
+    _description: Human-friendly datacenter name

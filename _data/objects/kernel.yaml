@@ -1,0 +1,42 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Kernel
+prefix: krnl
+description: >
+  Kernel objects describe a Linux kernel that can be booted on a Linode. Some
+  special kernels are available that have special behavior, such as "Direct
+  Disk", which will boot your disk directly instead of supplying a kernel
+  directly to the hypervisor.
+schema:
+  created:
+    _type: datetime
+    _value: 2014-12-24T18:00:09
+  deprecated:
+    _type: boolean
+    _value: false
+  id:
+    _type: string
+    _value: krnl_132
+  xen:
+    _type: boolean
+    _value: false
+    _description: If this kernel is suitable for Xen Linodes
+  kvm:
+    _type: boolean
+    _value: true
+    _description: If this kernel is suitable for KVM Linodes
+  label:
+    _type: string
+    _value: 3.5.2-x86_64-linode26
+    _description: "The friendly name of this kernel."
+  updates:
+    _type: string
+    _value: kern_122
+    _description: A kernel ID that this provides an update for
+  version:
+    _type: string
+    _value: 3.5.2
+    _description: Linux Kernel version
+  x64:
+    _type: boolean
+    _value: true
+    _description: True if this is a 64-bit kernel, false for 32-bit

@@ -3,6 +3,15 @@ title: API Reference Documentation
 layout: base
 ---
 
+<!--Complicated shit:-->
+{% capture _objects %}
+    {% for o in site.data.objects %}
+        {{ o[0] }}
+    {% endfor %}
+{% endcapture %}
+{% assign objects = _objects | split: ' ' | sort %}
+<!--End complicated shit-->
+
 <div class="header" style="margin-bottom: 0;">
     <div class="container">
         <h1>
@@ -28,10 +37,11 @@ layout: base
                 <li class="nav-item">
                     <a class="nav-link" href="#objects">Objects</a>
                     <ul class="nav nav-pills nav-stacked">
-                        {% for schema in site.data.objects %}
+                        {% for key in objects %}
+                            {% assign value = site.data.objects[key] %}
                             <li class="nav-item">
-                                <a class="nav-link" href="#{{schema[0]}}">
-                                    {{schema[1].name}}
+                                <a class="nav-link" href="#object-{{key}}">
+                                    {{value.name}}
                                 </a>
                             </li>
                         {% endfor %}
@@ -67,10 +77,9 @@ layout: base
 
             {% include reference/objects-intro.html %}
 
-            {% for schema in site.data.objects %}
-            {% assign key = schema[0] %}
-            {% assign value = schema[1] %}
-            {% include object.html schema=value name=key %}
+            {% for key in objects %}
+                {% assign value = site.data.objects[key] %}
+                {% include object.html schema=value name=key %}
             {% endfor %}
         </div>
     </div>

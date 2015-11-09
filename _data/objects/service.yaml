@@ -1,0 +1,46 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Service
+prefix: serv
+description: >
+  Service objects describe a service available for purchase from Linode.
+  Provisioning new infrastructure generally involves including a service ID with
+  the request.
+schema:
+  disk:
+    _type: integer
+    _value: 24
+    _description: If applicable, disk space in MB
+  hourly_price:
+    _type: integer
+    _value: 1
+    _description: Cost (in cents) per hour
+  id:
+    _type: integer
+    _value: serv_112
+  label:
+    _type: string
+    _value: Linode 1024
+    _description: Human-friendly name of this service
+  mbits_out:
+    _type: integer
+    _value: 125
+    _description: If applicable, Mbits outbound bandwidth
+  service_type:
+    _type: enum
+    _subtype: Service Type
+    _value: linode
+    _description: The type of service offered
+  transfer:
+    _type: integer
+    _value: 2000
+    _description: If applicable, outbound transfer in MB
+  vcpus:
+    _type: integer
+    _value: 2
+    _description: If applicable, number of CPU cores
+enums:
+  Service Type:
+    linode: A Linode service
+    backup: A backup service
+    nodebalancer: A NodeBalancer service
+    longview: A Longview subscription

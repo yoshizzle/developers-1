@@ -1,5 +1,6 @@
 # vim: set et ts=2 sw=2 tw=80 :
 name: Distribution
+prefix: dist
 description: >
   Distribution objects describe a Linux distribution supported by Linode.
 schema:

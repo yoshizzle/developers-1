@@ -1,0 +1,36 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Image
+prefix: imag
+description: >
+  Images are golden records of Linode disks. You can draw an image from an
+  existing Linode and deploy the image to get an identical Linode.
+schema:
+  description:
+    _type: string
+    _value: Public Website Image
+    _description: User-supplied description of this image
+  id:
+    _type: string
+    _value: imag_123
+  label:
+    _type: string
+    _value: Arch Linux 2014.10 Disk
+    _description: The label of the disk this was created from
+  size:
+    _type: integer
+    _value: 600
+    _description: The disk size in MB.
+  type:
+    _type: string
+    _value: ext4
+    _description: The filesystem type stored in this image.
+  status:
+    _type: enum
+    _subtype: Status
+    _value: available
+    _description: The status of this image
+enums:
+  Status:
+    creating: The image is currently being created.
+    available: The image is available to deploy to Linodes.
+    deleted: The image has been deleted.

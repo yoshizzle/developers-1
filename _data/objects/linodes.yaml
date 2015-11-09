@@ -1,5 +1,6 @@
 # vim: set et ts=2 sw=2 tw=80 :
 name: "Linode"
+prefix: lnde
 description: >
   Linode objects describe a single Linode on your account.
 schema:
@@ -127,7 +128,7 @@ schema:
     _value: Example Linode
   status:
     _type: enum
-    _subtype: status
+    _subtype: Status
     _description: The current status of this Linode
     _value: running
   total_transfer:

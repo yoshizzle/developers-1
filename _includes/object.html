@@ -1,6 +1,11 @@
 <div class="row reference">
     <div class="col-md-6 text-justify left">
-        <h3 id="object-{{include.name}}">{{ include.schema.name }}</h3>
+        <h3 id="object-{{include.name}}">
+            {{ include.schema.name }}
+            <small class="text-muted">
+                {{ include.schema.prefix }}_1234
+            </small>
+        </h3>
         <p>{{include.schema.description}}</p>
     </div>
 </div> 
@@ -39,7 +44,7 @@
                 <thead class="thead-inverse">
                     <tr>
                         <th>
-                            Name
+                            Value
                         </th>
                         <th>
                             Description
