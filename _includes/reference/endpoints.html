@@ -1,0 +1,69 @@
+<div class="row reference">
+    <div class="col-md-6 text-justify left">
+        <h2 id="api-endpoints">API Endpoints</h2>
+    </div>
+</div>
+<div class="row reference">
+    <div class="col-md-6 text-justify left">
+        <p>
+        The API expoeses <strong>resources</strong> through various HTTP endpoints.
+        You work with these resources through consistent use of HTTP verbs and
+        a consistent tree of endpoints. The schema for the various resources
+        available is documented in the <a href="#objects">objects</a> section.
+        </p>
+        <h3>Lists and objects</h3>
+        <p>
+        There are generally two kinds of resources you can retrieve with a GET
+        request - lists and objects. A list is a collection of objects, and each
+        object has an ID and may be retrieved individually. You'll generally find
+        lists of objects at <code>/object-name</code>, and the individual objects
+        at <code>/object-name/object-id</code>. Some objects contain lists of other
+        objects - you can get these at <code>/object-name/object-id/subobject-name</code>,
+        and you can get an individual one at <code>/object-name/object-id/subobject-name/subobject-id</code>.
+        For example, you can list your Linodes at <code>/linodes</code>, and get
+        a specific Linode <code>/linodes/lino_1234</code>. You can get the configs
+        for this Linode from <code>/linodes/lino_1234/configs</code>.
+        </p>
+        <h4>Pagination</h4>
+        <p>
+        Resource lists are always paginated. The response looks something like this:
+        </p>
+<pre>
+{
+    "linodes": [ ... ],
+    "page": 1,
+    "total_pages": 10,
+    "total_results": 248
+}
+</pre>
+        <p>Pages start at 1. Get a particular page by adding <code>?page=2</code>
+        to your URL. Each page has 25 results.</p>
+        <h3>Editing objects</h3>
+        <p>
+        Some objects are editable, and each editable object may only have a
+        handful of properties you may edit. the properties you may edit are
+        indicated in the <a href="#objects">objects</a> section, with this
+        indicator: <span class="text-muted"><i class="fa fa-pencil"></i> Editable</span>.
+        To edit these objects, you can perform a <code>PUT</code> request against
+        the resource whose body is the updated JSON. You can omit any fields, or
+        include fields you are not permitted to edit (changes to the latter
+        will be ignored).
+        In other words, if you <code>GET</code> a resource, you can change a
+        property in the JSON that comes back and then PUT that JSON to the same
+        URL to update it.
+        </p>
+    </div>
+    <div class="col-md-6 right">
+        <h3>HTTP Methods</h3>
+        <dl>
+            <dt>GET</dt>
+            <dd>Gets information about a resource or resources</dd>
+            <dt>PUT</dt>
+            <dd>Edits information about a resource</dd>
+            <dt>POST</dt>
+            <dd>Creates a new resource</dd>
+            <dt>DELETE</dt>
+            <dd>Deletes a resource</dd>
+        </dl>
+    </div>
+</div>

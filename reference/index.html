@@ -33,9 +33,12 @@ layout: base
                 <li class="nav-item">
                     <a class="nav-link" href="#errors">Errors</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#api-endpoints">API Endpoints</a>
+                </li>
                 <!-- Object links -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#objects">Objects</a>
+                    <a class="nav-link" href="#objects">Object Reference</a>
                     <ul class="nav nav-pills nav-stacked">
                         {% for key in objects %}
                             {% assign value = site.data.objects[key] %}
@@ -45,6 +48,12 @@ layout: base
                                 </a>
                             </li>
                         {% endfor %}
+                    </ul>
+                </li>
+                <!-- Endpoint links -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#endpoints">Endpoint Reference</a>
+                    <ul class="nav nav-pills nav-stacked">
                     </ul>
                 </li>
             </ul>
@@ -74,6 +83,8 @@ layout: base
             </div>
             
             {% include reference/errors.html %}
+
+            {% include reference/endpoints.html %}
 
             {% include reference/objects-intro.html %}
 
