@@ -10,6 +10,13 @@ layout: base
     {% endfor %}
 {% endcapture %}
 {% assign objects = _objects | split: ' ' | sort %}
+
+{% capture _endpoints %}
+    {% for o in site.data.endpoints %}
+        {{ o[0] }}
+    {% endfor %}
+{% endcapture %}
+{% assign endpoints = _endpoints | split: ' ' | sort %}
 <!--End complicated shit-->
 
 <div class="header" style="margin-bottom: 0;">
@@ -33,9 +40,6 @@ layout: base
                 <li class="nav-item">
                     <a class="nav-link" href="#errors">Errors</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#api-endpoints">API Endpoints</a>
-                </li>
                 <!-- Object links -->
                 <li class="nav-item">
                     <a class="nav-link" href="#objects">Object Reference</a>
@@ -52,8 +56,16 @@ layout: base
                 </li>
                 <!-- Endpoint links -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#endpoints">Endpoint Reference</a>
+                    <a class="nav-link" href="#api-endpoints">API Endpoints</a>
                     <ul class="nav nav-pills nav-stacked">
+                        {% for key in endpoints %}
+                            {% assign value = site.data.endpoints[key] %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#ep-{{key}}">
+                                    {{value.name}}
+                                </a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </li>
             </ul>
@@ -82,15 +94,22 @@ layout: base
                 </div>
             </div>
             
+            <p>TODO: versioning</p>
+            
             {% include reference/errors.html %}
-
-            {% include reference/endpoints.html %}
 
             {% include reference/objects-intro.html %}
 
             {% for key in objects %}
                 {% assign value = site.data.objects[key] %}
                 {% include object.html schema=value name=key %}
+            {% endfor %}
+
+            {% include reference/endpoints.html %}
+
+            {% for key in endpoints %}
+                {% assign value = site.data.endpoints[key] %}
+                {% include endpoint.html schema=value name=key %}
             {% endfor %}
         </div>
     </div>

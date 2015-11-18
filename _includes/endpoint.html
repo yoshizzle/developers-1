@@ -1,0 +1,138 @@
+<div class="row reference">
+    <div class="col-md-6 text-justify left">
+        <h3 id="ep-{{include.name}}">
+            {{ include.schema.name }}
+            <small class="text-muted">
+                {{ include.schema.base_path }}
+            </small>
+        </h3>
+        <p>{{include.schema.description}}</p>
+    </div>
+</div> 
+{% for endpoint in include.schema.endpoints %}
+<div class="row reference">
+    <div class="col-md-6 left">
+        <h4>
+            /{{ endpoint[0] }}
+            {% if endpoint[1].authenticated %}
+                <small class="text-muted">
+                    <i class="fa fa-lock"></i> Authenticated
+                </small>
+            {% endif %}
+            {% if endpoint[1].type == "resource" %}
+            <small class="pull-right text-muted">
+                A single
+                <a href="#object-{{ endpoint[1].resource }}">
+                    <!--
+                        liquid is stupid sometimes
+                        this code SHOULD be:
+                            { site.data.objects[endpoint[1].resource].name }
+                        but liquid does not let you use hashes with variables
+                    -->
+                    {% for o in site.data.objects %}
+                    {% if o[0] == endpoint[1].resource %}
+                        {{ o[1].name }}
+                    {% endif %}
+                    {% endfor %}
+                    <!-- end liquid is stupid sometimes -->
+                </a>
+                object
+            </small>
+            {% endif %}
+            {% if endpoint[1].type == "list" %}
+            <small class="pull-right text-muted">
+                List of
+                <a href="#object-{{ endpoint[1].resource }}">
+                    <!--
+                        liquid is stupid sometimes
+                        this code SHOULD be:
+                            { site.data.objects[endpoint[1].resource].name }
+                        but liquid does not let you use hashes with variables
+                    -->
+                    {% for o in site.data.objects %}
+                    {% if o[0] == endpoint[1].resource %}
+                        {{ o[1].name }}
+                    {% endif %}
+                    {% endfor %}
+                    objects
+                    <!-- end liquid is stupid sometimes -->
+                </a>
+            </small>
+            {% endif %}
+        </h4>
+    </div>
+</div>
+<div class="row reference">
+    <div class="col-md-6 left">
+        <p>{{ endpoint[1].description }}</p>
+    </div>
+</div>
+{% for method in endpoint[1].methods %}
+<div class="row reference">
+    <div class="col-md-6 left">
+        <div class="row">
+            <div class="col-md-3">
+                <h5>
+                    {{ method[0] }}
+                    <br />
+                    <small class="text-muted">
+                        <i class="fa fa-key"></i>
+                        {{ method[1].oauth }}
+                    </small>
+                    {% if method[1].money %}
+                    <br />
+                    <small class="text-muted">
+                        <i class="fa fa-money"></i> May cost money
+                    </small>
+                    {% endif %}
+                </h5>
+            </div>
+            <div class="col-md-9">
+                <p>
+                {{ method[1].description }}
+                </p>
+                {% if method[0] == "PUT" %}
+                <p>
+                <em>See <a href="#editing-objects">Editing Objects</a> for information on parameters to use with PUT requests.</em>
+                </p>
+                {% endif %}
+                {% if method[1].params %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for param in method[1].params %}
+                            <tr>
+                                <td>
+                                    {{ param[0] }}
+                                    {% if param[1].optional %}
+                                        <br /><span class="text-muted">optional</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ param[1].description }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 right examples">
+        <h5>{{ method[0] }} /{{ endpoint[0] }}</h5>
+        {% highlight bash %}
+        {{ method[1].examples.curl | replace:'$version','v2' }}
+        {% endhighlight %}
+    </div>
+</div>
+{% if forloop.last == false %}
+<hr />
+{% endif %}
+{% endfor %}
+{% endfor %}

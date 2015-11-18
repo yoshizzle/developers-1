@@ -1,4 +1,5 @@
 @import "objects";
+@import "syntax";
 
 .reference-container {
     position: relative;
@@ -69,4 +70,14 @@
         margin-bottom: 0.5rem;
         border-bottom: 1px solid grey;
     }
+}
+
+h5 {
+    padding: 0;
+    margin: 0;
+}
+
+hr {
+    position: relative;
+    z-index: 9999;
 }
