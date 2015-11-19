@@ -15,6 +15,7 @@ schema:
     _type: datetime
     _value: 2015-09-29T11:21:38
   disks:
+    _description: Disks attached to this Linode config
     sda:
       _type: disk
       _description: The disk mapped to /dev/sda
@@ -59,6 +60,7 @@ schema:
       _value: "null"
       _description: The disk mapped to /dev/sdh
   helpers:
+    _description: Helpers enabled when booting to this Linode config
     disable_updatedb:
       _editable: true
       _type: boolean

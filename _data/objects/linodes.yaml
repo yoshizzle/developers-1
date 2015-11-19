@@ -74,18 +74,6 @@ schema:
     _type: string
     _description: This Linode's display group
     _value: Example
-  host:
-    _type: host
-    _description: The physical host that this Linode lives on
-    hypervisor:
-      _type: string
-      _value: kvm
-    id:
-      _type: string
-      _value: host_1234
-    label:
-      _type: string
-      _value: dallas123
   id:
     _type: string
     _value: lnde_12345

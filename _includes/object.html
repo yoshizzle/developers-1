@@ -11,31 +11,22 @@
 </div> 
 <div class="row reference">
     <div class="col-md-6 left">
-        <div class="schema card">
-            <div class="open">&nbsp;</div>
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
             {% for prop in include.schema.schema %}
                 {% assign name = prop[0] %}
                 {% assign info = prop[1] %}
                 {% include render-prop-right.html name=name info=info %}
             {% endfor %}
-            <div>&nbsp;</div>
-        </div>
-    </div>
-    <div class="col-md-6 right">
-        <div class="schema">
-            <div class="open">{</div>
-            {% for prop in include.schema.schema %}
-                {% assign name = prop[0] %}
-                {% assign info = prop[1] %}
-                {% include render-prop.html name=name info=info %}
-            {% endfor %}
-            <div>}</div>
-        </div>
-    </div>
-</div>
-{% if include.schema.enums %}
-<div class="row reference">
-    <div class="col-md-6 text-justify left">
+            </tbody>
+        </table>
+        {% if include.schema.enums %}
         {% for enum in include.schema.enums %}
             {% assign name = enum[0] %}
             {% assign values = enum[1] %}
@@ -55,7 +46,7 @@
                     {% for v in values %}
                     <tr>
                         <td>
-                            {{ v[0] }}
+                            <strong>{{ v[0] }}</strong>
                         </td>
                         <td>
                             {{ v[1] }}
@@ -65,6 +56,17 @@
                 </tbody>
             </table>
         {% endfor %}
+        {% endif %}
     </div>
-</div> 
-{% endif %}
+    <div class="col-md-6 right">
+        <div class="schema">
+            <div class="open">{</div>
+            {% for prop in include.schema.schema %}
+                {% assign name = prop[0] %}
+                {% assign info = prop[1] %}
+                {% include render-prop.html name=name info=info %}
+            {% endfor %}
+            <div>}</div>
+        </div>
+    </div>
+</div>
