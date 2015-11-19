@@ -1,5 +1,5 @@
-@import "objects";
-@import "syntax";
+@import "../css/objects";
+@import "../css/syntax";
 
 .reference-container {
     position: relative;
@@ -41,9 +41,31 @@
     }
 }
 
-.reference-nav {
-    position: absolute;
-    top: 0;
+.reference-container .nav {
+    .nav-item {
+        .nav-link {
+            padding-top: 0.1rem;
+            padding-bottom: 0.1rem;
+            background-color: inherit;
+            color: $link-color;
+            transition: all 0.1s linear;
+            border-bottom: 1px solid transparent;
+            border-left: 4px solid transparent;
+
+            &.active {
+                border-left: 4px solid black;
+                border-bottom: 1px solid black;
+            }
+        }
+    }
+
+    .nav {
+        display: none;
+    }
+}
+
+.active + .nav {
+    display: block !important;
 }
 
 .reference {
