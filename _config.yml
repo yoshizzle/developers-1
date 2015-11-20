@@ -2,6 +2,8 @@ sass:
     style: compressed
     sass_dir: styles/
 
+api_version: v2
+
 collections:
     guides:
         output: true

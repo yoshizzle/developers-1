@@ -16,6 +16,7 @@ schema:
     _value: 2015-09-29T11:21:38
   disks:
     _description: Disks attached to this Linode config
+    _editable: true
     sda:
       _type: disk
       _description: The disk mapped to /dev/sda

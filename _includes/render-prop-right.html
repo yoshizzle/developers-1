@@ -1,9 +1,10 @@
+{% if include.editable != true or include.info._editable %}
 <tr>
     <td>
-        <strong>{{ include.name }}</strong>
+        {{ include.name }}
     </td>
     <td>
-        {% if include.info._editable %}
+        {% if include.info._editable and include.editable != true %}
         <span class="text-muted pull-right">
             <i class="fa fa-pencil"></i>
             Editable
@@ -59,3 +60,4 @@
         {% endif %}
     </td>
 </tr>
+{% endif %}
