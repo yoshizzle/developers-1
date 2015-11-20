@@ -50,7 +50,7 @@
             {% assign info = prop[1] %}
             {% assign prefix = name | split: "_" %}
             {% if prefix[0] != '' %}
-                {% include render-prop.html name=name info=info %}
+                {% include render-property-json.html name=name info=info %}
             {% endif %}
             {% endfor %}
             }
@@ -63,7 +63,7 @@
         {% assign info = prop[1] %}
         {% assign prefix = name | split: "_" %}
         {% if prefix[0] != '' %}
-            {% include render-prop.html name=name info=info %}
+            {% include render-property-json.html name=name info=info %}
         {% endif %}
         {% endfor %}
         }

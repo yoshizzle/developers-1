@@ -21,7 +21,7 @@
             {% for prop in include.schema.schema %}
                 {% assign name = prop[0] %}
                 {% assign info = prop[1] %}
-                {% include render-prop-right.html name=name info=info %}
+                {% include render-property-table.html name=name info=info %}
             {% endfor %}
             </tbody>
         </table>
@@ -63,7 +63,7 @@
             {% for prop in include.schema.schema %}
                 {% assign name = prop[0] %}
                 {% assign info = prop[1] %}
-                {% include render-prop.html name=name info=info %}
+                {% include render-property-json.html name=name info=info %}
             {% endfor %}
             <div>}</div>
         </div>

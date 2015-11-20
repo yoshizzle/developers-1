@@ -37,26 +37,23 @@ layout: base
             </div>
             <ul class="nav nav-pills nav-stacked sticky-nav reference-nav" id="ref-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#introduction">Introduction</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#authentication">Authentication</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#errors">Errors</a>
-                </li>
-                <!-- Object links -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#objects">Object Reference</a>
+                    <a class="nav-link" href="#top">Introduction</a>
                     <ul class="nav nav-pills nav-stacked">
-                        {% for key in objects %}
-                            {% assign value = site.data.objects[key] %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#object-{{key}}">
-                                    {{value.name}}
-                                </a>
-                            </li>
-                        {% endfor %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#authentication">Authentication</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#lists-and-objects">Lists &amp; Objects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#pagination">Pagination</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#editing-objects">Editing Objects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#errors">Errors</a>
+                        </li>
                     </ul>
                 </li>
                 <!-- Endpoint links -->
@@ -73,6 +70,20 @@ layout: base
                         {% endfor %}
                     </ul>
                 </li>
+                <!-- Object links -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#objects">Object Reference</a>
+                    <ul class="nav nav-pills nav-stacked">
+                        {% for key in objects %}
+                            {% assign value = site.data.objects[key] %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#object-{{key}}">
+                                    {{value.name}}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
             </ul>
         </div>
         <div class="col-md-10 elevated-content">
@@ -83,25 +94,20 @@ layout: base
 
             <div class="spacing"></div>
             
-            <div class="row reference">
-                <div class="col-md-6 text-justify left">
-                    {% include reference/intro.html %}
-                </div>
-                <div class="col-md-6 right">
-                </div>
-            </div>
+            {% include reference/intro.html %}
 
-            <div class="row reference">
-                <div class="col-md-6 text-justify left">
-                    {% include reference/authentication.html %}
-                </div>
-                <div class="col-md-6 right">
-                </div>
-            </div>
-
-            {% include reference/versioning.html %}
-            
             {% include reference/errors.html %}
+
+            <div class="row reference">
+                <div class="col-md-6 text-justify left">
+                    <h2 id="api-endpoints">API Endpoints</h2>
+                </div>
+            </div>
+
+            {% for key in endpoints %}
+                {% assign value = site.data.endpoints[key] %}
+                {% include endpoint.html schema=value name=key %}
+            {% endfor %}
 
             {% include reference/objects-intro.html %}
 
@@ -110,12 +116,6 @@ layout: base
                 {% include object.html schema=value name=key %}
             {% endfor %}
 
-            {% include reference/endpoints.html %}
-
-            {% for key in endpoints %}
-                {% assign value = site.data.endpoints[key] %}
-                {% include endpoint.html schema=value name=key %}
-            {% endfor %}
         </div>
     </div>
 </div>

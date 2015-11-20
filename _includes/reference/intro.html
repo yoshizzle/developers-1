@@ -1,8 +1,319 @@
-<h2 id="introduction">Introduction</h2>
-<p>
-The Linode API is an HTTP service that follows (to a large extent)
-<a href="https://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST</a>
-style. Resources (like Linodes) have predictable, sane URLs that use standard
-HTTP methods to manipulate and return standard HTTP status codes to tell you how
-it went.
-</p>
+<div class="row reference">
+    <div class="col-md-6 text-justify left">
+        <h2>Introduction</h2>
+        <p>
+        The Linode API is an HTTP service that follows (to a large extent)
+        <a href="https://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST</a>
+        style. Resources (like Linodes) have predictable, sane URLs that use standard
+        HTTP methods to manipulate and return standard HTTP status codes to tell you how
+        it went.
+        </p>
+        <p>
+        All API endpoints (starting from version 2) are located at
+        <code>https://api.linode.com/{{ site.api_version }}/*</code>. Occasionally we will add
+        features and improvements to our API - only certain changes will trigger a
+        version bump:
+        </p>
+        <ul>
+            <li>Endpoint path changes</li>
+            <li>JSON properties removed or changed</li>
+            <li>Core changes (authentication, RESTful principles, etc)</li>
+        </ul>
+        <p>
+        Notably, the addition of new API endpoints and new properties on JSON blobs does
+        not imply a new version number.
+        </p>
+        <div class="alert alert-info">
+            <p>
+            Documentation for version 1 of the Linode API is available
+            <a href="https://www.linode.com/api/">here</a>.
+            </p>
+        </div>
+    </div>
+    <div class="col-md-6 right">
+        <h4 id="http-methods">HTTP Methods</h4>
+        <dl>
+            <dt>GET</dt>
+            <dd>Gets information about a resource or resources</dd>
+            <dt>PUT</dt>
+            <dd>Edits information about a resource</dd>
+            <dt>POST</dt>
+            <dd>Creates a new resource</dd>
+            <dt>DELETE</dt>
+            <dd>Deletes a resource</dd>
+        </dl>
+    </div>
+</div>
+<div class="row reference">
+    <div class="col-md-6 text-justify left">
+        <p>
+        The API expoeses <strong>resources</strong> through various HTTP endpoints.
+        You work with these resources through consistent use of HTTP verbs and
+        a consistent tree of endpoints. The schema for the various resources
+        available is documented in the <a href="#objects">objects</a> section.
+        </p>
+        <h4 id="authentication">Authentication</h4>
+        <p>
+        Some API endpoints require authentication to use (this is indicated with
+        <span class="text-muted"><i class="fa fa-lock"></i> Authenticated</span>
+        throughout the documentation). To authenciated on behalf of a user, you
+        need to use OAuth. The basic idea is that you can create <em>applications</em>
+        that integrate with Linode, and register those applications with us. You
+        can then direct users to our site and tell us what kind of permissions
+        you'd like to have with their account. The user logs in and we redirect
+        them back to you with a code that you may exchange for an <em>OAuth token</em>.
+        This token can then be used to authenciate API requests on behalf of
+        that user.
+        </p>
+        <p>
+        Register your application <a href="https://login.linode.com/apps">here</a>.
+        We'll provide you with a <em>client ID</em> and a <em>client secret</em>.
+        You'll have to keep the client secret to yourself, but the client ID can
+        be shared. When you want a user to log into your service, you can direct
+        them to a URL like this:
+        </p>
+        <pre><code>https://login.linode.com/oauth/authorize?client_id=<strong>client_id</strong></code></pre>
+    </div>
+</div>
+<div class="row reference">
+    <div class="col-md-6 text-justify left">
+        <h5>OAuth Scopes</h5>
+        <p>
+        Replace the client_id with your own. This login flow will give you the
+        minimum access to a user's account, which just allows you to see their
+        username and email address. If you want more access, you need to add
+        <em>OAuth scopes</em> to the query string. An OAuth scope defines the
+        scope of access your OAuth token will receive. You can request a comma-delimited
+        list of scopes by adding <code>scopes=a,b,c</code> to the query
+        string of the login.linode.com URL. A scope takes the form of <code>resource:access</code>,
+        where "resource" is a protected resource and "access" is the level of access
+        you will be granted on that resource. Access may be granted to "view", "modify",
+        "create", or "delete" resources. In addition to the access you request,
+        you will be granted each access level below it - for example, requesting
+        "modify" access will also grant you "view" access, and requesting "delete"
+        access will grant you full access to that resource (<code>resource:*</code>
+        has the same effect).
+        </p>
+        <p>
+        Each API endpoint documented on this page includes the OAuth scope necessary
+        to use that resource, like this:
+        <span class="text-muted"><i class="fa fa-key"></i> linodes:view</span>.
+        You may also request <code>*</code> to get full access to a user's account,
+        but this is discouraged.
+        </p>
+    </div>
+    <div class="col-md-6 right">
+        <p>You can include the following parameters in the query string when
+        you direct your users to login.linode.com:</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>client_id</td>
+                    <td><strong>Required</strong>. Your application's client ID.</td>
+                </tr>
+                <tr>
+                    <td>scopes</td>
+                    <td>A comma-delimited list of OAuth scopes you need.</td>
+                </tr>
+                <tr>
+                    <td>redirect_uri</td>
+                    <td>Where to redirect the user after login. If provided,
+                        the redirect URI you registered your application
+                        with should match the start of this string. If you
+                        registered your app with http://example.org as the redirect
+                        URI, then this parameter must start with "http://example.org".</td>
+                </tr>
+                <tr>
+                    <td>state</td>
+                    <td>An arbitrary token that will be returned to you at the end of the process.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row reference">
+    <div class="col-md-6 text-justify left">
+        <h5>Access Token</h5>
+        <p>
+        Once the user agrees to give your app the scopes you've requested, they
+        will be redirected back to your application. If you provided a redirect_uri
+        when you sent the user to login.linode.com, they will be redirected to that
+        URI. Otherwise, the default redirect URI associated with your OAuth client
+        will be used. When redirected, several paramters will be added to the query
+        string: <code>code</code>, <code>username</code>, <code>email</code>,
+        and <code>state</code>. The last parameter will match the state you
+        gave us at the start of the flow (this allows you to ensure that the
+        OAuth flow was initiated by your application, rather than by someone
+        manually navigating to login.linode.com with your <code>client_id</code>).
+        The username and email are just for convenience. The important
+        parameter is the code - this is a code you can exchange for an OAuth
+        token by making the following HTTP request:
+        </p>
+        <pre><code>POST https://login.linode.com/oauth/token</code></pre>
+        <p>
+        Make this request as <code>application/x-www-form-urlencoded</code> or
+        as <code>multipart/form-data</code> and include the following paramters
+        in the POST body:
+        </p>
+        <dl class="dl-horizontal row">
+            <dt class="col-sm-2">client_id</dt>
+            <dd class="col-sm-10">Your app's client ID</dd>
+            <dt class="col-sm-2">client_secret</dt>
+            <dd class="col-sm-10">Your app's client secret</dd>
+            <dt class="col-sm-2">code</dt>
+            <dd class="col-sm-10">The code you just received from the redirect</dd>
+        </dl>
+        <p>
+        You'll get a response like this:
+        </p>
+<pre><code>
+{
+  "scopes": "linodes:create",
+  "access_token": "03d084436a6c91fbafd5c4b20c82e5056a2e9ce1635920c30dc8d81dc7a6665c"
+}
+</code></pre>
+        <p>
+        Note that we include the scopes here - in the future, we may change the
+        login flow to allow the user to deny access to specific scopes. You
+        should consider this list of scopes to be the list you have been granted
+        and consider that it may be different than the ones you asked for. Also
+        included is the actual <code>access_token</code>. With this token, you
+        can proceed to make authenciated HTTP requests with the API by adding
+        this header to each request:
+        <code>Authorization: token 03d084436a6c91fbafd5c4b20c82e5056a2e9ce1635920c30dc8d81dc7a6665c</code>.
+        </p>
+    </div>
+</div>
+<div class="row reference">
+    <div class="col-md-6 text-justify left">
+        <h4 id="lists-and-objects">Lists &amp; Objects</h4>
+        <p>
+        There are generally two kinds of resources you can retrieve with a GET
+        request - lists and objects. A list is a collection of objects, and each
+        object has an ID and may be retrieved individually. You'll generally find
+        lists of objects at <code>/object-name</code>, and the individual objects
+        at <code>/object-name/object-id</code>. Some objects contain lists of other
+        objects - you can get these at <code>/object-name/object-id/subobject-name</code>,
+        and you can get an individual one at <code>/object-name/object-id/subobject-name/subobject-id</code>.
+        For example, you can list your Linodes at <code>/linodes</code>, and get
+        a specific Linode <code>/linodes/lino_1234</code>. You can get the configs
+        for this Linode from <code>/linodes/lino_1234/configs</code>.
+        </p>
+        <h4 id="pagination">Pagination</h4>
+        <p>
+        Resource lists are always paginated. The response looks something like this:
+        </p>
+<pre><code>
+{
+    "linodes": [ ... ],
+    "page": 1,
+    "total_pages": 10,
+    "total_results": 248
+}
+</code></pre>
+        <p>Pages start at 1. Get a particular page by adding <code>?page=2</code>
+        to your URL. Each page has 25 results.</p>
+        <h4 id="editing-objects">Editing Objects</h4>
+        <p>
+        Some objects are editable, and each editable object may only have a
+        handful of properties you may edit. the properties you may edit are
+        indicated in the <a href="#objects">objects</a> section, with this
+        indicator: <span class="text-muted"><i class="fa fa-pencil"></i> Editable</span>.
+        To edit these objects, you can perform a <code>PUT</code> request against
+        the resource whose body is the updated JSON. You can omit any fields, or
+        include fields you are not permitted to edit (changes to the latter
+        will be ignored).
+        In other words, if you <code>GET</code> a resource, you can change a
+        property in the JSON that comes back and then PUT that JSON to the same
+        URL to update it.
+        </p>
+    </div>
+</div>
+<div class="row reference">
+    <div class="col-md-6 text-justify left">
+        <h4 id="errors">Errors</h4>
+        <p>
+            Success is indicated via
+            <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">
+                standard HTTP status codes
+            </a>. Generally speaking, <code>2xx</code> codes indicate success,
+            <code>4xx</code> codes indicate an error on your side, and
+            <code>5xx</code> codes indicate an error on our side. An error on your
+            side might be an invalid input, a required parameter being omitted, and
+            so on. Errors on our side are not going to happen often and we're
+            probably going to be running around with our hair on fire if you ever
+            see them.
+        </p>
+        <p>
+            Every request that returns errors will look something like this:
+        </p>
+        <pre>
+{
+    "success": false,
+    "errors": [
+        {
+            "field": "datacenter",
+            "reason": "Record not found"
+        }
+    ]
+}
+        </pre>
+        <p>
+            The <code>success</code> field may not appear in requests that did
+            not result in an error. The <code>errors</code> field is an array of
+            the things that went wrong with your request. We will try to include
+            as many of the problems in the response as possible, but it's
+            possible that fixing these errors and resubmitting may result in new
+            errors coming back once we are able to get further along in the
+            process of handling your request.
+        </p>
+        <p>
+            Within each error object, the <code>field</code> parameter will be
+            included if the error pertrains to a specific field in the JSON
+            you've submitted. This will be omitted if there is no relevant
+            field. The <code>reason</code> is a human-readable reason for the
+            error, and will always be included.
+        </p>
+    </div>
+    <div class="col-md-6 right">
+        <h4>HTTP Status Codes</h4>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>200 OK</td>
+                    <td>The request was successful</td>
+                </tr>
+                <tr>
+                    <td>400 Bad Request</td>
+                    <td>You submitted an invalid request (missing parameters, etc)</td>
+                </tr>
+                <tr>
+                    <td>401 Unauthorized</td>
+                    <td>You failed to authenticate for this resource.</td>
+                </tr>
+                <tr>
+                    <td>403 Forbidden</td>
+                    <td>You are authenticated, but don't have permission to do this.</td>
+                </tr>
+                <tr>
+                    <td>404 Not Found</td>
+                    <td>The resource you're asking for does not exist.</td>
+                </tr>
+                <tr>
+                    <td>420 Enhance Your Calm</td>
+                    <td>You've hit some sort of rate limit.</td>
+                </tr>
+                <tr>
+                    <td>500 Internal Server Error</td>
+                    <td>We screwed up. Let support know (we probably already know).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

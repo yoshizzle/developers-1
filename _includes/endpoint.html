@@ -66,7 +66,7 @@
                     {% for prop in obj.schema %}
                         {% assign name = prop[0] %}
                         {% assign info = prop[1] %}
-                        {% include render-prop-right.html name=name info=info editable=true %}
+                        {% include render-property-table.html name=name info=info editable=true %}
                     {% endfor %}
                     </tbody>
                 </table>
@@ -111,7 +111,7 @@
             {{ method[0] }} /{{ endpoint[0] }}
         </h5>
         {% highlight bash %}
-        {{ method[1].examples.curl | replace:'$version','v2' }}
+        {{ method[1].examples.curl | replace:'$version',site.api_version }}
         {% endhighlight %}
     </div>
 </div>
