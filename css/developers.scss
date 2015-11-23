@@ -13,6 +13,11 @@ body {
     position: relative;
 }
 
+h1, h2, h3, h4, h5 {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
 .header {
     background: url(https://sr.ht/O0b7.png);
 
@@ -58,6 +63,10 @@ body {
 
 code {
     color: black;
+}
+
+.content {
+    padding-bottom: 3rem;
 }
 
 @import "../css/reference";
