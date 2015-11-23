@@ -91,6 +91,21 @@ body {
             font-size: 1.4rem;
         }
     }
+
+    h4 {
+        border: none !important;
+    }
+}
+
+.endpoint-method {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+
+    &:last-child {
+        border: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
 }
 
 .left {

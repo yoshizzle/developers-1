@@ -1,5 +1,5 @@
 <div class="row reference">
-    <div class="col-md-6 text-justify left">
+    <div class="col-md-6 left">
         <h3 id="ep-{{include.name}}">
             {{ include.schema.name }}
         </h3>
@@ -24,13 +24,15 @@
         <p>{{ endpoint[1].description }}</p>
     </div>
 </div>
+<div class="endpoint-methods">
 {% for method in endpoint[1].methods %}
-<div class="row reference">
+<div class="row reference endpoint-method">
     <div class="col-md-6 left">
         <div class="row">
-            <div class="col-md-3">
-                <h5>
+            <div class="col-md-4">
+                <h5 style="margin-top: 0; border: none">
                     {{ method[0] }}
+                    <br />
                     <span class="text-muted">/{{ endpoint[0] }}</span>
                     <br />
                     <small class="text-muted">
@@ -45,7 +47,7 @@
                     {% endif %}
                 </h5>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <p>
                 {{ method[1].description }}
                 </p>
@@ -115,8 +117,13 @@
         {% endhighlight %}
     </div>
 </div>
-{% if forloop.last == false %}
-<hr />
-{% endif %}
 {% endfor %}
+</div>
+{% if forloop.last == false %}
+<div class="row">
+    <div class="col-md-6">
+        <hr />
+    </div>
+</div>
+{% endif %}
 {% endfor %}
