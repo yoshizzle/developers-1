@@ -224,3 +224,164 @@ endpoints:
           python: |
             import linode
             TODO
+  linodes/:id/disks:
+    type: list
+    resource: linodes
+    authenticated: true
+    description: >
+      Manage the disks associated with this Linode.
+    methods:
+      GET:
+        oauth: linodes:view
+        description: >
+          Returns a list of disks.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                https://api.linode.com/$version/linodes/$linode_id/disks
+          python: |
+            import linode
+            TODO
+      POST:
+        oauth: linodes:modify
+        description: >
+          Creates a new disk.
+        params:
+          size:
+            description: >
+              Size in MB for this disk.
+            type: integer
+          distribution:
+            optional: true
+            description: >
+              Optional distribution to deploy with this disk.
+            type: distribution
+          root_pass:
+            optional: unless distribution is not specified
+            description: >
+              Root password to deploy distribution with.
+            type: string
+          root_ssh_key:
+            optional: unless distribution is not specified
+            description: >
+              SSH key to add to root's authorized_keys.
+            type: string
+          label:
+            description: >
+              User-friendly string to name this disk.
+            type: string
+          disk_type:
+            description: >
+              One of ext3, ext4, sway, raw
+            type: string
+          read_only:
+            optional: true
+            description: >
+              If true, this disk is read-only.
+            type: boolean
+          stackscript:
+            optional: true
+            description: >
+              The stackscript ID to deploy with this disk.
+            type: stackscript
+          stackscript_udf_responses:
+            optional: true
+            description: >
+              UDF (user-defined fields) for this stackscript.
+            type: string
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST -d '{
+                    "datacenter": "dctr_12",
+                    "service": "serv_12"
+                }'
+                https://api.linode.com/$version/linodes/$linode_id/disks
+          python: |
+            import linode
+            TODO
+  linodes/:id/disks/:id:
+    type: resource
+    resource: disk
+    authenticated: true
+    description: >
+      Manage a particular disk associated with this Linode.
+    methods:
+      GET:
+        oauth: linodes:view
+        descripton: >
+          Returns information about this disk.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                https://api.linode.com/$version/linodes/$linode_id/disks/$disk_id
+          python: |
+            import linode
+            TODO
+      PUT:
+        oauth: linodes:modify
+        description: >
+          Resizes a disk.
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X PUT -d '{
+                  "size": 1000
+                }'
+                https://api.linode.com/$version/linodes/$linode_id/disks/$disk_id
+          python: |
+            import linode
+            TODO
+      POST:
+        oauth: linodes:create
+        description: >
+          Duplicates this disk.
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST \
+                https://api.linode.com/$version/linodes/$linode_id/disks/$disk_id
+          python: |
+            import linode
+            TODO
+      DELETE:
+        oauth: linodes:delete
+        dangerous: true
+        description: >
+          Deletes this disk. This action cannot be undone.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                -X DELETE
+                https://api.linode.com/$version/linodes/$linode_id/disks/$disk_id
+          python: |
+            import linode
+            TODO
+  linodes/:id/disks/:id/rootpass:
+    type: strange
+    authenticated: true
+    description: >
+      Resets the root password of a disk.
+    methods:
+      POST:
+        oauth: linodes:delete
+        dangerous: true
+        params:
+          password:
+            description: >
+              New root password for the OS installed on this disk.
+            type: string
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST -d '{
+                    "password": "hunter2"
+                }'
+                https://api.linode.com/$version/linodes
+          python: |
+            import linode
+            TODO
