@@ -386,7 +386,7 @@ endpoints:
             import linode
             TODO
   linodes/:id/boot:
-    type: power
+    type: action
     authenticated: true
     description: >
       Boots a Linode
@@ -412,7 +412,7 @@ endpoints:
             import linode
             TODO
   linodes/:id/shutdown:
-    type: power
+    type: action
     authenticated: true
     description: >
       Shuts down a Linode
@@ -430,7 +430,7 @@ endpoints:
             import linode
             TODO
   linodes/:id/reboot:
-    type: power
+    type: action
     authenticated: true
     description: >
       Reboots a Linode
