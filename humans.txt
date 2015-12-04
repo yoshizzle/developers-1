@@ -1,0 +1,21 @@
+/* People who helped build the Linode API */
+
+    Abe Massry
+
+    Brian Steffens
+
+    Drew DeVault
+
+    James Ottinger
+
+    Josh Sager
+
+    Marques Johansson
+
+    Nick Dodson
+
+    Robert DeRose
+
+    Will Blew
+
+    William Smith
