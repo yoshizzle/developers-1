@@ -113,7 +113,7 @@
             {{ method[0] }} /{{ endpoint[0] }}
         </h5>
         {% highlight bash %}
-        {{ method[1].examples.curl | replace:'$version',site.api_version }}
+        {{ method[1].examples.curl | replace:'$version',site.api_version | replace:'$api_root',site.api_root }}
         {% endhighlight %}
     </div>
 </div>

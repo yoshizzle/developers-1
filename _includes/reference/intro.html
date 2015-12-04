@@ -10,7 +10,7 @@
         </p>
         <p>
         All API endpoints (starting from version 2) are located at
-        <code>https://api.linode.com/{{ site.api_version }}/*</code>. Occasionally we will add
+        <code>https://{{ site.api_root }}/{{ site.api_version }}/*</code>. Occasionally we will add
         features and improvements to our API - only certain changes will trigger a
         version bump:
         </p>
@@ -66,13 +66,13 @@
         that user.
         </p>
         <p>
-        Register your application <a href="https://login.linode.com/apps">here</a>.
+        Register your application <a href="https://{{ site.login_root }}/apps">here</a>.
         We'll provide you with a <em>client ID</em> and a <em>client secret</em>.
         You'll have to keep the client secret to yourself, but the client ID can
         be shared. When you want a user to log into your service, you can direct
         them to a URL like this:
         </p>
-        <pre><code>https://login.linode.com/oauth/authorize?client_id=<strong>client_id</strong></code></pre>
+        <pre><code>https://{{ site.login_root }}/oauth/authorize?client_id=<strong>client_id</strong></code></pre>
     </div>
 </div>
 <div class="row reference">
@@ -85,7 +85,7 @@
         <em>OAuth scopes</em> to the query string. An OAuth scope defines the
         scope of access your OAuth token will receive. You can request a comma-delimited
         list of scopes by adding <code>scopes=a,b,c</code> to the query
-        string of the login.linode.com URL. A scope takes the form of <code>resource:access</code>,
+        string of the {{ site.login_root }} URL. A scope takes the form of <code>resource:access</code>,
         where "resource" is a protected resource and "access" is the level of access
         you will be granted on that resource. Access may be granted to "view", "modify",
         "create", or "delete" resources. In addition to the access you request,
@@ -104,7 +104,7 @@
     </div>
     <div class="col-md-6 right">
         <p>You can include the following parameters in the query string when
-        you direct your users to login.linode.com:</p>
+        you direct your users to {{ site.login_root }}:</p>
         <table class="table">
             <thead>
                 <tr>
@@ -143,19 +143,19 @@
         <p>
         Once the user agrees to give your app the scopes you've requested, they
         will be redirected back to your application. If you provided a redirect_uri
-        when you sent the user to login.linode.com, they will be redirected to that
+        when you sent the user to {{ site.login_root }}, they will be redirected to that
         URI. Otherwise, the default redirect URI associated with your OAuth client
         will be used. When redirected, several paramters will be added to the query
         string: <code>code</code>, <code>username</code>, <code>email</code>,
         and <code>state</code>. The last parameter will match the state you
         gave us at the start of the flow (this allows you to ensure that the
         OAuth flow was initiated by your application, rather than by someone
-        manually navigating to login.linode.com with your <code>client_id</code>).
+        manually navigating to {{ site.login_root }} with your <code>client_id</code>).
         The username and email are just for convenience. The important
         parameter is the code - this is a code you can exchange for an OAuth
         token by making the following HTTP request:
         </p>
-        <pre><code>POST https://login.linode.com/oauth/token</code></pre>
+        <pre><code>POST https://{{ site.login_root }}/oauth/token</code></pre>
         <p>
         Make this request as <code>application/x-www-form-urlencoded</code> or
         as <code>multipart/form-data</code> and include the following paramters

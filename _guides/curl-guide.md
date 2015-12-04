@@ -20,7 +20,7 @@ documentation](/reference). For API endpoints where this indicator is missing,
 you're able to use curl to test them without any additional steps. For example,
 we could [list supported distributions](/reference/#ep-distributions):
 
-    curl https://api.linode.com/{{ site.api_version }}/distributions
+    curl https://{{ site.api_root }}/{{ site.api_version }}/distributions
 
 This will give you a response like this:
 
@@ -96,7 +96,7 @@ fa-lock"></i> Authenticated</span> requests on the [reference page](/reference)
 include this header in the curl examples. Try this, for example:
 
     curl -H "Authorization: token that_token" \ 
-        https://api.linode.com/{{ site.api_version }}/linodes
+        https://{{ site.api_root }}/{{ site.api_version }}/linodes
 
 This will give you a response like this:
 

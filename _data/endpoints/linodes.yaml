@@ -19,7 +19,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://api.linode.com/$version/linodes
+                https://$api_root/$version/linodes
           python: |
             import linode
             TODO
@@ -60,7 +60,7 @@ endpoints:
                     "datacenter": "dctr_12",
                     "service": "serv_12"
                 }'
-                https://api.linode.com/$version/linodes
+                https://$api_root/$version/linodes
           python: |
             import linode
             TODO
@@ -78,7 +78,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://api.linode.com/$version/linodes/$linode_id
+                https://$api_root/$version/linodes/$linode_id
           python: |
             import linode
             TODO
@@ -93,7 +93,7 @@ endpoints:
                 -X PUT -d '{
                   "label": "newlabel"
                 }'
-                https://api.linode.com/$version/linodes/$linode_id
+                https://$api_root/$version/linodes/$linode_id
           python: |
             import linode
             TODO
@@ -106,7 +106,7 @@ endpoints:
           curl: |
             curl -H "Authorization: token $TOKEN" \
                 -X DELETE
-                https://api.linode.com/$version/linodes/$linode_id
+                https://$api_root/$version/linodes/$linode_id
           python: |
             import linode
             TODO
@@ -124,7 +124,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://api.linode.com/$version/linodes/$linode_id/configs
+                https://$api_root/$version/linodes/$linode_id/configs
           python: |
             import linode
             TODO
@@ -166,7 +166,7 @@ endpoints:
                       "disk_125"
                     ]
                 }'
-                https://api.linode.com/$version/linodes/$linode_id/configs
+                https://$api_root/$version/linodes/$linode_id/configs
           python: |
             import linode
             TODO
@@ -184,7 +184,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://api.linode.com/$version/linodes/$linode_id/configs/$config_id
+                https://$api_root/$version/linodes/$linode_id/configs/$config_id
           python: |
             import linode
             TODO
@@ -207,7 +207,7 @@ endpoints:
                       }
                     }
                 }'
-                https://api.linode.com/$version/linodes/$linode_id/configs/$config_id
+                https://$api_root/$version/linodes/$linode_id/configs/$config_id
           python:
             import linode
             TODO
@@ -220,7 +220,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X DELETE \
-                https://api.linode.com/$version/linodes/$linode_id/configs/$config_id
+                https://$api_root/$version/linodes/$linode_id/configs/$config_id
           python: |
             import linode
             TODO
@@ -238,7 +238,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://api.linode.com/$version/linodes/$linode_id/disks
+                https://$api_root/$version/linodes/$linode_id/disks
           python: |
             import linode
             TODO
@@ -297,7 +297,7 @@ endpoints:
                     "datacenter": "dctr_12",
                     "service": "serv_12"
                 }'
-                https://api.linode.com/$version/linodes/$linode_id/disks
+                https://$api_root/$version/linodes/$linode_id/disks
           python: |
             import linode
             TODO
@@ -315,7 +315,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://api.linode.com/$version/linodes/$linode_id/disks/$disk_id
+                https://$api_root/$version/linodes/$linode_id/disks/$disk_id
           python: |
             import linode
             TODO
@@ -330,7 +330,7 @@ endpoints:
                 -X PUT -d '{
                   "size": 1000
                 }'
-                https://api.linode.com/$version/linodes/$linode_id/disks/$disk_id
+                https://$api_root/$version/linodes/$linode_id/disks/$disk_id
           python: |
             import linode
             TODO
@@ -343,7 +343,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST \
-                https://api.linode.com/$version/linodes/$linode_id/disks/$disk_id
+                https://$api_root/$version/linodes/$linode_id/disks/$disk_id
           python: |
             import linode
             TODO
@@ -356,7 +356,7 @@ endpoints:
           curl: |
             curl -H "Authorization: token $TOKEN" \
                 -X DELETE
-                https://api.linode.com/$version/linodes/$linode_id/disks/$disk_id
+                https://$api_root/$version/linodes/$linode_id/disks/$disk_id
           python: |
             import linode
             TODO
@@ -381,7 +381,7 @@ endpoints:
                 -X POST -d '{
                     "password": "hunter2"
                 }'
-                https://api.linode.com/$version/linodes
+                https://$api_root/$version/linodes
           python: |
             import linode
             TODO
