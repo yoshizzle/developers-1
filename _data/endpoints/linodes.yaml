@@ -399,7 +399,7 @@ endpoints:
             optional: true
             description: >
               Optional config ID to boot the linode with.
-            type: id
+            type: linode_config
         examples:
           curl: |
             curl -H "Content-Type: application/json" \
@@ -443,7 +443,7 @@ endpoints:
             optional: true
             description: >
               Optional config ID to boot the linode with.
-            type: id
+            type: linode_config
         examples:
           curl: |
             curl -H "Content-Type: application/json" \
