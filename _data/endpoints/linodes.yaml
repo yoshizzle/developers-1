@@ -385,3 +385,73 @@ endpoints:
           python: |
             import linode
             TODO
+  linodes/:id/boot:
+    type: power
+    authenticated: true
+    description: >
+      Boots a Linode
+    methods:
+      POST:
+        oauth: linodes:modify
+        dangerous: false
+        params:
+          config:
+            optional: true
+            description: >
+              Optional config ID to boot the linode with.
+            type: id
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST -d '{
+                    "config": "conf_1234"
+                }'
+                https://api.linode.com/$version/linodes/:id/boot
+          python: |
+            import linode
+            TODO
+  linodes/:id/shutdown:
+    type: power
+    authenticated: true
+    description: >
+      Shuts down a Linode
+    methods:
+      POST:
+        oauth: linodes:modify
+        dangerous: true
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST
+                https://api.linode.com/$version/linodes/:id/shutdown
+          python: |
+            import linode
+            TODO
+  linodes/:id/reboot:
+    type: power
+    authenticated: true
+    description: >
+      Reboots a Linode
+    methods:
+      POST:
+        oauth: linodes:modify
+        dangerous: true
+        params:
+          config:
+            optional: true
+            description: >
+              Optional config ID to boot the linode with.
+            type: id
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST -d '{
+                    "config": "conf_1234"
+                }'
+                https://api.linode.com/$version/linodes/:id/reboot
+          python: |
+            import linode
+            TODO
