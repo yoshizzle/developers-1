@@ -146,7 +146,7 @@ endpoints:
               Optional field for arbitrary user comments on this config.
           ram_limit:
             optional: true
-            descriptoin: >
+            description: >
               The maximum RAM the Linode will be given when booting this config.
               This defaults to the total RAM of the Linode.
           disk_list:
@@ -310,7 +310,7 @@ endpoints:
     methods:
       GET:
         oauth: linodes:view
-        descripton: >
+        description: >
           Returns information about this disk.
         examples:
           curl: |

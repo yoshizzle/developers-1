@@ -1,0 +1,279 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Zones
+base_path: /zones
+description: >
+  Zone endpoints provide a means of managing the <a href="#object-zones">
+  Zone objects</a> on your account.
+endpoints:
+  zones:
+    type: list
+    resource: zones
+    authenticated: true
+    description: >
+      Manage the collection of Zones your account may access.
+    methods:
+      GET:
+        oauth: zones:view
+        description: >
+          Returns a list of Zones.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                https://api.linode.com/$version/zones
+          python: |
+            import linode
+            TODO
+      POST:
+        oauth: zones:create
+        description: >
+          Create a zone
+        params:
+          zone:
+            description: >
+              The zone name (other DNS providers may call this the domain name).
+          type:
+            description: >
+              master or slave
+          soa_email:
+            optional: true
+            description: >
+              State Of Authority contact email.
+          description:
+            optional: true
+            description: >
+              A description to keep track of this zone.
+          refresh_sec:
+            optional: true
+            description: >
+              Time interval before the zone should be refreshed. In seconds.
+          retry_sec:
+            optional: true
+            description: >
+              Time interval that should elapse before a failed refresh should
+                be retried. In seconds.
+          expire_sec:
+            optional: true
+            description: >
+              Time value that specifies the upper limit on
+                the time interval that can elapse before the zone is no
+                longer authoritative. In seconds.
+          ttl_sec:
+            optional: true
+            description: >
+              Time interval that the resource record may be cached before
+                it should be discarded. In seconds.
+          status:
+            optional: true
+            description: >
+              The status of the zone it can be disabled, active, or edit mode
+                (0, 1, or 2)
+          master_ips:
+            optional: true
+            description: >
+              An array of IP addresses for this zone.
+          axfr_ips:
+            optional: true
+            description: >
+              An array of IP addresses allowed to AXFR the entire zone.
+          displaygroup:
+            optional: true
+            description: >
+              A display group to keep track of this zone.
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST -d '{
+                    "zone": "example.com",
+                    "type": "master",
+                    "soa_email": "admin@example.com",
+                    "description": "Example Description",
+                    "refresh_sec": 14400,
+                    "retry_sec": 3600,
+                    "expire_sec": 604800,
+                    "ttl_sec": 3600,
+                    "status": "active",
+                    "master_ips": ["127.0.0.1","255.255.255.1","123.123.123.7"],
+                    "axfr_ips": ["44.55.66.77"],
+                    "displaygroup": "Example Display Group"
+                }'
+                https://api.linode.com/$version/zones
+          python: |
+            import linode
+            TODO
+  zones/:id:
+    authenticated: true
+    resource: zones
+    methods:
+      GET:
+        oauth: zones:view
+        description: >
+          Returns information for the zone identified by ":id".
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                https://api.linode.com/$version/zones/$zone_id
+          python: |
+            import linode
+            TODO
+      PUT:
+        oauth: zones:modify
+        description: >
+          Modifies a given zone
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+              -H "Authorization: token TOKEN" \
+              -X PUT -d '{
+                "zone": "examplechange.com",
+                "description": "The changed description",
+                "displaygroup": "New display group",
+                "status": "edit_mode",
+                "soa_email": "newemail@example.com",
+                "retry_sec": 3602,
+                "master_ips": ["123.456.789.101", "192.168.1.1", "127.0.0.1"],
+                "axfr_ips": ["55.66.77.88"],
+                "expire_sec": 604802,
+                "refresh_sec": 14402,
+                "ttl_sec": 3602
+              }'
+              https://api.linode.com/$version/zones/$zone_id
+          python: |
+            import linode
+            TODO
+      DELETE:
+        oauth: zones:modify
+        dangerous: true
+        description: >
+          Deletes the zone. This action cannot be undone.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                -X DELETE
+                https://api.linode.com/$version/zones/$zone_id
+          python: |
+            import linode
+            TODO
+  zones/:id/records:
+    type: list
+    resource: zonerecords
+    authenticated: true
+    description: >
+      Manage the collection of Zone Records your account may access.
+    methods:
+      GET:
+        oauth: zones:view
+        description: >
+          Returns a list of Zone Records.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                https://api.linode.com/$version/zones/$zone_id/records
+          python: |
+            import linode
+            TODO
+      POST:
+        oauth: zones:create
+        description: >
+          Create a zone record
+        params:
+          type:
+            description: >
+              Type of record (A/AAAA, NS, MX, CNAME, TXT, SRV)
+          name:
+            optional: true
+            description: >
+              The hostname or FQDN. When Type=MX the subdomain to
+              delegate to the Target MX server.
+          target:
+            optional: true
+            description: >
+              When Type=MX the hostname. When Type=CNAME the target of the
+              alias. When Type=TXT the value of the record. When Type=A or
+              AAAA the token of '[remote_addr]' will be substituted with the
+              IP address of the request.
+          priority:
+            optional: true
+            description: >
+              Priority for MX and SRV records.
+          weight:
+            optional: true
+            description: >
+              A relative weight for records with the same priority,
+              higher value means more preferred.
+          port:
+            optional: true
+            description: >
+              The TCP or UDP port on which the service is to be found.
+          service:
+            optional: true
+            description: >
+              The service to append to an SRV record.
+          protocol:
+            optional: true
+            description: >
+              The protocol to append to an SRV record.
+          ttl:
+            optional: true
+            description: >
+              Time interval that the resource record may be cached before
+                it should be discarded. In seconds. Leave as 0 to accept
+                our default.
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST -d '{
+                    "type": "A",
+                    "target": "123.456.789.101",
+                    "name": "sub.example.com"
+                }'
+                https://api.linode.com/$version/zones/$zone_id/records
+          python: |
+            import linode
+            TODO
+  zones/:id/records/:id:
+    authenticated: true
+    resource: zonerecords
+    methods:
+      GET:
+        oauth: zones:view
+        description: >
+          Returns information for the zone record identified by ":id".
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+              https://api.linode.com/$version/zones/$zone_id/records/$record_id
+          python: |
+            import linode
+            TODO
+      PUT:
+        oauth: zones:modify
+        description: >
+          Modifies a given zone record
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+              -H "Authorization: token TOKEN" \
+              -X PUT -d '{
+                    "target": "123.456.789.102",
+                    "name": "sub2.example.com"
+              }'
+              https://api.linode.com/$version/zones/$zone_id/records/$record_id
+          python: |
+            import linode
+            TODO
+      DELETE:
+        oauth: zones:modify
+        dangerous: true
+        description: >
+          Deletes the zone record. This action cannot be undone.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+              -X DELETE
+              https://api.linode.com/$version/zones/$zone_id/records/$record_id
+          python: |
+            import linode
+            TODO
+

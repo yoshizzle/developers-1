@@ -1,0 +1,105 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Zones
+prefix: zone
+description: >
+  Zones
+schema:
+  id:
+    _type: string
+    _value: zone_123
+    _description: >
+      string
+  zone:
+    _editable: true
+    _type: string
+    _value: example.com
+    _description: >
+      The zone name (other DNS providers may call this the domain name).
+  soa_email:
+    _editable: true
+    _type: string
+    _value: admin@example.com
+    _optional: true
+    _description: >
+      State Of Authority contact email.
+  description:
+    _editable: true
+    _type: string
+    _value: Example Description
+    _optional: true
+    _description: >
+      A description to keep track of this zone.
+  refresh_sec:
+    _editable: true
+    _type: integer
+    _value: 14400
+    _optional: true
+    _description: >
+      Time interval before the zone should be refreshed. In seconds.
+  retry_sec:
+    _editable: true
+    _type: integer
+    _value: 3600
+    _optional: true
+    _description: >
+      Time interval that should elapse before a failed refresh should
+        be retried. In seconds.
+  expire_sec:
+    _editable: true
+    _type: integer
+    _value: 604800
+    _optional: true
+    _description: >
+      Time value that specifies the upper limit on
+        the time interval that can elapse before the zone is no
+        longer authoritative. In seconds.
+  ttl_sec:
+    _editable: true
+    _type: integer
+    _value: 3600
+    _optional: true
+    _description: >
+      Time interval that the resource record may be cached before
+        it should be discarded. In seconds.
+  status:
+    _editable: true
+    _type: enum
+    _subtype: status
+    _value: active
+    _optional: true
+    _description: >
+      The status of the zone it can be disabled, active, or edit mode
+        (0, 1, or 2)
+  master_ips:
+    _editable: true
+    _type: array
+    _subtype: string
+    _value:
+      - "127.0.0.1"
+      - "255.255.255.1"
+      - "123.123.123.7"
+    _optional: true
+    _description: >
+      An array of IP addresses for this zone.
+  axfr_ips:
+    _editable: true
+    _type: array
+    _subtype: string
+    _value:
+      - "44.55.66.77"
+    _optional: true
+    _description: >
+      An array of IP addresses allowed to AXFR the entire zone.
+  displaygroup:
+    _editable: true
+    _value: Example Display Group
+    _type: string
+    _optional: true
+    _description: >
+      A display group to keep track of this zone.
+enums:
+  status:
+    -1 : deleted
+    0 : disabled
+    1 : active
+    2 : edit_mode
