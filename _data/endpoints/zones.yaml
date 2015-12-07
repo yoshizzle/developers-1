@@ -30,7 +30,7 @@ endpoints:
         params:
           zone:
             description: >
-              The zone name (other DNS providers may call this the domain name).
+              The zone name.
           type:
             description: >
               master or slave
@@ -45,28 +45,27 @@ endpoints:
           refresh_sec:
             optional: true
             description: >
-              Time interval before the zone should be refreshed. In seconds.
+              Time interval before the zone should be refreshed, in seconds.
           retry_sec:
             optional: true
             description: >
               Time interval that should elapse before a failed refresh should
-                be retried. In seconds.
+                be retried, in seconds.
           expire_sec:
             optional: true
             description: >
               Time value that specifies the upper limit on
                 the time interval that can elapse before the zone is no
-                longer authoritative. In seconds.
+                longer authoritative, in seconds.
           ttl_sec:
             optional: true
             description: >
               Time interval that the resource record may be cached before
-                it should be discarded. In seconds.
+                it should be discarded, in seconds.
           status:
             optional: true
             description: >
-              The status of the zone it can be disabled, active, or edit mode
-                (0, 1, or 2)
+              The status of the zone; it can be disabled, active, or edit_mode.
           master_ips:
             optional: true
             description: >
@@ -108,7 +107,7 @@ endpoints:
       GET:
         oauth: zones:view
         description: >
-          Returns information for the zone identified by ":id".
+          Returns information for the zone identified by :id.
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
@@ -183,7 +182,7 @@ endpoints:
           name:
             optional: true
             description: >
-              The hostname or FQDN. When Type=MX the subdomain to
+              The hostname or FQDN. When type=MX the subdomain to
               delegate to the Target MX server.
           target:
             optional: true

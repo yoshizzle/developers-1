@@ -35,7 +35,7 @@ schema:
     _value: 14400
     _optional: true
     _description: >
-      Time interval before the zone should be refreshed. In seconds.
+      Time interval before the zone should be refreshed, in seconds.
   retry_sec:
     _editable: true
     _type: integer
@@ -43,7 +43,7 @@ schema:
     _optional: true
     _description: >
       Time interval that should elapse before a failed refresh should
-        be retried. In seconds.
+        be retried, in seconds.
   expire_sec:
     _editable: true
     _type: integer
@@ -52,7 +52,7 @@ schema:
     _description: >
       Time value that specifies the upper limit on
         the time interval that can elapse before the zone is no
-        longer authoritative. In seconds.
+        longer authoritative, in seconds.
   ttl_sec:
     _editable: true
     _type: integer
@@ -60,7 +60,7 @@ schema:
     _optional: true
     _description: >
       Time interval that the resource record may be cached before
-        it should be discarded. In seconds.
+        it should be discarded, in seconds.
   status:
     _editable: true
     _type: enum
@@ -68,8 +68,7 @@ schema:
     _value: active
     _optional: true
     _description: >
-      The status of the zone it can be disabled, active, or edit mode
-        (0, 1, or 2)
+      The status of the zone it can be disabled, active, or edit_mode
   master_ips:
     _editable: true
     _type: array

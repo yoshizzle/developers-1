@@ -2,7 +2,8 @@
 name: Zone Records
 prefix: zrcd
 description: >
-  Zone Records
+  Zone Records: The zone record fields will contain different values
+  depending on what type of record it is.
 schema:
   id:
     _type: string
@@ -15,7 +16,7 @@ schema:
     _editable: true
     _optional: true
     _description: >
-      The hostname or FQDN. When Type=MX the subdomain to delegate to the
+      The hostname or FQDN. When type=MX the subdomain to delegate to the
       Target MX server.
   target:
     _type: string
@@ -23,9 +24,9 @@ schema:
     _editable: true
     _optional: true
     _description: >
-      When Type=MX the hostname. When Type=CNAME the target of the alias.
-      When Type=TXT the value of the record.
-      When Type=A or AAAA the token of '[remote_addr]' will be substituted
+      When type=MX the hostname. When type=CNAME the target of the alias.
+      When type=TXT the value of the record.
+      When type=A or AAAA the token of '[remote_addr]' will be substituted
       with the IP address of the request.
   priority:
     _type: integer
@@ -70,5 +71,5 @@ schema:
     _optional: true
     _description: >
       Time interval that the resource record may be cached before
-      it should be discarded. In seconds. Leave as 0 to accept
+      it should be discarded, in seconds. Leave as 0 to accept
       our default.
