@@ -297,7 +297,7 @@ Run the SSH command from the Linode response object and enter the root password
 you set in the create Linode step:
 
 {% highlight bash %}
-ssh root@$public_id
+ssh root@$public_ip
 {% endhighlight %}
 
 Congratulations! You have now successfully launched a Linode through the API!
