@@ -73,7 +73,7 @@ datacenter you want to select. For this example, we'll go with the
 
 Once you have a datacenter in mind, the next step is to choose a Linode
 service plan. A service plan determines the resources available to your new
-Linode (such as CPU memory, storage space, and network transfer). Run the
+Linode (such as memory, storage space, and network transfer). Run the
 following curl command to retrieve a list of available Linode plans:
 
     curl https://api.linode.com/v2/services/linode
@@ -153,17 +153,17 @@ because they return only publicly visible information. However, launching a
 Linode is tied to your account so this call must be authenticated.
 
 You will need to substitute your authorization token in the command below
-before running it (replace <auth_token>). If you don't yet have an
+before running it (replace ```<auth_token>```). If you don't yet have an
 authorization token, read through the 
 [Authentication guide](/guides/authentication) before proceeding.
 
-You should also set a root password for the new Linode (replace <root_pass>).
+You should also set a root password for the new Linode (replace
+```<root_pass>```).
 
 As you can see, the datacenter, service plan, and Linux distribution are all
 specified in the JSON POST data and can be changed as needed to deploy Linodes
-to different locations and with different characteristics.
-
-Customize the following curl command and run it when you're ready to deploy:
+to different locations and with different characteristics. Customize the
+following curl command and run it when you're ready to deploy:
 
     curl -X POST https://api.linode.com/v2/linodes \
     -d '{"service": "serv_112","datacenter": "dctr_7","source": "dist_130","root_pass": "<root_pass>"}' \
@@ -236,7 +236,8 @@ of the ```id``` field, as you will need it for the next step.
 
 Before you can use your new Linode, you will need to boot it. Take the ```id```
 returned by the previous API call and substitute it for ```<linode_id>``` in
-the following curl command:
+the following curl command. Also remember to replace ```<auth_token>``` with
+your authorization token as in the previous API call.
 
     curl -X POST https://api.linode.com/v2/linodes/<linode_id>/boot \
     -H "Authorization: token <auth_token>"
@@ -258,7 +259,7 @@ just issued:
 }
 {% endhighlight %}
 
-Most fields are null since the job hasn't finished yet. To check on the
+Most fields are ```null``` since the job hasn't finished yet. To check on the
 progress, you can poll the status of your Linode with the following command
 (make sure to replace ```<linode_id>``` and ```<auth_token>```):
 
@@ -272,6 +273,7 @@ Once the boot job has finished, the Linode's status should change to "running":
     "linode": {
         "id": "lnde_1",
         "status": "running",
+        "ssh_command": "ssh root@172.28.4.12",
         /* and so on */
     }
 }
