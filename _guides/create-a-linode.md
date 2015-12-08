@@ -124,14 +124,14 @@ This will provide you with a list of distributions like the following:
 {
     "distributions": [
         {
-            "id": "dist_130",
-            "label": "Debian 7",
+            "id": "dist_140",
+            "label": "Debian 8.1",
             "vendor": "Debian",
             "x64": true,
             "recommended": true,
             "experimental": false,
-            "minimum_image_size": 600,
-            "created": "2014-09-24T13:59:32"
+            "minimum_image_size": 900,
+            "created": "2015-04-27T16:26:41"
         }
         /* and so on */
     ],
@@ -143,7 +143,7 @@ This will provide you with a list of distributions like the following:
 
 For detailed information about each field, see the
 [complete distribution reference](/reference/#object-distribution).
-For this example, we'll go with Debian 7.
+For this example, we'll go with Debian 8.1.
 
 ## Creating your new Linode
 
@@ -166,7 +166,7 @@ to different locations and with different characteristics. Customize the
 following curl command and run it when you're ready to deploy:
 
     curl -X POST https://api.linode.com/v2/linodes \
-    -d '{"service": "serv_112","datacenter": "dctr_7","source": "dist_130","root_pass": "<root_pass>"}' \
+    -d '{"service": "serv_112","datacenter": "dctr_7","source": "dist_140","root_pass": "<root_pass>"}' \
     -H "Authorization: token <auth_token>" -H "Content-type: application/json"
 
 If all was successful, you should get a response object detailing the newly
@@ -249,7 +249,7 @@ just issued:
 {
     "action": "linode.boot",
     "id": "ljob_84",
-    "label": "System Boot - My Debian 7 Disk Profile",
+    "label": "System Boot - My Debian 8.1 Disk Profile",
     "entered": "2015-12-07T22:09:48",
     "started": null,
     "finished": null,
