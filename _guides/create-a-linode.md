@@ -6,12 +6,12 @@ layout: guide
 ---
 
 Creating a Linode requires you to be logged in. Before proceeding, make sure
-you have gone through the [Authentication guide](/guides/authentication), since
+you have gone through the [Testing with curl guide](/guides/curl-guide), since
 you will need an authorization token to proceed.
 
-Before you can create a Linode, you will need to choose a datacenter,
-a service plan, and a distribution. The API has endpoints available to help
-you do this.
+Before you can create a Linode, you will need to choose a **datacenter**,
+a **service plan**, and a **distribution**. The API has endpoints available to
+help you do this.
 
 ## Selecting a datacenter
 
@@ -19,7 +19,9 @@ A datacenter is a physical location which can run Linodes. To retrieve a list
 of available datacenters, you can use the /datacenters API endpoint. To make an
 API call against this endpoint over curl, run the following command:
 
-    curl https://api.linode.com/v2/datacenters
+{% highlight bash %}
+curl https://api.linode.com/v2/datacenters
+{% endhighlight %}
 
 Note that since the datacenter list is public information, you don't need to
 send your authorization token (although it will still work if you do). The
@@ -76,7 +78,9 @@ service plan. A service plan determines the resources available to your new
 Linode (such as memory, storage space, and network transfer). Run the
 following curl command to retrieve a list of available Linode plans:
 
-    curl https://api.linode.com/v2/services/linode
+{% highlight bash %}
+curl https://api.linode.com/v2/services/linode
+{% endhighlight %}
 
 The above command will return a JSON object like the following:
 
@@ -116,7 +120,9 @@ Now you need to choose a Linux distribution to deploy to your new Linode. Just
 like selecting a service and a datacenter, issue a call to the API, this time
 for a list of available distributions:
 
-    curl https://api.linode.com/v2/distributions
+{% highlight bash %}
+curl https://api.linode.com/v2/distributions
+{% endhighlight %}
 
 This will provide you with a list of distributions like the following:
 
@@ -153,21 +159,23 @@ because they return only publicly visible information. However, launching a
 Linode is tied to your account so this call must be authenticated.
 
 You will need to substitute your authorization token in the command below
-before running it (replace ```<auth_token>```). If you don't yet have an
-authorization token, read through the 
-[Authentication guide](/guides/authentication) before proceeding.
+before running it (replace ```$TOKEN```). If you don't yet have an
+authorization token, read through the
+[Testing with curl guide](/guides/curl-guide) before proceeding.
 
 You should also set a root password for the new Linode (replace
-```<root_pass>```).
+```$root_pass```).
 
 As you can see, the datacenter, service plan, and Linux distribution are all
 specified in the JSON POST data and can be changed as needed to deploy Linodes
 to different locations and with different characteristics. Customize the
 following curl command and run it when you're ready to deploy:
 
-    curl -X POST https://api.linode.com/v2/linodes \
-    -d '{"service": "serv_112","datacenter": "dctr_7","source": "dist_140","root_pass": "<root_pass>"}' \
-    -H "Authorization: token <auth_token>" -H "Content-type: application/json"
+{% highlight bash %}
+curl -X POST https://api.linode.com/v2/linodes \
+-d '{"service": "serv_112","datacenter": "dctr_7","source": "dist_140","root_pass": "$root_pass"}' \
+-H "Authorization: token $TOKEN" -H "Content-type: application/json"
+{% endhighlight %}
 
 If all was successful, you should get a response object detailing the newly
 created Linode like the following:
@@ -235,12 +243,14 @@ of the ```id``` field, as you will need it for the next step.
 ## Booting a Linode
 
 Before you can use your new Linode, you will need to boot it. Take the ```id```
-returned by the previous API call and substitute it for ```<linode_id>``` in
-the following curl command. Also remember to replace ```<auth_token>``` with
+returned by the previous API call and substitute it for ```$linode_id``` in
+the following curl command. Also remember to replace ```$TOKEN``` with
 your authorization token as in the previous API call.
 
-    curl -X POST https://api.linode.com/v2/linodes/<linode_id>/boot \
-    -H "Authorization: token <auth_token>"
+{% highlight bash %}
+curl -X POST https://api.linode.com/v2/linodes/$linode_id/boot \
+-H "Authorization: token $TOKEN"
+{% endhighlight %}
 
 You should receive a response like the following, detailing the boot job you
 just issued:
@@ -261,10 +271,12 @@ just issued:
 
 Most fields are ```null``` since the job hasn't finished yet. To check on the
 progress, you can poll the status of your Linode with the following command
-(make sure to replace ```<linode_id>``` and ```<auth_token>```):
+(make sure to replace ```$linode_id``` and ```$TOKEN```):
 
-    curl https://api.linode.com/v2/linodes/<linode_id> \
-    -H "Authorization: token <auth_token>"
+{% highlight bash %}
+curl https://api.linode.com/v2/linodes/$linode_id \
+-H "Authorization: token $TOKEN"
+{% endhighlight %}
 
 Once the boot job has finished, the Linode's status should change to "running":
 
@@ -284,6 +296,8 @@ Once the boot job has finished, the Linode's status should change to "running":
 Run the SSH command from the Linode response object and enter the root password
 you set in the create Linode step:
 
-    ssh root@<public_ip>
+{% highlight bash %}
+ssh root@$public_id
+{% endhighlight %}
 
 Congratulations! You have now successfully launched a Linode through the API!
