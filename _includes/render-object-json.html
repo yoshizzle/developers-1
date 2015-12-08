@@ -1,0 +1,16 @@
+<!--Renders a complex sub-object for the object reference-->
+{% if include.obj._value == "null" %}
+    <span class="value">null</span>
+{% else %}
+    {% include render-object-link.html type=include.obj._type %}
+    {
+    {% for prop in include.obj %}
+    {% assign name = prop[0] %}
+    {% assign info = prop[1] %}
+    {% assign prefix = name | split: "_" %}
+    {% if prefix[0] != '' %}
+        {% include render-property-json.html name=name info=info %}
+    {% endif %}
+    {% endfor %}
+    }
+{% endif %}

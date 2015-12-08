@@ -25,7 +25,11 @@
                 {% when "string" or "datetime" %}
                     "<span class="value">{{val}}</span>"
                 {% else %}
-                    # complex type
+                    {% if forloop.first %}
+                        {% include render-object-link.html
+                           type=include.info._subtype %}
+                    {% endif %}
+                    {% include render-object-json.html obj=val %}
                 {% endcase %}
                 {% if forloop.last %}
                 {% else %}
@@ -35,37 +39,9 @@
             ]
             </span>
         {% else %}
-            {% if include.info._value == "null" %}
-                <span class="value">null</span>
-            {% else %}
-            <!-- linked type --> {
-            <span class="pull-right">
-                <i class="fa fa-arrow-right"></i>
-                <a href="#object-{{ include.info._type }}">
-                    {{ include.info._type }} object
-                </a>
-            </span>
-            {% for prop in info %}
-            {% assign name = prop[0] %}
-            {% assign info = prop[1] %}
-            {% assign prefix = name | split: "_" %}
-            {% if prefix[0] != '' %}
-                {% include render-property-json.html name=name info=info %}
-            {% endif %}
-            {% endfor %}
-            }
-            {% endif %}
+            {% include render-object-json.html obj=info %}
         {% endcase %}
     {% else %}
-        <!-- dict --> {
-        {% for prop in info %}
-        {% assign name = prop[0] %}
-        {% assign info = prop[1] %}
-        {% assign prefix = name | split: "_" %}
-        {% if prefix[0] != '' %}
-            {% include render-property-json.html name=name info=info %}
-        {% endif %}
-        {% endfor %}
-        }
+        {% include render-object-json.html obj=info %}
     {% endif %}
 </div>
