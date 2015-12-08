@@ -272,7 +272,7 @@ endpoints:
             type: string
           disk_type:
             description: >
-              One of ext3, ext4, sway, raw
+              One of ext3, ext4, sway, raw.
             type: string
           read_only:
             optional: true
@@ -389,7 +389,7 @@ endpoints:
     type: action
     authenticated: true
     description: >
-      Boots a Linode
+      Boots a Linode.
     methods:
       POST:
         oauth: linodes:modify
@@ -415,7 +415,7 @@ endpoints:
     type: action
     authenticated: true
     description: >
-      Shuts down a Linode
+      Shuts down a Linode.
     methods:
       POST:
         oauth: linodes:modify
@@ -433,7 +433,7 @@ endpoints:
     type: action
     authenticated: true
     description: >
-      Reboots a Linode
+      Reboots a Linode.
     methods:
       POST:
         oauth: linodes:modify
