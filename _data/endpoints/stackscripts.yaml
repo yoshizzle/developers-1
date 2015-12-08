@@ -9,9 +9,9 @@ endpoints:
   stackscripts:
     type: list
     resource: stackscripts
-    authenticated: true
     description: >
-      Manage the collection of StackScripts your account may access.
+      View public StackScripts and manage the collection of StackScripts 
+      associated with your account.
     methods:
       GET:
         oauth: stackscripts:view
@@ -38,11 +38,11 @@ endpoints:
       POST:
         oauth: stackscripts:create
         description: >
-          Create a new StackScripts
+          Create a new StackScript.
         params:
           label:
             description: >
-              Label of StackScript
+              Label of StackScript.
           description:
             optional: true
             description: >
@@ -55,16 +55,15 @@ endpoints:
           is_public:
             optional: true
             description: >
-              Allows StackScript to be published to the Library for everyone to 
-              see.
-              Defaults as false.
+              If true, this StackScript will be publicly visible in the Linode
+              StackScript library.
           rev_note:
             optional: true
             description: >
-              Note about StackScript version.
+              Release notes for this revision.
           script:
             description: >
-              The actual script.
+              The shell script to run on boot.
         examples:
           curl: |
             curl -H "Content-Type: application/json" \
@@ -73,7 +72,7 @@ endpoints:
                 "label": "Initial Label",
                 "distribution_id_list": ["dist_125", "dist_126"],
                 "script": "#!..."
-              }'
+              }' \
               https://$api_root/$version/stackscripts
           python: |
             import stackscript
@@ -101,7 +100,7 @@ endpoints:
               -H "Authorization: token $TOKEN" \
               -X PUT -d '{
                 "label": "New Label"
-              }'
+              }' \
               https://$api_root/$version/stackscripts/$stackscript_id
           python: |
             import stackscript
