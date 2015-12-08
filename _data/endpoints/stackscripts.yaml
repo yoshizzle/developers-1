@@ -1,0 +1,120 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: StackScripts
+base_path: /stackscripts
+description: >
+  StackScript endpoints provide a means of managing the
+  <a href="#object-stackscripts"> StackScript objects</a> accessible from your 
+  account.
+endpoints:
+  stackscripts:
+    type: list
+    resource: stackscripts
+    authenticated: true
+    description: >
+      Manage the collection of StackScripts your account may access.
+    methods:
+      GET:
+        oauth: stackscripts:view
+        description: >
+          Returns a list of StackScripts accessible from your account.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+              https://$api_root/$version/stackscripts
+          python: |
+            import stackscript
+            TODO
+      GET:
+        oauth: stackscripts:view
+        description: >
+          Returns a list of StackScripts associated with your account.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+              https://$api_root/$version/stackscripts/mine
+          python: |
+            import stasckscript
+            TODO
+      POST:
+        oauth: stackscripts:create
+        description: >
+          Create a new StackScripts
+        params:
+          label:
+            description: >
+              Label of StackScript
+          description:
+            optional: true
+            description: >
+              Description of the StackScript.
+          distribution_id_list:
+            description: >
+              A list of <a href="#object-distribution">distributions</a>
+              compatible with StackScript.
+            type: distribution
+          is_public:
+            optional: true
+            description: >
+              Allows StackScript to be published to the Library for everyone to 
+              see.
+              Defaults as false.
+          rev_note:
+            optional: true
+            description: >
+              Note about StackScript version.
+          script:
+            description: >
+              The actual script.
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+              -H "Authorization: token $TOKEN" \
+              -X POST -d '{
+                "label": "Initial Label",
+                "distribution_id_list": ["dist_125", "dist_126"],
+                "script": "#!..."
+              }'
+              https://$api_root/$version/stackscripts
+          python: |
+            import stackscript
+            TODO
+      GET:
+        oauth: stackscripts:view
+        description: >
+          Returns information about this StackScript.
+        example:
+          curl: |
+            curl -H "Content-Type: application/json" \
+              -H "Authorization: token $TOKEN" \
+              -X GET
+              https://$api_root/$version/stackscripts/$stackscript_id
+          python: |
+            import stackscript
+            TODO
+      PUT:
+        oauth: stackscripts:modify
+        description:
+          Edits this StackScript.
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+              -H "Authorization: token $TOKEN" \
+              -X PUT -d '{
+                "label": "New Label"
+              }'
+              https://$api_root/$version/stackscripts/$stackscript_id
+          python: |
+            import stackscript
+            TODO
+     DELETE:
+      oauth: stackscripts:delete
+      description: >
+        Deletes this StackScript.  This action cannot be undone.
+      examples:
+        curl: |
+          curl -H "Authorization: token $TOKEN" \
+            -X DELETE
+            https://$api_root/$version/stackscripts/$stackscript_id
+        python: |
+          import stackscript
+          TODO
