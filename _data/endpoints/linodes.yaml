@@ -272,7 +272,7 @@ endpoints:
             type: string
           disk_type:
             description: >
-              One of ext3, ext4, sway, raw.
+              One of ext3, ext4, swap, raw.
             type: string
           read_only:
             optional: true
