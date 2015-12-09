@@ -1,0 +1,40 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Distributions
+base_path: /distributions
+description: >
+  Distribution endpoints provide a means of viewing 
+  <a href="#object-distributions">distribution objects</a>.
+endpoints:
+  distributions:
+    type: list
+    resource: distributions
+    description: >
+      View the collection of distributions.
+    methods:
+      GET:
+        description: >
+          Returns a list of distributions.
+        examples:
+          curl: |
+            curl https://$api_root/$version/distributions
+          python: |
+            import distributions
+            TODO
+      GET:
+        description: >
+          Returns information about this distribution.
+        examples:
+          curl: |
+            curl https://$api_root/$version/distributions/$distribution_id
+          python: |
+            import distributions
+            TODO
+      GET:
+        description: >
+          Returns a list of recommended distributions.
+        examples:
+          curl: |
+            curl https://$api_root/$version/distributions/recommended
+          python: |
+            import distributions
+            TODO
