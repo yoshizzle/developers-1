@@ -1,0 +1,58 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Services
+base_path: /services
+description: >
+  Services endpoints provide a means of viewing <a href="#object-services">
+  service objects</a>.
+endpoints:
+  services:
+    type: list
+    resource: services
+    description: >
+      Returns collection of services.
+    methods:
+      GET:
+        description: >
+          Returns list of services.
+        examples:
+          curl: |
+            curl https://$api_root/$version/services
+          python: |
+            import services
+            TODO
+      GET:
+        description: >
+          Returns information about this service.
+        examples:
+          curl: |
+            curl https://$api_root/$version/services/$service_id
+          python: |
+            import services
+            TODO
+      GET:
+        description: >
+          Returns list of Linode services.
+        examples:
+          curl: |
+            curl https://$api_root/$version/services/linode
+          python: |
+            import services
+            TODO
+      GET:
+        description: >
+          Returns list of backup services.
+        examples:
+          curl: |
+            curl https://$api_root/$version/services/backup
+          python: |
+            import services
+            TODO
+      GET:
+        description: >
+          Returns list of Longview services.
+        examples:
+          curl: |
+            curl https://$api_root/$version/services/longview
+          python: |
+            import services
+            TODO

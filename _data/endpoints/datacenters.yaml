@@ -1,0 +1,31 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Datacenters
+base_path: /datacenters
+description: >
+  Datacenter endpoints provide a means of viewing <a href="#object-datacenters">
+  datacenter objects</a>.
+endpoints:
+  datacenters:
+    type: list
+    resource: datacenters
+    description: >
+      Returns collection of datacenters.
+    methods:
+      GET:
+        description: >
+          Returns list of datacenters.
+        examples:
+          curl: |
+            curl https://$api_root/$version/datacenters
+          python: |
+            import datacenters
+            TODO
+      GET:
+        description: >
+          Returns information about this datacenter.
+        examples:
+          curl: |
+            curl https://$api_root/$version/datacenters/$datacenter_id
+          python: |
+            import datacenters
+            TODO

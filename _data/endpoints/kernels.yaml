@@ -1,0 +1,31 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Kernels
+base_path: /kernels
+description: >
+  Kernel endpoints provide a means of viewing <a href="#object-kernels">
+  kernel objects</a>.
+endpoints:
+  kernels:
+    type: list
+    resource: kernels
+    description: >
+      Returns collection of kernels.
+    methods:
+      GET:
+        description: >
+          Returns list of kernels.
+        examples:
+          curl: |
+            curl https://$api_root/$version/kernels
+          python: |
+            import kernels
+            TODO
+      GET:
+        description: >
+          Returns information about this kernel.
+        examples:
+          curl: |
+            curl https://$api_root/$version/kernels/$kernel_id
+          python: |
+            import kernels
+            TODO
