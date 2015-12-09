@@ -26,8 +26,7 @@
                     "<span class="value">{{val}}</span>"
                 {% else %}
                     {% if forloop.first %}
-                        {% include render-object-link.html
-                           type=include.info._subtype %}
+                        {% include render-object-link.html type=include.info._subtype %}
                     {% endif %}
                     {% include render-object-json.html obj=val %}
                 {% endcase %}

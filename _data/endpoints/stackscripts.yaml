@@ -85,14 +85,14 @@ endpoints:
           curl: |
             curl -H "Content-Type: application/json" \
               -H "Authorization: token $TOKEN" \
-              -X GET
+              -X GET \
               https://$api_root/$version/stackscripts/$stackscript_id
           python: |
             import stackscript
             TODO
       PUT:
         oauth: stackscripts:modify
-        description:
+        description: >
           Edits this StackScript.
         examples:
           curl: |
@@ -105,15 +105,15 @@ endpoints:
           python: |
             import stackscript
             TODO
-     DELETE:
-      oauth: stackscripts:delete
-      description: >
-        Deletes this StackScript.  This action cannot be undone.
-      examples:
-        curl: |
-          curl -H "Authorization: token $TOKEN" \
-            -X DELETE
-            https://$api_root/$version/stackscripts/$stackscript_id
-        python: |
-          import stackscript
-          TODO
+      DELETE:
+        oauth: stackscripts:delete
+        description: >
+          Deletes this StackScript.  This action cannot be undone.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+              -X DELETE \
+              https://$api_root/$version/stackscripts/$stackscript_id
+          python: |
+            import stackscript
+            TODO
