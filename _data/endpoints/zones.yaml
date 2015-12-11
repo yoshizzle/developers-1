@@ -37,7 +37,7 @@ endpoints:
           soa_email:
             optional: true
             description: >
-              State Of Authority contact email.
+              Start of Authority (SOA) contact email.
           description:
             optional: true
             description: >
