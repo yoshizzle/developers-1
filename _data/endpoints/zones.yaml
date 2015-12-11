@@ -19,14 +19,14 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://api.linode.com/$version/zones
+                https://$api_root/$version/zones
           python: |
             import linode
             TODO
       POST:
         oauth: zones:create
         description: >
-          Create a zone
+          Create a Zone.
         params:
           zone:
             description: >
@@ -41,11 +41,11 @@ endpoints:
           description:
             optional: true
             description: >
-              A description to keep track of this zone.
+              A description to keep track of this Zone.
           refresh_sec:
             optional: true
             description: >
-              Time interval before the zone should be refreshed, in seconds.
+              Time interval before the Zone should be refreshed, in seconds.
           retry_sec:
             optional: true
             description: >
@@ -55,7 +55,7 @@ endpoints:
             optional: true
             description: >
               Time value that specifies the upper limit on
-                the time interval that can elapse before the zone is no
+                the time interval that can elapse before the Zone is no
                 longer authoritative, in seconds.
           ttl_sec:
             optional: true
@@ -65,19 +65,19 @@ endpoints:
           status:
             optional: true
             description: >
-              The status of the zone; it can be disabled, active, or edit_mode.
+              The status of the Zone; it can be disabled, active, or edit_mode.
           master_ips:
             optional: true
             description: >
-              An array of IP addresses for this zone.
+              An array of IP addresses for this Zone.
           axfr_ips:
             optional: true
             description: >
-              An array of IP addresses allowed to AXFR the entire zone.
+              An array of IP addresses allowed to AXFR the entire Zone.
           displaygroup:
             optional: true
             description: >
-              A display group to keep track of this zone.
+              A display group to keep track of this Zone.
         examples:
           curl: |
             curl -H "Content-Type: application/json" \
@@ -96,7 +96,7 @@ endpoints:
                     "axfr_ips": ["44.55.66.77"],
                     "displaygroup": "Example Display Group"
                 }'
-                https://api.linode.com/$version/zones
+                https://$api_root/$version/zones
           python: |
             import linode
             TODO
@@ -107,18 +107,18 @@ endpoints:
       GET:
         oauth: zones:view
         description: >
-          Returns information for the zone identified by :id.
+          Returns information for the Zone identified by :id.
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://api.linode.com/$version/zones/$zone_id
+                https://$api_root/$version/zones/$zone_id
           python: |
             import linode
             TODO
       PUT:
         oauth: zones:modify
         description: >
-          Modifies a given zone
+          Modifies a given Zone.
         examples:
           curl: |
             curl -H "Content-Type: application/json" \
@@ -136,7 +136,7 @@ endpoints:
                 "refresh_sec": 14402,
                 "ttl_sec": 3602
               }'
-              https://api.linode.com/$version/zones/$zone_id
+              https://$api_root/$version/zones/$zone_id
           python: |
             import linode
             TODO
@@ -149,7 +149,7 @@ endpoints:
           curl: |
             curl -H "Authorization: token $TOKEN" \
                 -X DELETE
-                https://api.linode.com/$version/zones/$zone_id
+                https://$api_root/$version/zones/$zone_id
           python: |
             import linode
             TODO
@@ -167,18 +167,18 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://api.linode.com/$version/zones/$zone_id/records
+                https://$api_root/$version/zones/$zone_id/records
           python: |
             import linode
             TODO
       POST:
         oauth: zones:create
         description: >
-          Create a zone record
+          Create a Zone Record.
         params:
           type:
             description: >
-              Type of record (A/AAAA, NS, MX, CNAME, TXT, SRV)
+              Type of record (A/AAAA, NS, MX, CNAME, TXT, SRV).
           name:
             optional: true
             description: >
@@ -227,7 +227,7 @@ endpoints:
                     "target": "123.456.789.101",
                     "name": "sub.example.com"
                 }'
-                https://api.linode.com/$version/zones/$zone_id/records
+                https://$api_root/$version/zones/$zone_id/records
           python: |
             import linode
             TODO
@@ -238,18 +238,18 @@ endpoints:
       GET:
         oauth: zones:view
         description: >
-          Returns information for the zone record identified by ":id".
+          Returns information for the Zone record identified by ":id".
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-              https://api.linode.com/$version/zones/$zone_id/records/$record_id
+              https://$api_root/$version/zones/$zone_id/records/$record_id
           python: |
             import linode
             TODO
       PUT:
         oauth: zones:modify
         description: >
-          Modifies a given zone record
+          Modifies a given Zone Record.
         examples:
           curl: |
             curl -H "Content-Type: application/json" \
@@ -258,7 +258,7 @@ endpoints:
                     "target": "123.456.789.102",
                     "name": "sub2.example.com"
               }'
-              https://api.linode.com/$version/zones/$zone_id/records/$record_id
+              https://$api_root/$version/zones/$zone_id/records/$record_id
           python: |
             import linode
             TODO
@@ -266,12 +266,12 @@ endpoints:
         oauth: zones:modify
         dangerous: true
         description: >
-          Deletes the zone record. This action cannot be undone.
+          Deletes the Zone Record. This action cannot be undone.
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
               -X DELETE
-              https://api.linode.com/$version/zones/$zone_id/records/$record_id
+              https://$api_root/$version/zones/$zone_id/records/$record_id
           python: |
             import linode
             TODO

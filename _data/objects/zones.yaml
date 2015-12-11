@@ -14,28 +14,28 @@ schema:
     _type: string
     _value: example.com
     _description: >
-      The zone name.
+      The Zone name.
   soa_email:
     _editable: true
     _type: string
     _value: admin@example.com
     _optional: true
     _description: >
-      State Of Authority contact email.
+      Start of Authority (SOA) contact email.
   description:
     _editable: true
     _type: string
     _value: Example Description
     _optional: true
     _description: >
-      A description to keep track of this zone.
+      A description to keep track of this Zone.
   refresh_sec:
     _editable: true
     _type: integer
     _value: 14400
     _optional: true
     _description: >
-      Time interval before the zone should be refreshed, in seconds.
+      Time interval before the Zone should be refreshed, in seconds.
   retry_sec:
     _editable: true
     _type: integer
@@ -51,7 +51,7 @@ schema:
     _optional: true
     _description: >
       Time value that specifies the upper limit on
-        the time interval that can elapse before the zone is no
+        the time interval that can elapse before the Zone is no
         longer authoritative, in seconds.
   ttl_sec:
     _editable: true
@@ -68,7 +68,7 @@ schema:
     _value: active
     _optional: true
     _description: >
-      The status of the zone it can be disabled, active, or edit_mode
+      The status of the Zone it can be disabled, active, or edit_mode.
   master_ips:
     _editable: true
     _type: array
@@ -79,7 +79,7 @@ schema:
       - "123.123.123.7"
     _optional: true
     _description: >
-      An array of IP addresses for this zone.
+      An array of IP addresses for this Zone.
   axfr_ips:
     _editable: true
     _type: array
@@ -88,16 +88,16 @@ schema:
       - "44.55.66.77"
     _optional: true
     _description: >
-      An array of IP addresses allowed to AXFR the entire zone.
+      An array of IP addresses allowed to AXFR the entire Zone.
   displaygroup:
     _editable: true
     _value: Example Display Group
     _type: string
     _optional: true
     _description: >
-      A display group to keep track of this zone.
+      A display group to keep track of this Zone.
 enums:
   status:
-    active : Turn on serving of this zone
-    disabled : Turn off serving of this zone
+    active : Turn on serving of this Zone
+    disabled : Turn off serving of this Zone
     edit_mode : Use this mode while making edits

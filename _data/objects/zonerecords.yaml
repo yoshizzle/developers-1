@@ -2,7 +2,7 @@
 name: Zone Records
 prefix: zrcd
 description: >
-  Zone Records: The zone record fields will contain different values
+  Zone Records: The Zone Record fields will contain different values
   depending on what type of record it is.
 schema:
   id:
@@ -34,7 +34,7 @@ schema:
     _editable: true
     _optional: true
     _description:
-      Priority for MX and SRV records
+      Priority for MX and SRV records.
   weight:
     _type: integer
     _value: 20
