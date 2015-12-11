@@ -98,7 +98,6 @@ schema:
       A display group to keep track of this zone.
 enums:
   status:
-    -1 : deleted
-    0 : disabled
-    1 : active
-    2 : edit_mode
+    active : Turn on serving of this zone
+    disabled : Turn off serving of this zone
+    edit_mode : Use this mode while making edits
