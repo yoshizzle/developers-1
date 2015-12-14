@@ -33,7 +33,7 @@ endpoints:
               The zone name.
           type:
             description: >
-              master or slave
+              Master or slave Zone.
           soa_email:
             optional: true
             description: >
