@@ -1,5 +1,3 @@
-**This is experimental, incomplete software**
-
 # developer.linode.com
 
 This is the Linode developer portal. It's a jekyll site hosted on GitHub Pages.
@@ -8,6 +6,12 @@ Included here are:
 * API documentation
 * API guides
 * API libraries
+
+## Feedback
+
+Feedback on our API, including feature requests and bug reports, may be
+submitted as [GitHub issues](https://github.com/linode/developers/issues/new)
+on this repository.
 
 ## Cloning
 
@@ -24,6 +28,9 @@ If you already cloned, but missed this step, try this:
 Install [jekyll](http://jekyllrb.com/) and run `jekyll serve --watch` to run the
 site at [localhost:4000](http://localhost:4000).
 
+Tip: install the `github-pages` gem to get the same version of Jekyll that
+GitHub uses in production.
+
 ## Contributing
 
-TODO: write guidelines for third party contributions
+Fork this repository and send a pull request, simple as that.
