@@ -19,7 +19,11 @@ h1, h2, h3, h4, h5 {
 }
 
 .header {
-    background: url(https://sr.ht/O0b7.png);
+    background:
+        url('/assets/BH_06 Trees.svg'),
+        url('/assets/BH_02 Clouds.svg'),
+        url('/assets/BH_01 Sky.svg');
+    background-size: cover;
 
     h1 {
         margin: 0;
@@ -29,11 +33,47 @@ h1, h2, h3, h4, h5 {
     }
 }
 
+@keyframes balloons {
+    0% {
+        background-position:
+            0 1rem,     // Balloons front
+            0 2rem,     // Balloons middle
+            0 1.5rem,   // Balloons back
+            0 0,        // Trees
+            0 0,        // Foreground
+            0 0,        // Clouds
+            0 0;        // Sky
+    }
+    100% {
+        background-position:
+            0 2rem,  // Balloons front
+            0 1.25rem,  // Balloons middle
+            0 2rem,     // Balloons back
+            0 0,        // Trees
+            0 0,        // Foreground
+            0 0,        // Clouds
+            0 0;        // Sky
+    }
+}
+
 .marketing-container {
     @extend .header;
-    margin-bottom: 0;
     padding-top: 5.4rem + 4rem;
-    background: url(https://sr.ht/O0b7.png);
+    min-height: 27rem;
+    background:
+        url('/assets/BH_05 Balloons Front.svg'),
+        url('/assets/BH_04 Balloons Middle.svg'),
+        url('/assets/BH_03 Balloons Back.svg'),
+        url('/assets/BH_06 Trees.svg'),
+        url('/assets/BH_07 Foreground.svg'),
+        url('/assets/BH_02 Clouds.svg'),
+        url('/assets/BH_01 Sky.svg');
+    background-size: cover;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-name: balloons;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(.57,.22,.44,.76);
 
     h1 {
         margin-top: 2rem;
@@ -41,6 +81,12 @@ h1, h2, h3, h4, h5 {
         box-shadow: none;
         padding-left: 0;
         padding-top: 0;
+        color: white;
+        text-shadow: 1px 1px 3px black, 1px 1px 3px black;
+
+        .alpha {
+            color: lighten(red, 10);
+        }
     }
 }
 
