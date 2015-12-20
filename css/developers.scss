@@ -19,11 +19,21 @@ h1, h2, h3, h4, h5 {
 }
 
 .header {
-    background:
-        url('/assets/BH_06 Trees.svg'),
-        url('/assets/BH_02 Clouds.svg'),
-        url('/assets/BH_01 Sky.svg');
-    background-size: cover;
+    position: relative;
+
+    .bg-clouds {
+        box-shadow: 0px -5px 8px -2px rgba(0, 0, 0, 0.12) inset, 0px -5px 4px -4px rgba(0, 0, 0, 0.2) inset;
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+        background:
+            url('/assets/BH_02 Clouds v2.svg'),
+            url('/assets/BH_01 Sky.svg');
+        background-size: cover;
+        animation-name: clouds;
+        animation-duration: 150000s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
 
     h1 {
         margin: 0;
@@ -38,42 +48,74 @@ h1, h2, h3, h4, h5 {
         background-position:
             0 1rem,     // Balloons front
             0 2rem,     // Balloons middle
-            0 1.5rem,   // Balloons back
-            0 0,        // Trees
-            0 0,        // Foreground
-            0 0,        // Clouds
-            0 0;        // Sky
+            0 1.5rem;   // Balloons back
     }
     100% {
         background-position:
             0 2rem,  // Balloons front
             0 1.25rem,  // Balloons middle
-            0 2rem,     // Balloons back
-            0 0,        // Trees
-            0 0,        // Foreground
-            0 0,        // Clouds
-            0 0;        // Sky
+            0 2rem;     // Balloons back
     }
+}
+
+@keyframes clouds {
+    0% {
+        background-position:
+            0 0;
+    }
+    100% {
+        background-position:
+            100000rem 0;
+    }
+}
+
+nav {
+    position: relative;
+    z-index: 99999;
 }
 
 .marketing-container {
     @extend .header;
     padding-top: 5.4rem + 4rem;
     min-height: 27rem;
-    background:
-        url('/assets/BH_05 Balloons Front.svg'),
-        url('/assets/BH_04 Balloons Middle.svg'),
-        url('/assets/BH_03 Balloons Back.svg'),
-        url('/assets/BH_06 Trees.svg'),
-        url('/assets/BH_07 Foreground.svg'),
-        url('/assets/BH_02 Clouds.svg'),
-        url('/assets/BH_01 Sky.svg');
-    background-size: cover;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-    animation-name: balloons;
-    animation-duration: 1.5s;
-    animation-timing-function: cubic-bezier(.57,.22,.44,.76);
+    position: relative;
+
+    .bg-middle {
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+        background:
+            url('/assets/BH_06 Trees.svg'),
+            url('/assets/BH_07 Foreground.svg');
+        background-size: cover;
+    }
+
+    .bg-clouds {
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+        background:
+            url('/assets/BH_02 Clouds v2.svg'),
+            url('/assets/BH_01 Sky.svg');
+        background-size: cover;
+        animation-name: clouds;
+        animation-duration: 150000s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    
+    .bg-balloons {
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+        background:
+            url('/assets/BH_05 Balloons Front.svg'),
+            url('/assets/BH_04 Balloons Middle.svg'),
+            url('/assets/BH_03 Balloons Back.svg');
+        background-size: cover;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        animation-name: balloons;
+        animation-duration: 1.5s;
+        animation-timing-function: cubic-bezier(.57,.22,.44,.76);
+    }
 
     h1 {
         margin-top: 2rem;
