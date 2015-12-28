@@ -34,17 +34,6 @@ h1, h2, h3, h4, h5 {
     }
 }
 
-@keyframes clouds {
-    0% {
-        background-position:
-            0 0;
-    }
-    100% {
-        background-position:
-            100000rem 0;
-    }
-}
-
 nav {
     position: relative;
     z-index: 99999;
