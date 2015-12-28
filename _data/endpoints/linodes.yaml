@@ -1,5 +1,6 @@
 # vim: set et ts=2 sw=2 tw=80 :
 name: Linodes
+sort: 0
 base_path: /linodes
 description: >
   Linode endpoints provide a means of managing the <a href="#object-linodes">

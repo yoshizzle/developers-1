@@ -13,7 +13,7 @@ layout: base
 
 {% capture _endpoints %}
     {% for o in site.data.endpoints %}
-        {{ o[0] }}
+        {% if o[1].sort %}{{ o[1].sort }}-{% endif %}{{ o[0] }}
     {% endfor %}
 {% endcapture %}
 {% assign endpoints = _endpoints | split: ' ' | sort %}
@@ -55,9 +55,10 @@ layout: base
                     <a class="nav-link" href="#api-endpoints">API Endpoints</a>
                     <ul class="nav nav-pills nav-stacked">
                         {% for key in endpoints %}
-                            {% assign value = site.data.endpoints[key] %}
+                            {% assign name = key | split: '-' | last %}
+                            {% assign value = site.data.endpoints[name] %}
                             <li class="nav-item">
-                                <a class="nav-link" href="#ep-{{key}}">
+                                <a class="nav-link" href="#ep-{{name}}">
                                     {{value.name}}
                                 </a>
                             </li>
@@ -124,8 +125,9 @@ layout: base
             </div>
 
             {% for key in endpoints %}
-                {% assign value = site.data.endpoints[key] %}
-                {% include endpoint.html schema=value name=key %}
+                {% assign name = key | split: '-' | last %}
+                {% assign value = site.data.endpoints[name] %}
+                {% include endpoint.html schema=value name=name %}
             {% endfor %}
 
             {% include reference/objects-intro.html %}
