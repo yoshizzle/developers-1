@@ -77,16 +77,16 @@ nav {
 .marketing-container {
     @extend .header;
     padding-top: 5.4rem + 4rem;
-    min-height: 27rem;
+    height: 27rem;
     position: relative;
 
     .bg-middle {
         position: absolute;
         left: 0; right: 0; top: 0; bottom: 0;
         background:
-            url('/assets/BH_06 Trees.svg'),
-            url('/assets/BH_07 Foreground.svg');
-        background-size: cover;
+            url('/assets/BH_07 Foreground.svg'),
+            url('/assets/BH_06 Trees.svg');
+        background-size: auto 27rem;
     }
 
     .bg-clouds {
@@ -95,7 +95,7 @@ nav {
         background:
             url('/assets/BH_02 Clouds v2.svg'),
             url('/assets/BH_01 Sky.svg');
-        background-size: cover;
+        background-size: auto 27rem;
         animation-name: clouds;
         animation-duration: 150000s;
         animation-iteration-count: infinite;
@@ -109,12 +109,13 @@ nav {
             url('/assets/BH_05 Balloons Front.svg'),
             url('/assets/BH_04 Balloons Middle.svg'),
             url('/assets/BH_03 Balloons Back.svg');
-        background-size: cover;
+        background-size: auto 30rem;
         animation-direction: alternate;
         animation-iteration-count: infinite;
         animation-name: balloons;
         animation-duration: 1.5s;
         animation-timing-function: cubic-bezier(.57,.22,.44,.76);
+        transform: scaleX(-1);
     }
 
     h1 {
