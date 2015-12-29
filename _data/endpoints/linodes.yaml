@@ -386,6 +386,24 @@ endpoints:
           python: |
             import linode
             TODO
+  linodes/:id/jobs:
+    type: list
+    resource: job
+    authenticated: true
+    description: >
+      Lists the job history of this Linode.
+    methods:
+      GET:
+        oauth: linodes:view
+        description: >
+          Returns a list of jobs.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                https://$api_root/$version/linodes/$linode_id/jobs
+          python: |
+            import linode
+            TODO
   linodes/:id/boot:
     type: action
     authenticated: true
