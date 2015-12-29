@@ -1,5 +1,11 @@
 <div class="row reference">
     <div class="col-md-6 text-justify left">
+        <div class="alert alert-info">
+            <p>
+            This documentation is for <strong>version 2</strong> of the Linode API. For <strong>version 1</strong> go
+            <a href="https://www.linode.com/api/">here</a>.
+            </p>
+        </div>
         <h2>Introduction</h2>
         <p>
         The Linode API is an HTTP service that follows (to a large extent)
@@ -23,12 +29,6 @@
         Notably, the addition of new API endpoints and new properties on JSON blobs does
         not imply a new version number.
         </p>
-        <div class="alert alert-info">
-            <p>
-            Documentation for version 1 of the Linode API is available
-            <a href="https://www.linode.com/api/">here</a>.
-            </p>
-        </div>
     </div>
     <div class="col-md-6 right">
         <h4 id="http-methods">HTTP Methods</h4>
@@ -85,13 +85,23 @@
         <em>OAuth scopes</em> to the query string. An OAuth scope defines the
         scope of access your OAuth token will receive. You can request a comma-delimited
         list of scopes by adding <code>scopes=a,b,c</code> to the query
-        string of the {{ site.login_root }} URL. A scope takes the form of <code>resource:access</code>,
-        where "resource" is a protected resource and "access" is the level of access
-        you will be granted on that resource. Access may be granted to "view", "modify",
-        "create", or "delete" resources. In addition to the access you request,
-        you will be granted each access level below it - for example, requesting
-        "modify" access will also grant you "view" access, and requesting "delete"
-        access will grant you full access to that resource (<code>resource:*</code>
+        string of the {{ site.login_root }} URL.
+        </p>
+        <p>
+        A scope takes the form of <code>resource:access</code>,
+        where <strong>resource</strong> is a protected resource and <strong>access</strong> is the level of access
+        you will be granted on that resource.<br>
+        The levels of access for a resources that may be requested are:
+        <ul>
+            <li><strong>view</strong> - <em>lowest level</em></li>
+            <li><strong>modify</strong></li>
+            <li><strong>create</strong></li>
+            <li><strong>delete</strong> - <em>highest level</em></li>
+        </ul>
+        In addition to the level of access you request,
+        you will be granted each access level below it. For example, requesting
+        <em>modify</em> access will also grant you <em>view</em> access, and requesting <em>delete</em>
+        access will grant you <em>full</em> access to that resource (<code>resource:*</code>
         has the same effect).
         </p>
         <p>
@@ -186,8 +196,8 @@
         included is the actual <code>access_token</code>. With this token, you
         can proceed to make authenciated HTTP requests with the API by adding
         this header to each request:
-        <code>Authorization: token 03d084436a6c91fbafd5c4b20c82e5056a2e9ce1635920c30dc8d81dc7a6665c</code>.
         </p>
+        <pre><code>Authorization: token 03d084436a6c91fbafd5c4b20c82e5056a2e9ce1635920c30dc8d81dc7a6665c</code></pre>
     </div>
 </div>
 <div class="row reference">
@@ -195,14 +205,17 @@
         <h4 id="lists-and-objects">Lists &amp; Objects</h4>
         <p>
         There are generally two kinds of resources you can retrieve with a GET
-        request - lists and objects. A list is a collection of objects, and each
-        object has an ID and may be retrieved individually. You'll generally find
-        lists of objects at <code>/object-name</code>, and the individual objects
-        at <code>/object-name/object-id</code>. Some objects contain lists of other
-        objects - you can get these at <code>/object-name/object-id/subobject-name</code>,
-        and you can get an individual one at <code>/object-name/object-id/subobject-name/subobject-id</code>.
+        request; objects and list. An object is a representation of an individual resource.
+        An object has an ID that can be used to retrievie it directly. A list is a collection of objects.
+        You'll generally find lists of objects at <code>/object-name</code>, and an individual object
+        at <code>/object-name/object-id</code>.
+        <p>
+        Some objects contain lists of other objects which you can get at <code>/object-name/object-id/subobject-name</code>.
+        You can get an individual suboject at <code>/object-name/object-id/subobject-name/subobject-id</code>.
+        </p>
+        <p>
         For example, you can list your Linodes at <code>/linodes</code>, and get
-        a specific Linode <code>/linodes/lnde_1234</code>. You can get the configs
+        a specific Linode with <code>/linodes/lnde_1234</code>. You can get the configs
         for this Linode from <code>/linodes/lnde_1234/configs</code>.
         </p>
         <h4 id="pagination">Pagination</h4>
