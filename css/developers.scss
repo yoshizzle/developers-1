@@ -19,6 +19,22 @@ h1, h2, h3, h4, h5 {
     margin-top: 0.5rem;
 }
 
+.cards-container {
+    h4 {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .card-img-bottom {
+        display: block;
+        width: 100%;
+    }
+
+    .card-img-col.col-md-12 {
+        padding-right: 0;
+    }
+}
+
 @keyframes balloons {
     0% {
         background-position:
