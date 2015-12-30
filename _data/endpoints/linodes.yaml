@@ -111,120 +111,6 @@ endpoints:
           python: |
             import linode
             TODO
-  linodes/:id/configs:
-    type: list
-    resource: linode_config
-    authenticated: true
-    description: >
-      Manage the boot configs on this Linode.
-    methods:
-      GET:
-        oauth: linodes:view
-        description: >
-          Returns a list of configs for a given Linode.
-        examples:
-          curl: |
-            curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linodes/$linode_id/configs
-          python: |
-            import linode
-            TODO
-      POST:
-        oauth: linodes:modify
-        description: >
-          Creates a new config for a given Linode.
-        params:
-          kernel:
-            description: >
-              A <a href="#object-kernel">kernel</a> ID to boot this Linode with.
-            type: kernel
-          label:
-            description: >
-              The user-friendly label to name this config.
-          comments:
-            optional: true
-            description: >
-              Optional field for arbitrary user comments on this config.
-          ram_limit:
-            optional: true
-            description: >
-              The maximum RAM the Linode will be given when booting this config.
-              This defaults to the total RAM of the Linode.
-          disk_list:
-            optional: true
-            description: >
-              An array of <a href="#object-disk">disk</a> IDs to attach to this config.
-        examples:
-          curl: |
-            curl -H "Content-Type: application/json" \
-                -H "Authorization: token $TOKEN" \
-                -X POST -d '{
-                    "label": "Arch Linux config",
-                    "kernel": "kern_12",
-                    "disk_list": [
-                      "disk_123",
-                      "disk_124",
-                      "disk_125"
-                    ]
-                }' \
-                https://$api_root/$version/linodes/$linode_id/configs
-          python: |
-            import linode
-            TODO
-  linodes/:id/configs/:id:
-    type: resource
-    resource: linode_config
-    authenticated: true
-    description: >
-      Manage a particular config for a given Linode.
-    methods:
-      GET:
-        oauth: linodes:view
-        description: >
-          Returns information about this Linode config.
-        examples:
-          curl: |
-            curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linodes/$linode_id/configs/$config_id
-          python: |
-            import linode
-            TODO
-      PUT:
-        oauth: linodes:modify
-        description: >
-          Modifies a given Linode config.
-        examples:
-          curl: |
-            curl -H "Content-Type: application/json" \
-                -H "Authorization: token $TOKEN" \
-                -X PUT -d '{
-                    "label": "Edited config",
-                    "kernel": {
-                      "id": "kern_12"
-                    }
-                    "disks": {
-                      "sda": {
-                        "id": "disk_123"
-                      }
-                    }
-                }' \
-                https://$api_root/$version/linodes/$linode_id/configs/$config_id
-          python:
-            import linode
-            TODO
-      DELETE:
-        oauth: linodes:modify
-        description: >
-          Deletes a given Linode config.
-        examples:
-          curl: |
-            curl -H "Content-Type: application/json" \
-                -H "Authorization: token $TOKEN" \
-                -X DELETE \
-                https://$api_root/$version/linodes/$linode_id/configs/$config_id
-          python: |
-            import linode
-            TODO
   linodes/:id/disks:
     type: list
     resource: linodes
@@ -383,6 +269,120 @@ endpoints:
                     "password": "hunter2"
                 }' \
                 https://$api_root/$version/linodes
+          python: |
+            import linode
+            TODO
+  linodes/:id/configs:
+    type: list
+    resource: linode_config
+    authenticated: true
+    description: >
+      Manage the boot configs on this Linode.
+    methods:
+      GET:
+        oauth: linodes:view
+        description: >
+          Returns a list of configs for a given Linode.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                https://$api_root/$version/linodes/$linode_id/configs
+          python: |
+            import linode
+            TODO
+      POST:
+        oauth: linodes:modify
+        description: >
+          Creates a new config for a given Linode.
+        params:
+          kernel:
+            description: >
+              A <a href="#object-kernel">kernel</a> ID to boot this Linode with.
+            type: kernel
+          label:
+            description: >
+              The user-friendly label to name this config.
+          comments:
+            optional: true
+            description: >
+              Optional field for arbitrary user comments on this config.
+          ram_limit:
+            optional: true
+            description: >
+              The maximum RAM the Linode will be given when booting this config.
+              This defaults to the total RAM of the Linode.
+          disk_list:
+            optional: true
+            description: >
+              An array of <a href="#object-disk">disk</a> IDs to attach to this config.
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST -d '{
+                    "label": "Arch Linux config",
+                    "kernel": "kern_12",
+                    "disk_list": [
+                      "disk_123",
+                      "disk_124",
+                      "disk_125"
+                    ]
+                }' \
+                https://$api_root/$version/linodes/$linode_id/configs
+          python: |
+            import linode
+            TODO
+  linodes/:id/configs/:id:
+    type: resource
+    resource: linode_config
+    authenticated: true
+    description: >
+      Manage a particular config for a given Linode.
+    methods:
+      GET:
+        oauth: linodes:view
+        description: >
+          Returns information about this Linode config.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                https://$api_root/$version/linodes/$linode_id/configs/$config_id
+          python: |
+            import linode
+            TODO
+      PUT:
+        oauth: linodes:modify
+        description: >
+          Modifies a given Linode config.
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X PUT -d '{
+                    "label": "Edited config",
+                    "kernel": {
+                      "id": "kern_12"
+                    }
+                    "disks": {
+                      "sda": {
+                        "id": "disk_123"
+                      }
+                    }
+                }' \
+                https://$api_root/$version/linodes/$linode_id/configs/$config_id
+          python:
+            import linode
+            TODO
+      DELETE:
+        oauth: linodes:modify
+        description: >
+          Deletes a given Linode config.
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X DELETE \
+                https://$api_root/$version/linodes/$linode_id/configs/$config_id
           python: |
             import linode
             TODO
