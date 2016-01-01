@@ -56,19 +56,19 @@
         <p>
         To use some API endpoints authentication is required. This is indicated by the
         <span class="text-muted"><i class="fa fa-lock"></i> Authenticated</span> notation
-        throughout the documentation. We use the basic OAuth work flow were you can create
+        throughout the documentation. We use the basic OAuth workflow were you can create
         <em>applications</em> that integrate with Linode by registering those applications with us.
         You then use OAuth to authenticate on behalf of the user to request access to resources from their account.
         </p>
         <p>
         To register your application go to
-        <a target="_blank" href="https://{{ site.login_root }}/apps">https://{{ site.login_root }}/apps</a>.
+        <a target="_blank" href="https://{{ site.login_root }}/apps">{{ site.login_root }}/apps</a>.
         We'll provide you with a <em>client ID</em> and a <em>client secret</em>.
         You'll have to keep the client secret private, but the client ID can be shared.
         </p>
         <h5>The Access Code</h5>
         <p>
-        In the OAuth work flow it is a two step process to authenticate a user before you can start making API calls.
+        In the OAuth workflow it is a two step process to authenticate a user before you can start making API calls.
         You will first need to request an <strong>access code</strong> that can then be exchanged for an
         <strong>authorization token</strong>. To aid as many application developers as possible with their
         design we provide two methods for requesting an access code.
@@ -77,7 +77,7 @@
 </div>
 <div class="row reference">
     <div class="col-md-6 text-justify left">
-        <h6>Through The Web</h6>
+        <h5>Through The Web</h5>
         <p>
         If you are making a web based application this is the recommended method for getting a user's authorization.
         When you want a user to log into your service, you can direct them to a URL similar to this:
@@ -102,24 +102,26 @@
         {{ site.login_root }} with your <code>client_id</code>. The username and email are just for convenience.
         The important parameter is the code, this is the <em>access code</em> you need to continue the OAuth flow.
         </p>
-        <h6>Direct Access Request</h6>
+        <h5>Direct Access Request</h5>
         <p>
         If you are writing a command line application or something similar that does not allow for easy
-        access to a web browser and handling a redirect, we provide a direct authorization work flow.
+        access to a web browser and handling a redirect, we provide a direct authorization workflow.
         </p>
         <div class="alert alert-danger">
             <p>
-            You should not use this work flow for web based applications. This method is for the convenience of the
+            You should not use this workflow for web based applications. This method is for the convenience of the
             developer, but it limits the visibility the user has into the scopes you have requested. This is because
-            using this work flow bypasses the user consent page.
+            using this workflow bypasses the user consent page. This workflow also requires that the user gives your
+            application access to their password instead of only allowing Linode to know their password. For these reasons
+            you should take extra care when using this workflow.
             </p>
         </div>
         <p>
-        In this work flow you make the following request:
+        In this workflow you make the following request:
         </p>
         <pre><code>POST https://{{ site.login_root }}/oauth/authorize/direct</code></pre>
         <p>
-        Make this request using <code>application/json</code> and include the following parameters in the POST body:
+        Make this request as <code>application/json</code> and include the following parameters in the POST body:
         </p>
         <dl class="dl-horizontal row">
             <dt class="col-sm-2">client_id</dt>
@@ -135,7 +137,7 @@
         You will be given an <em>access code</em> that can be exchanged for an <em>authorization token</em>.
         </p>
         <p>
-        Once you have an access code using either of the above work flows, you will then exchange that <em>access code</em> for
+        Once you have an access code using either of the above workflows, you will then exchange that <em>access code</em> for
         an <em>authorization token</em>. The token is what you will use to authenticate API requests on behalf of that user.
         </p>
     </div>
@@ -221,19 +223,20 @@
     <div class="col-md-6 text-justify left">
         <h5>OAuth Scopes</h5>
         <p>
-        Replace the client_id with your own. This login flow will give you the
-        minimum access to a user's account, which just allows you to see their
-        username and email address. If you want more access, you need to add
-        <em>OAuth scopes</em> to the query string. An OAuth scope defines the
-        scope of access your OAuth token will receive. You can request a comma-delimited
-        list of scopes by adding <code>scopes=a,b,c</code> to the query
-        string of the {{ site.login_root }} URL.
+        The above login flow will give you the minimum amount of access to a user's account.
+        That is, you are only allowed to see their username and email address. If you
+        want more access, you need to add <em>OAuth scopes</em> to the query string.
+        An OAuth scope defines the level of access your OAuth token will receive.
+        You can request a comma-delimited list of scopes by adding <code>scopes=a,b,c</code>
+        to the query string of the <code>{{ site.login_root }}</code> URL.
         </p>
         <p>
-        A scope takes the form of <code>resource:access</code>,
-        where <strong>resource</strong> is a protected resource and <strong>access</strong> is the level of access
-        you will be granted on that resource.<br>
-        The levels of access for a resources that may be requested are:
+        A scope takes the form of <code>resource:access</code>, where the
+        <strong>access</strong> to that particular <strong>resource</strong> is limited
+        by the level the user grants to your application.
+        </p>
+        <p>
+        You may request the following levels of access for any given resource:
         </p>
         <ul>
             <li><strong>view</strong> - <em>lowest level</em></li>
@@ -250,10 +253,11 @@
         </p>
         <p>
         Each API endpoint documented on this page includes the OAuth scope necessary
-        to use that resource, like this:
+        to use that resource. It will look like this:
         <span class="text-muted"><i class="fa fa-key"></i> linodes:view</span>.
         You may also request <code>*</code> to get full access to a user's account,
-        but this is discouraged.
+        but this is highly discouraged. You should do your best to request the least amount
+        of access needed for your application to function.
         </p>
     </div>
 </div>
@@ -263,12 +267,12 @@
         <p>
         There are generally two kinds of resources you can retrieve with a GET
         request: objects and lists. An object is a representation of an individual resource.
-        An object has an ID that can be used to retrievie it directly. A list is a collection of objects.
-        You'll generally find lists of objects at <code>/object-name</code>, and an individual object
-        at <code>/object-name/object-id</code>.
+        It has an ID that can be used to retrieve it directly. A list is a collection of objects.
+        You'll generally find lists of objects at <code>/:type</code>, and an individual object
+        at <code>/:type/:id</code>.
         <p>
-        Some objects contain lists of other objects which you can get at <code>/object-name/object-id/subobject-name</code>.
-        You can get an individual object at <code>/object-name/object-id/subobject-name/subobject-id</code>.
+        Some objects contain lists of other objects, which you can get at <code>/:type/:id/:subtype</code>.
+        You can get an individual sub-object at <code>/:type/:id/:subtype/:id</code>.
         </p>
         <p>
         For example, you can list your Linodes at <code>/linodes</code>, and get
@@ -277,7 +281,7 @@
         </p>
         <h4 id="pagination">Pagination</h4>
         <p>
-        Resource lists are always paginated. The response will looks similar to this:
+        Resource lists are always paginated. The response will look similar to this:
         </p>
 <pre><code>
 {
@@ -287,13 +291,13 @@
     "total_results": 248
 }
 </code></pre>
-        <p>Pages start at 1. You get a particular page by adding <code>?page=2</code>
+        <p>Pages start at 1. You may get a particular page by adding <code>?page=2</code>
         to your URL. Each page has at most 25 results.</p>
         <h4 id="editing-objects">Editing Objects</h4>
         <p>
         Some resource objects may be modified, however, these objects contain both
         mutable and immutable properties. The properties that are mutable in an object
-        are indicated in the <a href="#objects">objects</a> reference section, with this
+        are indicated in the <a href="#objects">objects reference section</a>, with this
         indicator: <span class="text-muted"><i class="fa fa-pencil"></i> Editable</span>.
         </p>
         <p>
