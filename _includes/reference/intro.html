@@ -302,12 +302,12 @@
         </p>
         <p>
         To edit these objects, you can perform a <code>PUT</code> request against
-        the resource whose body is the updated JSON. The JSON object you supply can be
-        limited to just the fields you wish to change. It is also possible to include
-        fields you are not permitted to edit, changes to these fields will be ignored.
-        This makes it simple for you <code>GET</code> a resource, change a property in
-        the JSON that comes back and then <code>PUT</code> that JSON to the same URL to
-        update it.
+        the resource whose body is the updated JSON. You can omit any of the fields or
+        include fields you are not permitted to edit, however, changes to the latter will
+        be ignored.
+        This makes it simple for you to <code>GET</code> a resource, change a property in
+        the JSON that is returned, and then <code>PUT</code> that JSON back to the same URL
+        to update the object.
         </p>
     </div>
 </div>
