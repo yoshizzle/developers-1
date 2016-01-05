@@ -43,7 +43,7 @@ endpoints:
           source:
             optional: true
             description: >
-              An object ID to source this Linode from. The type of the ID you 
+              An object ID to source this Linode from. The type of the ID you
               pass in determines what we do with it. If you provide a
               distribution, it will create sane default configs and disks, then
               install that distribution on the new Linode. If you provide another
@@ -130,7 +130,7 @@ endpoints:
             import linode
             TODO
       POST:
-        oauth: linodes:modify
+        oauth: linodes:delete
         description: >
           Creates a new disk.
         params:
@@ -471,6 +471,56 @@ endpoints:
                     "config": "conf_1234"
                 }' \
                 https://$api_root/$version/linodes/:id/reboot
+          python: |
+            import linode
+            TODO
+  linodes/:id/deploy:
+    type: action
+    authenticated: true
+    description: >
+        Deploys a distribution to a linode.
+    methods:
+      POST:
+        oauth: linodes:delete
+        dangerous: true
+        params:
+          distribution:
+            description: >
+              The distribution id of the distribution to deploy.
+            type: distribution
+          root_pass:
+            description: >
+              Root password to deploy distribution with.
+          root_ssh_key:
+            optional: true
+            description: >
+              SSH key to add to root's authorized_keys.
+          swap_size:
+            optional: true
+            description: >
+              Size of swap disk to make (default 512 MB if no swap exists)
+          distro_size:
+            optional: true
+            description: >
+              Size of the disk which will hold the distribution.  Defaults to
+              the entire remaining disk space for the linode, minus swap size.
+          stackscript:
+            optional: true
+            description: >
+              StackScript ID to run on this distribution deployment.
+          stackscript_data:
+            optional: true
+            description: >
+              JSON data to give to StackScript's user-defined fields.
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST -d '{
+                    "distribution": "dist_123",
+                    "root_pass": "hunter2"
+                }' \
+                https://$api_root/$version/linodes/:id/deploy
           python: |
             import linode
             TODO
