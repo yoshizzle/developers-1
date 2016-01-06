@@ -89,15 +89,24 @@ schema:
     _optional: true
     _description: >
       An array of IP addresses allowed to AXFR the entire Zone.
-  displaygroup:
+  display_group:
     _editable: true
     _value: Example Display Group
     _type: string
     _optional: true
     _description: >
       A display group to keep track of this Zone.
+  type:
+    _editable: false
+    _value: master
+    _type: enum
+    _subtype: zone_type
+    _description: Controls the zone type
 enums:
   status:
     active : Turn on serving of this Zone
     disabled : Turn off serving of this Zone
     edit_mode : Use this mode while making edits
+  zone_type:
+    master: A primary, authoritative zone
+    slave: A secondary zone which gets its updates from a master zone
