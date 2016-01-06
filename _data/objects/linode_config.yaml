@@ -14,6 +14,11 @@ schema:
   created:
     _type: datetime
     _value: 2015-09-29T11:21:38
+  devtmpfs_automount:
+    _editable: true
+    _type: boolean
+    _value: false
+    _description: Populates the /dev directory early during boot without udev
   disks:
     _description: Disks attached to this Linode config
     _editable: true
@@ -101,21 +106,46 @@ schema:
     label:
       _type: string
       _value: "Latest 64 bit (4.1.0-x86_64-linode59)"
-  kernel_params:
-    _editable: true
-    _type: string
-    _value: "ro devtmpfs.mount=1"
-    _description: Kernel command line
   label:
     _editable: true
     _type: string
     _value: "My openSUSE 13.2 Profile"
     _description: Human-friendly label for this config
+  ram_limit:
+    _editable: true
+    _type: integer
+    _value: 512
+    _description: Optional RAM limit in MB for uncommon operating systems
   root_device:
     _editable: true
     _type: string
     _value: "/dev/sda"
     _description: Root device to boot. Corresponding disk must be attached.
+  root_device_ro:
+    _editable: true
+    _type: boolean
+    _value: false
+    _description: Controls whether to mount the root disk read-only
+  run_level:
+    _editable: true
+    _type: enum
+    _subtype: run_level
+    _value: default
+    _description: Sets the run level for Linode boot
   updated:
     _type: datetime
     _value: 2015-09-29T11:21:38
+  virt_mode:
+    _editable: true
+    _type: enum
+    _subtype: virt_mode
+    _value: paravirt
+    _description: Controls the virtualization mode
+enums:
+  run_level:
+    default: Normal multi-user boot mode
+    single: Single user boot mode
+    binbash: Boots to a root bash shell
+  virt_mode:
+    fullvirt: Complete system virtualization
+    paravirt: Some hardware is unvirtualized; often faster than fullvirt
