@@ -157,7 +157,7 @@ endpoints:
             description: >
               User-friendly string to name this disk.
             type: string
-          disk_type:
+          filesystem:
             description: >
               One of ext3, ext4, swap, raw.
             type: string
@@ -209,13 +209,13 @@ endpoints:
       PUT:
         oauth: linodes:modify
         description: >
-          Resizes a disk.
+          Updates a disk's metadata
         examples:
           curl: |
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X PUT -d '{
-                  "size": 1000
+                  "label": "New Disk Label"
                 }' \
                 https://$api_root/$version/linodes/$linode_id/disks/$disk_id
           python: |
@@ -247,6 +247,26 @@ endpoints:
           python: |
             import linode
             TODO
+  linodes/:id/disks/:id/resize:
+    type: strange
+    authenticated: true
+    description: Resizes the disk
+    methods:
+      POST:
+        oauth: linodes:modify
+        dangerous: true
+        params:
+          size:
+            description: The desired size of the disk in MB
+            type: integer
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST -d '{
+                    "size": 1024
+                }' \
+                https://$api_root/$version/linodes/$linode_id/disks/$disk_id/resize
   linodes/:id/disks/:id/rootpass:
     type: strange
     authenticated: true
