@@ -53,13 +53,13 @@ full run-down of how authentication works is provided on the
 [reference page](/reference#authentication), but we'll give you enough
 information to get curl working here.
 
-You can register your OAuth client [here](https://login.linode.com/apps). For
+You can register your OAuth client [here](https://{{ site.login_root }}/apps). For
 testing purposes, you can set your redirect URI to https://linode.com. Once
 you've done so, you'll receive a **client ID** and a **client secret**. Keep the
 client secret somewhere safe - do not share it. You can, however, share the
 client ID, and you should use it now to log into your Linode account:
 
-[https://login.linode.com/oauth/authorize?scopes=\*&client_id=**your_client_id**](https://login.linode.com/oauth/authorize?scopes=*&client_id=your_client_id)
+[https://{{ site.login_root }}/oauth/authorize?scopes=\*&client_id=**your_client_id**](https://{{ site.login_root }}/oauth/authorize?scopes=*&client_id=your_client_id)
 
 Make sure to add your client ID to this URL before you press enter. Log into
 your Linode account and you'll be redirected to a URL like this:
@@ -69,7 +69,7 @@ https://linode.com?code=**somecode**&...
 Once you have **somecode**, you can exchange this code for an OAuth token with
 curl:
 
-    curl https://login.linode.com/oauth/token \
+    curl https://{{ site.login_root }}/oauth/token \
         -F client_id=[client ID] \
         -F client_secret=[client secret] \
         -F code=[somecode]
