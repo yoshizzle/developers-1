@@ -302,6 +302,9 @@ endpoints:
           label:
             description: >
               The user-friendly label to name this config.
+          disk_list:
+            description: >
+              An array of <a href="#object-disk">disk</a> IDs to attach to this config.
           comments:
             optional: true
             description: >
@@ -309,12 +312,28 @@ endpoints:
           ram_limit:
             optional: true
             description: >
-              The maximum RAM the Linode will be given when booting this config.
-              This defaults to the total RAM of the Linode.
-          disk_list:
+              The maximum RAM the Linode will be given when booting this
+              config. This defaults to the total RAM of the Linode.
+          root_device_ro:
             optional: true
             description: >
-              An array of <a href="#object-disk">disk</a> IDs to attach to this config.
+              Controls whether to mount the root disk read-only. Defaults
+              to false.
+          devtmpfs_automount:
+            optional: true
+            description: >
+              Populates the /dev directory early during boot without udev.
+              Defaults to false.
+          run_level:
+            optional: true
+            description: >
+              Sets the run level for Linode boot from the options "default",
+              "single", and "binbash". Defaults to "default".
+          virt_mode:
+            optional: true
+            description: >
+              Controls the virtualization mode. Valid settings are "paravirt"
+              and "fullvirt". Defaults to "paravirt".
         examples:
           curl: |
             curl -H "Content-Type: application/json" \
