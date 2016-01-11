@@ -5,7 +5,7 @@ blurb: How to use the official python library.
 layout: guide
 ---
 
-With the release of api v2, Linode has also released an official python library.  This guide
+With the release of API 2, Linode has also released an official python library.  This guide
 will walk you through using the library to make single-user and multi-user applications
 that take advantage of all of the features of the new Linode API.
 
@@ -20,57 +20,35 @@ Please note that this package only supports
 python3, so on some systems you may need to run `pip3 install <package-name>` use the correct version
 of python.
 
-## OAuth Workflow
+## Getting an OAuth Token
 
-The official Linode python library supports both single-user and multi-user applications, backed
-by Linode's OAuth server.  If you are reading this guide to develop a single-user application
-(something that knows uses only one token to access the API and only manages one Linode account)
-you can safely skip this section.
+When working on an application that only deals with your own lindoes, acquiring an OAuth token is
+easy.  Just log in to https://login.alpha.linode.com, click 'Manage Applications and Tokens', and
+then click 'Generate New Token' and copy the token displayed on the screen.
 
-When a users comes to your application and wants to give it access to their Linode account, you
-will direct the user through an OAuth login process, and in the end receive an OAuth token that
-gives you some degree of access to the user's Linode account.  In order for them to grant you 
-access, [read through this section of the API guide](/reference/#authentication).
+#### Generating OAuth Tokens
 
-To interface with the OAuth service in python, we will use the `LinodeLoginClient`.  Here is an
-example of a simple implementation:
+If you need to generate an OAuth token using a client ID and client secret, as you would in an
+application where you manage linodes for a user, use the LinodeLoginClient.  This requires
+you to have set up an OAuth application at {{ site.login_root }}.
 
 {% highlight python %}
-from linode import LinodeLoginClient, OAuthScopes
-
-client_id = 'my-client-id'
-client_secret = 'my-client-secret'
-
-def get_login_client(): 
-    return LinodeLoginClient(client_id, client_secret, base_url='https://alpha.login.linode.com')
-
-def get_login_url():
-    return get_login_client().generate_login_url(scopes=OAuthScopes.Linodes.view)
-
-def complete_login(code):
-    token, scopes = get_login_client().finish_oauth(code)
-
-    if not OAuthScopes.Linodes.view in scopes:
-        raise ValueError('Insufficient scopes granted by user!')
-    return token
+>>> from linode import LinodeLoginClient, OAuthScopes
+>>> login_client = LinodeLoginClient('my-client-id', 'my-client-secret', base_url='https://login.alpha.linode.com')
+>>> login_client.generate_login_url(scopes=OAuthScopes.Linodes.view)
+'https://login.alpha.linode.com/oauth/authorize?client_id=my-client-id&scopes=linodes%3Aview'
 {% endhighlight %}
 
-In this example, we create a `LinodeLoginClient` with our client ID and client secret, and set the
-base_url to alpha (base_url is optional, and defaults to pointing at the real deployment - alpha
-is a great place to test your code). We then use the client to generate a login URL for the end 
-user with the OAuth scopes our application requires.  The user should be redirected to this URL to 
-complete the OAuth flow.  Once they're done, our application should receive the callback response,
-which will have the user's temporary code in the query string.  We take this code and again ask
-the client to finish the OAuth flow using this code, and are given the OAuth scopes the user granted
-us, as well as the new OAuth token we can use to access the user's account.  It is always sane to
-check that at least the minimum required OAuth scopes were granted to our application, and to 
-display an error to the user and ask them to reauthenticate with the required scopes.
+Visit this URL in a browser and complete the login process.  The page you are sent to when login
+is successful will have a `code=` in the query string - get this value to continue.
 
-## Single User Applications
+{% highlight python %}
+>>> token, scopes = login_client.finish_oauth('code-from-query-string')
+{% endhighlight %}
 
-If your application is only managing once Linode account (your own), you can create an OAuth token
-through the [login site]() to use in your application.  It can be used in the same way as any other
-token.
+In a real-world scenario, your application would redirect a users through to the login service, then
+receive the callback once login was complete and capture the code from the query string.  For a
+more practical example, see the [multi-user example application]().
 
 ## Connecting to the API
 
@@ -78,11 +56,8 @@ Once you have an OAuth token, connecting to the API is as simple as creating a `
 client will handle all communications to the API for a given user.
 
 {% highlight python %}
-from linode import LinodeClient
-
-oauth_token = 'my-token'
-
-client = LinodeClient(oauth_token, base_url='https://alpha.api.linode.com/v2')
+>>> from linode import LinodeClient
+>>> client = LinodeClient('my-token', base_url='https://api.alpha.linode.com/v2')
 {% endhighlight %}
 
 ## Objects
@@ -92,9 +67,8 @@ represents it.  If you know the ID of an object, it can be created with a `Linod
 used as you please:
 
 {% highlight python %}
-from linode import Linode
-
-linode = Linode(client, 'lnde_123')
+>>> from linode import Linode
+>>> linode = Linode(client, 'lnde_123')
 {% endhighlight %}
 
 Each object has attributes that match those documented in [the api spec](/reference/#objects), and only those
@@ -122,9 +96,8 @@ whose ID preceeds it.  In these cases, we must provide the parent object's ID wh
 of the derived object.
 
 {% highlight python %}
-from linode import Disk
-
-disk = Disk(client, 'disk_123', 'lnde_123')
+>>> from linode import Disk
+>>> disk = Disk(client, 'disk_123', 'lnde_123')
 {% endhighlight %}
 
 ## Lists of Objects
@@ -133,11 +106,8 @@ If you don't know an object's ID, that's fine - we can find it in a list.  All r
 (`/linodes`, `/zones`, `/datacenters`, etc) can be accessed as a list from the LinodeClient object,
 
 {% highlight python %}
-# list datacenters
-datacenters = client.get_datacenters()
-
-# list linodes on this account
-linodes = client.get_linodes()
+>>> datacenters = client.get_datacenters()
+>>> linodes = client.get_linodes()
 {% endhighlight %}
 
 #### Filtering
@@ -148,8 +118,8 @@ always returned, so if you are expecting a single object you need to get the fir
 
 {% highlight python %}
 # get all linodes in newark
-newark = client.get_datacenters(lable='newark')[0]
-newark_linodes = client.get_linodes(datacenter=newark)
+>>> newark = client.get_datacenters(lable='newark')[0]
+>>> newark_linodes = client.get_linodes(datacenter=newark)
 {% endhighlight %}
 
 ## Examples
