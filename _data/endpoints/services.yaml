@@ -2,7 +2,7 @@
 name: Services
 base_path: /services
 description: >
-  Services endpoints provide a means of viewing <a href="#object-services">
+  Services endpoints provide a means of viewing <a href="#object-service">
   service objects</a>.
 endpoints:
   services:

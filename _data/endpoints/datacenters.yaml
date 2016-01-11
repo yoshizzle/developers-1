@@ -2,7 +2,7 @@
 name: Datacenters
 base_path: /datacenters
 description: >
-  Datacenter endpoints provide a means of viewing <a href="#object-datacenters">
+  Datacenter endpoints provide a means of viewing <a href="#object-datacenter">
   datacenter objects</a>.
 endpoints:
   datacenters:
