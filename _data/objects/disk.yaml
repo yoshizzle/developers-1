@@ -24,6 +24,11 @@ schema:
     _type: integer
     _value: 1000
     _description: Size of this disk in MB
+  filesystem:
+    _type: enum
+    _subtype: Filesystem
+    _value: ext4
+    _description: The filesystem on the disk
   created:
     _type: datetime
     _value: "2015-09-29T11:21:01"
@@ -34,3 +39,8 @@ enums:
   Status:
     ready: If this disk is ready to attach to your Linode
     being_deleted: If this disk is currently being deleted
+  Filesystem:
+    raw: No filesystem, just a raw binary stream
+    swap: Linux swap area
+    ext3: The ext3 journaling filesystem for Linux
+    ext4: The ext4 journaling filesystem for Linux
