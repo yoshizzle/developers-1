@@ -2,7 +2,7 @@
 name: Kernels
 base_path: /kernels
 description: >
-  Kernel endpoints provide a means of viewing <a href="#object-kernels">
+  Kernel endpoints provide a means of viewing <a href="#object-kernel">
   kernel objects</a>.
 endpoints:
   kernels:
