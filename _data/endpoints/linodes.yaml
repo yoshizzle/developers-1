@@ -181,8 +181,9 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "datacenter": "dctr_12",
-                    "service": "serv_12"
+                    "label": "Example Disk",
+                    "filesystem": "ext4",
+                    "size": 4096,
                 }' \
                 https://$api_root/$version/linodes/$linode_id/disks
           python: |
