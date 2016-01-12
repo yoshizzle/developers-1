@@ -36,7 +36,7 @@ To run locally, we follow the [Github Pages recommendation](https://help.github.
     * This installs all required gems locally to ./vendor to avoid interfering or collision with system gems  
 
     ```bash
-    bundler install
+    bundle install
     ```
     
 3. Start the Jekyll server and LiveReload
