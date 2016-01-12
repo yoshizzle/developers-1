@@ -25,11 +25,23 @@ If you already cloned, but missed this step, try this:
 
 ## Running
 
-Install [jekyll](http://jekyllrb.com/) and run `jekyll serve --watch` to run the
-site at [localhost:4000](http://localhost:4000).
+To run locally execute the following commands:
 
-Tip: install the `github-pages` gem to get the same version of Jekyll that
-GitHub uses in production.
+*If you don't already have Bundler installed*
+
+```bash
+gem install bundler
+```
+
+Install [Github-Pages](https://help.github.com/articles/using-jekyll-with-pages/) and start server locally.
+
+```bash
+bundler install
+bundle exec guard
+```
+If you install the [LiveReload browser extension](http://livereload.com/extensions/) you can see changes refreshed in the browser as you save your changes.
+
+Now you can view the Docs at [localhost:4000](http://localhost:4000)
 
 ## Contributing
 

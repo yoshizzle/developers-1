@@ -10,3 +10,15 @@ collections:
     guides:
         output: true
         permalink: /guides/:path/
+
+exclude:
+    - Guardfile
+    - Gemfile
+    - Gemfile.lock
+    - CNAME
+    - Gemfile
+    - Gemfile.lock
+    - Guardfile
+    - LICENSE
+    - README.md
+    - vendor/
