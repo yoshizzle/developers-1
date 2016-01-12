@@ -25,23 +25,29 @@ If you already cloned, but missed this step, try this:
 
 ## Running
 
-To run locally execute the following commands:
+To run locally, we follow the [Github Pages recommendation](https://help.github.com/articles/using-jekyll-with-pages/) of using Bundler.
 
-*If you don't already have Bundler installed*
+1. *If you don't already have Bundler installed*
 
-```bash
-gem install bundler
-```
+    ```bash
+    gem install bundler
+    ```
+2. Use Bundler to install all required gems
+    * This installs all required gems locally to ./vendor to avoid interfering or collision with system gems  
 
-Install [Github-Pages](https://help.github.com/articles/using-jekyll-with-pages/) and start server locally.
+    ```bash
+    bundler install
+    ```
+    
+3. Start the Jekyll server and LiveReload
+    
+    ```bash
+    bundle exec guard
+    ```
+    
+4. **(Optional, but helpful)**: If you install the [LiveReload browser extension](http://livereload.com/extensions/) you can see changes refreshed in the browser as you save your changes.
 
-```bash
-bundler install
-bundle exec guard
-```
-If you install the [LiveReload browser extension](http://livereload.com/extensions/) you can see changes refreshed in the browser as you save your changes.
-
-Now you can view the Docs at [localhost:4000](http://localhost:4000)
+5. Now you can view the Docs at [localhost:4000](http://localhost:4000)
 
 ## Contributing
 
