@@ -361,7 +361,7 @@ endpoints:
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
                     "label": "Arch Linux config",
-                    "kernel": "kern_12",
+                    "kernel": "krnl_12",
                     "disk_list": [
                       "disk_123",
                       "disk_124",
