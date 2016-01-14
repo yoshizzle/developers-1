@@ -56,7 +56,6 @@ schema:
     _value: 150
   is_public:
     _description: Whether this StackScript is available for anyone to use
-    _editable: true
     _type: boolean
     _value: true
   created:
@@ -75,6 +74,7 @@ schema:
     _description: The actual script body to be executed
     _type: string
     _value: "#!/bin/bash"
+    _editable: true
   user_defined_fields:
     _description: Variables that can be set to customize the script per deployment
     _type: array
