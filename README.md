@@ -32,6 +32,12 @@ To run locally, we follow the [Github Pages recommendation](https://help.github.
     ```bash
     gem update --system && gem install bundler
     ```
+
+    If using OSX El Capitan or higher:
+    ```bash
+    gem update --system && gem install bundler -n/usr/local/bin
+    ```
+
 2. Use Bundler to install all required gems
     
     ```bash
