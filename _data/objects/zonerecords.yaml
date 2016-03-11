@@ -10,6 +10,11 @@ schema:
     _value: zrcd_123
     _description: >
       string
+  type:
+    _type: string
+    _value: A
+    _description: >
+      Type of record (A/AAAA, NS, MX, CNAME, TXT, SRV).
   name:
     _type: string
     _value: sub.example.com
