@@ -63,7 +63,11 @@
             {% for prop in include.schema.schema %}
                 {% assign name = prop[0] %}
                 {% assign info = prop[1] %}
-                {% include render-property-json.html name=name info=info %}
+                {% assign endswith = "," %}
+                {% if forloop.last == true %}
+                    {% assign endswith = "" %}
+                {% endif %}
+                {% include render-property-json.html name=name info=info endswith=endswith %}
             {% endfor %}
             <div>}</div>
         </div>
