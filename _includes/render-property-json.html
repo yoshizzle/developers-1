@@ -6,11 +6,11 @@
     {% if include.info._type %}
         {% case include.info._type %}
         {% when "integer" or "boolean" %}
-            <span class="value">{{ include.info._value }}</span>
+            <span class="value">{{ include.info._value }}</span>{{ include.endswith }}
         {% when "string" or "datetime" %}
-            "<span class="value">{{ include.info._value }}</span>"
+            "<span class="value">{{ include.info._value }}</span>"{{ include.endswith }}
         {% when "enum" %}
-            "<span class="value">{{ include.info._value }}</span>"
+            "<span class="value">{{ include.info._value }}</span>"{{ include.endswith }}
             <span class="pull-right">
                 <i class="fa fa-arrow-right"></i>
                 {{ include.info._subtype }} enum
@@ -35,12 +35,12 @@
                     ,
                 {% endif %}
             {% endfor %}
-            ]
+            ]{{ include.endswith }}
             </span>
         {% else %}
-            {% include render-object-json.html obj=info %}
+            {% include render-object-json.html obj=info endswith=include.endswith %}
         {% endcase %}
     {% else %}
-        {% include render-object-json.html obj=info %}
+        {% include render-object-json.html obj=info endswith=include.endswith %}{{ include.endswith }}
     {% endif %}
 </div>
