@@ -13,6 +13,10 @@ schema:
   deprecated:
     _type: boolean
     _value: false
+  description:
+    _type: string
+    _value: "null"
+    _description: Additional, descriptive text about the kernel
   id:
     _type: string
     _value: krnl_132
@@ -30,7 +34,7 @@ schema:
     _description: "The friendly name of this kernel."
   updates:
     _type: string
-    _value: kern_122
+    _value: krnl_122
     _description: A kernel ID that this provides an update for
   version:
     _type: string

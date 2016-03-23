@@ -401,7 +401,7 @@ endpoints:
                 -X PUT -d '{
                     "label": "Edited config",
                     "kernel": {
-                      "id": "kern_12"
+                      "id": "krnl_12"
                     }
                     "disks": {
                       "sda": {

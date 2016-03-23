@@ -77,11 +77,13 @@ endpoints:
           python: |
             import stackscript
             TODO
+  stackscripts/:id:
+    methods:
       GET:
         oauth: stackscripts:view
         description: >
           Returns information about this StackScript.
-        example:
+        examples:
           curl: |
             curl -H "Content-Type: application/json" \
               -H "Authorization: token $TOKEN" \

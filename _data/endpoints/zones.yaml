@@ -74,7 +74,7 @@ endpoints:
             optional: true
             description: >
               An array of IP addresses allowed to AXFR the entire Zone.
-          displaygroup:
+          display_group:
             optional: true
             description: >
               A display group to keep track of this Zone.
@@ -94,7 +94,7 @@ endpoints:
                     "status": "active",
                     "master_ips": ["127.0.0.1","255.255.255.1","123.123.123.7"],
                     "axfr_ips": ["44.55.66.77"],
-                    "displaygroup": "Example Display Group"
+                    "display_group": "Example Display Group"
                 }'
                 https://$api_root/$version/zones
           python: |
@@ -126,7 +126,7 @@ endpoints:
               -X PUT -d '{
                 "zone": "examplechange.com",
                 "description": "The changed description",
-                "displaygroup": "New display group",
+                "display_group": "New display group",
                 "status": "edit_mode",
                 "soa_email": "newemail@example.com",
                 "retry_sec": 3602,

@@ -54,6 +54,9 @@ schema:
   created:
     _type: datetime
     _value: "2015-09-29T11:21:01"
+  datacenter:
+    _type: string
+    _description: This Linode's datacenter
   distribution:
     _description: The distribution that this Linode booted to last.
     _type: distribution
