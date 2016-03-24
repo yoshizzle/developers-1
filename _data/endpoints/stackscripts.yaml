@@ -24,17 +24,6 @@ endpoints:
           python: |
             import stackscript
             TODO
-      GET:
-        oauth: stackscripts:view
-        description: >
-          Returns a list of StackScripts associated with your account.
-        examples:
-          curl: |
-            curl -H "Authorization: token $TOKEN" \
-              https://$api_root/$version/stackscripts/mine
-          python: |
-            import stasckscript
-            TODO
       POST:
         oauth: stackscripts:create
         description: >
@@ -78,6 +67,11 @@ endpoints:
             import stackscript
             TODO
   stackscripts/:id:
+    type: list
+    resource: stackscripts
+    authenticated: true
+    description: >
+      Manage a particular StackScript.
     methods:
       GET:
         oauth: stackscripts:view
