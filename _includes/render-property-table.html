@@ -5,12 +5,12 @@
     </td>
     <td>
         {% if include.info._editable and include.editable != true %}
-        <span class="text-muted pull-right">
+        <span class="text-muted pull-right" title="Editable">
             <i class="fa fa-pencil"></i>
         </span>
         {% endif %}
         {% if include.info._filterable %}
-        <span class="text-muted pull-right">
+        <span class="text-muted pull-right" title="Filterable">
             <i class="fa fa-filter"></i>
         </span>
         {% endif %}
