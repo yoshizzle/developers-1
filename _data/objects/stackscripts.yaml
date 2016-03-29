@@ -22,15 +22,18 @@ schema:
     _type: string
     _editable: true
     _value: Example StackScript
+    _filterable: true
   description:
     _description: In-depth information on what this StackScript does
     _type: string
     _editable: true
     _value: Installs the Linode API bindings
+    _filterable: true
   distributions:
     _description: A list of distributions this StackScript is compatible with
     _type: array
     _subtype: distribution
+    _filterable: true
     _value:
       - id:
           _type: integer
@@ -58,6 +61,7 @@ schema:
     _description: Whether this StackScript is available for anyone to use
     _type: boolean
     _value: true
+    _filterable: true
   created:
     _description: When the StackScript was initially created
     _type: datetime

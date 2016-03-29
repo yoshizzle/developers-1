@@ -13,6 +13,7 @@ schema:
     _editable: true
     _type: string
     _value: example.com
+    _filterable: true
     _description: >
       The Zone name.
   soa_email:
@@ -73,6 +74,7 @@ schema:
     _editable: true
     _type: array
     _subtype: string
+    _filterable: true
     _value:
       - "127.0.0.1"
       - "255.255.255.1"
@@ -94,12 +96,14 @@ schema:
     _value: Example Display Group
     _type: string
     _optional: true
+    _filterable: true
     _description: >
       A display group to keep track of this Zone.
   type:
     _editable: false
     _value: master
     _type: enum
+    _filterable: true
     _subtype: zone_type
     _description: Controls the zone type
 enums:

@@ -7,7 +7,11 @@
         {% if include.info._editable and include.editable != true %}
         <span class="text-muted pull-right">
             <i class="fa fa-pencil"></i>
-            Editable
+        </span>
+        {% endif %}
+        {% if include.info._filterable %}
+        <span class="text-muted pull-right">
+            <i class="fa fa-filter"></i>
         </span>
         {% endif %}
         {% if include.info._type %}

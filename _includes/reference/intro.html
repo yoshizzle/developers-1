@@ -270,6 +270,7 @@
         It has an ID that can be used to retrieve it directly. A list is a collection of objects.
         You'll generally find lists of objects at <code>/:type</code>, and an individual object
         at <code>/:type/:id</code>.
+        </p>
         <p>
         Some objects contain lists of other objects, which you can get at <code>/:type/:id/:subtype</code>.
         You can get an individual sub-object at <code>/:type/:id/:subtype/:id</code>.
@@ -309,6 +310,194 @@
         the JSON that is returned, and then <code>PUT</code> that JSON back to the same URL
         to update the object.
         </p>
+    </div>
+</div>
+<div class="row reference">
+    <div class="col-md-6 left">
+        <h4 id="filtering">Filtering</h4>
+        <p>
+            Resource lists are searchable by most fields they include (filterable fields are marked with
+            a <i class="fa fa-filter"></i> icon in the <a href="#">object refernece</a>).
+        </p>
+    </div>
+</div>
+<br/>
+<div class="row reference">
+    <div class="col-md-6 left">
+        <p> 
+        Filters are passed in the <code>X-Filter</code> header, and are formateed as JSON objects.  Here is a
+        request for all distributions whose vendor is "Debian":
+        </p>
+    </div>
+    <div class="col-md-6 right">
+<pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
+    -H 'X-Filter: {
+        "vendor": "Debian"
+    }'
+</code></pre>
+    </div>
+</div>
+<br/>
+<div class="row reference">
+    <div class="col-md-6 left">
+            The filter object's keys are the keys of the object you're filtering, and the values are accepted values.
+            You can add multiple filters by including more than one key (in this case, all recommended Debians):
+    
+    </div>
+    <div class="col-md-6 right">
+<pre style="padding-top: 0px;"><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
+    -H 'X-Filter: {
+        "vendor": "Debian",
+        "recommended": true
+    }'
+</code></pre>
+   </div>
+</div>
+<br/>
+<div class="row reference">
+   <div class="col-md-6 left"> 
+            In the above example, both fitlres are combined with an "and" operation.  However, if you wanted either Debian or recommended
+            distribtuions, you can add an operator:
+   </div>
+    <div class="col-md-6 right"> 
+<pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
+    -H 'X-Filter: {
+        "+or": [
+            { "vendor": "Debian" },
+            { "recommended": true }
+        ]
+    }'
+</code></pre>
+    </div>
+</div>
+<br/>
+<div class="row reference">
+    <div class="col-md-6 left">
+        <p>
+        Each filter in the <code>+or</code> array is its own filter object, and all conditions in it are combined with an "and" operator
+        as they were in the first example.  Other operators are available:
+        </p>
+    </div>
+    <div class="col-md-6 right">
+<pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
+    -H 'X-Filter: {
+        "minimum_image_size": {
+            "+lte": 500
+        }
+    }'
+</code></pre>
+    </div>
+</div>
+<br/>
+<div class="row reference">
+    <div class="col-md-6 left">
+        <p>
+        You can combine and nest operators to construct arbitrarily-complex queries - say, give me all distributions which are either
+        recommended or whose vendor is Debian, or who have a minimum_image_size between 100 and 500 (inclusive).
+        </p>
+        <p>
+        Below is a list of all available operators. Operators are keys of a Filter JSON object, their value must be of the apporpriate
+        type, and they are evaluated as described below.
+        </p>
+        <table class="table">
+            <tr>
+                <td>+and</td>
+                <td>array</td>
+                <td>All conditions must be true</td>
+            </tr>
+            <tr>
+                <td>+or</td>
+                <td>array</td>
+                <td>One condition must be true.</td>
+            </tr>
+            <tr>
+                <td>+gt</td>
+                <td>number</td>
+                <td>Value must be greater than number</td>
+            </tr>
+            <tr>
+                <td>+gte</td>
+                <td>number</td>
+                <td>Value must be greater than or equal to that number</td>
+            </tr>
+            <tr>
+                <td>+lt</td>
+                <td>number</td>
+                <td>Value must be less than number</td>
+            </tr>
+            <tr>
+                <td>+lte</td>
+                <td>number</td>
+                <td>Value must be less than or equal to that number</td>
+            </tr>
+            <tr>
+                <td>+contains</td>
+                <td>string</td>
+                <td>Given string must be in the value</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6 right">
+<pre><code>curl "localhost:5000/v2/distributions" \
+    -H 'X-Filter: {
+        "+or": [
+            {
+                "+or": [
+                    {
+                        "vendor": "Debian"
+                    },
+                    {
+                        "recommended": true
+                    }
+                ]
+            },
+            {
+                "+and": [
+                    {
+                        "minimum_image_size": {
+                            "+lte": 500
+                        }
+                    },
+                    {
+                        "minimum_image_size": {
+                            "+gte": 100
+                        }
+                    }
+                ]
+            }
+        ]
+    }'
+</code></pre>
+    </div>
+</div>
+<br/>
+<div class="row reference">
+    <div class="col-md-6 left">
+
+    </div>
+    <div class="col-md-6 right">
+<pre><code>
+</code></pre>
+    </div>
+</div>
+<br/>
+<div class="row reference">
+    <div class="col-md-6 left">
+
+    </div>
+    <div class="col-md-6 right">
+<pre><code>
+</code></pre>
+    </div>
+</div>
+<br/>
+<div class="row reference">
+    <div class="col-md-6 left">
+
+    </div>
+    <div class="col-md-6 right">
+<pre><code>
+</code></pre>
     </div>
 </div>
 <div class="row reference">

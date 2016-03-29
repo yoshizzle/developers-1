@@ -11,3 +11,4 @@ schema:
     _type: string
     _value: London, UK
     _description: Human-friendly datacenter name
+    _filterable: true
