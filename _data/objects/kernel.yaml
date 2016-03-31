@@ -13,6 +13,7 @@ schema:
   deprecated:
     _type: boolean
     _value: false
+    _filterable: true
   description:
     _type: string
     _value: "null"
@@ -24,14 +25,17 @@ schema:
     _type: boolean
     _value: false
     _description: If this kernel is suitable for Xen Linodes
+    _filterable: true
   kvm:
     _type: boolean
     _value: true
     _description: If this kernel is suitable for KVM Linodes
+    _filterable: true
   label:
     _type: string
     _value: 3.5.2-x86_64-linode26
     _description: "The friendly name of this kernel."
+    _filterable: true
   updates:
     _type: string
     _value: krnl_122
@@ -40,7 +44,9 @@ schema:
     _type: string
     _value: 3.5.2
     _description: Linux Kernel version
+    _filterable: true
   x64:
     _type: boolean
     _value: true
     _description: True if this is a 64-bit kernel, false for 32-bit
+    _filterable: true

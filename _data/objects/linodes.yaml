@@ -56,10 +56,12 @@ schema:
     _value: "2015-09-29T11:21:01"
   datacenter:
     _type: string
+    _filterable: true
     _description: This Linode's datacenter
   distribution:
     _description: The distribution that this Linode booted to last.
     _type: distribution
+    _filterable: true
     id:
       _type: string
       _value: dist_123
@@ -77,6 +79,7 @@ schema:
     _type: string
     _description: This Linode's display group
     _value: Example
+    _filterable: true
   id:
     _type: string
     _value: lnde_12345
@@ -117,11 +120,13 @@ schema:
     _type: string
     _description: This Linode's display label
     _value: Example Linode
+    _filterable: true
   status:
     _type: enum
     _subtype: Status
     _description: The current status of this Linode
     _value: running
+    _filterable: true
   total_transfer:
     _type: integer
     _description: The amount of outbound traffic used this month

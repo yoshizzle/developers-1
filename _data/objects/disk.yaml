@@ -14,16 +14,19 @@ schema:
     _type: string
     _value: Ubuntu 14.04 Disk
     _description: Human-friendly disk name
+    _filterable: true
   status:
     _type: enum
     _subtype: Status
     _value: London, UK
-    _description: Human-friendly datacenter name
+    _description: Status of the disk
+    _filterable: true
   size:
     _editable: true
     _type: integer
     _value: 1000
     _description: Size of this disk in MB
+    _filterable: true
   filesystem:
     _type: enum
     _subtype: Filesystem

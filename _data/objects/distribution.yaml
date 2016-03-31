@@ -11,6 +11,7 @@ schema:
     _type: boolean
     _value: false
     _description: "True if this distribution is a beta or preview release"
+    _filterable: true
   id:
     _type: string
     _value: dist_132
@@ -18,18 +19,22 @@ schema:
     _type: string
     _value: Arch Linux 2014.10
     _description: The user-friendly name of this distribution
+    _filterable: true
   minimum_image_size:
     _type: integer
     _value: 800
     _description: The minimum size required for the distrbution image
+    _filterable: true
   recommended:
     _type: boolean
     _value: true
     _description: "True if this distribution is recommended by Linode"
+    _filterable: true
   vendor:
     _type: string
     _value: Arch
     _description: The upstream distribution vendor. Consistent between releases of a distro.
+    _filterable: true
   x64:
     _type: boolean
     _value: true
