@@ -1,7 +1,7 @@
 ---
 # vim: tw=80
-title: Creating a Linode
-blurb: How to use the official python library.
+title: Python Guide 
+blurb: How to use the official python library, linode-api
 layout: guide
 ---
 
@@ -14,11 +14,7 @@ that take advantage of all of the features of the new Linode API.
 The official linode python library is open-source on [github](), and can be installed through
 pypi with:
 
-```pip install <package-name>```
-
-Please note that this package only supports
-python3, so on some systems you may need to run `pip3 install <package-name>` use the correct version
-of python.
+```pip install linode-api```
 
 ## Getting an OAuth Token
 
@@ -35,8 +31,8 @@ you to have set up an OAuth application at {{ site.login_root }}.
 {% highlight python %}
 >>> from linode import LinodeLoginClient, OAuthScopes
 >>> login_client = LinodeLoginClient('my-client-id', 'my-client-secret', base_url='https://login.alpha.linode.com')
->>> login_client.generate_login_url(scopes=OAuthScopes.Linodes.view)
-'https://login.alpha.linode.com/oauth/authorize?client_id=my-client-id&scopes=linodes%3Aview'
+>>> login_client.generate_login_url(scopes=OAuthScopes.all)
+'https://login.alpha.linode.com/oauth/authorize?client_id=my-client-id&scopes=%2A'
 {% endhighlight %}
 
 Visit this URL in a browser and complete the login process.  The page you are sent to when login
@@ -82,12 +78,6 @@ marked 'editabled' may be changed.  All objects share the following:
 Objects are lazy-loaded, so creating the object will not reach out to the API until a field it doesn't
 have is referneced.
 
-Objects may also have lists of related objects - if an object's endpoing can be extended after the ID, the
-extended path is an attribute of that object which returns the related list of derived objects.
-
-For example, the `/linodes/:id/disks` implies that the Linode object hs a disks attribute - which it does.
-Refernecing this attribute will return the result of this API call - in this case, a list of Disks.
-
 #### Derived Objects
 
 Some objects belong to other objects - for instance, a Linode has Disks, so a Disk is a derived object.
@@ -98,6 +88,15 @@ of the derived object.
 {% highlight python %}
 >>> from linode import Disk
 >>> disk = Disk(client, 'disk_123', 'lnde_123')
+{% endhighlight %}
+
+A list of derived objects may also be accessed through their parent object as an attribute,
+named based on the extension to the parent object's URL (i.e. `/linodes/lnde_123/disks` means
+a linode object will have a disks attribute):
+
+{% highlight python %}
+>>> linode = Linode(client, 'lnde_123')
+>>> disks = linode.disks
 {% endhighlight %}
 
 ## Lists of Objects
@@ -112,15 +111,28 @@ If you don't know an object's ID, that's fine - we can find it in a list.  All r
 
 #### Filtering
 
-All listing methods support filtering - pass in the attributes you want to filter the list on, and
-only objects with matching values will be included in the resulting list.  Please note that a list is
-always returned, so if you are expecting a single object you need to get the first object in the list.
+All list methods support filtering in a SQLAlchemy-like syntax.  All api object classes have
+attributes for all properties lists as filterable in the object reference.  You can search
+endpoints like so:
 
 {% highlight python %}
 # get all linodes in newark
->>> newark = client.get_datacenters(lable='newark')[0]
->>> newark_linodes = client.get_linodes(datacenter=newark)
+>>> from linode import Datacenter, Linode
+>>> newark = client.get_datacenters(Datacenter.label=='Newark')[0]
+>>> newark_linodes = client.get_linodes(Linode.datacenter==newark)
+>>> foo_linodes = client.get_linodes(Linode.label.contains('foo'), Linode.datacenter == 'dctr_1')
 {% endhighlight %}
+
+Multiple fitlers are combined with an "and" operator.  You can also use "or" (either explicitly or
+implicitly):
+
+{% hightlight python %}
+>>> foobar_linodes = client.get_linodes((Linode.label.contains('foo')) | (Linode.label.contains('bar')))
+>>> from linode import or_
+>>> foorbaz_linodes = client.get_linodes(or_(Linode.label.contains('foo'), Linode.label.contains('baz')))
+{% endhighlight %}
+
+In addition to `==` and `contains`, objects can be filtered with the `>`, `<`, `>=`, and `<=` operators.
 
 ## Examples
 
