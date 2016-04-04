@@ -11,21 +11,21 @@ that take advantage of all of the features of the new Linode API.
 
 ## Getting Started
 
-The official linode python library is open-source on [github](), and can be installed through
+The official Linode python library is open-source on [github](), and can be installed through
 pypi with:
 
 ```pip install linode-api```
 
 ## Getting an OAuth Token
 
-When working on an application that only deals with your own lindoes, acquiring an OAuth token is
+When working on an application that only deals with your own Linodes, acquiring an OAuth token is
 easy.  Just log in to https://login.alpha.linode.com, click 'Manage Applications and Tokens', and
 then click 'Generate New Token' and copy the token displayed on the screen.
 
 #### Generating OAuth Tokens
 
 If you need to generate an OAuth token using a client ID and client secret, as you would in an
-application where you manage linodes for a user, use the LinodeLoginClient.  This requires
+application where you manage Linodes for a user, use the LinodeLoginClient.  This requires
 you to have set up an OAuth application at {{ site.login_root }}.
 
 {% highlight python %}
@@ -42,7 +42,7 @@ is successful will have a `code=` in the query string - get this value to contin
 >>> token, scopes = login_client.finish_oauth('code-from-query-string')
 {% endhighlight %}
 
-In a real-world scenario, your application would redirect a users through to the login service, then
+In a real-world scenario, your application would redirect users through to the login service, then
 receive the callback once login was complete and capture the code from the query string.  For a
 more practical example, see the [multi-user example application]().
 
@@ -58,7 +58,7 @@ client will handle all communications to the API for a given user.
 
 ## Objects
 
-The Linode pyton library is completely object-oriented, and every API resource has an object that
+The Linode python library is completely object-oriented, and every API resource has an object that
 represents it.  If you know the ID of an object, it can be created with a `LinodeClient` and ID and
 used as you please:
 
@@ -67,8 +67,8 @@ used as you please:
 >>> linode = Linode(client, 'lnde_123')
 {% endhighlight %}
 
-Each object has attributes that match those documented in [the api spec](/reference/#objects), and only those
-marked 'editabled' may be changed.  All objects share the following:
+Each object has attributes that match those documented in [the API spec](/reference/#objects), and only those
+marked 'editable' may be changed.  All objects share the following:
 
 | id | The id of this object in the Linode API |
 | save | This function calls PUT on this object, saving any changes to mutable fields |
@@ -76,7 +76,7 @@ marked 'editabled' may be changed.  All objects share the following:
 | delete | This function calls DELETE on this objects.  Use with caution |
 
 Objects are lazy-loaded, so creating the object will not reach out to the API until a field it doesn't
-have is referneced.
+have is referenced.
 
 #### Derived Objects
 
@@ -92,7 +92,7 @@ of the derived object.
 
 A list of derived objects may also be accessed through their parent object as an attribute,
 named based on the extension to the parent object's URL (i.e. `/linodes/lnde_123/disks` means
-a linode object will have a disks attribute):
+a Linode object will have a disks attribute):
 
 {% highlight python %}
 >>> linode = Linode(client, 'lnde_123')
@@ -102,7 +102,7 @@ a linode object will have a disks attribute):
 ## Lists of Objects
 
 If you don't know an object's ID, that's fine - we can find it in a list.  All root API endpoints
-(`/linodes`, `/zones`, `/datacenters`, etc) can be accessed as a list from the LinodeClient object,
+(`/linodes`, `/zones`, `/datacenters`, etc) can be accessed as a list from the LinodeClient object:
 
 {% highlight python %}
 >>> datacenters = client.get_datacenters()
@@ -111,8 +111,8 @@ If you don't know an object's ID, that's fine - we can find it in a list.  All r
 
 #### Filtering
 
-All list methods support filtering in a SQLAlchemy-like syntax.  All api object classes have
-attributes for all properties lists as filterable in the object reference.  You can search
+All list methods support filtering in a SQLAlchemy-like syntax.  All API object classes have
+attributes for all properties listed as filterable in the object reference.  You can search
 endpoints like so:
 
 {% highlight python %}
@@ -123,7 +123,7 @@ endpoints like so:
 >>> foo_linodes = client.get_linodes(Linode.label.contains('foo'), Linode.datacenter == 'dctr_1')
 {% endhighlight %}
 
-Multiple fitlers are combined with an "and" operator.  You can also use "or" (either explicitly or
+Multiple filters are combined with an "and" operator.  You can also use "or" (either explicitly or
 implicitly):
 
 {% highlight python %}
@@ -198,10 +198,10 @@ Creating zone records
 
 ## Examples
 
-There are two official exmaple projects using the linode python library, found here:
+There are two official example projects using the linode python library, found here:
 
 [**Single User Application**]() - an application that allows users to sign up and receive a single
-linode running your software - a simple reseller prototype.
+Linode running your software - a simple reseller prototype.
 
-[**Multi-User Application**]() - an application that creates a new linode running your software for a
+[**Multi-User Application**]() - an application that creates a new Linode running your software for a
 user through an "Install on Linode" button.
