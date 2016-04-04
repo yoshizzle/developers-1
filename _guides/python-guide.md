@@ -126,13 +126,75 @@ endpoints like so:
 Multiple fitlers are combined with an "and" operator.  You can also use "or" (either explicitly or
 implicitly):
 
-{% hightlight python %}
+{% highlight python %}
 >>> foobar_linodes = client.get_linodes((Linode.label.contains('foo')) | (Linode.label.contains('bar')))
 >>> from linode import or_
 >>> foorbaz_linodes = client.get_linodes(or_(Linode.label.contains('foo'), Linode.label.contains('baz')))
 {% endhighlight %}
 
 In addition to `==` and `contains`, objects can be filtered with the `>`, `<`, `>=`, and `<=` operators.
+
+## Creating Resources
+
+Through the LinodeClient you can create resources, with parameters matching the resource's POST endpoint.
+In the [API Reference](/reference/#ep-linodes) we see that to create a Linode, you need to provide a Serivce,
+a Datacenter, and optionally, a source.  Here is an example of how one may do that:
+
+{% highlight python %}
+>>> from linode import Service, Datacenter, Distribution
+>>> serv = client.get_services(Service.label == 'Linode 1024')[0]
+>>> dc = client.get_datacenters(Datacenter.label.contains('Newark'))[0]
+>>> distro = client.get_distributions(Distribution.vendor == 'Ubuntu')[0]
+>>> l, root_pw = client.create_linode(serv, dc, source=distro)
+{% endhighlight %}
+
+In this example, we queried the API for the Service, Datacenter and Distribution we wanted, then
+sent a request to create a Linode with those arguments.  In this case, the create function also
+helpfully generated a root password for the Linode, which was returned alongside it (you can provide
+a root password yourself with the `root_pass` argument, as per the [API Reference](/reference/#ep-linodes),
+and this function will only return the created Linode).
+
+In general, required parameters to a POST request are positional arguments of the LinodeClient's create
+methods, and optional arguments are passed as keyword arguments with the same names.  Here are the
+required argument lists:
+
+#### Linodes
+
+| service | a linode.objects.Service object |
+| datacenter | a linode.objects.Datacenter object|
+
+#### StackScripts
+
+| label | a label for the StackScript |
+| script | the stackscript body |
+| distros | a list of Distribution objects this StackScript runs on |
+
+#### Zones
+
+| zone | the zone |
+| master | if this zone is master - defaults to True |
+
+### Creating Derived Objects
+
+Parent objects have the ability to create instances of derived objects.  This is done
+in the same way as creating top-level objects, except that you use the parent object
+in place of the LinodeClient.
+
+#### Linodes
+
+Creating configs
+
+| kernel | a Kernel object |
+
+Creating disks
+
+| size | the size of the new disk |
+
+#### Zones
+
+Creating zone records
+
+| record_type | the type of zone record to create |
 
 ## Examples
 
