@@ -5,6 +5,12 @@ blurb: How to use the official python library, linode-api
 layout: guide
 ---
 
+<style>
+table {
+    table-layout: fixed;
+}
+</style>
+
 With the release of API 2, Linode has also released an official python library.  This guide
 will walk you through using the library to make single-user and multi-user applications
 that take advantage of all of the features of the new Linode API.
