@@ -5,6 +5,10 @@
 $root: '../styles/';
 @import "base";
 
+table {
+    @extend .table;
+}
+
 html, body {
     min-height: 100%;
     height: 100%;
