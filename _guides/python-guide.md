@@ -73,7 +73,7 @@ marked 'editable' may be changed.  All objects share the following:
 | id | The id of this object in the Linode API |
 | save | This function calls PUT on this object, saving any changes to mutable fields |
 | invalidate | This function expires all attributes of the object except identifiers so they will be refreshed |
-| delete | This function calls DELETE on this objects.  Use with caution |
+| delete | This function calls DELETE on this object.  Use with caution |
 
 Objects are lazy-loaded, so creating the object will not reach out to the API until a field it doesn't
 have is referenced.
@@ -137,7 +137,7 @@ In addition to `==` and `contains`, objects can be filtered with the `>`, `<`, `
 ## Creating Resources
 
 Through the LinodeClient you can create resources, with parameters matching the resource's POST endpoint.
-In the [API Reference](/reference/#ep-linodes) we see that to create a Linode, you need to provide a Serivce,
+In the [API Reference](/reference/#ep-linodes) we see that to create a Linode, you need to provide a Service,
 a Datacenter, and optionally, a source.  Here is an example of how one may do that:
 
 {% highlight python %}
@@ -160,8 +160,8 @@ required argument lists:
 
 #### Linodes
 
-| service | a linode.objects.Service object |
-| datacenter | a linode.objects.Datacenter object|
+| service | a Service object |
+| datacenter | a Datacenter object|
 
 #### StackScripts
 
@@ -176,7 +176,7 @@ required argument lists:
 
 ### Creating Derived Objects
 
-Parent objects have the ability to create instances of derived objects.  This is done
+Parent objects have the ability to create derived resources.  This is done
 in the same way as creating top-level objects, except that you use the parent object
 in place of the LinodeClient.
 
