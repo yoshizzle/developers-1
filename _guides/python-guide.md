@@ -25,13 +25,13 @@ pypi with:
 ## Getting an OAuth Token
 
 When working on an application that only deals with your own Linodes, acquiring an OAuth token is
-easy.  Just log in to https://login.alpha.linode.com, click 'Manage Applications and Tokens', and
+easy.  Just log in to https://login.alpha.linode.com, click 'Manage Applications and Tokens',
 then click 'Generate New Token' and copy the token displayed on the screen.
 
 #### Generating OAuth Tokens
 
-If you need to generate an OAuth token using a client ID and client secret, as you would in an
-application where you manage Linodes for a user, use the LinodeLoginClient.  This requires
+If you need to generate an OAuth token using a client ID and client secret (as you would in an
+application where you manage Linodes for a user) use the LinodeLoginClient.  This requires
 you to have set up an OAuth application at {{ site.login_root }}.
 
 {% highlight python %}
@@ -41,16 +41,16 @@ you to have set up an OAuth application at {{ site.login_root }}.
 'https://login.alpha.linode.com/oauth/authorize?client_id=my-client-id&scopes=%2A'
 {% endhighlight %}
 
-Visit this URL in a browser and complete the login process.  The page you are sent to when login
-is successful will have a `code=` in the query string - get this value to continue.
+Visit this URL in a browser and complete the login process.  After a successful login, you will
+be redirected to a page with `code=` in the query string - get this value to continue.
 
 {% highlight python %}
 >>> token, scopes = login_client.finish_oauth('code-from-query-string')
 {% endhighlight %}
 
-In a real-world scenario, your application would redirect users through to the login service, then
-receive the callback once login was complete and capture the code from the query string.  For a
-more practical example, see the [multi-user example application]().
+In a real-world scenario, your application should direct a user to the login service with a callback
+url argument. After the login completes, the API will redirect the user back to the url callback provided.
+For a practical example, see the [multi-user example application]().
 
 ## Connecting to the API
 
@@ -64,7 +64,7 @@ client will handle all communications to the API for a given user.
 
 ## Objects
 
-The Linode python library is completely object-oriented, and every API resource has an object that
+The Linode python library is object-oriented, and every API resource has an object that
 represents it.  If you know the ID of an object, it can be created with a `LinodeClient` and ID and
 used as you please:
 
@@ -86,19 +86,19 @@ have is referenced.
 
 #### Derived Objects
 
-Some objects belong to other objects - for instance, a Linode has Disks, so a Disk is a derived object.
-If the endpoint for a resource includes another resource's ID, that resource is derived from the resource
-whose ID preceeds it.  In these cases, we must provide the parent object's ID when creating a new instance
-of the derived object.
+Some objects contain references to other objects.  A Linode has Disks, for example, so a Disk is a derived object.
+If an endpoint for a resource references another resource's ID, the latter object's ID must be provided when
+creating a new instance of the former.
 
 {% highlight python %}
 >>> from linode import Disk
 >>> disk = Disk(client, 'disk_123', 'lnde_123')
 {% endhighlight %}
 
-A list of derived objects may also be accessed through their parent object as an attribute,
-named based on the extension to the parent object's URL (i.e. `/linodes/lnde_123/disks` means
-a Linode object will have a disks attribute):
+If a particular attribute of an object consists of a list of derived objects, these derived objects can be
+accessed via the parent object.  To do this using the REST API, simply append the attribute name to the
+parent object's URL (e.g. `/linodes/lnde_123/disks`).  To access this in the python client, the
+object attribute is provided as a Python attribute of the same name.
 
 {% highlight python %}
 >>> linode = Linode(client, 'lnde_123')
@@ -107,8 +107,8 @@ a Linode object will have a disks attribute):
 
 ## Lists of Objects
 
-If you don't know an object's ID, that's fine - we can find it in a list.  All root API endpoints
-(`/linodes`, `/zones`, `/datacenters`, etc) can be accessed as a list from the LinodeClient object:
+All root API endpoints (`/linodes`, `/zones`, `/datacenters`, etc) can be accessed as a list from the
+LinodeClient object:
 
 {% highlight python %}
 >>> datacenters = client.get_datacenters()
@@ -118,8 +118,7 @@ If you don't know an object's ID, that's fine - we can find it in a list.  All r
 #### Filtering
 
 All list methods support filtering in a SQLAlchemy-like syntax.  All API object classes have
-attributes for all properties listed as filterable in the object reference.  You can search
-endpoints like so:
+attributes for all properties listed as filterable in the object reference.  Here is an example.
 
 {% highlight python %}
 # get all linodes in newark
@@ -129,8 +128,7 @@ endpoints like so:
 >>> foo_linodes = client.get_linodes(Linode.label.contains('foo'), Linode.datacenter == 'dctr_1')
 {% endhighlight %}
 
-Multiple filters are combined with an "and" operator.  You can also use "or" (either explicitly or
-implicitly):
+Multiple filters are combined with "and" and "or" (either explicitly or implicitly):
 
 {% highlight python %}
 >>> foobar_linodes = client.get_linodes((Linode.label.contains('foo')) | (Linode.label.contains('bar')))
@@ -142,9 +140,9 @@ In addition to `==` and `contains`, objects can be filtered with the `>`, `<`, `
 
 ## Creating Resources
 
-Through the LinodeClient you can create resources, with parameters matching the resource's POST endpoint.
-In the [API Reference](/reference/#ep-linodes) we see that to create a Linode, you need to provide a Service,
-a Datacenter, and optionally, a source.  Here is an example of how one may do that:
+You can create resources with parameters matching the resource's POST endpoint using a `LinodeClient`.
+In the [API Reference](/reference/#ep-linodes) we see that Linode creation requires a Service,
+a Datacenter, and optionally, a source.  Here is an example.
 
 {% highlight python %}
 >>> from linode import Service, Datacenter, Distribution
@@ -154,14 +152,14 @@ a Datacenter, and optionally, a source.  Here is an example of how one may do th
 >>> l, root_pw = client.create_linode(serv, dc, source=distro)
 {% endhighlight %}
 
-In this example, we queried the API for the Service, Datacenter and Distribution we wanted, then
+In this example we queried the API for the Service, Datacenter and Distribution we wanted, then
 sent a request to create a Linode with those arguments.  In this case, the create function also
-helpfully generated a root password for the Linode, which was returned alongside it (you can provide
-a root password yourself with the `root_pass` argument, as per the [API Reference](/reference/#ep-linodes),
-and this function will only return the created Linode).
+generated a root password for the Linode, which was returned alongside it. (You can provide
+a root password yourself with the `root_pass` argument, documented in the [API Reference](/reference/#ep-linodes).
+In this case, the function will return only the created Linode).
 
 In general, required parameters to a POST request are positional arguments of the LinodeClient's create
-methods, and optional arguments are passed as keyword arguments with the same names.  Here are the
+methods. And optional arguments are passed as keyword arguments with the same names.  Here are the
 required argument lists:
 
 #### Linodes
@@ -204,7 +202,7 @@ Creating zone records
 
 ## Examples
 
-There are two official example projects using the linode python library, found here:
+There are currently two official example projects using the Linode python library.
 
 [**Single User Application**]() - an application that allows users to sign up and receive a single
 Linode running your software - a simple reseller prototype.
