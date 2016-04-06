@@ -11,14 +11,14 @@ table {
 }
 </style>
 
-With the release of API 2, Linode has also released an official python library.  This guide
+With the release of API 3, Linode has also released an official python library.  This guide
 will walk you through using the library to make single-user and multi-user applications
 that take advantage of all of the features of the new Linode API.
 
 ## Getting Started
 
-The official Linode python library is open-source on [github](), and can be installed through
-pypi with:
+The official Linode python library is open-source on [github](https://github.com/Linode/python-api),
+and can be installed through pypi with:
 
 ```pip install linode-api```
 
@@ -59,7 +59,7 @@ client will handle all communications to the API for a given user.
 
 {% highlight python %}
 >>> from linode import LinodeClient
->>> client = LinodeClient('my-token', base_url='https://api.alpha.linode.com/v2')
+>>> client = LinodeClient('my-token', base_url='https://api.alpha.linode.com/v3')
 {% endhighlight %}
 
 ## Objects
