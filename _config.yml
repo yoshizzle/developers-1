@@ -2,7 +2,7 @@ sass:
     style: compressed
     sass_dir: styles/
 
-api_version: v2
+api_version: v4
 api_root: api.alpha.linode.com
 login_root: login.alpha.linode.com
 
