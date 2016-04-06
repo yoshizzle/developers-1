@@ -11,7 +11,7 @@ table {
 }
 </style>
 
-With the release of API 3, Linode has also released an official python library.  This guide
+With the release of API 4, Linode has also released an official python library.  This guide
 will walk you through using the library to make single-user and multi-user applications
 that take advantage of all of the features of the new Linode API.
 
@@ -59,7 +59,7 @@ client will handle all communications to the API for a given user.
 
 {% highlight python %}
 >>> from linode import LinodeClient
->>> client = LinodeClient('my-token', base_url='https://api.alpha.linode.com/v3')
+>>> client = LinodeClient('my-token', base_url='https://api.alpha.linode.com/v4')
 {% endhighlight %}
 
 ## Objects

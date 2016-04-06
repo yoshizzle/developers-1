@@ -20,7 +20,7 @@ of available datacenters, you can use the /datacenters API endpoint. To make an
 API call against this endpoint over curl, run the following command:
 
 {% highlight bash %}
-curl https://api.linode.com/v3/datacenters
+curl https://api.linode.com/v4/datacenters
 {% endhighlight %}
 
 Note that since the datacenter list is public information, you don't need to
@@ -79,7 +79,7 @@ Linode (such as memory, storage space, and network transfer). Run the
 following curl command to retrieve a list of available Linode plans:
 
 {% highlight bash %}
-curl https://api.linode.com/v3/services/linode
+curl https://api.linode.com/v4/services/linode
 {% endhighlight %}
 
 The above command will return a JSON object like the following:
@@ -121,7 +121,7 @@ like selecting a service and a datacenter, issue a call to the API, this time
 for a list of available distributions:
 
 {% highlight bash %}
-curl https://api.linode.com/v3/distributions
+curl https://api.linode.com/v4/distributions
 {% endhighlight %}
 
 This will provide you with a list of distributions like the following:
@@ -172,7 +172,7 @@ to different locations and with different characteristics. Customize the
 following curl command and run it when you're ready to deploy:
 
 {% highlight bash %}
-curl -X POST https://api.linode.com/v3/linodes \
+curl -X POST https://api.linode.com/v4/linodes \
 -d '{"service": "serv_112","datacenter": "dctr_7","source": "dist_140","root_pass": "$root_pass"}' \
 -H "Authorization: token $TOKEN" -H "Content-type: application/json"
 {% endhighlight %}
@@ -248,7 +248,7 @@ the following curl command. Also remember to replace ```$TOKEN``` with
 your authorization token as in the previous API call.
 
 {% highlight bash %}
-curl -X POST https://api.linode.com/v3/linodes/$linode_id/boot \
+curl -X POST https://api.linode.com/v4/linodes/$linode_id/boot \
 -H "Authorization: token $TOKEN"
 {% endhighlight %}
 
@@ -274,7 +274,7 @@ progress, you can poll the status of your Linode with the following command
 (make sure to replace ```$linode_id``` and ```$TOKEN```):
 
 {% highlight bash %}
-curl https://api.linode.com/v3/linodes/$linode_id \
+curl https://api.linode.com/v4/linodes/$linode_id \
 -H "Authorization: token $TOKEN"
 {% endhighlight %}
 
