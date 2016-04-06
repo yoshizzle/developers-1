@@ -102,44 +102,6 @@
         {{ site.login_root }} with your <code>client_id</code>. The username and email are just for convenience.
         The important parameter is the code, this is the <em>access code</em> you need to continue the OAuth flow.
         </p>
-        <h5>Direct Access Request</h5>
-        <p>
-        If you are writing a command line application or something similar that does not allow for easy
-        access to a web browser and handling a redirect, we provide a direct authorization workflow.
-        </p>
-        <div class="alert alert-danger">
-            <p>
-            You should not use this workflow for web based applications. This method is for the convenience of the
-            developer, but it limits the visibility the user has into the scopes you have requested. This is because
-            using this workflow bypasses the user consent page. This workflow also requires that the user gives your
-            application access to their password instead of only allowing Linode to know their password. For these reasons
-            you should take extra care when using this workflow.
-            </p>
-        </div>
-        <p>
-        In this workflow you make the following request:
-        </p>
-        <pre><code>POST https://{{ site.login_root }}/oauth/authorize/direct</code></pre>
-        <p>
-        Make this request as <code>application/json</code> and include the following parameters in the POST body:
-        </p>
-        <dl class="dl-horizontal row">
-            <dt class="col-sm-2">client_id</dt>
-            <dd class="col-sm-10">Your application's client ID</dd>
-            <dt class="col-sm-2">scopes</dt>
-            <dd class="col-sm-10">The resources you want access to</dd>
-            <dt class="col-sm-2">username</dt>
-            <dd class="col-sm-10">The user's name for Linode</dd>
-            <dt class="col-sm-2">password</dt>
-            <dd class="col-sm-10">The user's password for Linode</dd>
-        </dl>
-        <p>
-        You will be given an <em>access code</em> that can be exchanged for an <em>authorization token</em>.
-        </p>
-        <p>
-        Once you have an access code using either of the above workflows, you will then exchange that <em>access code</em> for
-        an <em>authorization token</em>. The token is what you will use to authenticate API requests on behalf of that user.
-        </p>
     </div>
     <div class="col-md-6 right">
         <p>You can include the following parameters in the query string when
