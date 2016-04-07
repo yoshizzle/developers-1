@@ -47,51 +47,24 @@ This will give you a response like this:
 
 ## Authenticated Requests
 
-For many requests, you will have to authenticate as a particular user. To do so,
-you need to create an OAuth client and log in as yourself with that client. A
-full run-down of how authentication works is provided on the
-[reference page](/reference#authentication), but we'll give you enough
-information to get curl working here.
+For many requests, you will have to authenticate as a particular user. For now,
+we're going to use a personal access token to make things easier. If you'd like
+to learn how to make a full blown OAuth client, read the
+[authentication documentation](/reference#authentication).
 
-You can register your OAuth client [here](https://{{ site.login_root }}/apps). For
-testing purposes, you can set your redirect URI to https://linode.com. Once
-you've done so, you'll receive a **client ID** and a **client secret**. Keep the
-client secret somewhere safe - do not share it. You can, however, share the
-client ID, and you should use it now to log into your Linode account:
+To generate a personal access token, [go
+here](https://login.alpha.linode.com/tokens). These tokens can be used to make
+API requests authenticated with your Linode account and have full access to all
+OAuth scopes. You'll only see the full OAuth token once, so be sure to write it
+down somewhere. If you're in the shell, running something like this might work
+well:
 
-[https://{{ site.login_root }}/oauth/authorize?scopes=\*&client_id=**your_client_id**](https://{{ site.login_root }}/oauth/authorize?scopes=*&client_id=your_client_id)
-
-Make sure to add your client ID to this URL before you press enter. Log into
-your Linode account and you'll be redirected to a URL like this:
-
-https://linode.com?code=**somecode**&...
-
-Once you have **somecode**, you can exchange this code for an OAuth token with
-curl:
-
-    curl https://{{ site.login_root }}/oauth/token \
-        -F client_id=[client ID] \
-        -F client_secret=[client secret] \
-        -F code=[somecode]
-
-You'll have to fill in your client ID and client secret (from the client
-registration earlier). You also want to put in the code you got a moment ago.
-When you submit this, you'll get a response like this:
-
-{% highlight json %}
-{
-    "access_token": "b37ab5503b438bcd671bc1e1f4caecb47ee8585cb34668ea8f483d00702078a1",
-    "scopes": "*"
-}
-{% endhighlight %}
-
-Now you have an access token! That was a bit of work, but you only have to do it
-once. Write down your access token somewhere.
+    token="that token"
 
 ### Authentication Header
 
 Now you can make requests with curl using your access token by adding `-H
-"Authorization: token that_token"`. The <span class="text-muted"><i class="fa
+"Authorization: token $token"`. The <span class="text-muted"><i class="fa
 fa-lock"></i> Authenticated</span> requests on the [reference page](/reference)
 include this header in the curl examples. Try this, for example:
 
