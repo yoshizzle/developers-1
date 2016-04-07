@@ -23,6 +23,15 @@ h1, h2, h3, h4, h5 {
     margin-top: 0.5rem;
 }
 
+.container {
+    min-width: 320px;
+}
+
+.elevated, .card, .header h1, .marketing-container h1, .btn {
+    box-shadow: none;
+    border: 1px solid #ccc;
+}
+
 .cards-container {
     h4 {
         margin-top: 0;
@@ -70,7 +79,7 @@ nav {
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, .35);
+        background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
         z-index: 1;
     }
 
@@ -114,6 +123,7 @@ nav {
 
     .marketing-copy {
         position: absolute;
+        top: 50px;
         left: 0;
         right: 0;
         z-index: 2;
@@ -126,18 +136,38 @@ nav {
             background: transparent;
             border: 0;
             box-shadow: none;
+            font-family: "Montserrat", sans-serif;
 
             .alpha {
                 color: lighten(red, 10);
+                vertical-align: super;
+                font-size: 18px;
+                letter-spacing: initial;
             }
         }
 
         h2 {
             color: white;
+            font-family: sans-serif;
+            font-size: 1.5rem;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        $btn-width: 263.047px; /* set to be the max width (as seen) of both of these links */
+        #marketing-documentation {
+            border: 0;
+            width: $btn-width;
         }
 
         #marketing-contribute {
             background: white;
+            border: 0;
+            width: $btn-width;
+
+            @media (max-width: 557px) {
+                margin-top: 1px;
+            }
         }
     }
 }
