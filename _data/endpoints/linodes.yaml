@@ -58,8 +58,8 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "datacenter": "dctr_12",
-                    "service": "serv_12"
+                    "datacenter": "datacenter_12",
+                    "service": "service_12"
                 }' \
                 https://$api_root/$version/linodes
           python: |
@@ -183,7 +183,7 @@ endpoints:
                 -X POST -d '{
                     "label": "Example Disk",
                     "filesystem": "ext4",
-                    "size": 4096,
+                    "size": 4096
                 }' \
                 https://$api_root/$version/linodes/$linode_id/disks
           python: |
@@ -361,7 +361,7 @@ endpoints:
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
                     "label": "Arch Linux config",
-                    "kernel": "krnl_12",
+                    "kernel": "kernel_12",
                     "disk_list": [
                       "disk_123",
                       "disk_124",
@@ -401,7 +401,7 @@ endpoints:
                 -X PUT -d '{
                     "label": "Edited config",
                     "kernel": {
-                      "id": "krnl_12"
+                      "id": "kernel_12"
                     }
                     "disks": {
                       "sda": {
@@ -464,7 +464,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "config": "conf_1234"
+                    "config": "config_1234"
                 }' \
                 https://$api_root/$version/linodes/:id/boot
           python: |
@@ -508,7 +508,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "config": "conf_1234"
+                    "config": "config_1234"
                 }' \
                 https://$api_root/$version/linodes/:id/reboot
           python: |
@@ -557,7 +557,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "distribution": "dist_123",
+                    "distribution": "distro_123",
                     "root_pass": "hunter2"
                 }' \
                 https://$api_root/$version/linodes/:id/deploy

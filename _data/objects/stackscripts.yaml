@@ -8,11 +8,11 @@ schema:
   id:
     _description: A unique ID for the StackScript
     _type: integer
-    _value: stck_37
+    _value: stackscript_37
   customer_id:
     _description: The customer that created this StackScript
     _type: integer
-    _value: cust_123
+    _value: customer_123
   user_id:
     _description: The user account that created this StackScript
     _type: integer
@@ -37,7 +37,7 @@ schema:
     _value:
       - id:
           _type: integer
-          _value: dist_100
+          _value: distro_100
         label:
           _type: string
           _value: Debian 8.1
@@ -46,7 +46,7 @@ schema:
           _value: Debian
       - id:
           _type: integer
-          _value: dist_101
+          _value: distro_101
         label:
           _type: string
           _value: Debian 7

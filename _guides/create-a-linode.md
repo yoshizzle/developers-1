@@ -32,31 +32,31 @@ above command will return a JSON object like the following:
     "datacenters": [
         {
             "label": "Dallas, TX",
-            "id": "dctr_2"
+            "id": "datacenter_2"
         },
         {
             "label": "Fremont, CA",
-            "id": "dctr_3"
+            "id": "datacenter_3"
         },
         {
             "label": "Atlanta, GA",
-            "id": "dctr_4"
+            "id": "datacenter_4"
         },
         {
             "label": "Newark, NJ",
-            "id": "dctr_6"
+            "id": "datacenter_6"
         },
         {
             "label": "London, UK",
-            "id": "dctr_7"
+            "id": "datacenter_7"
         },
         {
             "label": "Singapore, SG",
-            "id": "dctr_9"
+            "id": "datacenter_9"
         },
         {
             "label": "Tokyo, JP",
-            "id": "dctr_8"
+            "id": "datacenter_8"
         }
     ],
     "page": 1,
@@ -69,7 +69,7 @@ The datacenter list is pretty self-explanatory: there are 7 available
 datacenters, and their geographical locations are provided in the `label`
 field. The `id` field is a unique ID which you'll use to refer to the
 datacenter you want to select. For this example, we'll go with the
-"Newark, NJ" datacenter with ID "dctr_6".
+"Newark, NJ" datacenter with ID "datacenter_6".
 
 ## Selecting a service plan
 
@@ -88,7 +88,7 @@ The above command will return a JSON object like the following:
 {
     "services": [
         {
-            "id": "serv_112",
+            "id": "service_112",
             "label": "Linode 1024",
             "vcpus": 1,
             "mbits_out": 125,
@@ -130,7 +130,7 @@ This will provide you with a list of distributions like the following:
 {
     "distributions": [
         {
-            "id": "dist_140",
+            "id": "distro_140",
             "label": "Debian 8.1",
             "vendor": "Debian",
             "x64": true,
@@ -173,7 +173,7 @@ following curl command and run it when you're ready to deploy:
 
 {% highlight bash %}
 curl -X POST https://api.linode.com/v4/linodes \
--d '{"service": "serv_112","datacenter": "dctr_7","source": "dist_140","root_pass": "$root_pass"}' \
+-d '{"service": "service_112","datacenter": "datacenter_7","source": "distro_140","root_pass": "$root_pass"}' \
 -H "Authorization: token $TOKEN" -H "Content-type: application/json"
 {% endhighlight %}
 
@@ -183,7 +183,7 @@ created Linode like the following:
 {% highlight json %}
 {
     "linode": {
-        "id": "lnde_1",
+        "id": "linode_1",
         "total_transfer": 2000,
         "distribution": null,
         "label": "linode1",
@@ -194,7 +194,7 @@ created Linode like the following:
         "updated": "2015-12-07T18:03:28",
         "created": "2015-12-07T18:03:28",
         "datacenter": {
-            "id": "dctr_7",
+            "id": "datacenter_7",
             "label": "Vagrant"
         },
         "ip_addresses": {
@@ -258,7 +258,7 @@ just issued:
 {% highlight json %}
 {
     "action": "linode.boot",
-    "id": "ljob_84",
+    "id": "job_84",
     "label": "System Boot - My Debian 8.1 Disk Profile",
     "entered": "2015-12-07T22:09:48",
     "started": null,
@@ -283,7 +283,7 @@ Once the boot job has finished, the Linode's status should change to "running":
 {% highlight json %}
 {
     "linode": {
-        "id": "lnde_1",
+        "id": "linode_1",
         "status": "running",
         "ssh_command": "ssh root@172.28.4.12",
         /* and so on */

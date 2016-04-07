@@ -70,7 +70,7 @@ used as you please:
 
 {% highlight python %}
 >>> from linode import Linode
->>> linode = Linode(client, 'lnde_123')
+>>> linode = Linode(client, 'linode_123')
 {% endhighlight %}
 
 Each object has attributes that match those documented in [the API spec](/reference/#objects), and only those
@@ -92,16 +92,16 @@ creating a new instance of the former.
 
 {% highlight python %}
 >>> from linode import Disk
->>> disk = Disk(client, 'disk_123', 'lnde_123')
+>>> disk = Disk(client, 'disk_123', 'linode_123')
 {% endhighlight %}
 
 If a particular attribute of an object consists of a list of derived objects, these derived objects can be
 accessed via the parent object.  To do this using the REST API, simply append the attribute name to the
-parent object's URL (e.g. `/linodes/lnde_123/disks`).  To access this in the python client, the
+parent object's URL (e.g. `/linodes/linode_123/disks`).  To access this in the python client, the
 object attribute is provided as a Python attribute of the same name.
 
 {% highlight python %}
->>> linode = Linode(client, 'lnde_123')
+>>> linode = Linode(client, 'linode_123')
 >>> disks = linode.disks
 {% endhighlight %}
 
@@ -125,7 +125,7 @@ attributes for all properties listed as filterable in the object reference.  Her
 >>> from linode import Datacenter, Linode
 >>> newark = client.get_datacenters(Datacenter.label=='Newark')[0]
 >>> newark_linodes = client.get_linodes(Linode.datacenter==newark)
->>> foo_linodes = client.get_linodes(Linode.label.contains('foo'), Linode.datacenter == 'dctr_1')
+>>> foo_linodes = client.get_linodes(Linode.label.contains('foo'), Linode.datacenter == 'datacenter_1')
 {% endhighlight %}
 
 Multiple filters are combined with "and" and "or" (either explicitly or implicitly):
