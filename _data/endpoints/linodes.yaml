@@ -323,7 +323,7 @@ endpoints:
           label:
             description: >
               The user-friendly label to name this config.
-          disk_list:
+          disks:
             description: >
               An array of <a href="#object-disk">disk</a> IDs to attach to this config.
           comments:
@@ -362,7 +362,7 @@ endpoints:
                 -X POST -d '{
                     "label": "Arch Linux config",
                     "kernel": "kernel_12",
-                    "disk_list": [
+                    "disks": [
                       "disk_123",
                       "disk_124",
                       "disk_125"
