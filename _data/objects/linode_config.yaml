@@ -93,7 +93,7 @@ schema:
         </a>
   id:
     _type: string
-    _value: conf_1234
+    _value: config_1234
   kernel:
     _editable: true
     _type: kernel
@@ -102,7 +102,7 @@ schema:
       _value: 2011-09-01T21:08:55
     id:
       _type: string
-      _value: krnl_123
+      _value: kernel_123
     label:
       _type: string
       _value: "Latest 64 bit (4.1.0-x86_64-linode59)"

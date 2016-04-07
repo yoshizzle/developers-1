@@ -6,7 +6,7 @@ description: >
 schema:
   id:
     _type: string
-    _value: dctr_7
+    _value: datacenter_7
   label:
     _type: string
     _value: London, UK

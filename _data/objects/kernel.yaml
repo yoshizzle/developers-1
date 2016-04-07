@@ -20,7 +20,7 @@ schema:
     _description: Additional, descriptive text about the kernel
   id:
     _type: string
-    _value: krnl_132
+    _value: kernel_132
   xen:
     _type: boolean
     _value: false
@@ -38,7 +38,7 @@ schema:
     _filterable: true
   updates:
     _type: string
-    _value: krnl_122
+    _value: kernel_122
     _description: A kernel ID that this provides an update for
   version:
     _type: string

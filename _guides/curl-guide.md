@@ -31,7 +31,7 @@ This will give you a response like this:
         {
             "created": "2014-10-24T15:48:04",
             "experimental": false,
-            "id": "dist_133",
+            "id": "distro_133",
             "label": "Ubuntu 14.10",
             "minimum_image_size": 650,
             "recommended": true,
@@ -107,7 +107,7 @@ This will give you a response like this:
             },
             "distribution": null,
             "group": "",
-            "id": "lnde_871212",
+            "id": "linode_871212",
             "ip_addresses": {
                 "private": {
                     "ipv4": [],

@@ -64,7 +64,7 @@ schema:
     _filterable: true
     id:
       _type: string
-      _value: dist_123
+      _value: distro_123
     label:
       _type: string
       _value: openSUSE 13.2
@@ -82,7 +82,7 @@ schema:
     _filterable: true
   id:
     _type: string
-    _value: lnde_12345
+    _value: linode_12345
   ip_addresses:
     _description: IP addresses associated with your Linode
     private:

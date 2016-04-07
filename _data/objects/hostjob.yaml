@@ -1,13 +1,13 @@
 # vim: set et ts=2 sw=2 tw=80 :
 name: "Job"
-prefix: ljob
+prefix: job
 description: >
   Jobs describe queued tasks to do things like deploy or boot Linodes.
 schema:
   id:
     _description: A unique identifier for the job
     _type: integer
-    _value: ljob_73472
+    _value: job_73472
   entered:
     _description: The date and time when the job was initially queued
     _type: datetime
