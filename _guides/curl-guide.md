@@ -68,7 +68,7 @@ Now you can make requests with curl using your access token by adding `-H
 fa-lock"></i> Authenticated</span> requests on the [reference page](/reference)
 include this header in the curl examples. Try this, for example:
 
-    curl -H "Authorization: token that_token" \ 
+    curl -H "Authorization: token $token" \ 
         https://{{ site.api_root }}/{{ site.api_version }}/linodes
 
 This will give you a response like this:
