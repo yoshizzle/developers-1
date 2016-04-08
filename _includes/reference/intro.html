@@ -453,7 +453,6 @@
         </p>
 <pre><code>
 {
-    "success": false,
     "errors": [
         {
             "field": "datacenter",
@@ -463,13 +462,12 @@
 }
 </code></pre>
         <p>
-            The <code>success</code> field may not appear in requests that did
-            not result in an error. The <code>errors</code> field is an array of
-            the things that went wrong with your request. We will try to include
-            as many of the problems in the response as possible, but it's
-            possible that fixing these errors and resubmitting may result in new
-            errors coming back once we are able to get further along in the
-            process of handling your request.
+            The <code>errors</code> field is an array of the things that went
+            wrong with your request. We will try to include as many of the
+            problems in the response as possible, but it's possible that fixing
+            these errors and resubmitting may result in new errors coming back
+            once we are able to get further along in the process of handling
+            your request.
         </p>
         <p>
             Within each error object, the <code>field</code> parameter will be
