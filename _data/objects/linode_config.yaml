@@ -20,7 +20,7 @@ schema:
     _value: false
     _description: Populates the /dev directory early during boot without udev
   disks:
-    _description: Disks attached to this Linode config
+    _description: <a href="#object-disk">Disks</a> attached to this Linode config
     _editable: true
     sda:
       _type: disk
