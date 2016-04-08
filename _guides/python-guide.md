@@ -25,7 +25,7 @@ and can be installed through pypi with:
 ## Getting an OAuth Token
 
 When working on an application that only deals with your own Linodes, acquiring an OAuth token is
-easy.  Just log in to https://login.alpha.linode.com, click 'Manage Applications and Tokens',
+easy.  Just log in to [login.alpha.linode.com](https://login.alpha.linode.com), click 'Manage Applications and Tokens',
 then click 'Generate New Token' and copy the token displayed on the screen.
 
 #### Generating OAuth Tokens
