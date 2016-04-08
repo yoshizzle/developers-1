@@ -20,6 +20,12 @@ endpoints:
           python: |
             import services
             TODO
+  services/:id:
+    type: resource
+    resource: services
+    description: >
+      Returns information about a specific service offered by Linode.
+    methods:
       GET:
         description: >
           Returns information about this service.
@@ -29,6 +35,13 @@ endpoints:
           python: |
             import services
             TODO
+  services/linode:
+    type: list
+    resource: services
+    description: >
+      Returns collection of Linode services (i.e. services that correspond to a
+      VPS hosted on Linode, rather than all services offered by Linode).
+    methods:
       GET:
         description: >
           Returns list of Linode services.
@@ -38,6 +51,12 @@ endpoints:
           python: |
             import services
             TODO
+  services/backup:
+    type: list
+    resource: services
+    description: >
+      Returns collection of backup services.
+    methods:
       GET:
         description: >
           Returns list of backup services.
@@ -47,6 +66,12 @@ endpoints:
           python: |
             import services
             TODO
+  services/longview:
+    type: list
+    resource: services
+    description: >
+      Returns collection of Longview services.
+    methods:
       GET:
         description: >
           Returns list of Longview services.

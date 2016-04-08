@@ -20,6 +20,12 @@ endpoints:
           python: |
             import kernels
             TODO
+  kernels/:id:
+    type: resource
+    resource: kernels
+    description: >
+      Returns information about a specific kernel.
+    methods:
       GET:
         description: >
           Returns information about this kernel.
