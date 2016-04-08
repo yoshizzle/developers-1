@@ -32,11 +32,13 @@
             <div class="col-md-4">
                 <h5 style="margin-top: 0; border: none" id="ep-{{ endpoint[0] }}-{{method[0]}}">
                     {{ method[0] }}
+                    {% if method[1].oauth %}
                     <br />
                     <small class="text-muted">
                         <i class="fa fa-key"></i>
                         {{ method[1].oauth }}
                     </small>
+                    {% endif %}
                     {% if method[1].money %}
                     <br />
                     <small class="text-muted">
