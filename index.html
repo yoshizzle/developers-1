@@ -3,16 +3,20 @@ layout: base
 ---
 
 <div class="marketing-container">
-  <div class="marketing-overlay"></div>
+  {% include navigation.html %}
   <div>
     <div class="bg-clouds"></div>
     <div class="bg-middle"></div>
     <div class="bg-balloons"></div>
   </div>
-  <div class="marketing-copy">
-    <div class="container">
-      <h1>Linode API v2 <span class="alpha">ALPHA</span></h1>
+  <div class="container">
+    <div class="marketing-copy">
+      <h1>Linode API v2 <span class="alpha">Alpha</span></h1>
+      <br />
       <h2>This time it doesn't suck as much.</h2>
+      <br />
+      <div class="space"></div>
+      <br />
       <a href="reference" class="btn btn-lg btn-primary" id="marketing-documentation">Read the Documentation</a>
       <a href="https://github.com/linode/developers" class="btn btn-lg btn-priamry" id="marketing-contribute" target="_blank">
         Contribute on GitHub <i class="fa fa-github"></i>

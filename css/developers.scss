@@ -63,24 +63,36 @@ h1, h2, h3, h4, h5 {
     }
 }
 
+header {
+    position: absolute;
+    top: 15px;
+    width: 100%;
+    z-index: 9999;
+}
+
 nav {
     position: relative;
 }
 
 .marketing-container {
     @extend .header;
-    height: 24rem;
-    position: relative;
+    height: 27rem;
     margin-bottom: 3rem;
+    position: relative;
 
-    .marketing-overlay {
+    .marketing-copy {
+        padding: 30px;
+        position: relative;
+    }
+
+    .marketing-copy-background {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
-        z-index: 1;
+        background: rgba(0, 0, 0, .75);
+        z-index: -1;
     }
 
     .bg-middle {
@@ -89,7 +101,7 @@ nav {
         background:
             url($root + '/assets/BH_07 Foreground.svg'),
             url($root + '/assets/BH_06 Trees.svg');
-        background-size: auto 24rem;
+        background-size: auto 27rem;
     }
 
     .bg-clouds {
@@ -98,7 +110,7 @@ nav {
         background:
             url($root + '/assets/BH_02 Clouds v2.svg'),
             url($root + '/assets/BH_01 Sky.svg');
-        background-size: auto 24rem;
+        background-size: auto 27rem;
         animation-name: clouds;
         animation-duration: 200000s;
         animation-iteration-count: infinite;
@@ -112,7 +124,7 @@ nav {
             url($root + '/assets/BH_05 Balloons Front.svg'),
             url($root + '/assets/BH_04 Balloons Middle.svg'),
             url($root + '/assets/BH_03 Balloons Back.svg');
-        background-size: auto 30rem;
+        background-size: auto 33rem;
         animation-direction: alternate;
         animation-iteration-count: infinite;
         animation-name: balloons;
@@ -122,14 +134,16 @@ nav {
     }
 
     .marketing-copy {
-        position: absolute;
-        top: 50px;
-        left: 0;
-        right: 0;
-        z-index: 2;
+        position: relative;
+        left: -1rem;
+        top: 30px;
+        background: rgba(0, 0, 0, .75);
+        padding: 30px;
+        display: inline-block;
 
         h1 {
-            margin-top: 2rem;
+            display: inline;
+            margin-top: 0;
             padding-left: 0;
             padding-top: 0;
             color: white;
@@ -146,12 +160,25 @@ nav {
             }
         }
 
+        @media (max-width: 557px) {
+            padding: 15px;
+
+            h1 .alpha {
+                font-size: 12px;
+            }
+        }
+
+        .space {
+            display: inline-block;
+        }
+
         h2 {
+            display: inline;
             color: white;
             font-family: sans-serif;
             font-size: 1.5rem;
-            margin-top: -10px;
-            margin-bottom: 20px;
+            padding-top: -10px;
+            padding-bottom: 20px;
         }
 
         $btn-width: 263.047px; /* set to be the max width (as seen) of both of these links */
