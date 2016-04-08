@@ -55,9 +55,15 @@ schema:
     _type: datetime
     _value: "2015-09-29T11:21:01"
   datacenter:
-    _type: string
+    _type: datacenter
     _filterable: true
     _description: This Linode's datacenter
+    id:
+      _type: string
+      _value: datacenter_6
+    label:
+      _type: string
+      _value: Newark, NJ
   distribution:
     _description: The distribution that this Linode booted to last.
     _type: distribution
