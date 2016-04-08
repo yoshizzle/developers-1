@@ -48,7 +48,7 @@ To run locally, we follow the [Github Pages recommendation](https://help.github.
 3. Start the [Jekyll](http://jekyllrb.com/) server and [guard-livereload](https://github.com/guard/guard-livereload) plugin.
     
     ```bash
-    bundle exec guard
+    bundle exec jekyll
     ```
     
 4. Now you can view the Docs at [localhost:4000](http://localhost:4000)
