@@ -17,7 +17,7 @@ schema:
     _description: Cost (in cents) per hour
     _filterable: true
   id:
-    _type: integer
+    _type: string
     _value: serv_112
   label:
     _type: string
