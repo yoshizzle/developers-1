@@ -220,6 +220,26 @@ body > .container {
     margin-top: 2.5rem;
 }
 
+p {
+    margin: 10px 0;
+}
+
+.highlight {
+    padding: 0 !important;
+    border: 1px solid #ccc;
+    background: white;
+
+    pre {
+        padding: 15px;
+        margin-bottom: 0;
+    }
+}
+
+article {
+     max-width: 800px;
+     margin: 0 auto;
+}
+
 .guide-card {
     padding: 1rem;
 }
