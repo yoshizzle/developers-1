@@ -17,8 +17,8 @@ that take advantage of all of the features of the new Linode API.
 
 ## Getting Started
 
-The official Linode python library is open-source on [github](https://github.com/Linode/python-api),
-and can be installed through pypi with:
+The official Linode python library is open-source on [github](http://github.com/Linode/python-linode-api), and can be installed through
+pypi with:
 
 ```pip install linode-api```
 
@@ -50,9 +50,9 @@ be redirected to a page with `code=` in the query string - get this value to con
 >>> token, scopes = login_client.finish_oauth('code-from-query-string')
 {% endhighlight %}
 
-In a real-world scenario, your application should direct a user to the login service with a callback
-url argument. After the login completes, the API will redirect the user back to the url callback provided.
-For a practical example, see the [multi-user example application]().
+In a real-world scenario, your application would redirect users through to the login service, then
+receive the callback once login was complete and capture the code from the query string.  For a
+more practical example, see the [multi-user example application](https://github.com/linode/python-linode-api/tree/master/examples/install-on-linode).
 
 ## Connecting to the API
 
@@ -204,10 +204,7 @@ Creating zone records
 
 ## Examples
 
-There are currently two official example projects using the Linode python library.
+Here is a list of example applications using the python library:
 
-[**Single User Application**]() - an application that allows users to sign up and receive a single
-Linode running your software - a simple reseller prototype.
-
-[**Multi-User Application**]() - an application that creates a new Linode running your software for a
+[**Multi-User Application**](https://github.com/linode/python-linode-api/tree/master/examples/install-on-linode) - an application that creates a new Linode running your software for a
 user through an "Install on Linode" button.
