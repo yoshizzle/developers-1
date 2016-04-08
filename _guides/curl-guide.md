@@ -120,9 +120,7 @@ This will give you a response like this:
                 }
             },
             "label": "linode871212",
-            "lish_command": "ssh -t dude2@lish-newark.linode.com linode871212",
-            "ssh_command": "ssh root@",
-            "status": "being_created",
+            "state": "provisioning",
             "total_transfer": 2000,
             "updated": "2015-02-19T16:10:45"
         } # and so on
