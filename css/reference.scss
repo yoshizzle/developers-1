@@ -4,11 +4,16 @@
 .reference-container {
     position: relative;
     min-height: calc(100% - 10.5rem);
+    overflow-x: hidden;
     padding: 0;
     margin: 0;
 
     .spacing {
         height: 2rem;
+    }
+
+    .col-md-10.elevated-content {
+        border-top: 0 !important;
     }
 }
 
@@ -27,10 +32,6 @@
     & > .nav {
         padding-left: 0;
     }
-}
-
-body {
-    background: #f6f6f6;
 }
 
 .elevated-content {
