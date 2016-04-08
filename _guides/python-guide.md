@@ -15,20 +15,20 @@ With the release of API 4, Linode has also released an official python library. 
 will walk you through using the library to make single-user and multi-user applications
 that take advantage of all of the features of the new Linode API.
 
-## Getting Started
+#### Getting Started
 
 The official Linode python library is open-source on [github](http://github.com/Linode/python-linode-api), and can be installed through
 pypi with:
 
-```pip install linode-api```
+{% highlight bash %}
+pip install linode-api
+{% endhighlight %}
 
-## Getting an OAuth Token
+#### Generating OAuth Tokens
 
 When working on an application that only deals with your own Linodes, acquiring an OAuth token is
 easy.  Just log in to [login.alpha.linode.com](https://login.alpha.linode.com), click 'Manage Applications and Tokens',
 then click 'Generate New Token' and copy the token displayed on the screen.
-
-#### Generating OAuth Tokens
 
 Skip this section if you'd rather just use a personal access token.
 
@@ -54,7 +54,7 @@ In a real-world scenario, your application would redirect users through to the l
 receive the callback once login was complete and capture the code from the query string.  For a
 more practical example, see the [multi-user example application](https://github.com/linode/python-linode-api/tree/master/examples/install-on-linode).
 
-## Connecting to the API
+#### Connecting to the API
 
 Once you have an OAuth token, connecting to the API is as simple as creating a `LinodeClient`.  This
 client will handle all communications to the API for a given user.
@@ -64,7 +64,7 @@ client will handle all communications to the API for a given user.
 >>> client = LinodeClient('my-token', base_url='https://api.alpha.linode.com/v4')
 {% endhighlight %}
 
-## Objects
+#### Objects
 
 The Linode python library is object-oriented, and every API resource has an object that
 represents it.  If you know the ID of an object, it can be created with a `LinodeClient` and ID and
@@ -107,7 +107,7 @@ object attribute is provided as a Python attribute of the same name.
 >>> disks = linode.disks
 {% endhighlight %}
 
-## Lists of Objects
+#### Lists of Objects
 
 All root API endpoints (`/linodes`, `/zones`, `/datacenters`, etc) can be accessed as a list from the
 LinodeClient object:
@@ -140,7 +140,7 @@ Multiple filters are combined with "and" and "or" (either explicitly or implicit
 
 In addition to `==` and `contains`, objects can be filtered with the `>`, `<`, `>=`, and `<=` operators.
 
-## Creating Resources
+#### Creating Resources
 
 You can create resources with parameters matching the resource's POST endpoint using a `LinodeClient`.
 In the [API Reference](/reference/#ep-linodes) we see that Linode creation requires a Service,
@@ -180,7 +180,7 @@ required argument lists:
 | zone | the zone |
 | master | if this zone is master - defaults to True |
 
-### Creating Derived Objects
+#### Creating Derived Objects
 
 Parent objects have the ability to create derived resources.  This is done
 in the same way as creating top-level objects, except that you use the parent object
@@ -202,7 +202,7 @@ Creating zone records
 
 | record_type | the type of zone record to create |
 
-## Examples
+#### Examples
 
 Here is a list of example applications using the python library:
 
