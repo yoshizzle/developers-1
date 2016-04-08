@@ -30,6 +30,8 @@ then click 'Generate New Token' and copy the token displayed on the screen.
 
 #### Generating OAuth Tokens
 
+Skip this section if you'd rather just use a personal access token.
+
 If you need to generate an OAuth token using a client ID and client secret (as you would in an
 application where you manage Linodes for a user) use the LinodeLoginClient.  This requires
 you to have set up an OAuth application at {{ site.login_root }}.
