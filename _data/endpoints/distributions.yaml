@@ -20,6 +20,12 @@ endpoints:
           python: |
             import distributions
             TODO
+  distributions/:id:
+    type: resource
+    resource: distributions
+    description: >
+      Returns information about a specific distribution.
+    methods:
       GET:
         description: >
           Returns information about this distribution.
@@ -29,6 +35,12 @@ endpoints:
           python: |
             import distributions
             TODO
+  distributions/recommended:
+    type: list
+    resource: distributions
+    description: >
+      Returns a list of distributions with the recommended flag.
+    methods:
       GET:
         description: >
           Returns a list of recommended distributions.
