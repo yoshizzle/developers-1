@@ -448,7 +448,7 @@ endpoints:
                 -X POST -d '{
                     "config": "config_1234"
                 }' \
-                https://$api_root/$version/linodes/:id/boot
+                https://$api_root/$version/linodes/$linode_id/boot
           python: |
             import linode
             TODO
@@ -466,7 +466,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST \
-                https://$api_root/$version/linodes/:id/shutdown
+                https://$api_root/$version/linodes/$linode_id/shutdown
           python: |
             import linode
             TODO
@@ -492,7 +492,7 @@ endpoints:
                 -X POST -d '{
                     "config": "config_1234"
                 }' \
-                https://$api_root/$version/linodes/:id/reboot
+                https://$api_root/$version/linodes/$linode_id/reboot
           python: |
             import linode
             TODO
@@ -542,7 +542,7 @@ endpoints:
                     "distribution": "distro_123",
                     "root_pass": "hunter2"
                 }' \
-                https://$api_root/$version/linodes/:id/deploy
+                https://$api_root/$version/linodes/$linode_id/deploy
           python: |
             import linode
             TODO
