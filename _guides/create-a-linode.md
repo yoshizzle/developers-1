@@ -187,10 +187,8 @@ created Linode like the following:
         "total_transfer": 2000,
         "distribution": null,
         "label": "linode1",
-        "status": "being_created",
+        "state": "provisioning",
         "group": "",
-        "ssh_command": "ssh root@172.28.4.12",
-        "lish_command": "ssh -t vagrant@lish-vagrant.linode.com linode1",
         "updated": "2015-12-07T18:03:28",
         "created": "2015-12-07T18:03:28",
         "datacenter": {
@@ -252,40 +250,20 @@ curl -X POST https://api.linode.com/v4/linodes/$linode_id/boot \
 -H "Authorization: token $TOKEN"
 {% endhighlight %}
 
-You should receive a response like the following, detailing the boot job you
-just issued:
-
-{% highlight json %}
-{
-    "action": "linode.boot",
-    "id": "job_84",
-    "label": "System Boot - My Debian 8.1 Disk Profile",
-    "entered": "2015-12-07T22:09:48",
-    "started": null,
-    "finished": null,
-    "success": null,
-    "message": null,
-    "duration": null
-}
-{% endhighlight %}
-
-Most fields are ```null``` since the job hasn't finished yet. To check on the
-progress, you can poll the status of your Linode with the following command
-(make sure to replace ```$linode_id``` and ```$TOKEN```):
+You'll receive an empty response (`{}`) - this is the expected behavior. If the
+status code is 200, it worked. You can now watch for the Linode's state field to
+change from "booting" to "running":
 
 {% highlight bash %}
 curl https://api.linode.com/v4/linodes/$linode_id \
 -H "Authorization: token $TOKEN"
 {% endhighlight %}
 
-Once the boot job has finished, the Linode's status should change to "running":
-
 {% highlight json %}
 {
     "linode": {
         "id": "linode_1",
         "status": "running",
-        "ssh_command": "ssh root@172.28.4.12",
         /* and so on */
     }
 }
