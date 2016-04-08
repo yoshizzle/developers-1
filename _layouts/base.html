@@ -17,12 +17,16 @@
             {% endif %}
         </title>
         <link rel="stylesheet" href="/css/developers.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     </head>
     <body id="top">
+      {%comment%}
+      {% include navigation.html %}
+      {%endcomment%}
+        {{ content }}
         <script src="/styles/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
         <script src="/styles/bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="/js/stickyfill.min.js"></script>
-        {% include navigation.html %}
-        {{ content }}
     </body>
 </html>
