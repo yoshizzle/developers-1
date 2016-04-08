@@ -11,7 +11,7 @@ installed on your system - run `curl --version` in your shell to check. Once
 you've confirmed that you have it installed, we can use it to test out the
 Linode API from the comfort of your shell.
 
-#### Unauthenticated Requests
+## Unauthenticated Requests
 
 You can perform anonymous HTTP requests against various resources on the API.
 You can tell which ones are anonymous from the <span class="text-muted">
@@ -20,11 +20,10 @@ documentation](/reference). For API endpoints where this indicator is missing,
 you're able to use curl to test them without any additional steps. For example,
 we could [list supported distributions](/reference/#ep-distributions):
 
-{% highlight bash %}
-$ curl https://{{ site.api_root }}/{{ site.api_version }}/distributions
-{% endhighlight %}
+    curl https://{{ site.api_root }}/{{ site.api_version }}/distributions
 
 This will give you a response like this:
+
 
 {% highlight json %}
 {
@@ -46,7 +45,7 @@ This will give you a response like this:
 }
 {% endhighlight %}
 
-#### Authenticated Requests
+## Authenticated Requests
 
 For many requests, you will have to authenticate as a particular user. For now,
 we're going to use a personal access token to make things easier. If you'd like
@@ -60,23 +59,20 @@ OAuth scopes. You'll only see the full OAuth token once, so be sure to write it
 down somewhere. If you're in the shell, running something like this might work
 well:
 
-{% highlight bash %}
-$ token="that token"
-{% endhighlight %}
+    token="that token"
 
-#### Authentication Header
+### Authentication Header
 
 Now you can make requests with curl using your access token by adding `-H
 "Authorization: token $token"`. The <span class="text-muted"><i class="fa
 fa-lock"></i> Authenticated</span> requests on the [reference page](/reference)
 include this header in the curl examples. Try this, for example:
 
-{% highlight bash %}
-$ curl -H "Authorization: token $token" \ 
-      https://{{ site.api_root }}/{{ site.api_version }}/linodes
-{% endhighlight %}
+    curl -H "Authorization: token $token" \ 
+        https://{{ site.api_root }}/{{ site.api_version }}/linodes
 
 This will give you a response like this:
+
 
 {% highlight json %}
 {

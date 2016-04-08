@@ -16,11 +16,6 @@ html, body {
 
 body {
     position: relative;
-    background: white;
-
-    &.home {
-        background: #f6f6f6;
-    }
 }
 
 h1, h2, h3, h4, h5 {
@@ -32,13 +27,9 @@ h1, h2, h3, h4, h5 {
     min-width: 320px;
 }
 
-.elevated, .card, .header h1, .marketing-container h1, .btn, .bg-clouds {
-    box-shadow: none !important;
+.elevated, .card, .header h1, .marketing-container h1, .btn {
+    box-shadow: none;
     border: 1px solid #ccc;
-}
-
-.elevated-content {
-    border-top: 0;
 }
 
 .cards-container {
@@ -82,6 +73,10 @@ header {
 .header {
     position: relative;
     padding-bottom: 1rem;
+}
+
+nav {
+    position: relative;
 }
 
 .marketing-container {
@@ -223,25 +218,6 @@ header {
 
 body > .container {
     margin-top: 2.5rem;
-}
-
-p {
-    margin: 10px 0;
-}
-
-.highlight {
-    padding: 0 !important;
-    border: 1px solid #ccc;
-    background: white;
-
-    pre {
-        padding: 15px;
-        margin-bottom: 0;
-    }
-}
-
-article {
-     max-width: 650px;
 }
 
 .guide-card {
