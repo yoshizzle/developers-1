@@ -1,14 +1,153 @@
 @import "../css/objects";
 @import "../css/syntax";
 
+nav{
+    border: 0;
+}
+
+@media all and (max-width: 991px) {
+    .refnav{
+        width: 100%;
+        max-width: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        box-shadow: 0px 3px 10px rgba(0,0,0,0.12),0px 3px 10px rgba(0,0,0,0.24);
+    }
+    .refheader{
+        padding: 0px;
+        height: 60px
+    }
+}
 .reference-container {
     position: relative;
     min-height: calc(100% - 10.5rem);
-    padding: 0;
+    //padding: 0;
     margin: 0;
 
     .spacing {
         height: 2rem;
+    }
+
+    h2 {
+        border-bottom: 1px solid #000;
+        margin-bottom: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .container {
+        padding: 1em 0 0 0;
+    }
+
+    .header {
+        background: #fff;
+        margin-bottom: 1em;
+        padding-bottom: 1em;
+    }
+
+    .optional {
+        color: #aaa;
+    }
+
+    @media all and (min-width: 992px) {
+        h3 {
+            display: block;
+        }
+
+        #linode_logo {
+            display: block;
+        }
+
+        .bg {
+            background-image: -webkit-linear-gradient(left, #fff 65%, #444 35%);
+            background-image: -moz-linear-gradient(left, #fff 65%, #444 35%);
+        }
+
+        .rside_head {
+            font-size: 1.5em;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 0.6em;
+        }
+
+        .rside {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .rside_hr {
+            border-bottom: 2px solid #fff;
+            margin-bottom: 0.3em;
+        }
+    }
+
+    @media all and (max-width: 991px) {
+        //margin-top: 72px;
+        .container{
+            .navbar{
+                position: fixed;
+                width: 80%;
+                top: 0;
+                left: 10%;
+                min-width: 350px;
+            }
+        }
+        .header{
+            margin-bottom: 0;
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            z-index: 100;
+            .bg-clouds{
+                position: fixed;
+                width: 100%;
+                height: 100px;
+            }
+        }
+        .white{
+            background-color: #ffffff;
+        }
+        .endpoint-method{
+            padding-bottom: 0px;
+            margin-bottom: 0px;
+        }
+        hr{
+            display: none;
+        }
+        .reference{
+
+            & > div {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            .left{
+                padding-top: 15px;
+            }
+            .right{
+                background-color: #373a3c;
+                padding-top: 15px;
+                padding-bottom: 8px;
+                pre{
+                    margin-bottom: 0px;
+                    padding-bottom: 0px;
+                }
+                figure{
+                    margin-bottom: 0px;
+                    padding-bottom: 0px;
+                }
+            }
+        }
+        #linode_logo {
+            display: none;
+        }
+
+        .rside {
+            background: #eee;
+            padding: 1em;
+            font-weight: bold;
+        }
     }
 }
 
@@ -35,7 +174,6 @@ body {
 
 .elevated-content {
     background: white;
-    border: 1px solid #ccc;
 }
 
 .reference-bg {
@@ -110,9 +248,19 @@ body {
     h4 {
         border: none !important;
     }
+    h4:target{
+        padding-top: 70px;
+        margin-top: -70px;
+    }
 
     h5 {
         border: none !important;
+    }
+    .anchor{
+        visibility: hidden;
+        position: relative;
+        display: inline-block;
+        top: -130px;
     }
 }
 

@@ -1,11 +1,15 @@
-<div class="row reference">
-    <div class="col-md-6 text-justify left">
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
         <div class="alert alert-info">
             <p>
             This documentation is for <strong>version 4</strong> of the Linode API. For earlier versions, go
             <a href="https://www.linode.com/api/">here</a>.
             </p>
         </div>
+    </div>
+</div>
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
         <h2>Introduction</h2>
         <p>
         The Linode API is an HTTP service that follows (to a large extent)
@@ -30,8 +34,11 @@
         not imply a new version number.
         </p>
     </div>
-    <div class="col-md-6 right">
-        <h4 id="http-methods">HTTP Methods</h4>
+    <div class="col-lg-6 right">
+        <h2 style="border: 0; font-weight: normal;">
+            HTTP Methods
+            <span class="anchor" id="http-methods">&nbsp;</span>
+        </h2>
         <dl>
             <dt>GET</dt>
             <dd>Gets information about a resource or resources</dd>
@@ -44,15 +51,21 @@
         </dl>
     </div>
 </div>
-<div class="row reference">
-    <div class="col-md-6 text-justify left">
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
         <p>
         The API exposes <strong>resources</strong> through various HTTP endpoints.
         You work with these resources through consistent use of HTTP verbs and
         a consistent tree of endpoints. The schema for the various resources
         available is documented in the <a href="#objects">objects</a> section.
         </p>
-        <h4 id="authentication">Authentication</h4>
+    </div>
+</div>
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
+        <h4>Authentication
+            <span class="anchor" id="authentication">&nbsp;</span>
+        </h4>
         <p>
         To use some API endpoints authentication is required. This is indicated by the
         <span class="text-muted"><i class="fa fa-lock"></i> Authenticated</span> notation
@@ -75,8 +88,8 @@
         </p>
     </div>
 </div>
-<div class="row reference">
-    <div class="col-md-6 text-justify left">
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
         <h5>Through The Web</h5>
         <p>
         If you are making a web based application this is the recommended method for getting a user's authorization.
@@ -103,7 +116,7 @@
         The important parameter is the code, this is the <em>access code</em> you need to continue the OAuth flow.
         </p>
     </div>
-    <div class="col-md-6 right">
+    <div class="col-lg-6 right">
         <p>You can include the following parameters in the query string when
         you direct your users to {{ site.login_root }}:</p>
         <table class="table">
@@ -138,8 +151,8 @@
         </table>
     </div>
 </div>
-<div class="row reference">
-    <div class="col-md-6 text-justify left">
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
         <h5>Access Token</h5>
         <p>
         Once the user has logged in to Linode and you have received an <em>access code</em>, you 
@@ -181,8 +194,8 @@
         <pre><code>Authorization: token 03d084436a6c91fbafd5c4b20c82e5056a2e9ce1635920c30dc8d81dc7a6665c</code></pre>
     </div>
 </div>
-<div class="row reference">
-    <div class="col-md-6 text-justify left">
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
         <h5>OAuth Scopes</h5>
         <p>
         The above login flow will give you the minimum amount of access to a user's account.
@@ -223,9 +236,12 @@
         </p>
     </div>
 </div>
-<div class="row reference">
-    <div class="col-md-6 text-justify left">
-        <h4 id="lists-and-objects">Lists &amp; Objects</h4>
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
+        <h4>
+            Lists &amp; Objects
+            <span class="anchor" id="lists-and-objects">&nbsp;</span>
+        </h4>
         <p>
         There are generally two kinds of resources you can retrieve with a GET
         request: objects and lists. An object is a representation of an individual resource.
@@ -242,7 +258,13 @@
         a specific Linode with <code>/linodes/linode_1234</code>. You can get the configs
         for this Linode from <code>/linodes/linode_1234/configs</code>.
         </p>
-        <h4 id="pagination">Pagination</h4>
+    </div>
+</div>
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
+        <h4>Pagination
+            <span class="anchor" id="pagination">&nbsp;</span>
+        </h4>
         <p>
         Resource lists are always paginated. The response will look similar to this:
         </p>
@@ -256,7 +278,14 @@
 </code></pre>
         <p>Pages start at 1. You may get a particular page by adding <code>?page=2</code>
         to your URL. Each page has at most 25 results.</p>
-        <h4 id="editing-objects">Editing Objects</h4>
+    </div>
+</div>
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
+        <h4>
+            Editing Objects
+            <span class="anchor" id="editing-objects">&nbsp;</span>
+        </h4>
         <p>
         Some resource objects may be modified, however, these objects contain both
         mutable and immutable properties. The properties that are mutable in an object
@@ -274,24 +303,26 @@
         </p>
     </div>
 </div>
-<div class="row reference">
-    <div class="col-md-6 left">
-        <h4 id="filtering">Filtering</h4>
+<div class="row reference white">
+    <div class="col-lg-6 left">
+        <h4>
+            Filtering
+            <span class="anchor" id="filtering">&nbsp;</span>
+        </h4>
         <p>
             Resource lists are searchable by most fields they include (filterable fields are marked with
             a <i class="fa fa-filter"></i> icon in the <a href="#">object reference</a>).
         </p>
     </div>
 </div>
-<br/>
-<div class="row reference">
-    <div class="col-md-6 left">
+<div class="row reference white">
+    <div class="col-lg-6 left">
         <p> 
         Filters are passed in the <code>X-Filter</code> header, and are formated as JSON objects.  Here is a
         request for all distributions whose vendor is "Debian":
         </p>
     </div>
-    <div class="col-md-6 right">
+    <div class="col-lg-6 right">
 <pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
     -H 'X-Filter: {
         "vendor": "Debian"
@@ -300,13 +331,13 @@
     </div>
 </div>
 <br/>
-<div class="row reference">
-    <div class="col-md-6 left">
+<div class="row reference white">
+    <div class="col-lg-6 left">
             The filter object's keys are the keys of the object you're filtering, and the values are accepted values.
             You can add multiple filters by including more than one key (in this case, all recommended Debians):
     
     </div>
-    <div class="col-md-6 right">
+    <div class="col-lg-6 right">
 <pre style="padding-top: 0px;"><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
     -H 'X-Filter: {
         "vendor": "Debian",
@@ -316,12 +347,12 @@
    </div>
 </div>
 <br/>
-<div class="row reference">
-   <div class="col-md-6 left"> 
+<div class="row reference white">
+   <div class="col-lg-6 left"> 
             In the above example, both filters are combined with an "and" operation.  However, if you wanted either Debian or recommended
             distributions, you can add an operator:
    </div>
-    <div class="col-md-6 right"> 
+    <div class="col-lg-6 right"> 
 <pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
     -H 'X-Filter: {
         "+or": [
@@ -333,14 +364,14 @@
     </div>
 </div>
 <br/>
-<div class="row reference">
-    <div class="col-md-6 left">
+<div class="row reference white">
+    <div class="col-lg-6 left">
         <p>
         Each filter in the <code>+or</code> array is its own filter object, and all conditions in it are combined with an "and" operator
         as they were in the first example.  Other operators are available:
         </p>
     </div>
-    <div class="col-md-6 right">
+    <div class="col-lg-6 right">
 <pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
     -H 'X-Filter: {
         "minimum_image_size": {
@@ -351,8 +382,8 @@
     </div>
 </div>
 <br/>
-<div class="row reference">
-    <div class="col-md-6 left">
+<div class="row reference white">
+    <div class="col-lg-6 left">
         <p>
         You can combine and nest operators to construct arbitrarily-complex queries - say, give me all distributions which are either
         recommended or whose vendor is Debian, or who have a minimum_image_size between 100 and 500 (inclusive).
@@ -399,7 +430,7 @@
             </tr>
         </table>
     </div>
-    <div class="col-md-6 right">
+    <div class="col-lg-6 right">
 <pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
     -H 'X-Filter: {
         "+or": [
@@ -433,9 +464,12 @@
     </div>
 </div>
 <br/>
-<div class="row reference">
-    <div class="col-md-6 text-justify left">
-        <h4 id="errors">Errors</h4>
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
+        <h4>
+            Errors
+            <span class="anchor" id="errors">&nbsp;</span>
+        </h4>
         <p>
             Success is indicated via
             <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">
@@ -477,8 +511,8 @@
             error, and will always be included.
         </p>
     </div>
-    <div class="col-md-6 right">
-        <h4>HTTP Status Codes</h4>
+    <div class="col-lg-6 right">
+        <h4 style="font-weight: normal;">HTTP Status Codes</h4>
         <table class="table">
             <tbody>
                 <tr>

@@ -23,13 +23,13 @@ layout: base
 
 <div class="container-fluid reference-container">
     <div class="row">
-        <div class="col-md-2 sticky">
-            <div class="text-centered" style="margin-top: 1rem">
+        <div class="col-md-2 sticky hidden-md-down">
+            <div style="margin-top: 1rem">
                 <img src="https://www.linode.com/media/images/logos/standard/light/linode-logo_standard_light_medium.png"
-                    alt="Linode logo" width="200" />
-                <h3 style="margin-top: 1rem; margin-bottom: 0; padding-bottom: 0;">API Reference</h3>
+                    alt="Linode logo" style="max-width: 100%; margin: auto; height: auto; padding: 0px 10px;" />
+                <h3 style="margin-top: 1rem; margin-bottom: 0; padding-bottom: 0; margin-left: 20px; font-size: 24px;">API <span class="hidden-lg-down">Reference</span></h3>                    
             </div>
-            <ul class="nav nav-pills nav-stacked sticky-nav reference-nav" id="ref-nav">
+            <ul class="nav nav-pills nav-stacked sticky-nav reference-nav" style="padding-top: 10px;" id="ref-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#top">Introduction</a>
                     <ul class="nav nav-pills nav-stacked">
@@ -84,16 +84,14 @@ layout: base
                 </li>
             </ul>
         </div>
-        <div class="col-md-10 elevated-content">
+        <div class="col-lg-10 elevated-content">
             <div class="row reference-bg">
-                <div class="col-md-offset-6 col-md-6 right">
+                <div class="col-lg-offset-6 col-lg-6 right">
                 </div>
             </div>
 
-            <div class="spacing"></div>
-
-            <div class="row reference">
-                <div class="col-md-6 left">
+            <div class="row reference white">
+                <div class="col-lg-6 left">
                     <h3>Alpha Notes</h3>
                     {% include alpha-notice.html %}
                     <p>
@@ -119,9 +117,9 @@ layout: base
             
             {% include reference/intro.html %}
 
-            <div class="row reference">
-                <div class="col-md-6 left">
-                    <h2 id="api-endpoints">API Endpoints</h2>
+            <div class="row reference white">
+                <div class="col-lg-6 left">
+                    <h2>API Endpoints<span id="api-endpoints">&nbsp;</span></h2>
                 </div>
             </div>
 

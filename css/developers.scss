@@ -29,7 +29,6 @@ h1, h2, h3, h4, h5 {
 
 .elevated, .card, .header h1, .marketing-container h1, .btn {
     box-shadow: none;
-    border: 1px solid #ccc;
 }
 
 .cards-container {
@@ -227,12 +226,10 @@ p {
 
 .highlight {
     padding: 0 !important;
-    border: 1px solid #ccc;
-    background: white;
-
+    background-color: #2E3032 !important;
+    margin-top: 10px;
     pre {
-        padding: 15px;
-        margin-bottom: 0;
+        padding: 4px 10px !important;
     }
 }
 

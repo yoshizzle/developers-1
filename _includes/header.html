@@ -1,5 +1,5 @@
 <!-- Copied from styles repo, do not edit -->
-<div class="header" style="{{ include.style }}">
+<div class="header {% if page.url == '/reference/' %}refheader{% endif %}" style="{{ include.style }}">
     {% include navigation.html %}
     <div class="bg-clouds">
     </div>

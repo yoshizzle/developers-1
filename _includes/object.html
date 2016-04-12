@@ -1,15 +1,16 @@
-<div class="row reference">
-    <div class="col-md-6 text-justify left">
-        <h3 id="object-{{include.name}}">
+<div class="row reference white">
+    <div class="col-lg-6 text-justify left">
+        <h3>
             {{ include.schema.name }}
+            <span class="anchor" id="object-{{include.name}}">&nbsp;</span>
         </h3>
         <p>{{include.schema.description}}</p>
     </div>
-    <div class="col-md-6 right">
+    <div class="col-lg-6 right hidden-lg-down">
     </div>
 </div> 
-<div class="row reference">
-    <div class="col-md-6 left">
+<div class="row reference white">
+    <div class="col-lg-6 left">
         <table class="table table-striped">
             <thead class="thead-inverse">
                 <tr>
@@ -57,7 +58,7 @@
         {% endfor %}
         {% endif %}
     </div>
-    <div class="col-md-6 right">
+    <div class="col-lg-6 right">
         <div class="schema">
             <div class="open">{</div>
             {% for prop in include.schema.schema %}
