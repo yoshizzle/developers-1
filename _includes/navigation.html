@@ -1,28 +1,93 @@
 <!-- This is (probably) temporary and was copied and pasted from linode.com -->
-<header>
-  <nav id="main-nav" class="navbar navbar-default navbar-dark container" role="navigation">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="https://linode.com">
-          <img id="navbar-logo" src="/styles/assets/linode-logo.svg"
-               width="115" height="45" />
-        </a>
-        <p class="nav-text">
-          <a href="/"><strong>Developer</strong></a>
-        </p>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/guides">Guides</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/reference">API Reference</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/libraries">Libraries</a>
-          </li>
-        </ul>
-      </div>
+{% capture _objects %}
+    {% for o in site.data.objects %}
+        {{ o[0] }}
+    {% endfor %}
+{% endcapture %}
+{% assign objects = _objects | split: ' ' | sort %}
 
-  </nav>
+{% capture _endpoints %}
+    {% for o in site.data.endpoints %}
+        {% if o[1].sort %}{{ o[1].sort }}-{% endif %}{{ o[0] }}
+    {% endfor %}
+{% endcapture %}
+{% assign endpoints = _endpoints | split: ' ' | sort %}
+<header>
+    <nav id="main-nav" class="navbar navbar-default navbar-dark 
+        {% if page.url == '/reference/' %} refnav {% endif %}
+        container" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="https://linode.com">
+            <img id="navbar-logo" src="/styles/assets/linode-logo.svg"
+               width="115" height="45" />
+            </a>
+            <p class="nav-text">
+                <a href="/"><strong>Dev<span 
+                    {% if page.url == '/reference/' %} 
+                        class="hidden-xs-down" 
+                    {% endif %} 
+                    >eloper</span></strong></a>
+            </p>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav
+                {% if page.url == '/reference/' %}
+                    hidden-sm-down
+                {% else %}
+                    hidden-xs-down
+                {% endif %}">
+                <li class="nav-item">
+                    <a class="nav-link" href="/guides">Guides</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/reference">API Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/libraries">Libraries</a>
+                </li>
+            </ul>
+        </div>
+        {% if page.url == '/reference/' %}
+            <select style="border: 1px solid #1c1c1c;
+                border-radius: 5px; margin-top: 15px; float: right;
+                color: #eee; background-color: #222;" id="menu" class="hidden-lg-up">
+                <option value="/guides" class="hidden-md-up">Guides</option>
+                <option value="/reference" class="hidden-md-up">API References</option>
+                {% if page.url == '/reference/' %}
+                    <optgroup label=" &nbsp; Introduction">
+                        <option value="#authentication" selected> &nbsp; Authentication</option>
+                        <option value="#lists-and-objects"> &nbsp; Lists & Objects</option>
+                        <option value="#pagination"> &nbsp; Pagination</option>
+                        <option value="#editing-objects"> &nbsp; Editing Objects</option>
+                        <option value="#errors"> &nbsp; Errors</option>
+                    </optgroup>
+                    <optgroup label=" &nbsp; API Endpoints">
+                        {% for key in endpoints %}
+                            {% assign name = key | split: '-' | last %}
+                            {% assign value = site.data.endpoints[name] %}
+                            <option value="#ep-{{name}}">{{value.name}}</option>
+                        {% endfor %}
+                    </optgroup>
+                    <optgroup label=" &nbsp; Object Reference">
+                        {% for key in objects %}
+                            {% assign value = site.data.objects[key] %}
+                            <option value="#object-{{key}}">{{value.name}}</option>
+                        {% endfor %}
+                    </optgroup>
+                {% endif %}
+                <option value="/libraries" class="hidden-md-up">Libraries</option>
+            </select>
+            <script>
+                $(function(){
+                    $('#menu').on('change', function () {
+                        var url = $(this).val(); // get selected value
+                        if (url) { // require a URL
+                            window.location = url; // redirect
+                        }
+                        return false;
+                    });
+                });
+           </script>
+        {% endif %}
+    </nav>
 </header>

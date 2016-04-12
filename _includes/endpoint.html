@@ -1,36 +1,38 @@
-<div class="row reference">
-    <div class="col-md-6 left">
-        <h3 id="ep-{{include.name}}">
+<div class="row reference white">
+    <div class="col-lg-6 left">
+        <h3>
             {{ include.schema.name }}
+            <span class="anchor" id="ep-{{include.name}}">&nbsp;</span>
         </h3>
         <p>{{include.schema.description}}</p>
     </div>
 </div> 
 {% for endpoint in include.schema.endpoints %}
-<div class="row reference">
-    <div class="col-md-6 left">
-        <h4 id="ep-{{ endpoint[0] }}">
+<div class="row reference white">
+    <div class="col-lg-6 left">
+        <h4>
             /{{ site.api_version }}/{{ endpoint[0] }}
             {% if endpoint[1].authenticated %}
                 <small class="text-muted">
                     <i class="fa fa-lock"></i> Authenticated
                 </small>
             {% endif %}
+            <span class="anchor" id="ep-{{ endpoint[0] }}">&nbsp;</span>
         </h4>
     </div>
 </div>
-<div class="row reference">
-    <div class="col-md-6 left">
+<div class="row reference white">
+    <div class="col-lg-6 left">
         <p>{{ endpoint[1].description }}</p>
     </div>
 </div>
 <div class="endpoint-methods">
 {% for method in endpoint[1].methods %}
-<div class="row reference endpoint-method">
-    <div class="col-md-6 left">
+<div class="row reference endpoint-method white">
+    <div class="col-lg-6 left">
         <div class="row">
-            <div class="col-md-4">
-                <h5 style="margin-top: 0; border: none" id="ep-{{ endpoint[0] }}-{{method[0]}}">
+            <div class="col-md-12">
+                <h5 style="margin-top: 0; border: none" >
                     {{ method[0] }}
                     {% if method[1].oauth %}
                     <br />
@@ -45,9 +47,8 @@
                         <i class="fa fa-money"></i> Will cost money
                     </small>
                     {% endif %}
+                    <span class="anchor" id="ep-{{ endpoint[0] }}-{{method[0]}}">&nbsp;</span>
                 </h5>
-            </div>
-            <div class="col-md-8">
                 <p>
                 {{ method[1].description }}
                 </p>
@@ -108,7 +109,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 right examples">
+    <div class="col-lg-6 right examples">
         <h5>
             {{ method[0] }} /{{ endpoint[0] }}
         </h5>
@@ -119,7 +120,7 @@
 </div>
 {% if forloop.last == false %}
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-lg-6">
         <hr />
     </div>
 </div>
