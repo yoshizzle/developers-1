@@ -22,7 +22,6 @@ nav{
 .reference-container {
     position: relative;
     min-height: calc(100% - 10.5rem);
-    //padding: 0;
     margin: 0;
 
     .spacing {
@@ -50,6 +49,12 @@ nav{
     }
 
     @media all and (min-width: 992px) {
+       .anchor{
+            visibility: hidden;
+            position: relative;
+            display: inline-block;
+            top: -20px;
+        }
         h3 {
             display: block;
         }
@@ -62,7 +67,6 @@ nav{
             background-image: -webkit-linear-gradient(left, #fff 65%, #444 35%);
             background-image: -moz-linear-gradient(left, #fff 65%, #444 35%);
         }
-
         .rside_head {
             font-size: 1.5em;
             color: #fff;
@@ -82,7 +86,12 @@ nav{
     }
 
     @media all and (max-width: 991px) {
-        //margin-top: 72px;
+       .anchor{
+            visibility: hidden;
+            position: relative;
+            display: inline-block;
+            top: -80px;
+        }
         .container{
             .navbar{
                 position: fixed;
@@ -255,12 +264,6 @@ body {
 
     h5 {
         border: none !important;
-    }
-    .anchor{
-        visibility: hidden;
-        position: relative;
-        display: inline-block;
-        top: -130px;
     }
 }
 
