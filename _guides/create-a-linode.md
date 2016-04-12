@@ -20,7 +20,7 @@ of available datacenters, you can use the /datacenters API endpoint. To make an
 API call against this endpoint over curl, run the following command:
 
 {% highlight bash %}
-curl https://api.linode.com/v4/datacenters
+curl https://{{ site.api_root }}/{{ site.api_version }}/datacenters
 {% endhighlight %}
 
 Note that since the datacenter list is public information, you don't need to
@@ -79,7 +79,7 @@ Linode (such as memory, storage space, and network transfer). Run the
 following curl command to retrieve a list of available Linode plans:
 
 {% highlight bash %}
-curl https://api.linode.com/v4/services/linode
+curl https://{{ site.api_root }}/{{ site.api_version }}/services/linode
 {% endhighlight %}
 
 The above command will return a JSON object like the following:
@@ -121,7 +121,7 @@ like selecting a service and a datacenter, issue a call to the API, this time
 for a list of available distributions:
 
 {% highlight bash %}
-curl https://api.linode.com/v4/distributions
+curl https://{{ site.api_root }}/{{ site.api_version }}/distributions
 {% endhighlight %}
 
 This will provide you with a list of distributions like the following:
@@ -172,7 +172,7 @@ to different locations and with different characteristics. Customize the
 following curl command and run it when you're ready to deploy:
 
 {% highlight bash %}
-curl -X POST https://api.linode.com/v4/linodes \
+curl -X POST https://{{ site.api_root }}/{{ site.api_version }}/linodes \
 -d '{"service": "service_112","datacenter": "datacenter_7","source": "distro_140","root_pass": "$root_pass"}' \
 -H "Authorization: token $TOKEN" -H "Content-type: application/json"
 {% endhighlight %}
@@ -246,7 +246,7 @@ the following curl command. Also remember to replace ```$TOKEN``` with
 your authorization token as in the previous API call.
 
 {% highlight bash %}
-curl -X POST https://api.linode.com/v4/linodes/$linode_id/boot \
+curl -X POST https://{{ site.api_root }}/{{ site.api_version }}/linodes/$linode_id/boot \
 -H "Authorization: token $TOKEN"
 {% endhighlight %}
 
@@ -255,7 +255,7 @@ status code is 200, it worked. You can now watch for the Linode's state field to
 change from "booting" to "running":
 
 {% highlight bash %}
-curl https://api.linode.com/v4/linodes/$linode_id \
+curl https://{{ site.api_root }}/{{ site.api_version }}/linodes/$linode_id \
 -H "Authorization: token $TOKEN"
 {% endhighlight %}
 
