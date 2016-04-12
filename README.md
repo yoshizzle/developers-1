@@ -25,36 +25,13 @@ If you already cloned, but missed this step, try this:
 
 ## Running
 
-To run locally, we follow the [Github Pages recommendation](https://help.github.com/articles/using-jekyll-with-pages/) of using Bundler.
+We use GitHub pages. For information about running sites made with GitHub pages,
+see [GitHub's docs](https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/).
+tl;dr:
 
-1. Ensure you have the latest version of Bundler installed
-
-    ```bash
-    gem update --system && gem install bundler
-    ```
-
-    If using OSX El Capitan or higher:
-    ```bash
-    gem update --system && gem install bundler -n/usr/local/bin
-    ```
-
-2. Use Bundler to install all required gems
-    
-    ```bash
-    bundle install
-    ```
-    * This installs all required gems locally to ./vendor to avoid interfering or colliding with system installed gems  
-    
-3. Start the [Jekyll](http://jekyllrb.com/) server and [guard-livereload](https://github.com/guard/guard-livereload) plugin.
-    
-    ```bash
-    bundle exec jekyll
-    ```
-    
-4. Now you can view the Docs at [localhost:4000](http://localhost:4000)
-    * Changes to assets will trigger a [LiveReload](http://feedback.livereload.com/knowledgebase/articles/86174-livereload-protocol) event.
-    * The browser will auto-reload once Jekyll finishes processing the changes.
-    * No browser extensions are required for this to work thanks to [rack-livereload](https://github.com/johnbintz/rack-livereload). 
+    gem install github-pages
+    jekyll serve --watch
+    # Navigate to http://localhost:4000
 
 ## Contributing
 
