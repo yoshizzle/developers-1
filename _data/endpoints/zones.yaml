@@ -2,7 +2,7 @@
 name: Zones
 base_path: /zones
 description: >
-  Zone endpoints provide a means of managing the <a href="#object-zones">
+  Zone endpoints provide a means of managing the DNZ <a href="#object-zones">
   Zone objects</a> on your account.
 endpoints:
   zones:
