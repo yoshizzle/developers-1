@@ -3,7 +3,7 @@ name: Linodes
 sort: 0
 base_path: /linodes
 description: >
-  Linode endpoints provide a means of managing the <a href="#object-linodes">
+  Linode endpoints provide a means of managing the <a href="#object-linode">
   Linode objects</a> on your account.
 endpoints:
   linodes:
@@ -16,7 +16,7 @@ endpoints:
       GET:
         oauth: linodes:view
         description: >
-          Returns a list of Linodes.
+          Returns a list of <a href="#object-linode">Linodes</a>.
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
@@ -83,7 +83,7 @@ endpoints:
       GET:
         oauth: linodes:view
         description: >
-          Returns information about this Linode.
+          Returns information about this <a href="#object-linode">Linode</a>.
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
@@ -129,7 +129,7 @@ endpoints:
       GET:
         oauth: linodes:view
         description: >
-          Returns a list of disks.
+          Returns a list of <a href="#object-disk">disks</a>.
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
@@ -209,7 +209,7 @@ endpoints:
       GET:
         oauth: linodes:view
         description: >
-          Returns information about this disk.
+          Returns information about this <a href="#object-disk">disk</a>.
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
@@ -313,7 +313,8 @@ endpoints:
       GET:
         oauth: linodes:view
         description: >
-          Returns a list of configs for a given Linode.
+          Returns a list of <a href="#object-linode_config">configs</a> for a
+          given Linode.
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
@@ -393,7 +394,8 @@ endpoints:
       GET:
         oauth: linodes:view
         description: >
-          Returns information about this Linode config.
+          Returns information about this <a href="#object-linode_config">
+          Linode config</a>.
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
