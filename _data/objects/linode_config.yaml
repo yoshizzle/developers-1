@@ -6,6 +6,9 @@ description: >
   mapping, kernel, and so on for booting a Linode. Note that <code>sd*</code>
   will be replaced by <code>xvd*</code> for deprecated Xen Linodes.
 schema:
+  id:
+    _type: string
+    _value: config_1234
   comments:
     _editable: true
     _type: string
@@ -101,9 +104,6 @@ schema:
         <a href="https://www.linode.com/docs/platform/network-helper">
           (more info)
         </a>
-  id:
-    _type: string
-    _value: config_1234
   kernel:
     _editable: true
     _type: kernel
