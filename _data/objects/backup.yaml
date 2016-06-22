@@ -1,0 +1,61 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Backup
+prefix: backup
+description: >
+  Backup objects represent a specific backup of a Linode
+schema:
+  id:
+    _type: string
+    _value: backup_1
+  label:
+    _type: string
+    _value: A label for your snapshot
+    _description: Human-friendly backup name
+    _filterable: false
+    _limit: 1-255 characters
+  status:
+    _type: enum
+    _subtype: Status
+    _value: successful
+    _description: Status of the backup
+    _filterable: false
+  type:
+    _type: enum
+    _subtype: Type
+    _value: snapshot
+    _description: Whether this is a snapshot or an auto backup
+  linode_id:
+    _type: string
+    _value: linode_123
+    _description: The Linode ID this backup is associated with
+  datacenter:
+      _type: datacenter
+      _filterable: false
+      _description: This backup  datacenter
+      id:
+        _type: string
+        _value: datacenter_6
+      label:
+        _type: string
+        _value: Newark, NJ
+  created:
+    _type: datetime
+    _value: "2015-09-29T11:21:01"
+  updated:
+    _type: datetime
+    _value: "2015-09-29T11:21:01"
+  finished:
+    _type: datetime
+    _value: "2015-09-29T11:21:01"
+    _description: An ISO 8601 datetime of when the backup completed
+enums:
+  Status:
+    paused: Backup job is currently suspended
+    pending: Backup job has not started yet
+    running: Backup job is currently running
+    needsPostProcessing: Backup needs some finishing touches
+    failed: Backup job failed
+    userAborted: Backup (snapshot) was aborted by user
+  Type:
+    auto: A backup that is automatically created when Backups are enabled
+    snapshot: A backup that is manually created by the User

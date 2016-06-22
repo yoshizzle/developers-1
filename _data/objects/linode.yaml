@@ -51,6 +51,52 @@ schema:
         _type: integer
         _value: 80
         _description: Threshold as a percentage of your quota
+  backups:
+    _description: >
+      Displays if backups are enabled, last backup datetime if applicable, and
+      the day/window your backups will occur. Window is prefixed by a "W" and an
+      integer representing the two-hour window in 24-hour time format. For example,
+      11AM is represented as "W11", 8PM as "W20", etc
+    enabled:
+      _type: boolean
+      _value: true
+    schedule:
+      _description: The day and window of a Linode's automatic backups
+      day:
+        _type: string
+        _value: "Tuesday"
+      window:
+        _type: string
+        _value: "W20"
+    last_backup:
+      _description: If enabled, when last backup was successfully completed
+      create_dt:
+        _type: datetime
+        _value: "2015-10-06T00:27:08"
+      duration:
+        _type: integer
+        _value: 0
+      finish_dt:
+        _type: datetime
+        _value: "2015-10-06T01:09:08"
+      id:
+        _type: string
+        _value: "backup_26083011"
+      message:
+        _type: string
+        _value: "Backup completed."
+      status:
+        _type: enum
+        _subtype: BackupStatus
+        _value: "successful"
+        _filterable: false
+        _pylib_volatile: true
+      type:
+        _type: enum
+        _subtype: BackupType
+        _value: "auto"
+        _filterable: false
+        _pylib_volatile: true
   created:
     _type: datetime
     _value: "2015-09-29T11:21:01"
@@ -172,3 +218,13 @@ enums:
     provisioning: The Linode is being created
     deleting: The Linode is being deleted
     migrating: The Linode is being migrated to a new host/datacenter
+  BackupStatus:
+    pending: Backup is in the queue and waiting to begin
+    running: Linode in the process of being backed up
+    needsPostProcessing: Backups awaiting final integration into existing backup data
+    successful: Backup successfully completed
+    failed: Linode backup failed
+    userAborted: User aborted current backup process
+  BackupType:
+    auto: Automatic backup
+    snapshot: User-initiated, manual file backup
