@@ -114,7 +114,11 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X PUT -d '{
-                  "label": "newlabel"
+                  "label": "newlabel",
+                  "schedule": {
+                    "day": "Tuesday",
+                    "window": "W20"
+                  }
                 }' \
                 https://$api_root/$version/linodes/$linode_id
           python: |
