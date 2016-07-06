@@ -18,7 +18,7 @@ constructor:
             _keyword: false
             desc: The <code>Linode</code> object's ID who owns this Config.
     example: >
-        config = linode.Datacenter(client, "config_6")
+        config = linode.Config(client, "config_6", "linode_123")
 methods:
     save:
         desc: >

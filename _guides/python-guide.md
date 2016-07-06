@@ -129,7 +129,7 @@ Now that that's gone, we can create a new Linode running Debian 1.8:
 
 This time, we called `create_linode` with a "source" keywork argument.  The source tells the API what to deploy, and it will do 
 "[the right thing](/reference/#ep-linodes-POST)" to give you a working Linode.  Since a Distribution needs a root password and we didn't
-provide one, the client helpfully generaeted one for us and returned it as well.  Let's boot it and wait for it to come online:
+provide one, the client helpfully generated one for us and returned it as well.  Let's boot it and wait for it to come online:
 
 {% highlight python %}
 >>> l.boot()
