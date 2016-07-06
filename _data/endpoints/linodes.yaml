@@ -48,7 +48,9 @@ endpoints:
               <ul><li>If you provide a
               distribution, it will create sane default configs and disks, then
               install that distribution on the new Linode.</li><li>If no source is provided,
-              a blank Linode is created.</li></ul>
+              a blank Linode is created.</li>
+              <li>If you provide a backup, it will create a new linode and restore
+              that backup to it.</li></ul>
           root_pass:
             optional: unless source == "distro"
             description: >
@@ -627,6 +629,11 @@ endpoints:
             description: >
               The ID of the Linode to restore a backup to
             type: linode
+          overwrite:
+            description: >
+                If true, deletes all disks and configs on the target linode before restoring.
+            type: boolean
+            optional: true
         examples:
           curl: |
             curl -H "Content-Type: application/json" \

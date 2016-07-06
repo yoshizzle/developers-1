@@ -18,7 +18,7 @@ schema:
     _filterable: true
   id:
     _type: string
-    _value: serv_112
+    _value: linode2048.5
   label:
     _type: string
     _value: Linode 1024
