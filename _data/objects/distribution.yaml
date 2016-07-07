@@ -14,7 +14,7 @@ schema:
     _filterable: true
   id:
     _type: string
-    _value: distro_132
+    _value: linode/Arch2014.10
   label:
     _type: string
     _value: Arch Linux 2014.10

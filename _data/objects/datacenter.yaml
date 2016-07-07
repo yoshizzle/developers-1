@@ -6,16 +6,16 @@ description: >
 schema:
   id:
     _type: string
-    _value: datacenter_7
+    _value: newark
   label:
     _type: string
-    _value: London, England, UK
+    _value: Newark, NJ
     _description: Human-friendly datacenter name
     _filterable: true
   datacenter:
     _type: enum
     _subtype: Datacenter
-    _value: london
+    _value: newark
     _description: Datacenters
 enums:
   Datacenter:
