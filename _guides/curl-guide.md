@@ -30,7 +30,6 @@ This will give you a response like this:
     "distributions": [
         {
             "created": "2014-10-24T15:48:04",
-            "experimental": false,
             "id": "distro_133",
             "label": "Ubuntu 14.10",
             "minimum_image_size": 650,
