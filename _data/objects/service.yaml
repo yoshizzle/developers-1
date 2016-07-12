@@ -6,6 +6,9 @@ description: >
   Provisioning new infrastructure generally involves including a service ID with
   the request.
 schema:
+  id:
+    _type: string
+    _value: linode2048.5
   disk:
     _type: integer
     _value: 24
@@ -16,9 +19,6 @@ schema:
     _value: 1
     _description: Cost (in cents) per hour
     _filterable: true
-  id:
-    _type: string
-    _value: linode2048.5
   label:
     _type: string
     _value: Linode 1024

@@ -4,6 +4,9 @@ prefix: lnde
 description: >
   Linode objects describe a single Linode on your account.
 schema:
+  id:
+    _type: string
+    _value: linode_12345
   alerts:
     _description: Configure thresholds for alerts
     cpu:
@@ -142,9 +145,6 @@ schema:
     _value: Example
     _filterable: true
     limit: 0-50 characters
-  id:
-    _type: string
-    _value: linode_12345
   ip_addresses:
     _description: IP addresses associated with your Linode
     private:
