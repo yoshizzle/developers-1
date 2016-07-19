@@ -8,52 +8,59 @@ schema:
     _type: string
     _value: linode_12345
   alerts:
-    _description: Configure thresholds for alerts
+    _description: >
+      Toggle and set thresholds for receiving email alerts.
+      <ul>
+      <li>CPU Usage - % - Average CPU usage over 2 hours exceeding this value triggers this alert. (Range 0-2000, default 90)</li>
+      <li>Disk IO Rate - IO Ops/sec - Average Disk IO ops/sec over 2 hours exceeding this value triggers this alert. (Range 0-100000, default 10000)</li>
+      <li>Incoming Traffic - Mbit/s - Average incoming traffic over a 2 hour period exceeding this value triggers this alert. (Range 0-40000, default 10)</li>
+      <li>Outbound Traffic - Mbit/s - Average outbound traffic over a 2 hour period exceeding this value triggers this alert. (Range 0-10000, default 10)</li>
+      <li>Transfer Quota - % - Percentage of network transfer quota used being greater than this value will trigger this alert. (Range 0-400, default 80)</li></ul>
     cpu:
-      _description: Alert threshold for CPU usage
+      _description: Average CPU usage over 2 hours exceeding this value triggers this alert
       enabled:
         _type: boolean
         _value: true
       threshold:
         _type: integer
-        _description: CPU Usage %
         _value: 90
+        _description: CPU Usage % (Range 0-2000, default 90)
     io:
-      _description: Alert threshold for disk I/O
+      _description: Average Disk IO ops/sec over 2 hours exceeding this value triggers this alert.
       enabled:
         _type: boolean
         _value: true
       threshold:
         _type: integer
-        _value: 5000
-        _description: Threshold in bytes per second # TODO: Unit check
+        _value: 10000
+        _description: Disk IO Rate ops/sec (Range 0-100000, default 10000)
     transfer_in:
-      _description: Alert threshold for incoming network transfer
+      _description: Average incoming traffic over a 2 hour period exceeding this value triggers this alert
       enabled:
         _type: boolean
         _value: true
       threshold:
         _type: integer
-        _value: 5
-        _description: Mb/sec # TODO: Unit check
+        _value: 10
+        _description: Incoming Traffic Mbit/s (Range 0-40000, default 10)
     transfer_out:
-      _description: Alert threshold for outgoing network transfer
+      _description: Average outbound traffic over a 2 hour period exceeding this value triggers this alert.
       enabled:
         _type: boolean
         _value: true
       threshold:
         _type: integer
-        _value: 5
-        _description: Mb/sec # TODO: Unit check
+        _value: 10
+        _description: Outbound Traffic Mbit/s (Range 0-10000, default 10)
     transfer_quota:
-      _description: Alert threshold for approaching your transfer quota
+      _description: Percentage of network transfer quota used being greater than this value will trigger this alert.
       enabled:
         _type: boolean
         _value: true
       threshold:
         _type: integer
         _value: 80
-        _description: Threshold as a percentage of your quota
+        _description: Transfer Quota % (Range 0-400, default 80)
   backups:
     _description: >
       Displays if backups are enabled, last backup datetime if applicable, and
