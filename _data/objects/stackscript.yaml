@@ -55,7 +55,7 @@ schema:
         created:
           _type: datetime
           _value: 2015-04-27T16:26:41
-        minimum_image_size:
+        minimum_storage_size:
           _type: integer
           _value: 900
       - id:
@@ -76,7 +76,7 @@ schema:
         created:
           _type: datetime
           _value: 2014-09-24T13:59:32
-        minimum_image_size:
+        minimum_storage_size:
           _type: integer
           _value: 600
   deployments_total:
