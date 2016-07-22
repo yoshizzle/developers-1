@@ -53,11 +53,14 @@
                 {{ method[1].description }}
                 </p>
                 {% if method[0] == "PUT" %}
+                {% assign obj = nil %}
                 {% for o in site.data.objects %}
                 {% if o[0] == endpoint[1].resource %}
                     {% assign obj = o[1] %}
+                    {% break %}
                 {% endif %}
                 {% endfor %}
+                {% if obj.schema %}
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -73,6 +76,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
+                {% endif %}
                 <p>
                 <em>See the
                     <a href="#object-{{ endpoint[1].resource }}">

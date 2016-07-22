@@ -238,7 +238,7 @@ endpoints:
             TODO
   dnszones/:id/records/:id:
     authenticated: true
-    resource: dnszonerecords
+    resource: dnszonerecord
     methods:
       GET:
         oauth: dnszones:view

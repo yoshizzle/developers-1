@@ -8,7 +8,7 @@ description: >
 endpoints:
   linodes:
     type: list
-    resource: linodes
+    resource: linode
     authenticated: true
     description: >
       Manage the collection of Linodes your account may access.
@@ -91,7 +91,7 @@ endpoints:
             TODO
   linodes/:id:
     type: resource
-    resource: linodes
+    resource: linode
     authenticated: true
     description: >
       Manage a particular Linode your account may access.
@@ -141,7 +141,7 @@ endpoints:
             TODO
   linodes/:id/disks:
     type: list
-    resource: linodes
+    resource: linode
     authenticated: true
     description: >
       Manage the disks associated with this Linode.
