@@ -1,5 +1,5 @@
 # vim: set et ts=2 sw=2 tw=80 :
-name: "StackScript"
+name: StackScript
 prefix: stck
 description: >
   StackScript objects describe a StackScript which can be used to help automate
