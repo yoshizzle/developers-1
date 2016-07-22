@@ -53,37 +53,37 @@
                 {{ method[1].description }}
                 </p>
                 {% if method[0] == "PUT" %}
-                {% assign obj = nil %}
-                {% for o in site.data.objects %}
-                {% if o[0] == endpoint[1].resource %}
-                    {% assign obj = o[1] %}
-                    {% break %}
-                {% endif %}
-                {% endfor %}
-                {% if obj.schema %}
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for prop in obj.schema %}
-                        {% assign name = prop[0] %}
-                        {% assign info = prop[1] %}
-                        {% include render-property-table.html name=name info=info editable=true %}
+                    {% assign obj = nil %}
+                    {% for o in site.data.objects %}
+                        {% if o[0] == endpoint[1].resource %}
+                            {% assign obj = o[1] %}
+                            {% break %}
+                        {% endif %}
                     {% endfor %}
-                    </tbody>
-                </table>
-                {% endif %}
-                <p>
-                <em>See the
-                    <a href="#object-{{ endpoint[1].resource }}">
-                        {{ obj.name }}
-                    </a> 
-                    object for the full reference.</em>
-                </p>
+                    {% if obj.schema %}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for prop in obj.schema %}
+                            {% assign name = prop[0] %}
+                            {% assign info = prop[1] %}
+                            {% include render-property-table.html name=name info=info editable=true %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                    <p>
+                    <em>See the
+                        <a href="#object-{{ endpoint[1].resource }}">
+                            {{ obj.name }}
+                        </a>
+                        object for the full reference.</em>
+                    </p>
                 {% endif %}
                 {% if method[1].params %}
                     <table class="table table-striped">
