@@ -13,4 +13,4 @@ constructor:
             _keyword: false
             desc: This Datacenter's ID.
     example: >
-        dc = linode.Datacenter(client, "datacenter_6")
+        dc = linode.Datacenter(client, "newark")

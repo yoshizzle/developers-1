@@ -6,7 +6,7 @@ description: >
 schema:
   id:
     _type: string
-    _value: linode_12345
+    _value: prod-1
   alerts:
     _description: >
       Toggle and set thresholds for receiving email alerts.
@@ -116,7 +116,7 @@ schema:
     _description: This Linode's datacenter
     id:
       _type: string
-      _value: datacenter_6
+      _value: newark
     label:
       _type: string
       _value: Newark, NJ
@@ -126,7 +126,7 @@ schema:
     _filterable: true
     id:
       _type: string
-      _value: distro_123
+      _value: linode/ubuntu15.10
     label:
       _type: string
       _value: openSUSE 13.2

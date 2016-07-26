@@ -26,7 +26,7 @@ schema:
     _description: Whether this is a snapshot or an auto backup
   linode_id:
     _type: string
-    _value: linode_123
+    _value: prod-1
     _description: The Linode ID this backup is associated with
   datacenter:
       _type: datacenter
@@ -34,7 +34,7 @@ schema:
       _description: This backup  datacenter
       id:
         _type: string
-        _value: datacenter_6
+        _value: newark
       label:
         _type: string
         _value: Newark, NJ

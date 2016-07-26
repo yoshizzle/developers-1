@@ -32,31 +32,31 @@ above command will return a JSON object like the following:
     "datacenters": [
         {
             "label": "Dallas, TX",
-            "id": "datacenter_2"
+            "id": "dallas"
         },
         {
             "label": "Fremont, CA",
-            "id": "datacenter_3"
+            "id": "fremont"
         },
         {
             "label": "Atlanta, GA",
-            "id": "datacenter_4"
+            "id": "atlanta"
         },
         {
             "label": "Newark, NJ",
-            "id": "datacenter_6"
+            "id": "newark"
         },
         {
             "label": "London, UK",
-            "id": "datacenter_7"
+            "id": "london"
         },
         {
             "label": "Singapore, SG",
-            "id": "datacenter_9"
+            "id": "singapore"
         },
         {
             "label": "Tokyo, JP",
-            "id": "datacenter_8"
+            "id": "tokyo"
         }
     ],
     "page": 1,
@@ -69,7 +69,7 @@ The datacenter list is pretty self-explanatory: there are 7 available
 datacenters, and their geographical locations are provided in the `label`
 field. The `id` field is a unique ID which you'll use to refer to the
 datacenter you want to select. For this example, we'll go with the
-"Newark, NJ" datacenter with ID "datacenter_6".
+"Newark, NJ" datacenter with ID "newark".
 
 ## Selecting a service plan
 
@@ -88,7 +88,7 @@ The above command will return a JSON object like the following:
 {
     "services": [
         {
-            "id": "service_112",
+            "id": "linode2048.5",
             "label": "Linode 1024",
             "vcpus": 1,
             "mbits_out": 125,
@@ -130,7 +130,7 @@ This will provide you with a list of distributions like the following:
 {
     "distributions": [
         {
-            "id": "distro_140",
+            "id": "linode/debian8",
             "label": "Debian 8.1",
             "vendor": "Debian",
             "x64": true,
@@ -172,7 +172,7 @@ following curl command and run it when you're ready to deploy:
 
 {% highlight bash %}
 curl -X POST https://{{ site.api_root }}/{{ site.api_version }}/linodes \
--d '{"service": "service_112","datacenter": "datacenter_6","source": "distro_140","root_pass": "$root_pass"}' \
+-d '{"service": "linode2048.5","datacenter": "newark","source": "linode/debian8","root_pass": "$root_pass","label":"prod-1"}' \
 -H "Authorization: token $TOKEN" -H "Content-type: application/json"
 {% endhighlight %}
 
@@ -182,7 +182,7 @@ created Linode like the following:
 {% highlight json %}
 {
     "linode": {
-        "id": "linode_1",
+        "id": "prod-1",
         "total_transfer": 2000,
         "distribution": null,
         "label": "linode1",
@@ -191,8 +191,8 @@ created Linode like the following:
         "updated": "2015-12-07T18:03:28",
         "created": "2015-12-07T18:03:28",
         "datacenter": {
-            "id": "datacenter_6",
-            "label": "Vagrant"
+            "id": "newark",
+            "label": "Newark"
         },
         "ip_addresses": {
             "private": {
@@ -261,7 +261,7 @@ curl https://{{ site.api_root }}/{{ site.api_version }}/linodes/$linode_id \
 {% highlight json %}
 {
     "linode": {
-        "id": "linode_1",
+        "id": "prod-1",
         "status": "running",
         /* and so on */
     }

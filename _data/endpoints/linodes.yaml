@@ -82,8 +82,8 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "datacenter": "datacenter_12",
-                    "service": "service_12"
+                    "datacenter": "newark",
+                    "service": "linode2048.5"
                 }' \
                 https://$api_root/$version/linodes
           python: |
@@ -399,11 +399,10 @@ endpoints:
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
                     "label": "Arch Linux config",
-                    "kernel": "kernel_12",
+                    "kernel": "linode/latest_64",
                     "disks": [
-                      "disk_123",
-                      "disk_124",
-                      "disk_125"
+                      "My Debian 8 Disk",
+                      "swap",
                     ]
                 }' \
                 https://$api_root/$version/linodes/$linode_id/configs
@@ -440,11 +439,11 @@ endpoints:
                 -X PUT -d '{
                     "label": "Edited config",
                     "kernel": {
-                      "id": "kernel_12"
+                      "id": "linode/latest_64"
                     }
                     "disks": {
                       "sda": {
-                        "id": "disk_123"
+                        "id": "My Debian 8 Disk"
                       }
                     }
                 }' \
@@ -485,7 +484,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "config": "config_1234"
+                    "config": "My Debian 8.1 Disk Profile"
                 }' \
                 https://$api_root/$version/linodes/$linode_id/boot
           python: |
@@ -529,7 +528,8 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "config": "config_1234"
+                    "config": "My Debian 8.1 Disk Profile"
+
                 }' \
                 https://$api_root/$version/linodes/$linode_id/reboot
           python: |
@@ -639,7 +639,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "linode": "linode_1234"
+                    "linode": "prod-1"
                 }' \
                 https://$api_root/$version/linodes/$linode_id/backups/$backup_id/restore
           python: |

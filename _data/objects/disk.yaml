@@ -6,7 +6,7 @@ description: >
 schema:
   id:
     _type: string
-    _value: disk_7
+    _value: ubuntu15.10
   label:
     #_editable: true
     # NOTE: label is marked as editable in the dict, but the PUT endpoint does
