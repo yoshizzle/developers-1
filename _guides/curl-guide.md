@@ -30,7 +30,7 @@ This will give you a response like this:
     "distributions": [
         {
             "created": "2014-10-24T15:48:04",
-            "id": "distro_133",
+            "id": "linode/ubuntu14.10",
             "label": "Ubuntu 14.10",
             "minimum_image_size": 650,
             "recommended": true,
@@ -101,12 +101,12 @@ This will give you a response like this:
             },
             "created": "2015-02-19T15:34:05",
             "datacenter": {
-                "id": "dctr_6",
+                "id": "newark",
                 "label": "Newark, NJ"
             },
             "distribution": null,
             "group": "",
-            "id": "linode_871212",
+            "id": "prod-1",
             "ip_addresses": {
                 "private": {
                     "ipv4": [],

@@ -13,4 +13,4 @@ constructor:
             _keyword: false
             desc: This Distribution's ID.
     example: >
-        distro = linode.Distribution(client, "distro_6")
+        distro = linode.Distribution(client, "linode/debian8")

@@ -17,7 +17,7 @@ constructor:
             _keyword: false
             desc: This DNS Zone's ID.
     example: >
-        dnszone = linode.DNSZone(client, "dnszone_6")
+        dnszone = linode.DNSZone(client, "example.org")
 methods:
     save:
         desc: >
@@ -40,7 +40,7 @@ methods:
             '**kwargs':
                 _keyword: false
                 desc: >
-                    Any number of keyword arguments to send to the POST /dnszones/dnszone_123 endpoint.  See
+                    Any number of keyword arguments to send to the POST /dnszones/example.org endpoint.  See
                     the <a href="/reference#ep-dnszones-records-POST">endpoint docs</a> for more information.
         example: |
             dnszone_record = dnszone.create_record('AAA')

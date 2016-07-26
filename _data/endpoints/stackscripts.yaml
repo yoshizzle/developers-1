@@ -59,7 +59,7 @@ endpoints:
               -H "Authorization: token $TOKEN" \
               -X POST -d '{
                 "label": "Initial Label",
-                "distributions": ["distro_125", "distro_126"],
+                "distributions": ["linode/ubuntu15.4", "linode/ubuntu15.10"],
                 "script": "#!..."
               }' \
               https://$api_root/$version/stackscripts

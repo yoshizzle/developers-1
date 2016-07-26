@@ -21,7 +21,7 @@ constructor:
             _keyword: false
             desc: This Linode's ID.
     example: >
-        l = linode.Linode(client, "linode_6")
+        l = linode.Linode(client, "prod-1")
 methods:
     boot:
         desc: >
@@ -90,7 +90,7 @@ methods:
             '**kwargs':
                 _keyword: false
                 desc: >
-                    Any number of other keyword arguments to pass to the POST /linodes/linode_123/configs endpoint.  See
+                    Any number of other keyword arguments to pass to the POST /linodes/prod-1/configs endpoint.  See
                     the <a href="/reference/index.html#ep-linodes-configs-POST">API Reference</a> for a complete breakdown
                     of all accepted values.
         example: |

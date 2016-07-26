@@ -16,7 +16,7 @@ constructor:
             _keyword: false
             desc: The <code>Linode</code> object's ID who owns this DNSZoneRecord.
     example: >
-        dnszonerecord = linode.Datacenter(client, "dnszonerecord_6")
+        dnszonerecord = linode.DNSZoneRecord(client, "example.org", "www")
 methods:
     save:
         desc: >

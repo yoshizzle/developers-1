@@ -13,4 +13,4 @@ constructor:
             _keyword: false
             desc: This Kernel's ID.
     example: >
-        kernel = linode.Kernel(client, "kernel_6")
+        kernel = linode.Kernel(client, "linode/latest_64")

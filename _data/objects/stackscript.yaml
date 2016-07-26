@@ -39,7 +39,7 @@ schema:
     _value:
       - id:
           _type: integer
-          _value: distro_100
+          _value: linode/debian8
         label:
           _type: string
           _value: Debian 8.1
@@ -60,7 +60,7 @@ schema:
           _value: 900
       - id:
           _type: integer
-          _value: distro_101
+          _value: linode/debian7
         label:
           _type: string
           _value: Debian 7

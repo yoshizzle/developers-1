@@ -10,15 +10,9 @@
     <div class="col-lg-6 text-justify left">
         <p>
             The Linode API will return JSON objects to describe the various kinds of
-            objects you can manage with it. These objects will always include an ID in
-            the form of <code>prefix_####</code>. The prefix identifies the
-            type of record you're dealing with, and #### is a unique integer ID.
-        </p>
-        <p>
-            Many of the objects the API returns have relationships to other objects. For
-            convenience, we will often return a shorter version of the related object's
-            record with a few properties included, and the ID. You can always do another
-            request to get the full record for any related objects if necessary.
+            objects you can manage with it. These objects will always include an identifier,
+            which will be a string used to refernece that object.  These identifiers,
+            called "labels," are returned in the "id" attribute.
         </p>
         <p>
             Generally speaking, you may submit objects you receive through GET requests
@@ -26,18 +20,5 @@
             details of that object. Not all properties are editable, see the reference
             for each object type for a list of editable properties.
         </p>
-    </div>
-    <div class="col-lg-6 right">
-        <h3>Example IDs</h3>
-        <dl>
-            <dt>Linode</dt>
-            <dd><code>linode_1234</code></dd>
-            <dt>Image</dt>
-            <dd><code>image_1234</code></dd>
-            <dt>IP Address</dt>
-            <dd><code>ip_1234</code></dd>
-            <dt>DNS Zone</dt>
-            <dd><code>dnszone_1234</code></dd>
-        </dl>
     </div>
 </div>

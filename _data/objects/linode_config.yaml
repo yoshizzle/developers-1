@@ -8,7 +8,7 @@ description: >
 schema:
   id:
     _type: string
-    _value: config_1234
+    _value: My Ubutnu 15.10 Config
   comments:
     _editable: true
     _type: string
@@ -31,7 +31,7 @@ schema:
       _description: The disk mapped to /dev/sda
       id:
         _type: string
-        _value: disk_1234
+        _value: ubuntu15.10
       label:
         _type: string
         _value: openSUSE 13.2 Disk
@@ -112,7 +112,7 @@ schema:
       _value: 2011-09-01T21:08:55
     id:
       _type: string
-      _value: kernel_123
+      _value: linode/latest_64
     label:
       _type: string
       _value: "Latest 64 bit (4.1.0-x86_64-linode59)"

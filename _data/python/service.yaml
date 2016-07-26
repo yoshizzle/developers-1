@@ -13,4 +13,4 @@ constructor:
             _keyword: false
             desc: This Service's ID.
     example: >
-        service = linode.Service(client, "service_6")
+        service = linode.Service(client, "linode2048.5")

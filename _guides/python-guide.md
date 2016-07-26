@@ -99,15 +99,15 @@ have a look at all of the recommended Debian templates:
 >>> for d in client.get_distributions(linode.Distribution.vendor == 'Debian', linode.Distribution.recommended == True):
 ...   print("{}: {}".format(d.label, d.id))
 ...
-Debian 7: distro_130
-Debian 8.1: distro_140
+Debian 7: linode/debian7
+Debian 8.1: linode/debian8
 {% endhighlight %}
 
 Great, we have some options.  We can chain filters together to run more complex searches.  Since Debian 8.1 is the newest Debian template available, let's use it.
 We already have the ID, so this time we'll create the Distribution object without querying for it:
 
 {% highlight python %}
->>> distro = linode.Distribution(client, 'distro_140')
+>>> distro = linode.Distribution(client, 'linode/debian8')
 {% endhighlight %}
 
 We need to give the Distribution object a reference to the LinodeClient so it knows how to talk to the API to populate itself.
