@@ -32,7 +32,7 @@ This will give you a response like this:
             "created": "2014-10-24T15:48:04",
             "id": "distro_133",
             "label": "Ubuntu 14.10",
-            "minimum_image_size": 650,
+            "minimum_storage_size": 650,
             "recommended": true,
             "vendor": "Ubuntu",
             "x64": true

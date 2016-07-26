@@ -135,7 +135,7 @@ This will provide you with a list of distributions like the following:
             "vendor": "Debian",
             "x64": true,
             "recommended": true,
-            "minimum_image_size": 900,
+            "minimum_storage_size": 900,
             "created": "2015-04-27T16:26:41"
         }
         /* and so on */
