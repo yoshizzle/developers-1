@@ -17,14 +17,14 @@ schema:
       <li>Outbound Traffic - Mbit/s - Average outbound traffic over a 2 hour period exceeding this value triggers this alert. (Range 0-10000, default 10)</li>
       <li>Transfer Quota - % - Percentage of network transfer quota used being greater than this value will trigger this alert. (Range 0-400, default 80)</li></ul>
     cpu:
-      _description: Average CPU usage over 2 hours exceeding this value triggers this alert
+      _description: Average CPU usage over 2 hours exceeding this value triggers this alert.
       enabled:
         _type: boolean
         _value: true
       threshold:
         _type: integer
         _value: 90
-        _description: CPU Usage % (Range 0-2000, default 90)
+        _description: CPU Usage % (Range 0-2000, default 90).
     io:
       _description: Average Disk IO ops/sec over 2 hours exceeding this value triggers this alert.
       enabled:
@@ -33,16 +33,16 @@ schema:
       threshold:
         _type: integer
         _value: 10000
-        _description: Disk IO Rate ops/sec (Range 0-100000, default 10000)
+        _description: Disk IO Rate ops/sec (Range 0-100000, default 10000).
     transfer_in:
-      _description: Average incoming traffic over a 2 hour period exceeding this value triggers this alert
+      _description: Average incoming traffic over a 2 hour period exceeding this value triggers this alert.
       enabled:
         _type: boolean
         _value: true
       threshold:
         _type: integer
         _value: 10
-        _description: Incoming Traffic Mbit/s (Range 0-40000, default 10)
+        _description: Incoming Traffic Mbit/s (Range 0-40000, default 10).
     transfer_out:
       _description: Average outbound traffic over a 2 hour period exceeding this value triggers this alert.
       enabled:
@@ -51,7 +51,7 @@ schema:
       threshold:
         _type: integer
         _value: 10
-        _description: Outbound Traffic Mbit/s (Range 0-10000, default 10)
+        _description: Outbound Traffic Mbit/s (Range 0-10000, default 10).
     transfer_quota:
       _description: Percentage of network transfer quota used being greater than this value will trigger this alert.
       enabled:
@@ -60,18 +60,18 @@ schema:
       threshold:
         _type: integer
         _value: 80
-        _description: Transfer Quota % (Range 0-400, default 80)
+        _description: Transfer Quota % (Range 0-400, default 80).
   backups:
     _description: >
       Displays if backups are enabled, last backup datetime if applicable, and
       the day/window your backups will occur. Window is prefixed by a "W" and an
       integer representing the two-hour window in 24-hour time format. For example,
-      11AM is represented as "W11", 8PM as "W20", etc
+      11AM is represented as "W11", 8PM as "W20", etc.
     enabled:
       _type: boolean
       _value: true
     schedule:
-      _description: The day and window of a Linode's automatic backups
+      _description: The day and window of a Linode's automatic backups.
       day:
         _type: string
         _value: "Tuesday"
@@ -79,7 +79,7 @@ schema:
         _type: string
         _value: "W20"
     last_backup:
-      _description: If enabled, when last backup was successfully completed
+      _description: If enabled, when last backup was successfully completed.
       create_dt:
         _type: datetime
         _value: "2015-10-06T00:27:08"
@@ -113,7 +113,7 @@ schema:
   datacenter:
     _type: datacenter
     _filterable: true
-    _description: This Linode's datacenter
+    _description: This Linode's datacenter.
     id:
       _type: string
       _value: newark
@@ -121,7 +121,7 @@ schema:
       _type: string
       _value: Newark, NJ
   distribution:
-    _description: The distribution that this Linode booted to last
+    _description: The distribution that this Linode booted to last.
     _type: distribution
     _filterable: true
     id:
@@ -148,51 +148,51 @@ schema:
   group:
     _editable: true
     _type: string
-    _description: This Linode's display group
+    _description: This Linode's display group.
     _value: Example
     _filterable: true
     limit: 0-50 characters
   ip_addresses:
-    _description: IP addresses associated with your Linode
+    _description: IP addresses associated with your Linode.
     private:
       ipv4:
         _type: array
         _subtype: string
-        _description: IP addresses for private networking
+        _description: IP addresses for private networking.
         _value:
           - "10.20.30.40"
           - "10.20.30.50"
           - "10.20.30.60"
       link-local:
         _type: string
-        _description: Link-local IP address for private networking
+        _description: Link-local IP address for private networking.
         _value: "fe80::f03c:91ff:fe33:a2a0"
     public:
       failover:
         _type: array
         _subtype: string
-        _description: Failover IPs assigned to this Linode
+        _description: Failover IPs assigned to this Linode.
         _value:
       ipv4:
         _type: array
         _subtype: string
-        _descripton: Public IPv4 addresses assigned to this Linode
+        _descripton: Public IPv4 addresses assigned to this Linode.
         _value:
           - "100.90.80.70"
           - "100.90.80.60"
       ipv6:
         _type: string
-        _description: This Linode's public IPv6 address
+        _description: This Linode's public IPv6 address.
         _value: 2a01:7e00::f03c:91ff:fe33:a2a0
   label:
     _editable: true
     _type: string
-    _description: This Linode's display label
+    _description: This Linode's display label.
     _value: Example Linode
     _filterable: true
     _limit: "3-32 ASCII characters limited to letters, numbers, underscores, and dashes, starting and ending with a letter, and without two dashes or underscores in a row"
   services:
-    _description: Paid service(s) for this Linode
+    _description: Paid service(s) for this Linode.
     _type: array
     _subtype: service
     _value:
@@ -261,13 +261,13 @@ schema:
   state:
     _type: enum
     _subtype: State
-    _description: The current state of this Linode
+    _description: The current state of this Linode.
     _value: running
     _filterable: true
     _pylib_volatile: true
   total_transfer:
     _type: integer
-    _description: The amount of outbound traffic used this month
+    _description: The amount of outbound traffic used this month.
     _value: 20000
   updated:
     _type: datetime
@@ -275,21 +275,21 @@ schema:
     _pylib_volatile: true
 enums:
   State:
-    offline: The Linode is powered off
-    booting: The Linode is currently booting up
-    running: The Linode is currently running
-    shutting_down: The Linode is currently shutting down
-    rebooting: The Linode is rebooting
-    provisioning: The Linode is being created
-    deleting: The Linode is being deleted
-    migrating: The Linode is being migrated to a new host/datacenter
+    offline: The Linode is powered off.
+    booting: The Linode is currently booting up.
+    running: The Linode is currently running.
+    shutting_down: The Linode is currently shutting down.
+    rebooting: The Linode is rebooting.
+    provisioning: The Linode is being created.
+    deleting: The Linode is being deleted.
+    migrating: The Linode is being migrated to a new host/datacenter.
   BackupStatus:
-    pending: Backup is in the queue and waiting to begin
-    running: Linode in the process of being backed up
-    needsPostProcessing: Backups awaiting final integration into existing backup data
-    successful: Backup successfully completed
-    failed: Linode backup failed
-    userAborted: User aborted current backup process
+    pending: Backup is in the queue and waiting to begin.
+    running: Linode in the process of being backed up.
+    needsPostProcessing: Backups awaiting final integration into existing backup data.
+    successful: Backup successfully completed.
+    failed: Linode backup failed.
+    userAborted: User aborted current backup process.
   BackupType:
     auto: Automatic backup
     snapshot: User-initiated, manual file backup

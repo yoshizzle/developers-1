@@ -19,7 +19,7 @@
             {% when "integer" or "boolean" or "string" or "array" %}
                 <span class="description">
                     {% if include.info._description %}
-                    {{ include.info._description }}.
+                    {{ include.info._description }}
                     {% else %}
                     A {{ include.info._type }}.
                     {% endif %}
@@ -30,14 +30,14 @@
             {% when "datetime" %}
                 <span class="description">
                     {% if include.info._description %}
-                    {{ include.info._description }}.
+                    {{ include.info._description }}
                     {% else %}
                     ISO 8601 datetime.
                     {% endif %}
                 </span>
             {% when "enum" %}
                 <span class="description">
-                    {{ include.info._description }}.
+                    {{ include.info._description }}
                 </span>
             {% else %}
                 <!-- linked type -->
@@ -62,7 +62,7 @@
             {% endcase %}
         {% else %}
             <span class="description">
-                {{ include.info._description }}.
+                {{ include.info._description }}
                 {% if include.info._limit %}
                 Must be {{ include.info._limit }}.
                 {% endif %}
