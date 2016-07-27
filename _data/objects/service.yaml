@@ -9,7 +9,7 @@ schema:
   id:
     _type: string
     _value: linode2048.5
-  disk:
+  storage:
     _type: integer
     _value: 24
     _description: If applicable, disk space in MB
