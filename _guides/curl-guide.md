@@ -110,7 +110,7 @@ This will give you a response like this:
             "ip_addresses": {
                 "private": {
                     "ipv4": [],
-                    "link-local": "fe80::f03c:91ff:fe33:a2e4"
+                    "link_local": "fe80::f03c:91ff:fe33:a2e4"
                 },
                 "public": {
                     "failover": [],
