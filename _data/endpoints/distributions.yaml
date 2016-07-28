@@ -2,7 +2,7 @@
 name: Distributions
 base_path: /distributions
 description: >
-  Distribution endpoints provide a means of viewing 
+  Distribution endpoints provide a means of viewing
   <a href="#object-distribution">distribution objects</a>.
 endpoints:
   distributions:

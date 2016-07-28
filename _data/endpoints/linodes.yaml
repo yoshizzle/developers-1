@@ -246,7 +246,7 @@ endpoints:
       PUT:
         oauth: linodes:modify
         description: >
-          Updates a disk's metadata
+          Updates a disk's metadata.
         examples:
           curl: |
             curl -H "Content-Type: application/json" \
@@ -287,14 +287,14 @@ endpoints:
   linodes/:id/disks/:id/resize:
     type: strange
     authenticated: true
-    description: Resizes the disk
+    description: Resizes the disk.
     methods:
       POST:
         oauth: linodes:modify
         dangerous: true
         params:
           size:
-            description: The desired size of the disk in MB
+            description: The desired size of the disk in MB.
             type: integer
         examples:
           curl: |
@@ -539,7 +539,7 @@ endpoints:
     type: action
     authenticated: true
     description: >
-      Returns information about this Linode's <a href="#object-backup">backups</a>
+      Returns information about this Linode's <a href="#object-backup">backups</a>.
     methods:
       GET:
         oauth: linodes:view
@@ -554,7 +554,7 @@ endpoints:
         oauth: linodes:delete
         dangerous: true
         description: >
-          Creates a snapshot backup of a Linode
+          Creates a snapshot backup of a Linode.
           <div class="alert alert-danger">
             <strong>WARNING</strong>
             <p>
@@ -619,7 +619,7 @@ endpoints:
     type: action
     authenticated: true
     description: >
-      Restores a <a href="#object-backup">backup</a> to a Linode
+      Restores a <a href="#object-backup">backup</a> to a Linode.
     methods:
       POST:
         oauth: linodes:create
@@ -627,7 +627,7 @@ endpoints:
         params:
           linode:
             description: >
-              The ID of the Linode to restore a backup to
+              The ID of the Linode to restore a backup to.
             type: linode
           overwrite:
             description: >

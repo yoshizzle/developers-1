@@ -13,24 +13,24 @@ schema:
   label:
     _type: string
     _value: Arch Linux 2014.10
-    _description: The user-friendly name of this distribution
+    _description: The user-friendly name of this distribution.
     _filterable: true
   minimum_storage_size:
     _type: integer
     _value: 800
-    _description: The minimum size required for the distrbution image
+    _description: The minimum size required for the distrbution image.
     _filterable: true
   recommended:
     _type: boolean
     _value: true
-    _description: "True if this distribution is recommended by Linode"
+    _description: True if this distribution is recommended by Linode.
     _filterable: true
   vendor:
     _type: string
     _value: Arch
-    _description: The upstream distribution vendor. Consistent between releases of a distro
+    _description: The upstream distribution vendor. Consistent between releases of a distro.
     _filterable: true
   x64:
     _type: boolean
     _value: true
-    _description: "True if this is a 64-bit distribution"
+    _description: True if this is a 64-bit distribution.

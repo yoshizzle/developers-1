@@ -22,7 +22,7 @@ schema:
     _value: admin@example.com
     _optional: true
     _description: >
-      Start of Authority (SOA) contact email
+      Start of Authority (SOA) contact email.
   description:
     _editable: true
     _type: string
@@ -44,7 +44,7 @@ schema:
     _optional: true
     _description: >
       Time interval that should elapse before a failed refresh should
-      be retried, in seconds
+      be retried, in seconds.
   expire_sec:
     _editable: true
     _type: integer
@@ -61,7 +61,7 @@ schema:
     _optional: true
     _description: >
       Time interval that the resource record may be cached before
-        it should be discarded, in seconds
+        it should be discarded, in seconds.
   status:
     _editable: true
     _type: enum
@@ -105,12 +105,12 @@ schema:
     _type: enum
     _filterable: true
     _subtype: dnszone_type
-    _description: Controls the DNS zone type
+    _description: Controls the DNS zone type.
 enums:
   status:
-    active : Turn on serving of this DNS Zone
-    disabled : Turn off serving of this DNS Zone
-    edit_mode : Use this mode while making edits
+    active : Turn on serving of this DNS Zone.
+    disabled : Turn off serving of this DNS Zone.
+    edit_mode : Use this mode while making edits.
   dnszone_type:
     master: A primary, authoritative DNS zone
-    slave: A secondary DNS zone which gets its updates from a master DNS zone
+    slave: A secondary DNS zone which gets its updates from a master DNS zone.

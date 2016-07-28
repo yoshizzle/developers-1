@@ -13,7 +13,7 @@ schema:
     _editable: true
     _type: string
     _value: Example Linode configuration
-    _description: User-supplied comments about this config
+    _description: User-supplied comments about this config.
     _limit: 1-255 characters
   created:
     _type: datetime
@@ -22,13 +22,13 @@ schema:
     _editable: true
     _type: boolean
     _value: false
-    _description: Populates the /dev directory early during boot without udev
+    _description: Populates the /dev directory early during boot without udev.
   disks:
-    _description: <a href="#object-disk">Disks</a> attached to this Linode config
+    _description: <a href="#object-disk">Disks</a> attached to this Linode config.
     _editable: true
     sda:
       _type: disk
-      _description: The disk mapped to /dev/sda
+      _description: The disk mapped to /dev/sda.
       id:
         _type: string
         _value: ubuntu15.10
@@ -53,48 +53,48 @@ schema:
     sdb:
       _type: disk
       _value: "null"
-      _description: The disk mapped to /dev/sdb
+      _description: The disk mapped to /dev/sdb.
     sdc:
       _type: disk
       _value: "null"
-      _description: The disk mapped to /dev/sdc
+      _description: The disk mapped to /dev/sdc.
     sdd:
       _type: disk
       _value: "null"
-      _description: The disk mapped to /dev/sdd
+      _description: The disk mapped to /dev/sdd.
     sde:
       _type: disk
       _value: "null"
-      _description: The disk mapped to /dev/sde
+      _description: The disk mapped to /dev/sde.
     sdf:
       _type: disk
       _value: "null"
-      _description: The disk mapped to /dev/sdf
+      _description: The disk mapped to /dev/sdf.
     sdg:
       _type: disk
       _value: "null"
-      _description: The disk mapped to /dev/sdg
+      _description: The disk mapped to /dev/sdg.
     sdh:
       _type: disk
       _value: "null"
-      _description: The disk mapped to /dev/sdh
+      _description: The disk mapped to /dev/sdh.
   helpers:
-    _description: Helpers enabled when booting to this Linode config
+    _description: Helpers enabled when booting to this Linode config.
     disable_updatedb:
       _editable: true
       _type: boolean
       _value: true
-      _description: Disables updatedb cron job to avoid disk thrashing
+      _description: Disables updatedb cron job to avoid disk thrashing.
     enable_distro_helper:
       _editable: true
       _type: boolean
       _value: true
-      _description: Helps maintain correct inittab/upstart console device
+      _description: Helps maintain correct inittab/upstart console device.
     enable_modules_dep_helper:
       _editable: true
       _type: boolean
       _value: true
-      _description: Creates a modules dependency file for the kernel you run
+      _description: Creates a modules dependency file for the kernel you run.
     enable_network_helper:
       _editable: true
       _type: boolean
@@ -103,7 +103,7 @@ schema:
         Automatically configure static networking
         <a href="https://www.linode.com/docs/platform/network-helper">
           (more info)
-        </a>
+        </a>.
   kernel:
     _editable: true
     _type: kernel
@@ -115,19 +115,19 @@ schema:
       _value: linode/latest_64
     label:
       _type: string
-      _value: "Latest 64 bit (4.1.0-x86_64-linode59)"
+      _value: Latest 64 bit (4.1.0-x86_64-linode59)
   label:
     _editable: true
     _type: string
     _value: "My openSUSE 13.2 Profile"
-    _description: Human-friendly label for this config
+    _description: Human-friendly label for this config.
     _filterable: true
     _limit: 1-48 characters
   ram_limit:
     _editable: true
     _type: integer
     _value: 512
-    _description: Optional RAM limit in MB for uncommon operating systems
+    _description: Optional RAM limit in MB for uncommon operating systems.
     _limit: between 0 and the Linode's total RAM
   root_device:
     _editable: true
@@ -138,13 +138,13 @@ schema:
     _editable: true
     _type: boolean
     _value: false
-    _description: Controls whether to mount the root disk read-only
+    _description: Controls whether to mount the root disk read-only.
   run_level:
     _editable: true
     _type: enum
     _subtype: run_level
     _value: default
-    _description: Sets the <a href="#object-run_level-enum">run level</a> for Linode boot
+    _description: Sets the <a href="#object-run_level-enum">run level</a> for Linode boot.
   updated:
     _type: datetime
     _value: 2015-09-29T11:21:38
@@ -153,7 +153,7 @@ schema:
     _type: enum
     _subtype: virt_mode
     _value: paravirt
-    _description: Controls the <a href="#object-virt_mode-enum">virtualization mode</a>
+    _description: Controls the <a href="#object-virt_mode-enum">virtualization mode</a>.
 enums:
   run_level:
     default: Normal multi-user boot mode
