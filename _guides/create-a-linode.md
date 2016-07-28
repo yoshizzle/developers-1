@@ -197,7 +197,7 @@ created Linode like the following:
         "ip_addresses": {
             "private": {
                 "ipv4": [],
-                "link-local": "fe80::f03c:91ff:fe96:469d"
+                "link_local": "fe80::f03c:91ff:fe96:469d"
             },
             "public": {
                 "ipv4": ["172.28.4.12"],

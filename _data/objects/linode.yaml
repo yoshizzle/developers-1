@@ -163,7 +163,7 @@ schema:
           - "10.20.30.40"
           - "10.20.30.50"
           - "10.20.30.60"
-      link-local:
+      link_local:
         _type: string
         _description: Link-local IP address for private networking
         _value: "fe80::f03c:91ff:fe33:a2a0"
