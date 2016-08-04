@@ -12,11 +12,11 @@ schema:
     _value: Newark, NJ
     _description: Human-friendly datacenter name.
     _filterable: true
-  datacenter:
-    _type: enum
-    _subtype: Datacenter
-    _value: newark
-    _description: Datacenters
+  country:
+    _type: string
+    _value: us
+    _description: Country
+    _filterable: true
 enums:
   Datacenter:
     dallas: Dallas, TX

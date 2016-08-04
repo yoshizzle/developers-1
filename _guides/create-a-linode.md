@@ -31,32 +31,39 @@ above command will return a JSON object like the following:
 {
     "datacenters": [
         {
+            "id": "dallas",
             "label": "Dallas, TX",
-            "id": "dallas"
+            "country": "us"
         },
         {
+            "id": "fremont",
             "label": "Fremont, CA",
-            "id": "fremont"
+            "country": "us"
         },
         {
+            "id": "atlanta",
             "label": "Atlanta, GA",
-            "id": "atlanta"
+            "country": "us"
         },
         {
+            "id": "newark",
             "label": "Newark, NJ",
-            "id": "newark"
+            "country": "us"
         },
         {
+            "id": "london",
             "label": "London, UK",
-            "id": "london"
+            "country": "uk"
         },
         {
+            "id": "singapore",
             "label": "Singapore, SG",
-            "id": "singapore"
+            "country": "sg"
         },
         {
-            "label": "Tokyo, JP",
-            "id": "tokyo"
+            "id": "frankfurt",
+            "label": "Frankfurt, DE",
+            "country": "de"
         }
     ],
     "page": 1,
@@ -192,7 +199,8 @@ created Linode like the following:
         "created": "2015-12-07T18:03:28",
         "datacenter": {
             "id": "newark",
-            "label": "Newark"
+            "label": "Newark",
+            "country": "us"
         },
         "ip_addresses": {
             "private": {
