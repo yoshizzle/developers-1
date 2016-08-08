@@ -65,8 +65,8 @@ schema:
     _description: >
       Displays if backups are enabled, last backup datetime if applicable, and
       the day/window your backups will occur. Window is prefixed by a "W" and an
-      integer representing the two-hour window in 24-hour time format. For example,
-      11AM is represented as "W11", 8PM as "W20", etc.
+      integer representing the two-hour window in 24-hour UTC time format. For
+      example, 2AM is represented as "W2", 8PM as "W20", etc. (W0, W2, W4...W22)
     enabled:
       _type: boolean
       _value: true
@@ -293,3 +293,16 @@ enums:
   BackupType:
     auto: Automatic backup
     snapshot: User-initiated, manual file backup
+  Window:
+    W0: 0000 - 0200 UTC
+    W2: 0200 - 0400 UTC
+    W4: 0400 - 0600 UTC
+    W6: 0600 - 0800 UTC
+    W8: 0800 - 1000 UTC
+    W10: 1000 - 1200 UTC
+    W12: 1200 - 1400 UTC
+    W14: 1400 - 1600 UTC
+    W16: 1600 - 1800 UTC
+    W18: 1800 - 2000 UTC
+    W20: 2000 - 2200 UTC
+    W22: 2200 - 0000 UTC
