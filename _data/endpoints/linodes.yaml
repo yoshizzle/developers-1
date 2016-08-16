@@ -645,3 +645,62 @@ endpoints:
           python: |
             import linode
             TODO
+  linodes/:id/ips:
+    type: list
+    resource: linode
+    authenticated: true
+    description: >
+        Manage IP Addresses for a Linode
+    methods:
+      GET:
+        oauth: linodes:view
+        description: >
+          Returns a list of <a href="#object-ipaddress">IP Addresses</a>.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                https://$api_root/$version/linodes/$linode_id/s
+      POST:
+        oauth: linodes:modify
+        description: >
+          Allocates a new IP Address for this Linode.
+        params:
+          type:
+            description: >
+                An <a href="#object-ipaddresstype-enum">IP Address Type</a> for this IP Address.
+            type: IPAddressType
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST -d '{
+                    "type": "private"
+                }' \
+                https://$api_root/$version/linodes/$linode_id/ips
+  linodes/:id/ips/:id:
+    type: resource
+    resource: ipaddress
+    authenticated: true
+    description: >
+      Manage a particular IP Address associated with this Linode.
+    methods:
+      GET:
+        oauth: linodes:view
+        description: >
+          Returns information about this <a href="#object-ipaddress">IP Address</a>.
+        examples:
+          curl: |
+            curl -H "Authorization: token $TOKEN" \
+                https://$api_root/$version/linodes/$linode_id/ips/$ipaddress_id
+      PUT:
+        oauth: linodes:modify
+        description: >
+            Update this IP Address
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X PUT -d '{
+                    "rdns":"example.org"
+                }' \
+                https://$api_root/$version/linodes/$linode_id/ipaddress/$ipaddress_id

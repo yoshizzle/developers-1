@@ -1,0 +1,25 @@
+name: IP Address
+prefix: ipaddress
+description: >
+    An IP Address, including RDNS information
+schema:
+  id:
+    _type: string
+    _value: 192.168.1.100
+  address:
+    _type: string
+    _value: 192.168.1.100
+    _description: The IP Address.
+  type:
+    _type: enum
+    _subtype: IPAddressType
+    _value: private
+    _description: The type of IP Address, either public or private
+  rdns:
+    _type: string
+    _value: null
+    _description: Reverse DNS address for this IP Address.
+enums:
+  IPAddressType:
+    public: Public IP Address
+    private: Internal IP Addresses (192.168 range)
