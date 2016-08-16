@@ -38,6 +38,9 @@ schema:
       label:
         _type: string
         _value: Newark, NJ
+      country:
+        _type: string
+        _value: us
   created:
     _type: datetime
     _value: "2015-09-29T11:21:01"

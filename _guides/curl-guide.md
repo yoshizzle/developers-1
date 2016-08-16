@@ -102,7 +102,8 @@ This will give you a response like this:
             "created": "2015-02-19T15:34:05",
             "datacenter": {
                 "id": "newark",
-                "label": "Newark, NJ"
+                "label": "Newark, NJ",
+                "country": "us"
             },
             "distribution": null,
             "group": "",
