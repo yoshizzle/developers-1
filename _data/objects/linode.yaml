@@ -122,7 +122,7 @@ schema:
       _value: Newark, NJ
     country:
       _type: string
-      _value: us
+      _value: US
   distribution:
     _description: The distribution that this Linode booted to last.
     _type: distribution

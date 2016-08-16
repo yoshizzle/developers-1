@@ -103,7 +103,7 @@ This will give you a response like this:
             "datacenter": {
                 "id": "newark",
                 "label": "Newark, NJ",
-                "country": "us"
+                "country": "US"
             },
             "distribution": null,
             "group": "",
