@@ -6,7 +6,7 @@ description: >
 schema:
   id:
     _type: integer
-    _value: 456
+    _value: 123456
   label:
     #_editable: true
     # NOTE: label is marked as editable in the dict, but the PUT endpoint does

@@ -6,7 +6,7 @@ description: >
 schema:
   id:
     _type: integer
-    _value: 123
+    _value: 123456
   alerts:
     _description: >
       Toggle and set thresholds for receiving email alerts.

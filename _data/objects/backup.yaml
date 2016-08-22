@@ -6,7 +6,7 @@ description: >
 schema:
   id:
     _type: integer
-    _value: 1
+    _value: 123456
   label:
     _type: string
     _value: A label for your snapshot
@@ -26,7 +26,11 @@ schema:
     _description: Whether this is a snapshot or an auto backup.
   linode_id:
     _type: integer
+<<<<<<< e1e5e4113caf61871acefd62a2013c042cce373b
     _value: 123
+=======
+    _value: 123456
+>>>>>>> Removed references to labels
     _description: The Linode ID this backup is associated with.
   datacenter:
       _type: datacenter
