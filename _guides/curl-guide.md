@@ -108,7 +108,7 @@ This will give you a response like this:
             "distribution": null,
             "group": "",
             "id": "prod-1",
-            "ip_addresses": {
+            "ips": {
                 "private": {
                     "ipv4": [],
                     "link_local": "fe80::f03c:91ff:fe33:a2e4"
