@@ -202,7 +202,7 @@ created Linode like the following:
             "label": "Newark",
             "country": "US"
         },
-        "ip_addresses": {
+        "ips": {
             "private": {
                 "ipv4": [],
                 "link_local": "fe80::f03c:91ff:fe96:469d"

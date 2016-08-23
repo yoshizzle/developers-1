@@ -81,7 +81,7 @@ And that's it!  Now we've got a fresh new Linode.  Let's check it out:
 {% highlight python %}
 >>> l.label
 'linode263'
->>> l.ip_addresses.public.ipv4
+>>> l.ips.public.ipv4
 ['97.107.143.33']
 >>> l.state
 'offline'

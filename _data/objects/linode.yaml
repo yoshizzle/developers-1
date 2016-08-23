@@ -155,7 +155,7 @@ schema:
     _value: Example
     _filterable: true
     limit: 0-50 characters
-  ip_addresses:
+  ips:
     _description: IP addresses associated with your Linode.
     private:
       ipv4:
