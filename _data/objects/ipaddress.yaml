@@ -1,11 +1,10 @@
 name: IP Address
-prefix: ipaddress
 description: >
-    An IP Address, including RDNS information
+    An IPv6 Address
 schema:
   id:
-    _type: string
-    _value: 192.168.1.100
+    _type: integer
+    _value: 973
   address:
     _type: string
     _value: 192.168.1.100
