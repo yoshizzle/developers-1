@@ -7,8 +7,6 @@ schema:
   id:
     _type: integer
     _value: 357
-    _description: >
-      string
   dnszone:
     _editable: true
     _type: string
