@@ -1,7 +1,6 @@
 name: IP Address
-prefix: ipaddress
 description: >
-    An IP Address, including RDNS information
+    An IPv6 Address
 schema:
   id:
     _type: integer

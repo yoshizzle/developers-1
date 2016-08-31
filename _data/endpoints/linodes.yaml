@@ -656,7 +656,8 @@ endpoints:
       GET:
         oauth: linodes:view
         description: >
-          Returns a list of <a href="#object-ipaddress">IP Addresses</a>.
+          Returns a list of <a href="#object-ipaddress">IP Addresses</a> and a list
+          of <a href="#object-ipv6-address">IPv6 Addresses</a>.
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
