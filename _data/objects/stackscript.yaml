@@ -107,7 +107,7 @@ schema:
     _description: The most recent note about what was changed for this revision.
     _type: string
     _editable: true
-    _value: "Initial import"
+    _value: Initial import
   script:
     _description: The actual script body to be executed.
     _type: string

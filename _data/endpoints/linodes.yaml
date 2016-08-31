@@ -402,8 +402,8 @@ endpoints:
                     "label": "Arch Linux config",
                     "kernel": "linode/latest_64",
                     "disks": [
-                      "My Debian 8 Disk",
-                      "swap",
+                      5567,
+                      5568,
                     ]
                 }' \
                 https://$api_root/$version/linodes/$linode_id/configs
@@ -444,7 +444,7 @@ endpoints:
                     }
                     "disks": {
                       "sda": {
-                        "id": "My Debian 8 Disk"
+                        "id": 5567
                       }
                     }
                 }' \
@@ -485,7 +485,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "config": "My Debian 8.1 Disk Profile"
+                    "config": 5567
                 }' \
                 https://$api_root/$version/linodes/$linode_id/boot
           python: |
@@ -529,7 +529,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "config": "My Debian 8.1 Disk Profile"
+                    "config": 5567
 
                 }' \
                 https://$api_root/$version/linodes/$linode_id/reboot
@@ -573,7 +573,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "label": "Linode_123 snapshot",
+                    "label": "Linode123456 snapshot",
                 }' \
                 https://$api_root/$version/linodes/$linode_id/backups
           python: |
@@ -640,7 +640,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST -d '{
-                    "linode": "prod-1"
+                    "linode": 123456,
                 }' \
                 https://$api_root/$version/linodes/$linode_id/backups/$backup_id/restore
           python: |

@@ -18,7 +18,7 @@ constructor:
             _keyword: false
             desc: The <code>Linode</code> object's ID who owns this Disk.
     example: >
-        disk = linode.Disk(client, "Debian 8.1 Disk", "prod-1")
+        disk = linode.Disk(client, "Debian 8.1 Disk", "123456")
 methods:
     save:
         desc: >
