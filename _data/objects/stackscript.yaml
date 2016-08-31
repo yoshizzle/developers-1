@@ -8,15 +8,15 @@ schema:
   id:
     _description: A unique ID for the StackScript.
     _type: integer
-    _value: stackscript_37
+    _value: 37
   customer_id:
     _description: The customer that created this StackScript.
     _type: integer
-    _value: customer_123
+    _value: 123
   user_id:
     _description: The user account that created this StackScript.
     _type: integer
-    _value: user_456
+    _value: 456
   label:
     _description: This StackScript's display label.
     _type: string
@@ -38,7 +38,7 @@ schema:
     _filterable: true
     _value:
       - id:
-          _type: integer
+          _type: string
           _value: linode/debian8
         label:
           _type: string
@@ -59,7 +59,7 @@ schema:
           _type: integer
           _value: 900
       - id:
-          _type: integer
+          _type: string
           _value: linode/debian7
         label:
           _type: string

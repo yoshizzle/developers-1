@@ -5,8 +5,8 @@ description: >
   DNS Zones
 schema:
   id:
-    _type: string
-    _value: example.org
+    _type: integer
+    _value: 357
     _description: >
       string
   dnszone:

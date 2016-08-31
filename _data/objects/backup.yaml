@@ -5,8 +5,8 @@ description: >
   Backup objects represent a specific backup of a Linode.
 schema:
   id:
-    _type: string
-    _value: backup_1
+    _type: integer
+    _value: 1
   label:
     _type: string
     _value: A label for your snapshot
@@ -25,8 +25,8 @@ schema:
     _value: snapshot
     _description: Whether this is a snapshot or an auto backup.
   linode_id:
-    _type: string
-    _value: prod-1
+    _type: integer
+    _value: 123
     _description: The Linode ID this backup is associated with.
   datacenter:
       _type: datacenter
@@ -40,7 +40,7 @@ schema:
         _value: Newark, NJ
       country:
         _type: string
-        _value: US
+        _value: us
   created:
     _type: datetime
     _value: "2015-09-29T11:21:01"

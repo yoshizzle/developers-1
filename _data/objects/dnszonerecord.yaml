@@ -6,8 +6,8 @@ description: >
   depending on what type of record it is.
 schema:
   id:
-    _type: string
-    _value: www
+    _type: integer
+    _value: 468
     _description: >
       string
   type:

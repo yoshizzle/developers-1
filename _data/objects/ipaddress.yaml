@@ -4,8 +4,8 @@ description: >
     An IP Address, including RDNS information
 schema:
   id:
-    _type: string
-    _value: 192.168.1.100
+    _type: integer
+    _value: 973
   address:
     _type: string
     _value: 192.168.1.100

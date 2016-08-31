@@ -40,22 +40,6 @@ endpoints:
               A <a href="#object-service">service plan</a> ID to use for this
               Linode.
             type: service
-          source:
-            optional: true
-            description: >
-              An object ID to source this Linode from. The type of the ID you
-              pass in determines what we do with it.
-              <ul><li>If you provide a
-              distribution, it will create sane default configs and disks, then
-              install that distribution on the new Linode.</li><li>If no source is provided,
-              a blank Linode is created.</li>
-              <li>If you provide a backup, it will create a new linode and restore
-              that backup to it.</li></ul>
-          root_pass:
-            optional: unless source == "distro"
-            description: >
-              The root password to use when sourcing this Linode from a distribution.
-              <ul><li>root_pass is required if the source provided is a distribution.</li></ul>
           label:
             optional: true
             description: The label to assign this Linode. Defaults to "linode".
@@ -64,6 +48,17 @@ endpoints:
             optional: true
             description: The group to assign this Linode. Defaults to "empty".
             limit: 0-50 characters
+          distribution:
+            optional: true
+            description: >
+              The <a href="#object-distribution">Distribution</a> to deploy this
+              Linode with.  May not be included if 'backup' is sent.
+            type: distribution
+          root_pass:
+            optional: unless source == "distro"
+            description: >
+              The root password to use when sourcing this Linode from a distribution.
+              <ul><li>root_pass is required if the source provided is a distribution.</li></ul>
           stackscript:
             optional: true
             description: >
@@ -77,6 +72,12 @@ endpoints:
               UDF (user-defined fields) for this stackscript. Defaults to "{}".
               <ul><li>Must match UDFs required by stackscript.</li></ul>
             type: string
+          backup:
+            optional: true
+            description: >
+              The <a href="#object-backup">Backup</a> to restore to the newly created
+              Linode.  May not be included if 'distribution' is sent.
+            type: backup
         examples:
           curl: |
             curl -H "Content-Type: application/json" \

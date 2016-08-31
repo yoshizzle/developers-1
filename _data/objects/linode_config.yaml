@@ -7,8 +7,8 @@ description: >
   will be replaced by <code>xvd*</code> for deprecated Xen Linodes.
 schema:
   id:
-    _type: string
-    _value: My Ubutnu 15.10 Config
+    _type: integer
+    _value: 804
   comments:
     _editable: true
     _type: string
@@ -30,8 +30,8 @@ schema:
       _type: disk
       _description: The disk mapped to /dev/sda.
       id:
-        _type: string
-        _value: ubuntu15.10
+        _type: integer
+        _value: 456
       label:
         _type: string
         _value: openSUSE 13.2 Disk
