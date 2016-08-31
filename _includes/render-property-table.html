@@ -20,6 +20,8 @@
                 <span class="description">
                     {% if include.info._description %}
                     {{ include.info._description }}
+                    {% elsif include.info._type == 'integer' or include.info._type == 'array' %}
+                    An {{ include.info._type }}.
                     {% else %}
                     A {{ include.info._type }}.
                     {% endif %}
