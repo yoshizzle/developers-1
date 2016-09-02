@@ -305,7 +305,7 @@ endpoints:
                     "size": 1024
                 }' \
                 https://$api_root/$version/linode/instances/$linode_id/disks/$disk_id/resize
-  linode/instances/:id/disks/:id/rootpass:
+  linode/instances/:id/disks/:id/password:
     type: strange
     authenticated: true
     description: >
@@ -326,7 +326,7 @@ endpoints:
                 -X POST -d '{
                     "password": "hunter2"
                 }' \
-                https://$api_root/$version/linode/instances
+                https://$api_root/$version/linode/instances/$linode_id/disks/$disk_id/password
           python: |
             import linode
             TODO
