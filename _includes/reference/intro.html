@@ -246,17 +246,18 @@
         There are generally two kinds of resources you can retrieve with a GET
         request: objects and lists. An object is a representation of an individual resource.
         It has an ID that can be used to retrieve it directly. A list is a collection of objects.
-        You'll generally find lists of objects at <code>/:type</code>, and an individual object
-        at <code>/:type/:id</code>.
+        You'll generally find lists of objects at <code>/:type/:subtype</code>, and an individual object
+        at <code>/:type/:subtype/:id</code>.
         </p>
         <p>
-        Some objects contain lists of other objects, which you can get at <code>/:type/:id/:subtype</code>.
-        You can get an individual sub-object at <code>/:type/:id/:subtype/:id</code>.
+        Some objects contain lists of other objects, which you can get at <code>/:type/:subtype/:id/:subtype</code>.
+        You can get an individual sub-object at <code>/:type/:subtype/:id/:subtype/:id</code>.
         </p>
         <p>
-        For example, you can list your Linodes at <code>/linodes</code>, and get
-        a specific Linode with <code>/linodes/prod-1</code>. You can get the configs
-        for this Linode from <code>/linodes/prod-1/configs</code>.
+        For example, you can list your Linodes at <code>/linode/instances</code>, and get
+        a specific Linode with <code>/linode/instances/123456</code>. You can get the configs
+        for this Linode from <code>/linode/instances/123456/configs</code> and a specific config
+        profile from <code>/linode/instances/123456/configs/5678</code>.
         </p>
     </div>
 </div>
@@ -317,13 +318,13 @@
 </div>
 <div class="row reference white">
     <div class="col-lg-6 left">
-        <p> 
+        <p>
         Filters are passed in the <code>X-Filter</code> header, and are formated as JSON objects.  Here is a
         request for all distributions whose vendor is "Debian":
         </p>
     </div>
     <div class="col-lg-6 right">
-<pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
+<pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/linode/distributions" \
     -H 'X-Filter: {
         "vendor": "Debian"
     }'
@@ -335,10 +336,9 @@
     <div class="col-lg-6 left">
             The filter object's keys are the keys of the object you're filtering, and the values are accepted values.
             You can add multiple filters by including more than one key (in this case, all recommended Debians):
-    
     </div>
     <div class="col-lg-6 right">
-<pre style="padding-top: 0px;"><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
+<pre style="padding-top: 0px;"><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/linode/distributions" \
     -H 'X-Filter: {
         "vendor": "Debian",
         "recommended": true
@@ -348,12 +348,12 @@
 </div>
 <br/>
 <div class="row reference white">
-   <div class="col-lg-6 left"> 
+   <div class="col-lg-6 left">
             In the above example, both filters are combined with an "and" operation.  However, if you wanted either Debian or recommended
             distributions, you can add an operator:
    </div>
-    <div class="col-lg-6 right"> 
-<pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
+    <div class="col-lg-6 right">
+<pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/linode/distributions" \
     -H 'X-Filter: {
         "+or": [
             { "vendor": "Debian" },
@@ -372,7 +372,7 @@
         </p>
     </div>
     <div class="col-lg-6 right">
-<pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
+<pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/linode/distributions" \
     -H 'X-Filter: {
         "minimum_storage_size": {
             "+lte": 500
@@ -431,7 +431,7 @@
         </table>
     </div>
     <div class="col-lg-6 right">
-<pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/distributions" \
+<pre><code>curl "https://{{ site.api_root }}/{{ site.api_version }}/linode/distributions" \
     -H 'X-Filter: {
         "+or": [
             {

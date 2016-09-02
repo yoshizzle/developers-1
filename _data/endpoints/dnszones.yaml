@@ -1,6 +1,6 @@
 # vim: set et ts=2 sw=2 tw=80 :
 name: DNS Zones
-base_path: /dnszones
+base_path: /dns/zones
 description: >
   DNS Zone endpoints provide a means of managing the DNS <a href="#object-dnszone">
   DNS Zone objects</a> on your account.
@@ -8,7 +8,7 @@ description: >
   Note: the validation rules for DNS records are too complicated to document
   here. We'll just direct you to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt).
 endpoints:
-  dnszones:
+  dns/zones:
     type: list
     resource: dnszones
     authenticated: true
@@ -22,7 +22,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/dnszones
+                https://$api_root/$version/dns/zones
           python: |
             import linode
             TODO
@@ -99,11 +99,11 @@ endpoints:
                     "axfr_ips": ["44.55.66.77"],
                     "display_group": "Example Display Group"
                 }'
-                https://$api_root/$version/dnszones
+                https://$api_root/$version/dns/zones
           python: |
             import linode
             TODO
-  dnszones/:id:
+  dns/zones/:id:
     authenticated: true
     resource: dnszone
     methods:
@@ -115,7 +115,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/dnszones/$dnszone_id
+                https://$api_root/$version/dns/zones/$dnszone_id
           python: |
             import linode
             TODO
@@ -140,7 +140,7 @@ endpoints:
                 "refresh_sec": 14402,
                 "ttl_sec": 3602
               }'
-              https://$api_root/$version/dnszones/$dnszone_id
+              https://$api_root/$version/dns/zones/$dnszone_id
           python: |
             import linode
             TODO
@@ -153,11 +153,11 @@ endpoints:
           curl: |
             curl -H "Authorization: token $TOKEN" \
                 -X DELETE
-                https://$api_root/$version/dnszones/$dnszone_id
+                https://$api_root/$version/dns/zones/$dnszone_id
           python: |
             import linode
             TODO
-  dnszones/:id/records:
+  dns/zones/:id/records:
     type: list
     resource: dnszonerecords
     authenticated: true
@@ -171,7 +171,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/dnszones/$dnszone_id/records
+                https://$api_root/$version/dns/zones/$dnszone_id/records
           python: |
             import linode
             TODO
@@ -232,11 +232,11 @@ endpoints:
                     "target": "123.456.789.101",
                     "name": "sub.example.com"
                 }'
-                https://$api_root/$version/dnszones/$dnszone_id/records
+                https://$api_root/$version/dns/zones/$dnszone_id/records
           python: |
             import linode
             TODO
-  dnszones/:id/records/:id:
+  dns/zones/:id/records/:id:
     authenticated: true
     resource: dnszonerecord
     methods:
@@ -248,7 +248,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-              https://$api_root/$version/dnszones/$dnszone_id/records/$record_id
+              https://$api_root/$version/dns/zones/$dnszone_id/records/$record_id
           python: |
             import linode
             TODO
@@ -264,7 +264,7 @@ endpoints:
                     "target": "123.456.789.102",
                     "name": "sub2.example.com"
               }'
-              https://$api_root/$version/dnszones/$dnszone_id/records/$record_id
+              https://$api_root/$version/dns/zones/$dnszone_id/records/$record_id
           python: |
             import linode
             TODO
@@ -277,7 +277,7 @@ endpoints:
           curl: |
             curl -H "Authorization: token $TOKEN" \
               -X DELETE
-              https://$api_root/$version/dnszones/$dnszone_id/records/$record_id
+              https://$api_root/$version/dns/zones/$dnszone_id/records/$record_id
           python: |
             import linode
             TODO
