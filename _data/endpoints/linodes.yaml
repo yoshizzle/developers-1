@@ -78,6 +78,10 @@ endpoints:
               The <a href="#object-backup">Backup</a> to restore to the newly created
               Linode.  May not be included if 'distribution' is sent.
             type: backup
+          with_backup:
+            optional: true
+            description: >
+              Subscribes this Linode with the Backup service. (Additional charges apply.) Defaults to "false".
         examples:
           curl: |
             curl -H "Content-Type: application/json" \
@@ -312,7 +316,7 @@ endpoints:
       Resets the root password of a disk.
     methods:
       POST:
-        oauth: linodes:delete
+        oauth: linodes:modify
         dangerous: true
         params:
           password:
@@ -552,7 +556,7 @@ endpoints:
             import linode
             TODO
       POST:
-        oauth: linodes:delete
+        oauth: linodes:modify
         dangerous: true
         description: >
           Creates a snapshot backup of a Linode.
