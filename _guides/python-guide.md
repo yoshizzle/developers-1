@@ -137,7 +137,7 @@ True
 >>> while not l.state == 'running':
 ...   pass
 ...
->>> l.ip_addresses.public.ipv4
+>>> l.ips.public.ipv4
 ['97.107.143.34']
 >>> pw
 '663Iso_f1y4Zb5xeClY13fBGdeu5l&f3'
