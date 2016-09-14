@@ -79,34 +79,105 @@ schema:
         _type: string
         _value: "W20"
     last_backup:
-      _description: If enabled, when last backup was successfully completed.
-      create_dt:
-        _type: datetime
-        _value: "2015-10-06T00:27:08"
-      duration:
-        _type: integer
-        _value: 0
-      finish_dt:
-        _type: datetime
-        _value: "2015-10-06T01:09:08"
+      _description: If enabled, the last backup that was successfully taken.
+      _type: backup
       id:
         _type: integer
-        _value: 26083011
-      message:
+        _value: 123456
+      label:
         _type: string
-        _value: "Backup completed."
+        _value: A label for your snapshot
+        _description: Human-friendly backup name.
+        _filterable: false
+        _limit: 1-255 characters
       status:
         _type: enum
-        _subtype: BackupStatus
-        _value: "successful"
+        _subtype: Status
+        _value: successful
+        _description: Status of the backup.
         _filterable: false
-        _pylib_volatile: true
       type:
         _type: enum
-        _subtype: BackupType
-        _value: "auto"
+        _subtype: Type
+        _value: snapshot
+        _description: Whether this is a snapshot or an auto backup.
+      linode_id:
+        _type: integer
+        _value: 123456
+        _description: The Linode ID this backup is associated with.
+      datacenter:
+        _type: datacenter
         _filterable: false
-        _pylib_volatile: true
+        _description: This backup  datacenter.
+        id:
+          _type: string
+          _value: newark
+        label:
+          _type: string
+          _value: Newark, NJ
+        country:
+          _type: string
+          _value: us
+      created:
+        _type: datetime
+        _value: "2015-09-29T11:21:01"
+      updated:
+        _type: datetime
+        _value: "2015-09-29T11:21:01"
+      finished:
+        _type: datetime
+        _value: "2015-09-29T11:21:01"
+        _description: An ISO 8601 datetime of when the backup completed.
+    snapshot:
+      _description: If enabled, the last snapshot that was successfully taken.
+      _type: backup
+      id:
+        _type: integer
+        _value: 123456
+      label:
+        _type: string
+        _value: A label for your snapshot
+        _description: Human-friendly backup name.
+        _filterable: false
+        _limit: 1-255 characters
+      status:
+        _type: enum
+        _subtype: Status
+        _value: successful
+        _description: Status of the backup.
+        _filterable: false
+      type:
+        _type: enum
+        _subtype: Type
+        _value: snapshot
+        _description: Whether this is a snapshot or an auto backup.
+      linode_id:
+        _type: integer
+        _value: 123456
+        _description: The Linode ID this backup is associated with.
+      datacenter:
+        _type: datacenter
+        _filterable: false
+        _description: This backup  datacenter.
+        id:
+          _type: string
+          _value: newark
+        label:
+          _type: string
+          _value: Newark, NJ
+        country:
+          _type: string
+          _value: us
+      created:
+        _type: datetime
+        _value: "2015-09-29T11:21:01"
+      updated:
+        _type: datetime
+        _value: "2015-09-29T11:21:01"
+      finished:
+        _type: datetime
+        _value: "2015-09-29T11:21:01"
+        _description: An ISO 8601 datetime of when the backup completed.
   created:
     _type: datetime
     _value: "2015-09-29T11:21:01"
