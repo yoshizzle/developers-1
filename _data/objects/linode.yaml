@@ -101,10 +101,6 @@ schema:
         _subtype: Type
         _value: snapshot
         _description: Whether this is a snapshot or an auto backup.
-      linode_id:
-        _type: integer
-        _value: 123456
-        _description: The Linode ID this backup is associated with.
       datacenter:
         _type: datacenter
         _filterable: false
@@ -151,10 +147,6 @@ schema:
         _subtype: Type
         _value: snapshot
         _description: Whether this is a snapshot or an auto backup.
-      linode_id:
-        _type: integer
-        _value: 123456
-        _description: The Linode ID this backup is associated with.
       datacenter:
         _type: datacenter
         _filterable: false
