@@ -14,6 +14,11 @@ schema:
     _value: 24
     _description: If applicable, disk space in MB.
     _filterable: true
+  backups_price:
+    _type: integer
+    _value: 250
+    _description: Cost (in cents) per month if backups are enabled.
+    _filterable: false
   hourly_price:
     _type: integer
     _value: 1

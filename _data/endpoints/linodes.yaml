@@ -710,3 +710,47 @@ endpoints:
                     "rdns":"example.org"
                 }' \
                 https://$api_root/$version/linode/instances/$linode_id/ipaddress/$ipaddress_id
+  linode/instances/:id/rebuild:
+    type: action
+    authenticated: true
+    description: >
+      Deletes all Disks and Configs on this Linode, then deploys a new Distribution to this Linode
+      with the given attributes.
+    methods:
+      POST:
+        oauth: linodes:modify
+        dangerous: true
+        params:
+          distribution:
+            description: >
+                An <a href="#object-ipaddresstype-enum">Distribution</a> to deploy to this Linode.
+            type: Distribution
+          root_pass:
+            description: >
+                The root password for the new deployment.
+            type: string
+          root_ssh_key:
+            optional: true
+            description: >
+                The key to authorize for root access to the new deployment.
+            type: string
+          stackscript:
+            optional: true
+            description: >
+              The stackscript ID to deploy with this disk.
+              <ul><li>Must provide a distribution. Distribution must be
+              one that the stackscript can be deployed to.</li></ul>
+            type: stackscript
+          stackscript_udf_responses:
+            optional: true
+            description: >
+              UDF (user-defined fields) for this stackscript. Defaults to "{}".
+              <ul><li>Must match UDFs required by stackscript.</li></ul>
+            type: string
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST \
+                https://$api_root/$version/linode/instances/$linode_id/rebuild \
+                -d '{"distribution":"linode/debian8","root_pass":"hunter7"}'

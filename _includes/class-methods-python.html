@@ -1,0 +1,52 @@
+{% for m in include.methods %}
+    {% assign mname = m[0] | replace:'*'' %}
+    <div class="row reference white">
+        <div class='col-lg-6 left'>
+            <h5>
+                {{ mname }}(
+                    {% for p in m[1].parameters %}
+                        {{ p[0] }}{% if p[1]._keyword %}={{ p[1]._default }}{% endif %}{% if forloop.last != true %},{% endif %}
+                    {% endfor %}
+                )
+            </h5>
+            <p>{{ m[1].desc }}</p>
+        </div>
+    </div>
+    <div class="row reference white">
+        <div class='col-lg-6 left'>
+            <table class="table table-striped">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Argument</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                {% for param in m[1].parameters %}
+                <tr>
+                    <td width="30%">
+                        {{ param[0] }}
+                        {% if param[1]._keyword %}
+                            <br/>
+                            <span class="text-muted">{{ param[1]._default }}</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ param[1].desc }}</td>
+                </tr>
+                {% endfor %}
+                {% if m[1].returns %}
+                <tr>
+                    <td><span style="font-weight: bold">Returns:</span></td>
+                    <td>{{ m[1].returns }}</td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+        <div class='col-lg-6 right'>
+            <table><tr><td>
+            <h5>{{ include.classname }}.{{ mname }}</h5></td></tr>
+            <tr><td>
+            {% highlight python %}{{ m[1].example }}{% endhighlight %}
+            </td></tr></table>
+        </div>
+    </div>
+{% endfor %}
