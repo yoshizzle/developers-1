@@ -267,7 +267,7 @@ schema:
           _value: linode2048.5
         disk:
           _type: integer
-          _value: 24
+          _value: 24576
         hourly_price:
           _type: integer
           _value: 1
@@ -298,7 +298,7 @@ schema:
           _value: linode2048.5
         disk:
           _type: integer
-          _value: 24
+          _value: 24576
         hourly_price:
           _type: integer
           _value: 0
