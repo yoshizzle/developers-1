@@ -54,6 +54,15 @@ layout: base
                             <a class="nav-link" href="#Distribution">Distribution</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="#Backup">Backup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#IPAddress">IPAddress</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#IPv6Address">IPv6Address</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#Kernel">Kernel</a>
                         </li>
                         <li class="nav-item">
@@ -327,12 +336,17 @@ linode.delete()
             {% assign disk = site.data.python['disk'] %}
             {% include class-details-python.html class=disk %}
 
-
-            {% assign dc = site.data.python['datacenter'] %}
-            {% include class-details-python.html class=dc %}
-
             {% assign distribution = site.data.python['distribution'] %}
             {% include class-details-python.html class=distribution %}
+
+            {% assign backup = site.data.python['backup'] %}
+            {% include class-details-python.html class=backup %}
+
+            {% assign ipaddress = site.data.python['ipaddress'] %}
+            {% include class-details-python.html class=ipaddress %}
+
+            {% assign ip6address = site.data.python['ip6address'] %}
+            {% include class-details-python.html class=ip6address %}
 
             {% assign kernel = site.data.python['kernel'] %}
             {% include class-details-python.html class=kernel %}
@@ -342,6 +356,9 @@ linode.delete()
 
             {% assign stackscript = site.data.python['stackscript'] %}
             {% include class-details-python.html class=stackscript %}
+
+            {% assign dc = site.data.python['datacenter'] %}
+            {% include class-details-python.html class=dc %}
 
             {% assign dnszone = site.data.python['dnszone'] %}
             {% include class-details-python.html class=dnszone %}

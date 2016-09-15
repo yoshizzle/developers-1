@@ -1,12 +1,12 @@
 # vim: set et ts=2 sw=2 tw=80 :
 name: Linodes
 sort: 0
-base_path: /linodes
+base_path: /linode/instances
 description: >
   Linode endpoints provide a means of managing the <a href="#object-linode">
   Linode objects</a> on your account.
 endpoints:
-  linodes:
+  linode/instances:
     type: list
     resource: linode
     authenticated: true
@@ -20,7 +20,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linodes
+                https://$api_root/$version/linode/instances
           python: |
             import linode
             TODO
@@ -78,6 +78,10 @@ endpoints:
               The <a href="#object-backup">Backup</a> to restore to the newly created
               Linode.  May not be included if 'distribution' is sent.
             type: backup
+          with_backup:
+            optional: true
+            description: >
+              Subscribes this Linode with the Backup service. (Additional charges apply.) Defaults to "false".
         examples:
           curl: |
             curl -H "Content-Type: application/json" \
@@ -86,11 +90,11 @@ endpoints:
                     "datacenter": "newark",
                     "service": "linode2048.5"
                 }' \
-                https://$api_root/$version/linodes
+                https://$api_root/$version/linode/instances
           python: |
             import linode
             TODO
-  linodes/:id:
+  linode/instances/:id:
     type: resource
     resource: linode
     authenticated: true
@@ -104,7 +108,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linodes/$linode_id
+                https://$api_root/$version/linode/instances/$linode_id
           python: |
             import linode
             TODO
@@ -123,7 +127,7 @@ endpoints:
                     "window": "W20"
                   }
                 }' \
-                https://$api_root/$version/linodes/$linode_id
+                https://$api_root/$version/linode/instances/$linode_id
           python: |
             import linode
             TODO
@@ -136,11 +140,11 @@ endpoints:
           curl: |
             curl -H "Authorization: token $TOKEN" \
                 -X DELETE \
-                https://$api_root/$version/linodes/$linode_id
+                https://$api_root/$version/linode/instances/$linode_id
           python: |
             import linode
             TODO
-  linodes/:id/disks:
+  linode/instances/:id/disks:
     type: list
     resource: linode
     authenticated: true
@@ -154,7 +158,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linodes/$linode_id/disks
+                https://$api_root/$version/linode/instances/$linode_id/disks
           python: |
             import linode
             TODO
@@ -222,11 +226,11 @@ endpoints:
                     "filesystem": "ext4",
                     "size": 4096
                 }' \
-                https://$api_root/$version/linodes/$linode_id/disks
+                https://$api_root/$version/linode/instances/$linode_id/disks
           python: |
             import linode
             TODO
-  linodes/:id/disks/:id:
+  linode/instances/:id/disks/:id:
     type: resource
     resource: disk
     authenticated: true
@@ -240,7 +244,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linodes/$linode_id/disks/$disk_id
+                https://$api_root/$version/linode/instances/$linode_id/disks/$disk_id
           python: |
             import linode
             TODO
@@ -255,7 +259,7 @@ endpoints:
                 -X PUT -d '{
                   "label": "New Disk Label"
                 }' \
-                https://$api_root/$version/linodes/$linode_id/disks/$disk_id
+                https://$api_root/$version/linode/instances/$linode_id/disks/$disk_id
           python: |
             import linode
             TODO
@@ -268,7 +272,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST \
-                https://$api_root/$version/linodes/$linode_id/disks/$disk_id
+                https://$api_root/$version/linode/instances/$linode_id/disks/$disk_id
           python: |
             import linode
             TODO
@@ -281,11 +285,11 @@ endpoints:
           curl: |
             curl -H "Authorization: token $TOKEN" \
                 -X DELETE \
-                https://$api_root/$version/linodes/$linode_id/disks/$disk_id
+                https://$api_root/$version/linode/instances/$linode_id/disks/$disk_id
           python: |
             import linode
             TODO
-  linodes/:id/disks/:id/resize:
+  linode/instances/:id/disks/:id/resize:
     type: strange
     authenticated: true
     description: Resizes the disk.
@@ -304,15 +308,15 @@ endpoints:
                 -X POST -d '{
                     "size": 1024
                 }' \
-                https://$api_root/$version/linodes/$linode_id/disks/$disk_id/resize
-  linodes/:id/disks/:id/rootpass:
+                https://$api_root/$version/linode/instances/$linode_id/disks/$disk_id/resize
+  linode/instances/:id/disks/:id/password:
     type: strange
     authenticated: true
     description: >
       Resets the root password of a disk.
     methods:
       POST:
-        oauth: linodes:delete
+        oauth: linodes:modify
         dangerous: true
         params:
           password:
@@ -326,11 +330,11 @@ endpoints:
                 -X POST -d '{
                     "password": "hunter2"
                 }' \
-                https://$api_root/$version/linodes
+                https://$api_root/$version/linode/instances/$linode_id/disks/$disk_id/password
           python: |
             import linode
             TODO
-  linodes/:id/configs:
+  linode/instances/:id/configs:
     type: list
     resource: linode_config
     authenticated: true
@@ -345,7 +349,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linodes/$linode_id/configs
+                https://$api_root/$version/linode/instances/$linode_id/configs
           python: |
             import linode
             TODO
@@ -406,11 +410,11 @@ endpoints:
                       5568,
                     ]
                 }' \
-                https://$api_root/$version/linodes/$linode_id/configs
+                https://$api_root/$version/linode/instances/$linode_id/configs
           python: |
             import linode
             TODO
-  linodes/:id/configs/:id:
+  linode/instances/:id/configs/:id:
     type: resource
     resource: linode_config
     authenticated: true
@@ -425,7 +429,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linodes/$linode_id/configs/$config_id
+                https://$api_root/$version/linode/instances/$linode_id/configs/$config_id
           python: |
             import linode
             TODO
@@ -448,7 +452,7 @@ endpoints:
                       }
                     }
                 }' \
-                https://$api_root/$version/linodes/$linode_id/configs/$config_id
+                https://$api_root/$version/linode/instances/$linode_id/configs/$config_id
           python:
             import linode
             TODO
@@ -461,11 +465,11 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X DELETE \
-                https://$api_root/$version/linodes/$linode_id/configs/$config_id
+                https://$api_root/$version/linode/instances/$linode_id/configs/$config_id
           python: |
             import linode
             TODO
-  linodes/:id/boot:
+  linode/instances/:id/boot:
     type: action
     authenticated: true
     description: >
@@ -487,11 +491,11 @@ endpoints:
                 -X POST -d '{
                     "config": 5567
                 }' \
-                https://$api_root/$version/linodes/$linode_id/boot
+                https://$api_root/$version/linode/instances/$linode_id/boot
           python: |
             import linode
             TODO
-  linodes/:id/shutdown:
+  linode/instances/:id/shutdown:
     type: action
     authenticated: true
     description: >
@@ -505,11 +509,11 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST \
-                https://$api_root/$version/linodes/$linode_id/shutdown
+                https://$api_root/$version/linode/instances/$linode_id/shutdown
           python: |
             import linode
             TODO
-  linodes/:id/reboot:
+  linode/instances/:id/reboot:
     type: action
     authenticated: true
     description: >
@@ -532,11 +536,11 @@ endpoints:
                     "config": 5567
 
                 }' \
-                https://$api_root/$version/linodes/$linode_id/reboot
+                https://$api_root/$version/linode/instances/$linode_id/reboot
           python: |
             import linode
             TODO
-  linodes/:id/backups:
+  linode/instances/:id/backups:
     type: action
     authenticated: true
     description: >
@@ -547,12 +551,12 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linodes/$linode_id/backups
+                https://$api_root/$version/linode/instances/$linode_id/backups
           python: |
             import linode
             TODO
       POST:
-        oauth: linodes:delete
+        oauth: linodes:modify
         dangerous: true
         description: >
           Creates a snapshot backup of a Linode.
@@ -575,11 +579,11 @@ endpoints:
                 -X POST -d '{
                     "label": "Linode123456 snapshot",
                 }' \
-                https://$api_root/$version/linodes/$linode_id/backups
+                https://$api_root/$version/linode/instances/$linode_id/backups
           python: |
             import linode
             TODO
-  linodes/:id/backups/enable:
+  linode/instances/:id/backups/enable:
     type: action
     authenticated: true
     description: >
@@ -594,11 +598,11 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST \
-                https://$api_root/$version/linodes/$linode_id/backups/enable
+                https://$api_root/$version/linode/instances/$linode_id/backups/enable
           python: |
             import linode
             TODO
-  linodes/:id/backups/cancel:
+  linode/instances/:id/backups/cancel:
     type: action
     authenticated: true
     description: >
@@ -612,11 +616,11 @@ endpoints:
             curl -H "Content-Type: application/json" \
                 -H "Authorization: token $TOKEN" \
                 -X POST \
-                https://$api_root/$version/linodes/$linode_id/backups/cancel
+                https://$api_root/$version/linode/instances/$linode_id/backups/cancel
           python: |
             import linode
             TODO
-  linodes/:id/backups/:id/restore:
+  linode/instances/:id/backups/:id/restore:
     type: action
     authenticated: true
     description: >
@@ -642,11 +646,11 @@ endpoints:
                 -X POST -d '{
                     "linode": 123456,
                 }' \
-                https://$api_root/$version/linodes/$linode_id/backups/$backup_id/restore
+                https://$api_root/$version/linode/instances/$linode_id/backups/$backup_id/restore
           python: |
             import linode
             TODO
-  linodes/:id/ips:
+  linode/instances/:id/ips:
     type: list
     resource: linode
     authenticated: true
@@ -661,7 +665,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linodes/$linode_id/s
+                https://$api_root/$version/linode/instances/$linode_id/s
       POST:
         oauth: linodes:modify
         description: >
@@ -678,8 +682,8 @@ endpoints:
                 -X POST -d '{
                     "type": "private"
                 }' \
-                https://$api_root/$version/linodes/$linode_id/ips
-  linodes/:id/ips/:id:
+                https://$api_root/$version/linode/instances/$linode_id/ips
+  linode/instances/:id/ips/:id:
     type: resource
     resource: ipaddress
     authenticated: true
@@ -693,7 +697,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linodes/$linode_id/ips/$ipaddress_id
+                https://$api_root/$version/linode/instances/$linode_id/ips/$ipaddress_id
       PUT:
         oauth: linodes:modify
         description: >
@@ -705,4 +709,48 @@ endpoints:
                 -X PUT -d '{
                     "rdns":"example.org"
                 }' \
-                https://$api_root/$version/linodes/$linode_id/ipaddress/$ipaddress_id
+                https://$api_root/$version/linode/instances/$linode_id/ipaddress/$ipaddress_id
+  linode/instances/:id/rebuild:
+    type: action
+    authenticated: true
+    description: >
+      Deletes all Disks and Configs on this Linode, then deploys a new Distribution to this Linode
+      with the given attributes.
+    methods:
+      POST:
+        oauth: linodes:modify
+        dangerous: true
+        params:
+          distribution:
+            description: >
+                An <a href="#object-ipaddresstype-enum">Distribution</a> to deploy to this Linode.
+            type: Distribution
+          root_pass:
+            description: >
+                The root password for the new deployment.
+            type: string
+          root_ssh_key:
+            optional: true
+            description: >
+                The key to authorize for root access to the new deployment.
+            type: string
+          stackscript:
+            optional: true
+            description: >
+              The stackscript ID to deploy with this disk.
+              <ul><li>Must provide a distribution. Distribution must be
+              one that the stackscript can be deployed to.</li></ul>
+            type: stackscript
+          stackscript_udf_responses:
+            optional: true
+            description: >
+              UDF (user-defined fields) for this stackscript. Defaults to "{}".
+              <ul><li>Must match UDFs required by stackscript.</li></ul>
+            type: string
+        examples:
+          curl: |
+            curl -H "Content-Type: application/json" \
+                -H "Authorization: token $TOKEN" \
+                -X POST \
+                https://$api_root/$version/linode/instances/$linode_id/rebuild \
+                -d '{"distribution":"linode/debian8","root_pass":"hunter7"}'

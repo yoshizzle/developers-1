@@ -1,6 +1,6 @@
 # vim: set et ts=2 sw=2 tw=80 :
 name: Services
-base_path: /services
+base_path: /linode/services
 description: >
   Services endpoints provide a means of viewing <a href="#object-service">
   service objects</a>.
@@ -16,11 +16,11 @@ endpoints:
           Returns list of <a href="#object-service">services</a>.
         examples:
           curl: |
-            curl https://$api_root/$version/services
+            curl https://$api_root/$version/linode/services
           python: |
             import services
             TODO
-  services/:id:
+  linode/services/:id:
     type: resource
     resource: services
     description: >
@@ -31,53 +31,7 @@ endpoints:
           Returns information about this <a href="#object-service">service</a>.
         examples:
           curl: |
-            curl https://$api_root/$version/services/$service_id
-          python: |
-            import services
-            TODO
-  services/linode:
-    type: list
-    resource: services
-    description: >
-      Returns collection of Linode services (i.e. services that correspond to a
-      VPS hosted on Linode, rather than all services offered by Linode).
-    methods:
-      GET:
-        description: >
-          Returns list of Linode <a href="#object-service">services</a>.
-        examples:
-          curl: |
-            curl https://$api_root/$version/services/linode
-          python: |
-            import services
-            TODO
-  services/backup:
-    type: list
-    resource: services
-    description: >
-      Returns collection of backup services.
-    methods:
-      GET:
-        description: >
-          Returns list of backup <a href="#object-service">services</a>.
-        examples:
-          curl: |
-            curl https://$api_root/$version/services/backup
-          python: |
-            import services
-            TODO
-  services/longview:
-    type: list
-    resource: services
-    description: >
-      Returns collection of Longview services.
-    methods:
-      GET:
-        description: >
-          Returns list of Longview <a href="#object-service">services</a>.
-        examples:
-          curl: |
-            curl https://$api_root/$version/services/longview
+            curl https://$api_root/$version/linode/services/$service_id
           python: |
             import services
             TODO

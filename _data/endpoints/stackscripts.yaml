@@ -1,12 +1,12 @@
 # vim: set et ts=2 sw=2 tw=80 :
 name: StackScripts
-base_path: /stackscripts
+base_path: /linode/stackscripts
 description: >
   StackScript endpoints provide a means of managing the
   <a href="#object-stackscript"> StackScript objects</a> accessible from your
   account.
 endpoints:
-  stackscripts:
+  linode/stackscripts:
     type: list
     resource: stackscript
     description: >
@@ -18,7 +18,7 @@ endpoints:
           Results can be <a href="#filtering">filtered</a>.
         examples:
           curl: |
-            curl https://$api_root/$version/stackscripts
+            curl https://$api_root/$version/linode/stackscripts
           python: |
             import stackscript
             TODO
@@ -62,11 +62,11 @@ endpoints:
                 "distributions": ["linode/ubuntu15.4", "linode/ubuntu15.10"],
                 "script": "#!..."
               }' \
-              https://$api_root/$version/stackscripts
+              https://$api_root/$version/linode/stackscripts
           python: |
             import stackscript
             TODO
-  stackscripts/mine:
+  linode/stackscripts/mine:
     type: list
     resource: stackscript
     authenticated: true
@@ -82,11 +82,11 @@ endpoints:
             curl -H "Content-Type: application/json" \
               -H "Authorization: token $TOKEN" \
               -X GET \
-              https://$api_root/$version/stackscripts/mine
+              https://$api_root/$version/linode/stackscripts/mine
           python: |
             import stackscript
             TODO
-  stackscripts/:id:
+  linode/stackscripts/:id:
     type: list
     resource: stackscript
     authenticated: true
@@ -103,7 +103,7 @@ endpoints:
             curl -H "Content-Type: application/json" \
               -H "Authorization: token $TOKEN" \
               -X GET \
-              https://$api_root/$version/stackscripts/$stackscript_id
+              https://$api_root/$version/linode/stackscripts/$stackscript_id
           python: |
             import stackscript
             TODO
@@ -130,7 +130,7 @@ endpoints:
           curl: |
             curl -H "Authorization: token $TOKEN" \
               -X DELETE \
-              https://$api_root/$version/stackscripts/$stackscript_id
+              https://$api_root/$version/linode/stackscripts/$stackscript_id
           python: |
             import stackscript
             TODO

@@ -11,6 +11,14 @@ _pylib_attributes:
     configs:
         _type: list
         _description: A list of Configs belonging to this Linode
+    recent_backups:
+        _type: list
+        _description: A list of recent Backups for this Linode.  This is for record keeping only, you may not be able to restore all of them.
+    ips:
+        _type: object
+        _description: >
+            A response object containing "ipv4" and "ipv6" attributes, both of which contain a list of the relevant type of
+            IP Address for this Linode.
 constructor:
     name: Linode
     parameters:
@@ -189,3 +197,45 @@ methods:
             s = client.get_stackscripts(linode.StackScript.label == 'my-aweomse-stackscript')[0]
             disk = l.create_disk(2048, distribution=s.distributions[0], root_pass='hunter2')
         returns: A new Disk object
+    allocate_ip:
+        desc: >
+            Allocates a new IPv4 Address for this Linode.
+        parameters:
+            public:
+                _keyword: true
+                desc: If True, allocate a Public IP address, else allocate a Private IP address.
+                _default: False
+        example:
+            l.allocate_ip()
+        returns: True if the delete succueeded.
+    rebuild:
+        desc: >
+            Deletes all Disks and Configs for this Linode, then deploys a Distribution to it.
+        parameters:
+            distribution:
+                _keyword: true
+                desc: A Distribution object to deploy to this disk upon creation.
+                _default: None
+            root_pass:
+                _keyword: true
+                desc: >
+                    The password for the root user in this disk's filesystem.  Only include if you are including a distribution as well.
+                    If a distribution is given and no root_pass is provided, one will be generated and returned along with the Disk.
+                _default: None
+            root_key:
+                _keyword: true
+                desc: >
+                    The ssh public key to include in the disk's filesystem's authorized_keys file for the root user.  Only include if a
+                    distribution was giben as well.
+                _default: None
+            stackscript:
+                _keyword: true
+                desc: The StackScript to deploy to this disk.
+                _default: None
+            '**stackscrit_args':
+                keyword: false
+                desc: Any number of additional keyword arguments, which will be sent as responses to the StackScript's user-defined fields.
+        example:
+            pw = l.rebuild("linode/debian8")
+        returns:
+            The root password generated for this deplpyment.
