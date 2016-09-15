@@ -7,6 +7,7 @@ schema:
   id:
     _type: integer
     _value: 123456
+    _description: This Linode's ID
   alerts:
     _description: >
       Toggle and set thresholds for receiving email alerts.
@@ -155,38 +156,34 @@ schema:
     _value: Example
     _filterable: true
     limit: 0-50 characters
-  ips:
-    _description: IP addresses associated with your Linode.
-    private:
-      ipv4:
-        _type: array
-        _subtype: string
-        _description: IP addresses for private networking.
-        _value:
-          - "10.20.30.40"
-          - "10.20.30.50"
-          - "10.20.30.60"
-      link_local:
-        _type: string
-        _description: Link-local IP address for private networking.
-        _value: "fe80::f03c:91ff:fe33:a2a0"
-    public:
-      failover:
-        _type: array
-        _subtype: string
-        _description: Failover IPs assigned to this Linode.
-        _value:
-      ipv4:
-        _type: array
-        _subtype: string
-        _descripton: Public IPv4 addresses assigned to this Linode.
-        _value:
-          - "100.90.80.70"
-          - "100.90.80.60"
-      ipv6:
-        _type: string
-        _description: This Linode's public IPv6 address.
-        _value: 2a01:7e00::f03c:91ff:fe33:a2a0
+  ipv4:
+    _editable: false
+    _type: ipaddress
+    _description: This Linode's primary IP Address.
+    _value:
+        - address:
+            _type: string
+            _value: 97.107.143.8
+          id:
+            _type: integer
+            _value: 123
+          rdns:
+            _type: string
+            _value: li1-8.members.linode.com
+          type:
+            _type: string
+            _value: public
+  ipv6:
+    _editable: false
+    _type: ip6address
+    _description: This Linode's slaac address
+    _value:
+        - range: 
+            _type: string
+            _value: fe80::f03c:91ff:fe0a:1d21
+          type:
+            _type: string
+            _value: slaac
   label:
     _editable: true
     _type: string
@@ -276,6 +273,7 @@ schema:
     _type: datetime
     _value: 2015-10-27T09:59:26
     _pylib_volatile: true
+    _description: The last updated datetime for this Linode record
 enums:
   State:
     offline: The Linode is powered off.
