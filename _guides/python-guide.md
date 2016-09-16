@@ -73,7 +73,7 @@ searched a listing endpoint, we need to take the first result (which in this cas
 Since we have everything we need to make a Linode, we can create one with the LinodeClient:
 
 {% highlight python %}
->>> l = client.create_linode(serv, dc)
+>>> l = client.create_instance(serv, dc)
 {% endhighlight %}
 
 And that's it!  Now we've got a fresh new Linode.  Let's check it out:
@@ -124,10 +124,10 @@ True
 Now that that's gone, we can create a new Linode running Debian 1.8:
 
 {% highlight python %}
->>> l, pw = client.create_linode(serv, dc, source=distro)
+>>> l, pw = client.create_instance(serv, dc, source=distro)
 {% endhighlight %}
 
-This time, we called `create_linode` with a "source" keywork argument.  The source tells the API what to deploy, and it will do 
+This time, we called `create_instance` with a "source" keywork argument.  The source tells the API what to deploy, and it will do 
 "[the right thing](/reference/#ep-linodes-POST)" to give you a working Linode.  Since a Distribution needs a root password and we didn't
 provide one, the client helpfully generated one for us and returned it as well.  Let's boot it and wait for it to come online:
 
