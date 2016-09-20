@@ -107,15 +107,15 @@ schema:
   kernel:
     _editable: true
     _type: kernel
-    created:
-      _type: datetime
-      _value: 2011-09-01T21:08:55
     id:
       _type: string
       _value: linode/latest_64
     label:
       _type: string
       _value: Latest 64 bit (4.1.0-x86_64-linode59)
+    current:
+      _type: boolean
+      _value: true
   label:
     _editable: true
     _type: string
