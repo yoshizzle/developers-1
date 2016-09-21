@@ -1,5 +1,6 @@
 # vim: set et ts=2 sw=2 tw=80 :
 name: StackScripts
+sort: 3
 base_path: /linode/stackscripts
 description: >
   StackScript endpoints provide a means of managing the

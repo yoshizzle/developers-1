@@ -1,5 +1,6 @@
 # vim: set et ts=2 sw=2 tw=80 :
 name: Distributions
+sort: 1
 base_path: /linode/distributions
 description: >
   Distribution endpoints provide a means of viewing
