@@ -1,5 +1,6 @@
 # vim: set et ts=2 sw=2 tw=80 :
 name: Kernels
+sort: 2
 base_path: /linode/kernels
 description: >
   Kernel endpoints provide a means of viewing <a href="#object-kernel">
