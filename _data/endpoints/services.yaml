@@ -1,15 +1,16 @@
 # vim: set et ts=2 sw=2 tw=80 :
-name: Services
-base_path: /linode/services
+name: Types
+sort: 1
+base_path: /linode/types
 description: >
-  Services endpoints provide a means of viewing <a href="#object-service">
+  Type endpoints provide a means of viewing <a href="#object-service">
   service objects</a>.
 endpoints:
-  linode/services:
+  linode/types:
     type: list
-    resource: services
+    resource: types
     description: >
-      Returns collection of services.
+      Returns collection of types.
     methods:
       GET:
         description: >
@@ -20,11 +21,11 @@ endpoints:
           python: |
             import services
             TODO
-  linode/services/:id:
+  linode/types/:id:
     type: resource
-    resource: services
+    resource: types
     description: >
-      Returns information about a specific service offered by Linode.
+      Returns information about a specific Linode type offered by Linode.
     methods:
       GET:
         description: >
