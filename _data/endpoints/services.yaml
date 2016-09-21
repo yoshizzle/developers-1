@@ -5,7 +5,7 @@ description: >
   Services endpoints provide a means of viewing <a href="#object-service">
   service objects</a>.
 endpoints:
-  services:
+  linode/services:
     type: list
     resource: services
     description: >

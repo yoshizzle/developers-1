@@ -42,7 +42,7 @@ groups:
                         desc: Any number of filters to this function
                         _keyword: false
                 example: >
-                    distros = client.get_distributions(linode.Distribution.vendor == "Debian")
+                    distros = client.linode.get_distributions(linode.Distribution.vendor == "Debian")
                 returns: A list of Distribution objects
             get_services:
                 desc: >
@@ -53,7 +53,7 @@ groups:
                         desc: Any number of filters to this function
                         _keyword: false
                 example: >
-                    service = client.get_services(linode.Services.label == "Linode 1024")[0]
+                    service = client.linode.get_services(linode.Services.label == "Linode 1024")[0]
                 returns: A list of Service objects
             get_instances:
                 desc: >
@@ -64,7 +64,7 @@ groups:
                         desc: Any number of filters to this function
                         _keyword: false
                 example: >
-                    linodes = client.get_linodes(linode.Linode.group == "production")
+                    linodes = client.linode.get_linodes(linode.Linode.group == "production")
                 returns: A list of Linode objects
             get_stackscripts:
                 desc: >
@@ -75,7 +75,7 @@ groups:
                         desc: Any number of filters to this function
                         _keyword: false
                 example: >
-                    stackscripts = client.get_stackscripts()
+                    stackscripts = client.linode.get_stackscripts()
                 returns: A list of StackScript objects
             get_kernels:
                 desc: >
@@ -86,7 +86,7 @@ groups:
                         desc: Any number of filters to this function
                         _keyword: false
                 example: >
-                    kernels = client.get_kernels(linode.Kernel.kvm == True)
+                    kernels = client.linode.get_kernels(linode.Kernel.kvm == True)
                 returns: A list of Kernel objects
         create_instance:
             desc: >
@@ -99,7 +99,7 @@ groups:
                     desc: A Datacenter object which is the datacenter in which this Linode will be created
                     _keyword: false
             example: |
-                serv = client.get_services(linode.Service.label == 'Linode 1024')[0]
+                serv = client.linode.get_services(linode.Service.label == 'Linode 1024')[0]
                 dc = client.get_datacenters(linode.Datacenter.label.contains('Newark'))[0]
                 l = client.create_linode(serv, dc)
             returns: A Linode object
@@ -125,9 +125,9 @@ groups:
                         source parameter's value.  See the <a href="/reference/#ep-linodes-POST">endpoint docs</a> for more information.
                     _keyword: false
             example: |
-                serv = client.get_services(linode.Service.label == 'Linode 1024')[0]
+                serv = client.linode.get_services(linode.Service.label == 'Linode 1024')[0]
                 dc = client.get_datacenters(linode.Datacenter.label.contains('Newark'))[0]
-                distro = client.get_distributions(linode.Distribution.vendor == 'Debian')[-1]
+                distro = client.linode.get_distributions(linode.Distribution.vendor == 'Debian')[-1]
                 l = client.create_linode(serv, dc, source=distro)
             returns: A tuple containing the new Linode object and generated root password for the Linode
         create_instance**:
@@ -161,9 +161,9 @@ groups:
                         source parameter's value.  See the <a href="/reference/#ep-linodes-POST">endpoint docs</a> more information.
                     _keyword: false
             example: |
-                serv = client.get_services(linode.Service.label == 'Linode 1024')[0]
+                serv = client.linode.get_services(linode.Service.label == 'Linode 1024')[0]
                 dc = client.get_datacenters(linode.Datacenter.label.contains('Newark'))[0]
-                distro = client.get_distributions(linode.Distribution.vendor == 'Debian')[-1]
+                distro = client.linode.get_distributions(linode.Distribution.vendor == 'Debian')[-1]
                 stackscirpt = linode.StackScript(client, 'stackscript_123')
                 l = client.create_linode(serv, dc, source=distro, stackscript_id=stackscript.id)
             returns: A Linode object
@@ -194,7 +194,7 @@ groups:
                             see the <a href="/reference/#ep-stackscripts-POST">endpoint docs</a> for complete breakdown.
                         _keyword: false
                 example: |
-                    distros = client.get_distributions(linode.or_(linode.Distribution.vendor == 'Ubuntu', linode.Distribution.vendor == 'Debian'))
+                    distros = client.linode.get_distributions(linode.or_(linode.Distribution.vendor == 'Ubuntu', linode.Distribution.vendor == 'Debian'))
                     s = client.create_stackscript('my-stackscript', '~/stackscripts/my-stackscript.sh', distros)
     dns:
         name: Dns
@@ -210,7 +210,7 @@ groups:
                         desc: Any number of filters to this function
                         _keyword: false
                 example: >
-                    dnszones = client.get_dnszones()
+                    dnszones = client.dns.get_zones()
                 returns: A list of DNS Zone objects
             create_zone:
                 desc: Creates a new DNS Zone record.

@@ -1,6 +1,6 @@
 ---
 # vim: tw=80
-title: Python Guide 
+title: Python Guide
 blurb: How to use the official python library, linode-api
 layout: guide
 ---
@@ -30,14 +30,13 @@ tutorial.
 
 ## Connecting to the API
 
-The Python Library connects to the Linode API V4 using the `LinodeClient` class, which expects an OAuth Token in his constructor.  In this
-example we'll also provide a `base_url` keyword argument, since we're talking to the alpha environment.
+The Python Library connects to the Linode API V4 using the `LinodeClient` class, which expects an OAuth Token in his constructor.
 
 _All example code in this guide is executed in a python shell._
 
 {% highlight python %}
 >>> import linode
->>> client = linode.LinodeClient('my-oauth-token', base_url='https://api.alpha.linode.com/v4')
+>>> client = linode.LinodeClient('my-oauth-token')
 {% endhighlight %}
 
 ## Requirements for Creating a Linode
@@ -58,15 +57,19 @@ Looks like we only have one option in the alpha environment - so we'll just grab
 >>> dc = client.get_datacenters()[0]
 {% endhighlight %}
 
-For a Service, we know that we want "Linode 1024".  Since we know the service name, we don't need to list all services, we
-can just ask for it by filtering the service list:
+For a Service, we know that we want "Linode 2048".  Since we know the service name, we don't need to list all services, we
+can just use the label:
 
 {% highlight python %}
->>> serv = client.get_services(linode.Service.label == "Linode 1024")[0]
+>>> serv = client.linode.get_services(linode.Service.label == "Linode 2048").first()
+>>> serv = linode.Service(client, 'linode2048.5')
+>>> serv.label
+'Linode 2048'
 {% endhighlight %}
 
-The Python Library uses SQLAlchemy-like filtering syntax - any field [marked filterable](/libraries/python-reference/#api-objects) can be searched by in this manner.  Since we
-searched a listing endpoint, we need to take the first result (which in this case is the only one) of the returned list.
+Here we are creating the service object by label - the label is used where IDs are used for other objects.
+While creating objects this way can be useful, we can also use the label in place of the service object in
+all places it would be used.
 
 ## Making a Linode
 
@@ -81,7 +84,7 @@ And that's it!  Now we've got a fresh new Linode.  Let's check it out:
 {% highlight python %}
 >>> l.label
 'linode263'
->>> l.ips.public.ipv4
+>>> l.ipv4
 ['97.107.143.33']
 >>> l.state
 'offline'
@@ -96,21 +99,18 @@ We already know how to retrieve objects from the API, but this time we want some
 have a look at all of the recommended Debian templates:
 
 {% highlight python %}
->>> for d in client.get_distributions(linode.Distribution.vendor == 'Debian', linode.Distribution.recommended == True):
+>>> for d in client.linode.get_distributions(linode.Distribution.vendor == 'Debian', linode.Distribution.recommended == True):
 ...   print("{}: {}".format(d.label, d.id))
 ...
 Debian 7: linode/debian7
 Debian 8.1: linode/debian8
 {% endhighlight %}
 
-Great, we have some options.  We can chain filters together to run more complex searches.  Since Debian 8.1 is the newest Debian template available, let's use it.
-We already have the ID, so this time we'll create the Distribution object without querying for it:
+The Python Library uses SQLAlchemy-like filtering syntax - any field [marked filterable](/libraries/python-reference/#api-objects) can be searched by in this manner.
+We can chain filters together to run more complex searches, and even use SQLAlchemy operators like and_ and or_ if needed.  This search reveals some options.
+Since Debian 8.1 is the newest Debian template available, let's use it.
 
-{% highlight python %}
->>> distro = linode.Distribution(client, 'linode/debian8')
-{% endhighlight %}
-
-We need to give the Distribution object a reference to the LinodeClient so it knows how to talk to the API to populate itself.
+Since we have the label for the distribution, we don't need to construct an object.
 
 ## Creating a Linode (with a Distribution)
 
@@ -124,11 +124,11 @@ True
 Now that that's gone, we can create a new Linode running Debian 1.8:
 
 {% highlight python %}
->>> l, pw = client.create_instance(serv, dc, source=distro)
+>>> l, pw = client.create_instance(serv, dc, distribution="linode/debian8")
 {% endhighlight %}
 
-This time, we called `create_instance` with a "source" keywork argument.  The source tells the API what to deploy, and it will do 
-"[the right thing](/reference/#ep-linodes-POST)" to give you a working Linode.  Since a Distribution needs a root password and we didn't
+This time, we called `create_instance` with a "distribution" keywork argument.  This tells the API what we want on the new Linode, and it will do
+"[the right thing](/reference/#ep-linodes-POST)" to give you a working configuration.  Since a Distribution needs a root password and we didn't
 provide one, the client helpfully generated one for us and returned it as well.  Let's boot it and wait for it to come online:
 
 {% highlight python %}
@@ -137,7 +137,7 @@ True
 >>> while not l.state == 'running':
 ...   pass
 ...
->>> l.ips.public.ipv4
+>>> l.ipv4
 ['97.107.143.34']
 >>> pw
 '663Iso_f1y4Zb5xeClY13fBGdeu5l&f3'
