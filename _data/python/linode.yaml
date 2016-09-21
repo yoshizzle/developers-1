@@ -102,7 +102,7 @@ methods:
                     the <a href="/reference/index.html#ep-linodes-configs-POST">API Reference</a> for a complete breakdown
                     of all accepted values.
         example: |
-            kernel = client.get_kernels(linode.Kernel.kvm == True, linode.Kernel.label.contains("4")).last()
+            kernel = client.linode.get_kernels(linode.Kernel.kvm == True, linode.Kernel.label.contains("4")).last()
             config = l.create_config(kernel, disks=[d for d in linode.disks])
         returns: The new Config object
     create_disk:
@@ -156,7 +156,7 @@ methods:
                 keyword: false
                 desc: Any number of additional keyword arguments, which will be sent as responses to the StackScript's user-defined fields.
         example: |
-            s = client.get_stackscripts(linode.StackScript.label == 'my-aweomse-stackscript')[0]
+            s = client.linode.get_stackscripts(linode.StackScript.label == 'my-aweomse-stackscript')[0]
             disk, pw = l.create_disk(2048, distribution=s.distributions[0], stackscript=s, udf_value="foobar")
         returns: A tuple containing a new Disk object and the generated password for the root user on the new filesystem
     create_disk**:
@@ -194,7 +194,7 @@ methods:
                 keyword: false
                 desc: Any number of additional keyword arguments, which will be sent as responses to the StackScript's user-defined fields.
         example: |
-            s = client.get_stackscripts(linode.StackScript.label == 'my-aweomse-stackscript')[0]
+            s = client.linode.get_stackscripts(linode.StackScript.label == 'my-aweomse-stackscript')[0]
             disk = l.create_disk(2048, distribution=s.distributions[0], root_pass='hunter2')
         returns: A new Disk object
     allocate_ip:
