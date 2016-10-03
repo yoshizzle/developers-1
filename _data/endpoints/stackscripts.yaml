@@ -15,7 +15,8 @@ endpoints:
       GET:
         description: >
           Returns a list of public <a href="#object-stackscript">StackScripts</a>.
-          Results can be <a href="#filtering">filtered</a>.
+          Results can be <a href="#filtering">filtered</a>.  Include '"mine": true'
+          in the filter dict to see only StackScripts you created.
         examples:
           curl: |
             curl https://$api_root/$version/linode/stackscripts
@@ -63,26 +64,6 @@ endpoints:
                 "script": "#!..."
               }' \
               https://$api_root/$version/linode/stackscripts
-          python: |
-            import stackscript
-            TODO
-  linode/stackscripts/mine:
-    type: list
-    resource: stackscript
-    authenticated: true
-    description: >
-      Retrieve your StackScripts.
-    methods:
-      GET:
-        oauth: stackscripts:view
-        description: >
-          Returns a list of StackScripts associated with your account.
-        examples:
-          curl: |
-            curl -H "Content-Type: application/json" \
-              -H "Authorization: token $TOKEN" \
-              -X GET \
-              https://$api_root/$version/linode/stackscripts/mine
           python: |
             import stackscript
             TODO

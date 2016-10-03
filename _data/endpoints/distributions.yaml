@@ -36,19 +36,3 @@ endpoints:
           python: |
             import distributions
             TODO
-  linode/distributions/recommended:
-    type: list
-    resource: distributions
-    description: >
-      Returns a list of distributions with the recommended flag.
-    methods:
-      GET:
-        description: >
-          Returns a list of recommended <a href="#object-distribution">
-          distributions</a>.
-        examples:
-          curl: |
-            curl https://$api_root/$version/linode/distributions/recommended
-          python: |
-            import distributions
-            TODO

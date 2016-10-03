@@ -16,9 +16,9 @@ schema:
     _description: Human-friendly disk name.
     _filterable: true
     _limit: 1-50 characters
-  state:
+  status:
     _type: enum
-    _subtype: State
+    _subtype: Status
     _value: ok
     _description: Status of the disk.
     _filterable: false
@@ -40,7 +40,7 @@ schema:
     _type: datetime
     _value: "2015-09-29T11:21:01"
 enums:
-  State:
+  Status:
     ok: No disk jobs are running.
     deleting: This disk is being deleted.
     creating: This disk is being created.
