@@ -321,9 +321,9 @@ schema:
         vcpus:
           _type: integer
           _value: "null"
-  state:
+  status:
     _type: enum
-    _subtype: State
+    _subtype: Status
     _description: The current state of this Linode.
     _value: running
     _filterable: true
@@ -338,7 +338,7 @@ schema:
     _pylib_volatile: true
     _description: The last updated datetime for this Linode record
 enums:
-  State:
+  Status:
     offline: The Linode is powered off.
     booting: The Linode is currently booting up.
     running: The Linode is currently running.
