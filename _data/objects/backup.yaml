@@ -47,6 +47,35 @@ schema:
     _type: datetime
     _value: "2015-09-29T11:21:01"
     _description: An ISO 8601 datetime of when the backup completed.
+  configs:
+    _type: array
+    _subtype: string
+    _description: A JSON Array of config labels that were included in this backup.
+    _value:
+      - "My Debian8 Profile"
+  disks:
+    _type: array
+    _subtype: disk
+    _value:
+      - label:
+            _type: string
+            _value: "My Debian8 Disk"
+        size:
+            _type: integer
+            _value: 24064
+        filesystem:
+            _type: string
+            _value: "ext4"
+      - label:
+            _type: string
+            _value: "swap"
+        size:
+            _type: integer
+            _value: 512
+        filesystem:
+            _type: string
+            _value: "swap"
+    _description: A JSON Array of JSON Objects describing the disks included in this backup.
 enums:
   Status:
     paused: Backup job is currently suspended.
