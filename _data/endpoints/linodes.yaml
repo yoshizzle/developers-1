@@ -683,7 +683,7 @@ endpoints:
                     "type": "private"
                 }' \
                 https://$api_root/$version/linode/instances/$linode_id/ips
-  linode/instances/:id/ips/:id:
+  linode/instances/:id/ips/:address:
     type: resource
     resource: ipaddress
     authenticated: true
@@ -697,7 +697,7 @@ endpoints:
         examples:
           curl: |
             curl -H "Authorization: token $TOKEN" \
-                https://$api_root/$version/linode/instances/$linode_id/ips/$ipaddress_id
+                https://$api_root/$version/linode/instances/$linode_id/ips/$ipaddress
       PUT:
         oauth: linodes:modify
         description: >
@@ -709,7 +709,7 @@ endpoints:
                 -X PUT -d '{
                     "rdns":"example.org"
                 }' \
-                https://$api_root/$version/linode/instances/$linode_id/ipaddress/$ipaddress_id
+                https://$api_root/$version/linode/instances/$linode_id/ipaddress/$ipaddress
   linode/instances/:id/rebuild:
     type: action
     authenticated: true
