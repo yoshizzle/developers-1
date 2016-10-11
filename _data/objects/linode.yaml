@@ -254,14 +254,20 @@ schema:
     _value: Example Linode
     _filterable: true
     _limit: "3-32 ASCII characters limited to letters, numbers, underscores, and dashes, starting and ending with a letter, and without two dashes or underscores in a row"
-  services:
-    _description: Paid service(s) for this Linode.
+  type:
+    _description: The type of Linode.
     _type: array
     _subtype: service
     _value:
       - id:
           _type: string
-          _value: linode2048.5
+          _value: standard-1
+        backups_price:
+          _type: integer
+          _value: 250
+        class:
+          _type: string
+          _value: standard
         disk:
           _type: integer
           _value: 24576
@@ -284,43 +290,15 @@ schema:
           _type: enum
           _subtype: Service Type
           _value: linode
+        storage:
+          _type: integer
+          _value: 24576
         transfer:
           _type: integer
           _value: 2000
         vcpus:
           _type: integer
           _value: 2
-      - id:
-          _type: string
-          _value: linode2048.5
-        disk:
-          _type: integer
-          _value: 24576
-        hourly_price:
-          _type: integer
-          _value: 0
-        label:
-          _type: string
-          _value: Backup Service - Linode 2048
-        mbits_out:
-          _type: integer
-          _value: "null"
-        monthly_price:
-          _type: integer
-          _value: 250
-        ram:
-          _type: integer
-          _value: 2048
-        service_type:
-          _type: enum
-          _subtype: Service Type
-          _value: backup
-        transfer:
-          _type: integer
-          _value: 2000
-        vcpus:
-          _type: integer
-          _value: "null"
   status:
     _type: enum
     _subtype: Status
