@@ -1,17 +1,21 @@
 name: IPv6 Address
 description: >
-    An IP Address, including RDNS information
+    An IPv6 Address
 schema:
-  range:
+  address:
     _type: string
     _value: "2a01:7e00::f03c:91ff:fe96:46f5/64"
-    _description: The IPv6 range
+    _description: The IPv6 Address.
   type:
     _type: enum
     _subtype: IPv6AddressType
     _value: slaac
-    _description: The type of IP Address, either public or private
+    _description: The type of IPv6 Address, either slaac or link-local.
+  rdns:
+    _type: string
+    _value: null
+    _description: Optional reverse DNS address for this IPv6 Address.
 enums:
   IPv6AddressType:
-    slaac: Stateless address autconfiguration.
-    link-local: Unique address in local network segment.
+    slaac: Acquired via Stateless Address Autoconfiguration (SLAAC).
+    link-local: Unicast address that can be automatically configured on any interface.

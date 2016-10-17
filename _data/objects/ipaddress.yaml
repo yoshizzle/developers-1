@@ -1,6 +1,6 @@
-name: IP Address
+name: IPv4 Address
 description: >
-    An IPv6 Address
+    An IPv4 Address
 schema:
   id:
     _type: string

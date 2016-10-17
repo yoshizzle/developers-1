@@ -221,32 +221,14 @@ schema:
     limit: 0-50 characters
   ipv4:
     _editable: false
-    _type: ipaddress
-    _description: This Linode's primary IP Address.
-    _value:
-        - address:
-            _type: string
-            _value: 97.107.143.8
-          id:
-            _type: integer
-            _value: 123
-          rdns:
-            _type: string
-            _value: li1-8.members.linode.com
-          type:
-            _type: string
-            _value: public
+    _type: string
+    _description: This Linode's primary IPv4 address.
+    _value: "97.107.143.8"
   ipv6:
     _editable: false
-    _type: ip6address
-    _description: This Linode's slaac address
-    _value:
-        - range: 
-            _type: string
-            _value: fe80::f03c:91ff:fe0a:1d21
-          type:
-            _type: string
-            _value: slaac
+    _type: string
+    _description: This Linode's IPv6 slaac address.
+    _value: "2a01:7e00::f03c:91ff:fe96:46f5/64"
   label:
     _editable: true
     _type: string
@@ -314,7 +296,7 @@ schema:
     _type: datetime
     _value: 2015-10-27T09:59:26
     _pylib_volatile: true
-    _description: The last updated datetime for this Linode record
+    _description: The last updated datetime for this Linode record.
 enums:
   Status:
     offline: The Linode is powered off.
