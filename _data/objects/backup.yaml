@@ -76,6 +76,11 @@ schema:
             _type: string
             _value: "swap"
     _description: A JSON Array of JSON Objects describing the disks included in this backup.
+  availability:
+    _type: enum
+    _subtype: BackupAvailability
+    _value: daily
+    _description: If this backup is available, which backup slot it is in.  Otherwise, unavailable.
 enums:
   Status:
     paused: Backup job is currently suspended.
@@ -87,3 +92,7 @@ enums:
   Type:
     auto: A backup that is automatically created when Backups are enabled.
     snapshot: A backup that is manually created by the User.
+  BackupAvailability:
+    unavailable: This backup cannot be restored.
+    daily: This is your daily backup, and can be restored.
+    weekly: This is one of your weekly backups, and can be restored.
