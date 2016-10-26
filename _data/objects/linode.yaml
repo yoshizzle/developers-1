@@ -297,6 +297,11 @@ schema:
     _value: 2015-10-27T09:59:26
     _pylib_volatile: true
     _description: The last updated datetime for this Linode record.
+  hypervisor:
+    _type: enum
+    _subtype: Hypervisor
+    _description: The hypervisor this Linode is running on.
+    _value: kvm
 enums:
   Status:
     offline: The Linode is powered off.
@@ -330,3 +335,6 @@ enums:
     W18: 1800 - 2000 UTC
     W20: 2000 - 2200 UTC
     W22: 2200 - 0000 UTC
+  Hypervisor:
+    kvm: KVM
+    xen: Xen
