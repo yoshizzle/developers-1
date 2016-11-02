@@ -1,0 +1,61 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Event
+prefix: event
+description: >
+  Event objects describe a notification on a user's account timeline.
+schema:
+  id:
+    _type: integer
+    _value: 1234
+  created:
+    _type: datetime
+    _value: 2014-12-24T18:00:09
+  finished:
+    _type: datetime
+    _value: Null
+  label:
+    _type: string
+    _value: "Linode booting"
+    _description: An overview description of the event.
+    _filterable: false
+  label_message:
+    _type: string
+    _value: "Linode 12345 is booting and should be available momentarily"
+    _description: A more detailed explanation of the event.
+    _filterable: false
+  status:
+    _type: enum
+    _subtype: EventStatus
+    _value: started
+    _description: Status of the event.
+    _filterable: false
+  status_percent:
+    _type: integer
+    _value: 20
+    _description: A percentage estimating the amount of time remaining for an event.
+    _filterable: false
+  duration:
+    _type: integer
+    _value: 1356
+    _description: The amount of time (in seconds) that an event has been in progress.
+    _filterable: false
+  time_remaining:
+    _type: integer
+    _value: 5436
+    _description: An estimate for the amount of time (in seconds) that an event has left to complete.
+    _filterable: false
+  linode_id:
+    _type: integer
+    _value: 123456
+    _description: The Linode's ID if the event affects a Linode.
+    _filterable: true
+  stackscript_id:
+   _type: integer
+   _value: 450
+   _description: The StackScript's ID if the event affects a StackScript.
+   _filterable: true
+  nodebalancer_id:
+   _type: integer
+   _value: 3846
+   _description: The NodeBalancer's ID if the event affects a NodeBalancer.
+   _filterable: true

@@ -1,0 +1,38 @@
+# vim: set et ts=2 sw=2 tw=80 :
+name: Events
+base_path: /account/events
+description: >
+  Event endpoints provide a means of viewing
+  event notifications.
+endpoints:
+  account/events:
+    type: list
+    resource: events
+    description: >
+      View the collection of events.
+    methods:
+      GET:
+        description: >
+          Returns a list of <a href="#object-event">events</a>.
+        examples:
+          curl: |
+            curl https://$api_root/$version/account/events
+          python: |
+            import events
+            TODO
+  account/events/:id:
+    type: resource
+    resource: events
+    description: >
+      Returns information about a specific event.
+    methods:
+      GET:
+        description: >
+          Returns information about this <a href="#object-event">
+          event</a>.
+        examples:
+          curl: |
+            curl https://$api_root/$version/account/event/$event_id
+          python: |
+            import event
+            TODO
